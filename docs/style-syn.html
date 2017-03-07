@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>The R Style Guide</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This is a concise style guide for writing in the R language.">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="The R Style Guide" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a concise style guide for writing in the R language." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="The R Style Guide" />
+  
+  <meta name="twitter:description" content="This is a concise style guide for writing in the R language." />
+  
+
+<meta name="author" content="Hadley Wickham and Garrett Grolemund">
+
+
+<meta name="date" content="2017-03-07">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="style-notnam.html">
+<link rel="next" href="style-fun.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Style guide</a></li>
+<li class="chapter" data-level="2" data-path="style-notnam.html"><a href="style-notnam.html"><i class="fa fa-check"></i><b>2</b> Notation and naming</a><ul>
+<li class="chapter" data-level="2.1" data-path="style-notnam.html"><a href="style-notnam.html#file-names"><i class="fa fa-check"></i><b>2.1</b> File names</a></li>
+<li class="chapter" data-level="2.2" data-path="style-notnam.html"><a href="style-notnam.html#object-names"><i class="fa fa-check"></i><b>2.2</b> Object names</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="style-syn.html"><a href="style-syn.html"><i class="fa fa-check"></i><b>3</b> Syntax</a><ul>
+<li class="chapter" data-level="3.1" data-path="style-syn.html"><a href="style-syn.html#spacing"><i class="fa fa-check"></i><b>3.1</b> Spacing</a></li>
+<li class="chapter" data-level="3.2" data-path="style-syn.html"><a href="style-syn.html#curly-braces"><i class="fa fa-check"></i><b>3.2</b> Curly braces</a></li>
+<li class="chapter" data-level="3.3" data-path="style-syn.html"><a href="style-syn.html#line-length"><i class="fa fa-check"></i><b>3.3</b> Line length</a></li>
+<li class="chapter" data-level="3.4" data-path="style-syn.html"><a href="style-syn.html#indentation"><i class="fa fa-check"></i><b>3.4</b> Indentation</a></li>
+<li class="chapter" data-level="3.5" data-path="style-syn.html"><a href="style-syn.html#assignment"><i class="fa fa-check"></i><b>3.5</b> Assignment</a></li>
+<li class="chapter" data-level="3.6" data-path="style-syn.html"><a href="style-syn.html#quotes"><i class="fa fa-check"></i><b>3.6</b> Quotes</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="style-fun.html"><a href="style-fun.html"><i class="fa fa-check"></i><b>4</b> Functions</a></li>
+<li class="chapter" data-level="5" data-path="style-pipes.html"><a href="style-pipes.html"><i class="fa fa-check"></i><b>5</b> Pipes</a><ul>
+<li class="chapter" data-level="5.1" data-path="style-pipes.html"><a href="style-pipes.html#when-not-to-use-the-pipe"><i class="fa fa-check"></i><b>5.1</b> When not to use the pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="style-org.html"><a href="style-org.html"><i class="fa fa-check"></i><b>6</b> Organisation</a><ul>
+<li class="chapter" data-level="6.1" data-path="style-org.html"><a href="style-org.html#commenting-guidelines"><i class="fa fa-check"></i><b>6.1</b> Commenting guidelines</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The R Style Guide</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="style-syn" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Syntax</h1>
+<div id="spacing" class="section level2">
+<h2><span class="header-section-number">3.1</span> Spacing</h2>
+<p>Place spaces around all infix operators (<code>=</code>, <code>+</code>, <code>-</code>, <code>&lt;-</code>, etc.). The same rule applies when using <code>=</code> in function calls. Always put a space after a comma, and never before (just like in regular English).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
+average &lt;-<span class="st"> </span><span class="kw">mean</span>(feet /<span class="st"> </span><span class="dv">12</span> +<span class="st"> </span>inches, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+
+<span class="co"># Bad</span>
+average&lt;-<span class="kw">mean</span>(feet/<span class="dv">12</span>+inches,<span class="dt">na.rm=</span><span class="ot">TRUE</span>)</code></pre></div>
+<p>There’s a small exception to this rule: <code>:</code>, <code>::</code> and <code>:::</code> don’t need spaces around them.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
+x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+base::get
+
+<span class="co"># Bad</span>
+x &lt;-<span class="st"> </span><span class="dv">1</span> :<span class="st"> </span><span class="dv">10</span>
+base ::<span class="st"> </span>get</code></pre></div>
+<p>Place a space before left parentheses, except in a function call.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
+if (debug) <span class="kw">show</span>(x)
+<span class="kw">plot</span>(x, y)
+
+<span class="co"># Bad</span>
+if(debug)<span class="kw">show</span>(x)
+<span class="kw">plot</span> (x, y)</code></pre></div>
+<p>Extra spacing (i.e., more than one space in a row) is ok if it improves alignment of equal signs or assignments (<code>&lt;-</code>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list</span>(
+  <span class="dt">total =</span> a +<span class="st"> </span>b +<span class="st"> </span>c, 
+  <span class="dt">mean  =</span> (a +<span class="st"> </span>b +<span class="st"> </span>c) /<span class="st"> </span>n
+)</code></pre></div>
+<p>Do not place spaces around code in parentheses or square brackets (unless there’s a comma, in which case see above).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
+if (debug) <span class="kw">do</span>(x)
+diamonds[<span class="dv">5</span>, ]
+
+<span class="co"># Bad</span>
+if ( debug ) <span class="kw">do</span>(x)  <span class="co"># No spaces around debug</span>
+x[<span class="dv">1</span>,]   <span class="co"># Needs a space after the comma</span>
+x[<span class="dv">1</span> ,]  <span class="co"># Space goes after comma not before</span></code></pre></div>
+</div>
+<div id="curly-braces" class="section level2">
+<h2><span class="header-section-number">3.2</span> Curly braces</h2>
+<p>An opening curly brace should never go on its own line and should always be followed by a new line. A closing curly brace should always go on its own line, unless it’s followed by <code>else</code> (or a closing parenthesis).</p>
+<p>Always indent the code inside curly braces. When indenting your code, use two spaces. Never use tabs or mix tabs and spaces.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
+if (y &lt;<span class="st"> </span><span class="dv">0</span> &amp;&amp;<span class="st"> </span>debug) {
+  <span class="kw">message</span>(<span class="st">&quot;y is negative&quot;</span>)
+}
+
+if (y ==<span class="st"> </span><span class="dv">0</span>) {
+  if (x &gt;<span class="st"> </span><span class="dv">0</span>) {
+    <span class="kw">log</span>(x)
+  } else {
+    <span class="kw">message</span>(<span class="st">&quot;x is negative or zero&quot;</span>)
+  }
+} else {
+  y ^<span class="st"> </span>x
+}
+
+<span class="co"># Bad</span>
+if (y &lt;<span class="st"> </span><span class="dv">0</span> &amp;&amp;<span class="st"> </span>debug)
+<span class="kw">message</span>(<span class="st">&quot;Y is negative&quot;</span>)
+
+if (y ==<span class="st"> </span><span class="dv">0</span>)
+{
+    if (x &gt;<span class="st"> </span><span class="dv">0</span>) {
+⇥       <span class="kw">log</span>(x)
+    } else {
+⇥       <span class="kw">message</span>(<span class="st">&quot;x is negative or zero&quot;</span>)
+    }
+} 
+else { y ^<span class="st"> </span>x }</code></pre></div>
+<p>It’s ok to leave very short statements on the same line:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (y &lt;<span class="st"> </span><span class="dv">0</span> &amp;&amp;<span class="st"> </span>debug) <span class="kw">message</span>(<span class="st">&quot;Y is negative&quot;</span>)</code></pre></div>
+</div>
+<div id="line-length" class="section level2">
+<h2><span class="header-section-number">3.3</span> Line length</h2>
+<p>Strive to limit your code to 80 characters per line. This fits comfortably on a printed page with a reasonably sized font. If you find yourself running out of room, this is a good indication that you should encapsulate some of the work in a separate function.</p>
+</div>
+<div id="indentation" class="section level2">
+<h2><span class="header-section-number">3.4</span> Indentation</h2>
+<p>If a function definition runs over multiple lines, indent the second line to where the definition starts.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
+long_function_name &lt;-<span class="st"> </span>function(<span class="dt">a =</span> <span class="st">&quot;a long argument&quot;</span>, 
+                               <span class="dt">b =</span> <span class="st">&quot;another argument&quot;</span>,
+                               <span class="dt">c =</span> <span class="st">&quot;another long argument&quot;</span>) {
+  <span class="co"># As usual code is indented by two spaces.</span>
+}
+
+<span class="co"># Bad</span>
+long_function_name &lt;-<span class="st"> </span>function(<span class="dt">a =</span> <span class="st">&quot;a long argument&quot;</span>,
+  <span class="dt">b =</span> <span class="st">&quot;another argument&quot;</span>,
+  <span class="dt">c =</span> <span class="st">&quot;another long argument&quot;</span>) {
+}</code></pre></div>
+<p>If a function call is too long, put the function name, each argument, and the closing parenthesis on a separate line. This makes the code easier to read and to change later. You may also place several arguments on the same line if they are closely related to each other, e.g., strings in calls to <code>paste()</code> or <code>stop()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
+<span class="kw">do_something_very_complicated</span>(
+  <span class="st">&quot;that&quot;</span>,
+  <span class="dt">requires =</span> many,
+  <span class="dt">arguments =</span> <span class="st">&quot;some of which may be long&quot;</span>
+)
+
+<span class="kw">paste0</span>(
+  <span class="st">&quot;Requirement: &quot;</span>, requires, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>,
+  <span class="st">&quot;Result: &quot;</span>, result, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>
+)
+
+<span class="co"># Bad</span>
+<span class="kw">do_something_very_complicated</span>(<span class="st">&quot;that&quot;</span>, requires, many, arguments,
+                              <span class="st">&quot;some of which may be long&quot;</span>
+                              )
+
+<span class="kw">paste0</span>(
+  <span class="st">&quot;Requirement: &quot;</span>, requires,
+  <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="st">&quot;Result: &quot;</span>,
+  result, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</code></pre></div>
+</div>
+<div id="assignment" class="section level2">
+<h2><span class="header-section-number">3.5</span> Assignment</h2>
+<p>Use <code>&lt;-</code>, not <code>=</code>, for assignment. </p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
+x &lt;-<span class="st"> </span><span class="dv">5</span>
+
+<span class="co"># Bad</span>
+x =<span class="st"> </span><span class="dv">5</span></code></pre></div>
+</div>
+<div id="quotes" class="section level2">
+<h2><span class="header-section-number">3.6</span> Quotes</h2>
+<p>Use <code>&quot;</code>, not <code>'</code>, for quoting text. The only exception is when the text already contains double quotes and no single quotes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
+<span class="st">&quot;Text&quot;</span></code></pre></div>
+<pre><code>## [1] &quot;Text&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">&#39;Text with &quot;quotes&quot;&#39;</span></code></pre></div>
+<pre><code>## [1] &quot;Text with \&quot;quotes\&quot;&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Bad</span>
+<span class="st">&#39;Text&#39;</span></code></pre></div>
+<pre><code>## [1] &quot;Text&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">&#39;Text with &quot;double&quot; and </span><span class="ch">\&#39;</span><span class="st">single</span><span class="ch">\&#39;</span><span class="st"> quotes&#39;</span></code></pre></div>
+<pre><code>## [1] &quot;Text with \&quot;double\&quot; and &#39;single&#39; quotes&quot;</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="style-notnam.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="style-fun.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-syntax.Rmd",
+"text": "Edit"
+},
+"download": ["r-style-guide.pdf", "r-style-guide.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

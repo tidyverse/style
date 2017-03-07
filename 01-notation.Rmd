@@ -1,0 +1,53 @@
+# Notation and naming {#style-notnam}
+
+## File names
+
+File names should be meaningful and end in `.R`.
+
+    # Good
+    fit_models.R
+    utility_functions.R
+
+    # Bad
+    foo.r
+    stuff.r
+
+If files need to be run in sequence, prefix them with numbers:
+
+    0_download.R
+    1_parse.R
+    2_explore.R
+
+Pay attention to capitalization, since you, or some of your collaborators, might be using an operating system with a case-insensitive file system (e.g., Microsoft Windows or OS X) which can lead to problems with (case-sensitive) revision control systems. Never use filenames that differ only in capitalization.
+
+## Object names
+
+> "There are only two hard things in Computer Science: cache invalidation and 
+> naming things." 
+>
+> --- Phil Karlton
+
+Variable and function names should be lowercase. Use an underscore (`_`) to separate words within a name. Generally, variable names should be nouns and function names should be verbs. Strive for names that are concise and meaningful (this is not easy!).
+
+Although standard R uses dots extensively in function names (`contrib.url()`), methods (`all.equal`), or class names (`data.frame`), it's better to use underscores. For example, the basic S3 scheme to define a method for a class, using a generic function, would be to concatenate them with a dot, like this `generic.class`. This can lead to confusing methods like `as.data.frame.data.frame()` whereas something like `print.my_class()` is unambiguous.
+
+```{r, eval = FALSE}
+# Good
+day_one
+day_1
+
+# Bad
+first_day_of_the_month
+DayOne
+dayone
+djm1
+```
+
+Where possible, avoid using names of existing functions and variables. This will cause confusion for the readers of your code.
+
+```{r, eval = FALSE}
+# Bad
+T <- FALSE
+c <- 10
+mean <- function(x) sum(x)
+```

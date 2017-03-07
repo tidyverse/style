@@ -1,0 +1,30 @@
+# Functions {#style-fun}
+
+Use verbs for function names, where possible.
+
+```{r eval = FALSE}
+# Good
+add_row()
+permute()
+
+# Bad
+row_adder()
+permutation()
+```
+
+Only use `return()` for early returns. Otherwise rely on R to return the result of the last row of a function.
+
+```{r eval = FALSE}
+# Good
+find_abs <- function(x, y){
+  if (x > 0) return(x)
+  x * -1
+}
+
+# Bad
+add_two <- function(x, y) {
+  return(x + y)
+}
+```
+
+Strive to keep blocks within a function on one screen, so around 20-30 lines maximum.  Some even argue that if a *function* has 20 lines, it should be split into smaller functions.

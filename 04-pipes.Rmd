@@ -1,0 +1,51 @@
+# Pipes {#style-pipes}
+
+Use the `%>%` operator from the tidyverse when you find yourself composing more than two functions together into a nested call, or when you find yourself creating unnecessaty interim objects to avoid nesting functions together.
+
+```{r eval = FALSE}
+# Good
+foo_foo %>%
+  hop(through = forest) %>%
+  scoop(up = field_mouse) %>%
+  bop(on = head)
+
+# Bad
+bop(
+  scoop(
+    hop(foo_foo, through = forest),
+    up = field_mice
+  ), 
+  on = head
+)
+
+foo_foo <- hop(foo_foo, through = forest)
+foo_foo <- scoop(foo_foo, up = field_mice)
+foo_foo <- bop(foo_foo, on = head)
+```
+
+When you use the `%>%` operator, put each verb on its own line.  This makes it simpler to rearrange them later, and makes it harder to overlook a step. It is ok to keep a one-step pipe in one line.
+
+```{r, eval = FALSE}
+# Good
+iris %>%
+  group_by(Species) %>%
+  summarize_all(mean) %>%
+  ungroup %>%
+  gather(measure, value, -Species) %>%
+  arrange(value)
+
+iris %>% arrange(Petal.Width)
+
+# Bad
+iris %>% group_by(Species) %>% summarize_all(mean) %>%
+  ungroup %>% gather(measure, value, -Species) %>%
+  arrange(value)
+```
+
+## When not to use the pipe
+
+Do not use a pipe if:
+
+* You need to manipulate more than one object at a time. Reserve pipes for a sequence of steps applied to one primary object.
+
+* You have more than (say) ten steps in your pipe. In that case, divide your pipe into shorter pipes that create intermediate objects with meaningful names.

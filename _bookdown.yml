@@ -1,0 +1,5 @@
+book_filename: "r-style-guide"
+output_dir: "docs"
+language:
+  ui:
+    chapter_name: "Chapter "

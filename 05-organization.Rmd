@@ -1,0 +1,13 @@
+# Organisation {#style-org}
+
+## Commenting guidelines
+
+Comment your code. Each line of a comment should begin with the comment symbol and a single space: `# `. Comments should explain the why, not the what of your code. \index{comments}
+
+Use commented lines of `-` and `=` to break up your file into easily readable chunks.
+
+```{r, eval = FALSE}
+# Load data ---------------------------
+
+# Plot data ---------------------------
+```
