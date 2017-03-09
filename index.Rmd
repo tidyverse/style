@@ -1,6 +1,5 @@
 --- 
 title: "The R Style Guide"
-author: "Hadley Wickham and Garrett Grolemund"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
