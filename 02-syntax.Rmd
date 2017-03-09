@@ -108,23 +108,6 @@ Strive to limit your code to 80 characters per line. This fits comfortably on a 
 
 ## Indentation
 
-If a function definition runs over multiple lines, indent the second line to where the definition starts.
-
-```{r, eval = FALSE}
-# Good
-long_function_name <- function(a = "a long argument", 
-                               b = "another argument",
-                               c = "another long argument") {
-  # As usual code is indented by two spaces.
-}
-
-# Bad
-long_function_name <- function(a = "a long argument",
-  b = "another argument",
-  c = "another long argument") {
-}
-```
-
 If a function call is too long, put the function name, each argument, and the closing parenthesis on a separate line. This makes the code easier to read and to change later. You may also place several arguments on the same line if they are closely related to each other, e.g., strings in calls to `paste()` or `stop()`:
 
 ```{r, eval = FALSE}

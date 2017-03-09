@@ -26,7 +26,7 @@
 <meta name="author" content="Hadley Wickham and Garrett Grolemund">
 
 
-<meta name="date" content="2017-03-07">
+<meta name="date" content="2017-03-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -226,19 +226,6 @@ else { y ^<span class="st"> </span>x }</code></pre></div>
 </div>
 <div id="indentation" class="section level2">
 <h2><span class="header-section-number">3.4</span> Indentation</h2>
-<p>If a function definition runs over multiple lines, indent the second line to where the definition starts.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
-long_function_name &lt;-<span class="st"> </span>function(<span class="dt">a =</span> <span class="st">&quot;a long argument&quot;</span>, 
-                               <span class="dt">b =</span> <span class="st">&quot;another argument&quot;</span>,
-                               <span class="dt">c =</span> <span class="st">&quot;another long argument&quot;</span>) {
-  <span class="co"># As usual code is indented by two spaces.</span>
-}
-
-<span class="co"># Bad</span>
-long_function_name &lt;-<span class="st"> </span>function(<span class="dt">a =</span> <span class="st">&quot;a long argument&quot;</span>,
-  <span class="dt">b =</span> <span class="st">&quot;another argument&quot;</span>,
-  <span class="dt">c =</span> <span class="st">&quot;another long argument&quot;</span>) {
-}</code></pre></div>
 <p>If a function call is too long, put the function name, each argument, and the closing parenthesis on a separate line. This makes the code easier to read and to change later. You may also place several arguments on the same line if they are closely related to each other, e.g., strings in calls to <code>paste()</code> or <code>stop()</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 <span class="kw">do_something_very_complicated</span>(

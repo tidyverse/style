@@ -26,7 +26,7 @@
 <meta name="author" content="Hadley Wickham and Garrett Grolemund">
 
 
-<meta name="date" content="2017-03-07">
+<meta name="date" content="2017-03-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -154,6 +154,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co"># Bad</span>
 <span class="kw">row_adder</span>()
 <span class="kw">permutation</span>()</code></pre></div>
+<p>If a function definition runs over multiple lines, indent the second line to where the definition starts.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
+long_function_name &lt;-<span class="st"> </span>function(<span class="dt">a =</span> <span class="st">&quot;a long argument&quot;</span>, 
+                               <span class="dt">b =</span> <span class="st">&quot;another argument&quot;</span>,
+                               <span class="dt">c =</span> <span class="st">&quot;another long argument&quot;</span>) {
+  <span class="co"># As usual code is indented by two spaces.</span>
+}
+
+<span class="co"># Bad</span>
+long_function_name &lt;-<span class="st"> </span>function(<span class="dt">a =</span> <span class="st">&quot;a long argument&quot;</span>,
+  <span class="dt">b =</span> <span class="st">&quot;another argument&quot;</span>,
+  <span class="dt">c =</span> <span class="st">&quot;another long argument&quot;</span>) {
+}</code></pre></div>
 <p>Only use <code>return()</code> for early returns. Otherwise rely on R to return the result of the last row of a function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 find_abs &lt;-<span class="st"> </span>function(x, y){

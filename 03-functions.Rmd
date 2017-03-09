@@ -12,6 +12,23 @@ row_adder()
 permutation()
 ```
 
+If a function definition runs over multiple lines, indent the second line to where the definition starts.
+
+```{r, eval = FALSE}
+# Good
+long_function_name <- function(a = "a long argument", 
+                               b = "another argument",
+                               c = "another long argument") {
+  # As usual code is indented by two spaces.
+}
+
+# Bad
+long_function_name <- function(a = "a long argument",
+  b = "another argument",
+  c = "another long argument") {
+}
+```
+
 Only use `return()` for early returns. Otherwise rely on R to return the result of the last row of a function.
 
 ```{r eval = FALSE}
