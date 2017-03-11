@@ -118,10 +118,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="4" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>4</b> Functions</a><ul>
 <li class="chapter" data-level="4.1" data-path="functions.html"><a href="functions.html#naming"><i class="fa fa-check"></i><b>4.1</b> Naming</a></li>
-<li class="chapter" data-level="4.2" data-path="functions.html"><a href="functions.html#size"><i class="fa fa-check"></i><b>4.2</b> Size</a></li>
-<li class="chapter" data-level="4.3" data-path="functions.html"><a href="functions.html#long-lines-1"><i class="fa fa-check"></i><b>4.3</b> Long lines</a></li>
-<li class="chapter" data-level="4.4" data-path="functions.html"><a href="functions.html#return"><i class="fa fa-check"></i><b>4.4</b> <code>return()</code></a></li>
-<li class="chapter" data-level="4.5" data-path="functions.html"><a href="functions.html#comments"><i class="fa fa-check"></i><b>4.5</b> Comments</a></li>
+<li class="chapter" data-level="4.2" data-path="functions.html"><a href="functions.html#long-lines-1"><i class="fa fa-check"></i><b>4.2</b> Long lines</a></li>
+<li class="chapter" data-level="4.3" data-path="functions.html"><a href="functions.html#return"><i class="fa fa-check"></i><b>4.3</b> <code>return()</code></a></li>
+<li class="chapter" data-level="4.4" data-path="functions.html"><a href="functions.html#comments"><i class="fa fa-check"></i><b>4.4</b> Comments</a></li>
+<li class="chapter" data-level="4.5" data-path="functions.html"><a href="functions.html#design"><i class="fa fa-check"></i><b>4.5</b> Design</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="pipes.html"><a href="pipes.html"><i class="fa fa-check"></i><b>5</b> Pipes</a><ul>
 <li class="chapter" data-level="5.1" data-path="pipes.html"><a href="pipes.html#introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
@@ -163,15 +163,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">row_adder</span>()
 <span class="kw">permutation</span>()</code></pre></div>
 </div>
-<div id="size" class="section level2">
-<h2><span class="header-section-number">4.2</span> Size</h2>
-<p>Strive to keep blocks within a function on one screen, &lt;30 lines.</p>
-</div>
 <div id="long-lines-1" class="section level2">
-<h2><span class="header-section-number">4.3</span> Long lines</h2>
+<h2><span class="header-section-number">4.2</span> Long lines</h2>
 <p>If a function definition runs over multiple lines, indent the second line to where the definition starts.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
-long_function_name &lt;-<span class="st"> </span>function(<span class="dt">a =</span> <span class="st">&quot;a long argument&quot;</span>, 
+long_function_name &lt;-<span class="st"> </span>function(<span class="dt">a =</span> <span class="st">&quot;a long argument&quot;</span>,
                                <span class="dt">b =</span> <span class="st">&quot;another argument&quot;</span>,
                                <span class="dt">c =</span> <span class="st">&quot;another long argument&quot;</span>) {
   <span class="co"># As usual code is indented by two spaces.</span>
@@ -186,7 +182,7 @@ long_function_name &lt;-<span class="st"> </span>function(<span class="dt">a =</
 }</code></pre></div>
 </div>
 <div id="return" class="section level2">
-<h2><span class="header-section-number">4.4</span> <code>return()</code></h2>
+<h2><span class="header-section-number">4.3</span> <code>return()</code></h2>
 <p>Only use <code>return()</code> for early returns. Otherwise rely on R to return the result of the last evaluted expression.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 find_abs &lt;-<span class="st"> </span>function(x, y){
@@ -198,10 +194,21 @@ find_abs &lt;-<span class="st"> </span>function(x, y){
 add_two &lt;-<span class="st"> </span>function(x, y) {
   <span class="kw">return</span>(x +<span class="st"> </span>y)
 }</code></pre></div>
+<p>If your function is called primarily for its side-effects, it should return the first argument invisibly. (This makes it possible to use the function as part of the pipe.)</p>
 </div>
 <div id="comments" class="section level2">
-<h2><span class="header-section-number">4.5</span> Comments</h2>
+<h2><span class="header-section-number">4.4</span> Comments</h2>
 <p>Use comments to explain the “why” not the “what” or “how”. Each line of a comment should begin with the comment symbol and a single space: <code>#</code>.</p>
+</div>
+<div id="design" class="section level2">
+<h2><span class="header-section-number">4.5</span> Design</h2>
+<p>There are two main design principles to bear in mind:</p>
+<ul>
+<li><p>A function should do one thing well.</p>
+<p>A function should be called because it has side-effects or because it returns a value; not both. Strive to keep blocks within a function on one screen, &lt;30 lines.</p></li>
+<li><p>A function should be easily understandable in isolation.</p>
+<p>Avoid global options. If your function has a transient side-effect (i.e. you need to create a temporary file or set an option), clean up after yourself with <code>on.exit()</code>.</p></li>
+</ul>
 
 </div>
 </div>

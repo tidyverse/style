@@ -14,10 +14,6 @@ row_adder()
 permutation()
 ```
 
-## Size
-
-Strive to keep blocks within a function on one screen, <30 lines.
-
 ## Long lines
 
 If a function definition runs over multiple lines, indent the second line to where the definition starts.
@@ -56,7 +52,24 @@ add_two <- function(x, y) {
 }
 ```
 
+If your function is called primarily for its side-effects, it should return the first argument invisibly. (This makes it possible to use the function as part of the pipe.)
+
 ## Comments
 
 Use comments to explain the "why" not the "what" or "how". Each line of a comment should begin with the comment symbol and a single space: `# `.
 
+## Design
+
+There are two main design principles to bear in mind:
+
+*   A function should do one thing well. 
+ 
+    A function should be called because it has side-effects or because it
+    returns a value; not both. Strive to keep blocks within a function on 
+    one screen, <30 lines.
+
+*   A function should be easily understandable in isolation.
+
+    Avoid global options. If your function has a transient side-effect
+    (i.e. you need to create a temporary file or set an option), clean up
+    after yourself with `on.exit()`.
