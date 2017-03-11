@@ -7,3 +7,4 @@ bookdown::gitbook:
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
     edit: https://github.com/tidyverse/style/edit/master/%s
+    sharing: no

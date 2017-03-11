@@ -1,7 +1,9 @@
 --- 
 title: "The Tidyverse Style Guide"
+author: ["Hadley Wickham"]
 site: bookdown::bookdown_site
 output: bookdown::gitbook
+github-repo: tidyverse/style
 documentclass: book
 description: "The tidyverse style guide"
 ---
