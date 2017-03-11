@@ -1,15 +1,14 @@
 --- 
 title: "The R Style Guide"
-date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
-description: "This is a concise style guide for writing in the R language."
+description: "A concise style guide for writing in the R language."
 ---
 
 # Style guide {#style}
 
-Good coding style is like correct punctuation: you can manage without it, but it sure makes things easier to read. As with punctuation, there are many ways to style your code that you can choose from, but some ways are more reader-friendly than others. The following guide describes the style that I use. It is based on Google's [R style guide](http://google-styleguide.googlecode.com/svn/trunk/google-r-style.html), with a few tweaks. You don't have to use my style, but you really should use a consistent style. \index{style guide} \index{code style}
+Good coding style is like correct punctuation: you can manage without it, but it sure makes things easier to read. As with punctuation, there are many ways to style your code that you can choose from, but some ways are more reader-friendly than others. The following guide describes the style that I use. It is based on Google's [R style guide](http://google-styleguide.googlecode.com/svn/trunk/google-r-style.html), with a few tweaks. You don't have to use my style, but you really should use a consistent style.
 
 Good style is important because while your code only has one author, it'll usually have multiple readers. This is especially true when you're writing code with others. In that case, it's a good idea to agree on a common style up-front. Since no style is strictly better than another, working with others may mean that you'll need to sacrifice some preferred aspects of your style.
 

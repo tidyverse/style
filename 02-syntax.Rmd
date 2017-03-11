@@ -131,7 +131,7 @@ paste0(
 
 ## Assignment
 
-Use `<-`, not `=`, for assignment. \index{assignment}
+Use `<-`, not `=`, for assignment.
 
 ```{r}
 # Good
