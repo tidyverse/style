@@ -187,7 +187,7 @@ x[<span class="dv">1</span> ,]  <span class="co"># Space goes after comma not be
 <div id="curly-braces" class="section level2">
 <h2><span class="header-section-number">3.2</span> Curly braces</h2>
 <p>An opening curly brace should never go on its own line and should always be followed by a new line. A closing curly brace should always go on its own line, unless it’s followed by <code>else</code> (or a closing parenthesis).</p>
-<p>Always indent the code inside curly braces. When indenting your code, use two spaces. Never use tabs or mix tabs and spaces.</p>
+<p>Always indent the code inside curly braces. When indenting your code, use two spaces. Don’t ise tabs.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 if (y &lt;<span class="st"> </span><span class="dv">0</span> &amp;&amp;<span class="st"> </span>debug) {
   <span class="kw">message</span>(<span class="st">&quot;y is negative&quot;</span>)
@@ -216,8 +216,6 @@ if (y ==<span class="st"> </span><span class="dv">0</span>)
     }
 } 
 else { y ^<span class="st"> </span>x }</code></pre></div>
-<p>It’s ok to leave very short statements on the same line:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (y &lt;<span class="st"> </span><span class="dv">0</span> &amp;&amp;<span class="st"> </span>debug) <span class="kw">message</span>(<span class="st">&quot;Y is negative&quot;</span>)</code></pre></div>
 </div>
 <div id="line-length" class="section level2">
 <h2><span class="header-section-number">3.3</span> Line length</h2>
@@ -233,6 +231,7 @@ else { y ^<span class="st"> </span>x }</code></pre></div>
   <span class="dt">arguments =</span> <span class="st">&quot;some of which may be long&quot;</span>
 )
 
+<span class="co"># Good</span>
 <span class="kw">paste0</span>(
   <span class="st">&quot;Requirement: &quot;</span>, requires, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>,
   <span class="st">&quot;Result: &quot;</span>, result, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>
@@ -243,6 +242,7 @@ else { y ^<span class="st"> </span>x }</code></pre></div>
                               <span class="st">&quot;some of which may be long&quot;</span>
                               )
 
+<span class="co"># Bad</span>
 <span class="kw">paste0</span>(
   <span class="st">&quot;Requirement: &quot;</span>, requires,
   <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="st">&quot;Result: &quot;</span>,
@@ -265,6 +265,8 @@ x =<span class="st"> </span><span class="dv">5</span></code></pre></div>
 <pre><code>## [1] &quot;Text&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">&#39;Text with &quot;quotes&quot;&#39;</span></code></pre></div>
 <pre><code>## [1] &quot;Text with \&quot;quotes\&quot;&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">&#39;&lt;a href=&quot;http://style.tidyverse.org&quot;&gt;A link&lt;/a&gt;&#39;</span></code></pre></div>
+<pre><code>## [1] &quot;&lt;a href=\&quot;http://style.tidyverse.org\&quot;&gt;A link&lt;/a&gt;&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Bad</span>
 <span class="st">&#39;Text&#39;</span></code></pre></div>
 <pre><code>## [1] &quot;Text&quot;</code></pre>

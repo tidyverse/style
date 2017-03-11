@@ -62,8 +62,7 @@ x[1 ,]  # Space goes after comma not before
 
 An opening curly brace should never go on its own line and should always be followed by a new line. A closing curly brace should always go on its own line, unless it's followed by `else` (or a closing parenthesis).
 
-Always indent the code inside curly braces. When indenting your code, use two spaces. Never use tabs or mix tabs and spaces.
-
+Always indent the code inside curly braces. When indenting your code, use two spaces. Don't ise tabs.
 
 ```{r, eval = FALSE}
 # Good
@@ -96,12 +95,6 @@ if (y == 0)
 else { y ^ x }
 ```
 
-It's ok to leave very short statements on the same line:
-
-```{r, eval = FALSE}
-if (y < 0 && debug) message("Y is negative")
-```
-
 ## Line length
 
 Strive to limit your code to 80 characters per line. This fits comfortably on a printed page with a reasonably sized font. If you find yourself running out of room, this is a good indication that you should encapsulate some of the work in a separate function.
@@ -118,6 +111,7 @@ do_something_very_complicated(
   arguments = "some of which may be long"
 )
 
+# Good
 paste0(
   "Requirement: ", requires, "\n",
   "Result: ", result, "\n"
@@ -128,6 +122,7 @@ do_something_very_complicated("that", requires, many, arguments,
                               "some of which may be long"
                               )
 
+# Bad
 paste0(
   "Requirement: ", requires,
   "\n", "Result: ",
@@ -154,6 +149,7 @@ Use `"`, not `'`, for quoting text. The only exception is when the text already 
 # Good
 "Text"
 'Text with "quotes"'
+'<a href="http://style.tidyverse.org">A link</a>'
 
 # Bad
 'Text'
