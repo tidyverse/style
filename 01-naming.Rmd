@@ -1,4 +1,4 @@
-# Notation and naming {#style-notnam}
+# Naming {#style-notnam}
 
 ## File names
 
