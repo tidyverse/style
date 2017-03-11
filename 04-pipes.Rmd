@@ -1,4 +1,4 @@
-# Pipes {#style-pipes}
+# Pipes
 
 ## Introduction
 

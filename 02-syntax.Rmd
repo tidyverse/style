@@ -1,4 +1,38 @@
-# Syntax {#style-syn}
+# Syntax
+
+## Object names
+
+> "There are only two hard things in Computer Science: cache invalidation and 
+> naming things." 
+>
+> --- Phil Karlton
+
+Variable and function names should use only lowercase letters, numbers, and `_`. 
+
+Use underscores (`_`) to separate words within a name. Base R uses dots in function names (`contrib.url()`) and class names (`data.frame`), but it's better to reserve dots exclusively for S3. 
+
+Generally, variable names should be nouns and function names should be verbs. Strive for names that are concise and meaningful (this is not easy!).
+
+```{r, eval = FALSE}
+# Good
+day_one
+day_1
+
+# Bad
+first_day_of_the_month
+DayOne
+dayone
+djm1
+```
+
+Where possible, avoid re-using names of common functions and variables. This will cause confusion for the readers of your code.
+
+```{r, eval = FALSE}
+# Bad
+T <- FALSE
+c <- 10
+mean <- function(x) sum(x)
+```
 
 ## Spacing
 

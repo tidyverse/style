@@ -1,4 +1,4 @@
-# Functions {#style-fun}
+# Functions
 
 ## Naming
 
