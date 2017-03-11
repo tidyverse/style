@@ -1,6 +1,6 @@
-# File structure
+# Files
 
-## File names
+## Names
 
 File names should be meaningful and end in `.R`. Avoid using special characters in file names - stick with numbers, letters, `-`, and `_`.
 
