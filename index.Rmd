@@ -1,11 +1,10 @@
 --- 
-title: "The Tidyverse Style Guide"
+title: "The tidyverse style guide"
 author: ["Hadley Wickham"]
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 github-repo: tidyverse/style
 documentclass: book
-description: "The tidyverse style guide"
 ---
 
 # Welcome {-}
