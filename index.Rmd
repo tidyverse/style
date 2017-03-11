@@ -8,7 +8,7 @@ documentclass: book
 description: "The tidyverse style guide"
 ---
 
-# Style guide {#style}
+# Welcome {-}
 
 Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread. As with punctuation, there are many ways to style your code that you can choose from, but some ways are more reader-friendly than others. The style presented here is followed throughout the [tidyverse](http://tidyverse.org). 
 
