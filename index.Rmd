@@ -8,6 +8,6 @@ description: "The tidyverse style guide"
 
 # Style guide {#style}
 
-Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread. As with punctuation, there are many ways to style your code that you can choose from, but some ways are more reader-friendly than others. The style presented here is followed throughout the tidyverse. 
+Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread. As with punctuation, there are many ways to style your code that you can choose from, but some ways are more reader-friendly than others. The style presented here is followed throughout the [tidyverse](http://tidyverse.org). 
 
 This style guide is derived from [Google's R style guide](https://google.github.io/styleguide/Rguide.xml), but has evolved considerably over the years.
