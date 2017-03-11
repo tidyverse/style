@@ -92,6 +92,21 @@ x[1,]   # Needs a space after the comma
 x[1 ,]  # Space goes after comma not before
 ```
 
+## Argument names
+
+The arguments to a function typically fall into two broad sets: one set supplies the __data__ to compute on, and the other supplies arguments that control the __details__ of the computation. When you call a function, you typically omit the names of the data arguments, because they are used so commonly. If you override the default value of a detail argument, you should use the full name:
+
+```{r, eval = FALSE}
+# Good
+mean(1:10, na.rm = TRUE)
+
+# Bad
+mean(x = 1:10, , FALSE)
+mean(, TRUE, x = c(1:10, NA))
+```
+
+Avoid partial matching.
+
 ## Indenting
 
 Curly braces, `{}`, define the the most important hierarchy of R code. To make this hierarchy easy to see, always indent the code inside `{}` by two spaces. A `{` should never go on its own line and should always be followed by a new line. A `}` should always go on its own line, unless it's followed by `else` or `)`. 

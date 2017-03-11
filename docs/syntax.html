@@ -110,11 +110,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3" data-path="syntax.html"><a href="syntax.html"><i class="fa fa-check"></i><b>3</b> Syntax</a><ul>
 <li class="chapter" data-level="3.1" data-path="syntax.html"><a href="syntax.html#object-names"><i class="fa fa-check"></i><b>3.1</b> Object names</a></li>
 <li class="chapter" data-level="3.2" data-path="syntax.html"><a href="syntax.html#spacing"><i class="fa fa-check"></i><b>3.2</b> Spacing</a></li>
-<li class="chapter" data-level="3.3" data-path="syntax.html"><a href="syntax.html#indenting"><i class="fa fa-check"></i><b>3.3</b> Indenting</a></li>
-<li class="chapter" data-level="3.4" data-path="syntax.html"><a href="syntax.html#long-lines"><i class="fa fa-check"></i><b>3.4</b> Long lines</a></li>
-<li class="chapter" data-level="3.5" data-path="syntax.html"><a href="syntax.html#assignment"><i class="fa fa-check"></i><b>3.5</b> Assignment</a></li>
-<li class="chapter" data-level="3.6" data-path="syntax.html"><a href="syntax.html#semicolons"><i class="fa fa-check"></i><b>3.6</b> Semicolons</a></li>
-<li class="chapter" data-level="3.7" data-path="syntax.html"><a href="syntax.html#quotes"><i class="fa fa-check"></i><b>3.7</b> Quotes</a></li>
+<li class="chapter" data-level="3.3" data-path="syntax.html"><a href="syntax.html#argument-names"><i class="fa fa-check"></i><b>3.3</b> Argument names</a></li>
+<li class="chapter" data-level="3.4" data-path="syntax.html"><a href="syntax.html#indenting"><i class="fa fa-check"></i><b>3.4</b> Indenting</a></li>
+<li class="chapter" data-level="3.5" data-path="syntax.html"><a href="syntax.html#long-lines"><i class="fa fa-check"></i><b>3.5</b> Long lines</a></li>
+<li class="chapter" data-level="3.6" data-path="syntax.html"><a href="syntax.html#assignment"><i class="fa fa-check"></i><b>3.6</b> Assignment</a></li>
+<li class="chapter" data-level="3.7" data-path="syntax.html"><a href="syntax.html#semicolons"><i class="fa fa-check"></i><b>3.7</b> Semicolons</a></li>
+<li class="chapter" data-level="3.8" data-path="syntax.html"><a href="syntax.html#quotes"><i class="fa fa-check"></i><b>3.8</b> Quotes</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>4</b> Functions</a><ul>
 <li class="chapter" data-level="4.1" data-path="functions.html"><a href="functions.html#naming"><i class="fa fa-check"></i><b>4.1</b> Naming</a></li>
@@ -215,8 +216,19 @@ if ( debug ) <span class="kw">do</span>(x)  <span class="co"># No spaces around 
 x[<span class="dv">1</span>,]   <span class="co"># Needs a space after the comma</span>
 x[<span class="dv">1</span> ,]  <span class="co"># Space goes after comma not before</span></code></pre></div>
 </div>
+<div id="argument-names" class="section level2">
+<h2><span class="header-section-number">3.3</span> Argument names</h2>
+<p>The arguments to a function typically fall into two broad sets: one set supplies the <strong>data</strong> to compute on, and the other supplies arguments that control the <strong>details</strong> of the computation. When you call a function, you typically omit the names of the data arguments, because they are used so commonly. If you override the default value of a detail argument, you should use the full name:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
+<span class="kw">mean</span>(<span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+
+<span class="co"># Bad</span>
+<span class="kw">mean</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">10</span>, , <span class="ot">FALSE</span>)
+<span class="kw">mean</span>(, <span class="ot">TRUE</span>, <span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">10</span>, <span class="ot">NA</span>))</code></pre></div>
+<p>Avoid partial matching.</p>
+</div>
 <div id="indenting" class="section level2">
-<h2><span class="header-section-number">3.3</span> Indenting</h2>
+<h2><span class="header-section-number">3.4</span> Indenting</h2>
 <p>Curly braces, <code>{}</code>, define the the most important hierarchy of R code. To make this hierarchy easy to see, always indent the code inside <code>{}</code> by two spaces. A <code>{</code> should never go on its own line and should always be followed by a new line. A <code>}</code> should always go on its own line, unless it’s followed by <code>else</code> or <code>)</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 if (y &lt;<span class="st"> </span><span class="dv">0</span> &amp;&amp;<span class="st"> </span>debug) {
@@ -247,7 +259,7 @@ if (y ==<span class="st"> </span><span class="dv">0</span>)
 } else { y ^<span class="st"> </span>x }</code></pre></div>
 </div>
 <div id="long-lines" class="section level2">
-<h2><span class="header-section-number">3.4</span> Long lines</h2>
+<h2><span class="header-section-number">3.5</span> Long lines</h2>
 <p>Strive to limit your code to 80 characters per line. This fits comfortably on a printed page with a reasonably sized font. If you find yourself running out of room, this is a good indication that you should encapsulate some of the work in a separate function.</p>
 <p>If a function call is too long to fit on a single line, use one line each for the function name, each argument, and the closing <code>)</code>. This makes the code easier to read and to change later.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
@@ -275,7 +287,7 @@ if (y ==<span class="st"> </span><span class="dv">0</span>)
   result, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</code></pre></div>
 </div>
 <div id="assignment" class="section level2">
-<h2><span class="header-section-number">3.5</span> Assignment</h2>
+<h2><span class="header-section-number">3.6</span> Assignment</h2>
 <p>Use <code>&lt;-</code>, not <code>=</code>, for assignment.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 x &lt;-<span class="st"> </span><span class="dv">5</span>
@@ -284,11 +296,11 @@ x &lt;-<span class="st"> </span><span class="dv">5</span>
 x =<span class="st"> </span><span class="dv">5</span></code></pre></div>
 </div>
 <div id="semicolons" class="section level2">
-<h2><span class="header-section-number">3.6</span> Semicolons</h2>
+<h2><span class="header-section-number">3.7</span> Semicolons</h2>
 <p>Don’t put <code>;</code> at the end of a line, and don’t use <code>;</code> to put multiple commands on one line.</p>
 </div>
 <div id="quotes" class="section level2">
-<h2><span class="header-section-number">3.7</span> Quotes</h2>
+<h2><span class="header-section-number">3.8</span> Quotes</h2>
 <p>Use <code>&quot;</code>, not <code>'</code>, for quoting text. The only exception is when the text already contains double quotes and no single quotes.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 <span class="st">&quot;Text&quot;</span></code></pre></div>
