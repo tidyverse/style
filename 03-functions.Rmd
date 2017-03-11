@@ -24,7 +24,7 @@ If a function definition runs over multiple lines, indent the second line to whe
 
 ```{r, eval = FALSE}
 # Good
-long_function_name <- function(a = "a long argument", 
+long_function_name <- function(a = "a long argument",
                                b = "another argument",
                                c = "another long argument") {
   # As usual code is indented by two spaces.
