@@ -21,7 +21,7 @@ bop(
   scoop(
     hop(foo_foo, through = forest),
     up = field_mice
-  ), 
+  ),
   on = head
 )
 ```
@@ -77,7 +77,9 @@ iris %>%
 
 ## Assignment
 
-It feels natural to use `->` to create an object at the end of the pipe, but you should generally avoid. Starting with assignment is a little more work when writing, but makes it easier to read the code because the name acts as a heading, reminding you of the purpose of the code.
+You can use to use `->` to create an object at the end of the pipe.
+
+Personally, I think you should avoid this technique. While starting with assignment is a little more work when writing, but makes it easier to read the code because the name acts as a heading, reminding you of the purpose of the code.
 
 ## Comments
 

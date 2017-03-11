@@ -74,7 +74,7 @@ Extra spacing (i.e., more than one space in a row) is ok if it improves alignmen
 
 ```{r, eval = FALSE}
 list(
-  total = a + b + c, 
+  total = a + b + c,
   mean  = (a + b + c) / n
 )
 ```
@@ -123,8 +123,7 @@ if (y == 0)
     } else {
   message("x is negative or zero")
     }
-} 
-else { y ^ x }
+} else { y ^ x }
 ```
 
 ## Long lines
