@@ -2,7 +2,7 @@
 
 ## Spacing
 
-Place spaces around all infix operators (`=`, `+`, `-`, `<-`, etc.). The same rule applies when using `=` in function calls. Always put a space after a comma, and never before (just like in regular English).
+Place spaces around all infix operators (`=`, `+`, `-`, `<-`, etc.), and when naming arguments in function calls. Always put a space after a comma, and never before (just like in regular English).
 
 ```{r, eval = FALSE}
 # Good
@@ -24,7 +24,7 @@ x <- 1 : 10
 base :: get
 ```
 
-Place a space before left parentheses, except in a function call.
+Place a space before `(`, except when it's part of a function call.
 
 ```{r, eval = FALSE}
 # Good
@@ -58,11 +58,9 @@ x[1,]   # Needs a space after the comma
 x[1 ,]  # Space goes after comma not before
 ```
 
-## Curly braces
+## Indenting
 
-An opening curly brace should never go on its own line and should always be followed by a new line. A closing curly brace should always go on its own line, unless it's followed by `else` (or a closing parenthesis).
-
-Always indent the code inside curly braces. When indenting your code, use two spaces. Don't ise tabs.
+Curly braces, `{}`, define the the most important hierarchy of R code. To make this hierarchy easy to see, always indent the code inside `{}` by two spaces. A `{` should never go on its own line and should always be followed by a new line. A `}` should always go on its own line, unless it's followed by `else` or `)`. 
 
 ```{r, eval = FALSE}
 # Good
@@ -87,21 +85,19 @@ message("Y is negative")
 if (y == 0)
 {
     if (x > 0) {
-⇥       log(x)
+      log(x)
     } else {
-⇥       message("x is negative or zero")
+  message("x is negative or zero")
     }
 } 
 else { y ^ x }
 ```
 
-## Line length
+## Long lines
 
 Strive to limit your code to 80 characters per line. This fits comfortably on a printed page with a reasonably sized font. If you find yourself running out of room, this is a good indication that you should encapsulate some of the work in a separate function.
 
-## Indentation
-
-If a function call is too long, put the function name, each argument, and the closing parenthesis on a separate line. This makes the code easier to read and to change later. You may also place several arguments on the same line if they are closely related to each other, e.g., strings in calls to `paste()` or `stop()`:
+If a function call is too long to fit on a single line, use one line each for the function name, each argument, and the closing `)`. This makes the code easier to read and to change later. 
 
 ```{r, eval = FALSE}
 # Good
@@ -111,16 +107,20 @@ do_something_very_complicated(
   arguments = "some of which may be long"
 )
 
+# Bad
+do_something_very_complicated("that", requires, many, arguments,
+                              "some of which may be long"
+                              )
+```
+
+You may also place several arguments on the same line if they are closely related to each other, e.g., strings in calls to `paste()` or `stop()`. When building strings, where possible match one line of code to one line of output. 
+
+```{r, eval = FALSE}
 # Good
 paste0(
   "Requirement: ", requires, "\n",
   "Result: ", result, "\n"
 )
-
-# Bad
-do_something_very_complicated("that", requires, many, arguments,
-                              "some of which may be long"
-                              )
 
 # Bad
 paste0(

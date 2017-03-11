@@ -109,15 +109,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3" data-path="style-syn.html"><a href="style-syn.html"><i class="fa fa-check"></i><b>3</b> Syntax</a><ul>
 <li class="chapter" data-level="3.1" data-path="style-syn.html"><a href="style-syn.html#spacing"><i class="fa fa-check"></i><b>3.1</b> Spacing</a></li>
-<li class="chapter" data-level="3.2" data-path="style-syn.html"><a href="style-syn.html#curly-braces"><i class="fa fa-check"></i><b>3.2</b> Curly braces</a></li>
-<li class="chapter" data-level="3.3" data-path="style-syn.html"><a href="style-syn.html#line-length"><i class="fa fa-check"></i><b>3.3</b> Line length</a></li>
-<li class="chapter" data-level="3.4" data-path="style-syn.html"><a href="style-syn.html#indentation"><i class="fa fa-check"></i><b>3.4</b> Indentation</a></li>
-<li class="chapter" data-level="3.5" data-path="style-syn.html"><a href="style-syn.html#assignment"><i class="fa fa-check"></i><b>3.5</b> Assignment</a></li>
-<li class="chapter" data-level="3.6" data-path="style-syn.html"><a href="style-syn.html#quotes"><i class="fa fa-check"></i><b>3.6</b> Quotes</a></li>
+<li class="chapter" data-level="3.2" data-path="style-syn.html"><a href="style-syn.html#indenting"><i class="fa fa-check"></i><b>3.2</b> Indenting</a></li>
+<li class="chapter" data-level="3.3" data-path="style-syn.html"><a href="style-syn.html#long-lines"><i class="fa fa-check"></i><b>3.3</b> Long lines</a></li>
+<li class="chapter" data-level="3.4" data-path="style-syn.html"><a href="style-syn.html#assignment"><i class="fa fa-check"></i><b>3.4</b> Assignment</a></li>
+<li class="chapter" data-level="3.5" data-path="style-syn.html"><a href="style-syn.html#quotes"><i class="fa fa-check"></i><b>3.5</b> Quotes</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="style-fun.html"><a href="style-fun.html"><i class="fa fa-check"></i><b>4</b> Functions</a></li>
+<li class="chapter" data-level="4" data-path="style-fun.html"><a href="style-fun.html"><i class="fa fa-check"></i><b>4</b> Functions</a><ul>
+<li class="chapter" data-level="4.1" data-path="style-fun.html"><a href="style-fun.html#naming"><i class="fa fa-check"></i><b>4.1</b> Naming</a></li>
+<li class="chapter" data-level="4.2" data-path="style-fun.html"><a href="style-fun.html#size"><i class="fa fa-check"></i><b>4.2</b> Size</a></li>
+<li class="chapter" data-level="4.3" data-path="style-fun.html"><a href="style-fun.html#long-lines-1"><i class="fa fa-check"></i><b>4.3</b> Long lines</a></li>
+<li class="chapter" data-level="4.4" data-path="style-fun.html"><a href="style-fun.html#return"><i class="fa fa-check"></i><b>4.4</b> <code>return()</code></a></li>
+<li class="chapter" data-level="4.5" data-path="style-fun.html"><a href="style-fun.html#comments"><i class="fa fa-check"></i><b>4.5</b> Comments</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="style-pipes.html"><a href="style-pipes.html"><i class="fa fa-check"></i><b>5</b> Pipes</a><ul>
-<li class="chapter" data-level="5.1" data-path="style-pipes.html"><a href="style-pipes.html#when-not-to-use-the-pipe"><i class="fa fa-check"></i><b>5.1</b> When not to use the pipe</a></li>
+<li class="chapter" data-level="5.1" data-path="style-pipes.html"><a href="style-pipes.html#introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="style-pipes.html"><a href="style-pipes.html#spacing-and-indenting"><i class="fa fa-check"></i><b>5.2</b> Spacing and indenting</a></li>
+<li class="chapter" data-level="5.3" data-path="style-pipes.html"><a href="style-pipes.html#long-lines-2"><i class="fa fa-check"></i><b>5.3</b> Long lines</a></li>
+<li class="chapter" data-level="5.4" data-path="style-pipes.html"><a href="style-pipes.html#assignment-1"><i class="fa fa-check"></i><b>5.4</b> Assignment</a></li>
+<li class="chapter" data-level="5.5" data-path="style-pipes.html"><a href="style-pipes.html#comments-1"><i class="fa fa-check"></i><b>5.5</b> Comments</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="style-org.html"><a href="style-org.html"><i class="fa fa-check"></i><b>6</b> Organisation</a><ul>
 <li class="chapter" data-level="6.1" data-path="style-org.html"><a href="style-org.html#commenting-guidelines"><i class="fa fa-check"></i><b>6.1</b> Commenting guidelines</a></li>
@@ -144,12 +153,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="style-pipes" class="section level1">
 <h1><span class="header-section-number">5</span> Pipes</h1>
-<p>Use the <code>%&gt;%</code> operator from the tidyverse when you find yourself composing more than two functions together into a nested call, or when you find yourself creating unnecessaty interim objects to avoid nesting functions together.</p>
+<div id="introduction" class="section level2">
+<h2><span class="header-section-number">5.1</span> Introduction</h2>
+<p>Use <code>%&gt;%</code> when you find yourself composing more than three or more functions together into a nested call, or creating intermediate objects that you don’t care about.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 foo_foo %&gt;%
 <span class="st">  </span><span class="kw">hop</span>(<span class="dt">through =</span> forest) %&gt;%
 <span class="st">  </span><span class="kw">scoop</span>(<span class="dt">up =</span> field_mouse) %&gt;%
 <span class="st">  </span><span class="kw">bop</span>(<span class="dt">on =</span> head)
+
+<span class="co"># Bad</span>
+foo_foo &lt;-<span class="st"> </span><span class="kw">hop</span>(foo_foo, <span class="dt">through =</span> forest)
+foo_foo &lt;-<span class="st"> </span><span class="kw">scoop</span>(foo_foo, <span class="dt">up =</span> field_mice)
+foo_foo &lt;-<span class="st"> </span><span class="kw">bop</span>(foo_foo, <span class="dt">on =</span> head)
 
 <span class="co"># Bad</span>
 <span class="kw">bop</span>(
@@ -158,33 +174,51 @@ foo_foo %&gt;%
     <span class="dt">up =</span> field_mice
   ), 
   <span class="dt">on =</span> head
-)
-
-foo_foo &lt;-<span class="st"> </span><span class="kw">hop</span>(foo_foo, <span class="dt">through =</span> forest)
-foo_foo &lt;-<span class="st"> </span><span class="kw">scoop</span>(foo_foo, <span class="dt">up =</span> field_mice)
-foo_foo &lt;-<span class="st"> </span><span class="kw">bop</span>(foo_foo, <span class="dt">on =</span> head)</code></pre></div>
-<p>When you use the <code>%&gt;%</code> operator, put each verb on its own line. This makes it simpler to rearrange them later, and makes it harder to overlook a step. It is ok to keep a one-step pipe in one line.</p>
+)</code></pre></div>
+<p>Avoid using the pipe when:</p>
+<ul>
+<li><p>You need to manipulate more than one object at a time. Reserve pipes for a sequence of steps applied to one primary object.</p></li>
+<li><p>You there are meaningful intermediate objects that could be given informative names.</p></li>
+</ul>
+</div>
+<div id="spacing-and-indenting" class="section level2">
+<h2><span class="header-section-number">5.2</span> Spacing and indenting</h2>
+<p><code>%&gt;%</code> should always have a space before it and a new line after it. After the first step, each line should be indented by two spaces.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 iris %&gt;%
 <span class="st">  </span><span class="kw">group_by</span>(Species) %&gt;%
-<span class="st">  </span><span class="kw">summarize_all</span>(mean) %&gt;%
+<span class="st">  </span><span class="kw">summarize_if</span>(<span class="kw">is.numeric</span>(), mean) %&gt;%
 <span class="st">  </span>ungroup %&gt;%
 <span class="st">  </span><span class="kw">gather</span>(measure, value, -Species) %&gt;%
 <span class="st">  </span><span class="kw">arrange</span>(value)
 
-iris %&gt;%<span class="st"> </span><span class="kw">arrange</span>(Petal.Width)
-
 <span class="co"># Bad</span>
 iris %&gt;%<span class="st"> </span><span class="kw">group_by</span>(Species) %&gt;%<span class="st"> </span><span class="kw">summarize_all</span>(mean) %&gt;%
-<span class="st">  </span>ungroup %&gt;%<span class="st"> </span><span class="kw">gather</span>(measure, value, -Species) %&gt;%
-<span class="st">  </span><span class="kw">arrange</span>(value)</code></pre></div>
-<div id="when-not-to-use-the-pipe" class="section level2">
-<h2><span class="header-section-number">5.1</span> When not to use the pipe</h2>
-<p>Do not use a pipe if:</p>
-<ul>
-<li><p>You need to manipulate more than one object at a time. Reserve pipes for a sequence of steps applied to one primary object.</p></li>
-<li><p>You have more than (say) ten steps in your pipe. In that case, divide your pipe into shorter pipes that create intermediate objects with meaningful names.</p></li>
-</ul>
+ungroup %&gt;%<span class="st"> </span><span class="kw">gather</span>(measure, value, -Species) %&gt;%
+<span class="kw">arrange</span>(value)</code></pre></div>
+<p>It is ok to keep a one-step pipe on one line, although depending on the context, you may want to rewrite to remove the pipe.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># good</span>
+iris %&gt;%<span class="st"> </span><span class="kw">arrange</span>(Petal.Width)
+<span class="kw">arrange</span>(iris, Petal.Width)</code></pre></div>
+</div>
+<div id="long-lines-2" class="section level2">
+<h2><span class="header-section-number">5.3</span> Long lines</h2>
+<p>If the arguments to a function don’t all fit on one line, put each argument on its own line and indent:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(Species) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(
+    <span class="dt">Sepal.Length =</span> <span class="kw">mean</span>(Sepal.Length),
+    <span class="dt">Sepal.Width =</span> <span class="kw">mean</span>(Sepal.Width),
+    <span class="dt">Sepcies =</span> <span class="kw">n_distinct</span>(Species)
+  )</code></pre></div>
+</div>
+<div id="assignment-1" class="section level2">
+<h2><span class="header-section-number">5.4</span> Assignment</h2>
+<p>It feels natural to use <code>-&gt;</code> to create an object at the end of the pipe, but you should generally avoid. Starting with assignment is a little more work when writing, but makes it easier to read the code because the name acts as a heading, reminding you of the purpose of the code.</p>
+</div>
+<div id="comments-1" class="section level2">
+<h2><span class="header-section-number">5.5</span> Comments</h2>
+<p>Use comments to record important data analysis findings. If you discover that you have more comments than code, considering switching to RMarkdown.</p>
 
 </div>
 </div>

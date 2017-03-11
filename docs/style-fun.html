@@ -109,15 +109,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3" data-path="style-syn.html"><a href="style-syn.html"><i class="fa fa-check"></i><b>3</b> Syntax</a><ul>
 <li class="chapter" data-level="3.1" data-path="style-syn.html"><a href="style-syn.html#spacing"><i class="fa fa-check"></i><b>3.1</b> Spacing</a></li>
-<li class="chapter" data-level="3.2" data-path="style-syn.html"><a href="style-syn.html#curly-braces"><i class="fa fa-check"></i><b>3.2</b> Curly braces</a></li>
-<li class="chapter" data-level="3.3" data-path="style-syn.html"><a href="style-syn.html#line-length"><i class="fa fa-check"></i><b>3.3</b> Line length</a></li>
-<li class="chapter" data-level="3.4" data-path="style-syn.html"><a href="style-syn.html#indentation"><i class="fa fa-check"></i><b>3.4</b> Indentation</a></li>
-<li class="chapter" data-level="3.5" data-path="style-syn.html"><a href="style-syn.html#assignment"><i class="fa fa-check"></i><b>3.5</b> Assignment</a></li>
-<li class="chapter" data-level="3.6" data-path="style-syn.html"><a href="style-syn.html#quotes"><i class="fa fa-check"></i><b>3.6</b> Quotes</a></li>
+<li class="chapter" data-level="3.2" data-path="style-syn.html"><a href="style-syn.html#indenting"><i class="fa fa-check"></i><b>3.2</b> Indenting</a></li>
+<li class="chapter" data-level="3.3" data-path="style-syn.html"><a href="style-syn.html#long-lines"><i class="fa fa-check"></i><b>3.3</b> Long lines</a></li>
+<li class="chapter" data-level="3.4" data-path="style-syn.html"><a href="style-syn.html#assignment"><i class="fa fa-check"></i><b>3.4</b> Assignment</a></li>
+<li class="chapter" data-level="3.5" data-path="style-syn.html"><a href="style-syn.html#quotes"><i class="fa fa-check"></i><b>3.5</b> Quotes</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="style-fun.html"><a href="style-fun.html"><i class="fa fa-check"></i><b>4</b> Functions</a></li>
+<li class="chapter" data-level="4" data-path="style-fun.html"><a href="style-fun.html"><i class="fa fa-check"></i><b>4</b> Functions</a><ul>
+<li class="chapter" data-level="4.1" data-path="style-fun.html"><a href="style-fun.html#naming"><i class="fa fa-check"></i><b>4.1</b> Naming</a></li>
+<li class="chapter" data-level="4.2" data-path="style-fun.html"><a href="style-fun.html#size"><i class="fa fa-check"></i><b>4.2</b> Size</a></li>
+<li class="chapter" data-level="4.3" data-path="style-fun.html"><a href="style-fun.html#long-lines-1"><i class="fa fa-check"></i><b>4.3</b> Long lines</a></li>
+<li class="chapter" data-level="4.4" data-path="style-fun.html"><a href="style-fun.html#return"><i class="fa fa-check"></i><b>4.4</b> <code>return()</code></a></li>
+<li class="chapter" data-level="4.5" data-path="style-fun.html"><a href="style-fun.html#comments"><i class="fa fa-check"></i><b>4.5</b> Comments</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="style-pipes.html"><a href="style-pipes.html"><i class="fa fa-check"></i><b>5</b> Pipes</a><ul>
-<li class="chapter" data-level="5.1" data-path="style-pipes.html"><a href="style-pipes.html#when-not-to-use-the-pipe"><i class="fa fa-check"></i><b>5.1</b> When not to use the pipe</a></li>
+<li class="chapter" data-level="5.1" data-path="style-pipes.html"><a href="style-pipes.html#introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="style-pipes.html"><a href="style-pipes.html#spacing-and-indenting"><i class="fa fa-check"></i><b>5.2</b> Spacing and indenting</a></li>
+<li class="chapter" data-level="5.3" data-path="style-pipes.html"><a href="style-pipes.html#long-lines-2"><i class="fa fa-check"></i><b>5.3</b> Long lines</a></li>
+<li class="chapter" data-level="5.4" data-path="style-pipes.html"><a href="style-pipes.html#assignment-1"><i class="fa fa-check"></i><b>5.4</b> Assignment</a></li>
+<li class="chapter" data-level="5.5" data-path="style-pipes.html"><a href="style-pipes.html#comments-1"><i class="fa fa-check"></i><b>5.5</b> Comments</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="style-org.html"><a href="style-org.html"><i class="fa fa-check"></i><b>6</b> Organisation</a><ul>
 <li class="chapter" data-level="6.1" data-path="style-org.html"><a href="style-org.html#commenting-guidelines"><i class="fa fa-check"></i><b>6.1</b> Commenting guidelines</a></li>
@@ -144,6 +153,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="style-fun" class="section level1">
 <h1><span class="header-section-number">4</span> Functions</h1>
+<div id="naming" class="section level2">
+<h2><span class="header-section-number">4.1</span> Naming</h2>
 <p>Use verbs for function names, where possible.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 <span class="kw">add_row</span>()
@@ -152,6 +163,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co"># Bad</span>
 <span class="kw">row_adder</span>()
 <span class="kw">permutation</span>()</code></pre></div>
+</div>
+<div id="size" class="section level2">
+<h2><span class="header-section-number">4.2</span> Size</h2>
+<p>Strive to keep blocks within a function on one screen, &lt;30 lines.</p>
+</div>
+<div id="long-lines-1" class="section level2">
+<h2><span class="header-section-number">4.3</span> Long lines</h2>
 <p>If a function definition runs over multiple lines, indent the second line to where the definition starts.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 long_function_name &lt;-<span class="st"> </span>function(<span class="dt">a =</span> <span class="st">&quot;a long argument&quot;</span>, 
@@ -164,8 +182,13 @@ long_function_name &lt;-<span class="st"> </span>function(<span class="dt">a =</
 long_function_name &lt;-<span class="st"> </span>function(<span class="dt">a =</span> <span class="st">&quot;a long argument&quot;</span>,
   <span class="dt">b =</span> <span class="st">&quot;another argument&quot;</span>,
   <span class="dt">c =</span> <span class="st">&quot;another long argument&quot;</span>) {
+  <span class="co"># Here it&#39;s hard to spot where the definition end and the</span>
+  <span class="co"># code begins</span>
 }</code></pre></div>
-<p>Only use <code>return()</code> for early returns. Otherwise rely on R to return the result of the last row of a function.</p>
+</div>
+<div id="return" class="section level2">
+<h2><span class="header-section-number">4.4</span> <code>return()</code></h2>
+<p>Only use <code>return()</code> for early returns. Otherwise rely on R to return the result of the last evaluted expression.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 find_abs &lt;-<span class="st"> </span>function(x, y){
   if (x &gt;<span class="st"> </span><span class="dv">0</span>) <span class="kw">return</span>(x)
@@ -176,8 +199,12 @@ find_abs &lt;-<span class="st"> </span>function(x, y){
 add_two &lt;-<span class="st"> </span>function(x, y) {
   <span class="kw">return</span>(x +<span class="st"> </span>y)
 }</code></pre></div>
-<p>Strive to keep blocks within a function on one screen, so around 20-30 lines maximum. Some even argue that if a <em>function</em> has 20 lines, it should be split into smaller functions.</p>
+</div>
+<div id="comments" class="section level2">
+<h2><span class="header-section-number">4.5</span> Comments</h2>
+<p>Use comments to explain the “why” not the “what” or “how”. Each line of a comment should begin with the comment symbol and a single space: <code>#</code>.</p>
 
+</div>
 </div>
             </section>
 

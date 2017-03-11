@@ -2,23 +2,25 @@
 
 ## File names
 
-File names should be meaningful and end in `.R`.
+File names should be meaningful and end in `.R`. Avoid using special characters in file names - stick with numbers, letters, `-`, and `_`.
+
 
     # Good
     fit_models.R
     utility_functions.R
 
     # Bad
+    fit models.R
     foo.r
     stuff.r
 
-If files need to be run in sequence, prefix them with numbers:
+If files should be run in a particular order, prefix them with numbers:
 
     0_download.R
     1_parse.R
     2_explore.R
 
-Pay attention to capitalization, since you, or some of your collaborators, might be using an operating system with a case-insensitive file system (e.g., Microsoft Windows or OS X) which can lead to problems with (case-sensitive) revision control systems. Never use filenames that differ only in capitalization.
+Pay attention to capitalization, since you, or some of your collaborators, might be using an operating system with a case-insensitive file system (e.g., Microsoft Windows or OS X) which can lead to problems with (case-sensitive) revision control systems. Prefer file names that are all lower case, and never have names that differ only in their capitalization.
 
 ## Object names
 
@@ -27,9 +29,11 @@ Pay attention to capitalization, since you, or some of your collaborators, might
 >
 > --- Phil Karlton
 
-Variable and function names should be lowercase. Use an underscore (`_`) to separate words within a name. Generally, variable names should be nouns and function names should be verbs. Strive for names that are concise and meaningful (this is not easy!).
+Variable and function names should use only lowercase letters, numbers, and `_`. 
 
-Although standard R uses dots extensively in function names (`contrib.url()`), methods (`all.equal`), or class names (`data.frame`), it's better to use underscores. For example, the basic S3 scheme to define a method for a class, using a generic function, would be to concatenate them with a dot, like this `generic.class`. This can lead to confusing methods like `as.data.frame.data.frame()` whereas something like `print.my_class()` is unambiguous.
+Use underscores (`_`) to separate words within a name. Base R uses dots in function names (`contrib.url()`) and class names (`data.frame`), but it's better to reserve dots exclusively for S3. 
+
+Generally, variable names should be nouns and function names should be verbs. Strive for names that are concise and meaningful (this is not easy!).
 
 ```{r, eval = FALSE}
 # Good
@@ -43,7 +47,7 @@ dayone
 djm1
 ```
 
-Where possible, avoid using names of existing functions and variables. This will cause confusion for the readers of your code.
+Where possible, avoid re-using names of common functions and variables. This will cause confusion for the readers of your code.
 
 ```{r, eval = FALSE}
 # Bad

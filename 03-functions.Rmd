@@ -1,5 +1,7 @@
 # Functions {#style-fun}
 
+## Naming
+
 Use verbs for function names, where possible.
 
 ```{r eval = FALSE}
@@ -11,6 +13,12 @@ permute()
 row_adder()
 permutation()
 ```
+
+## Size
+
+Strive to keep blocks within a function on one screen, <30 lines.
+
+## Long lines
 
 If a function definition runs over multiple lines, indent the second line to where the definition starts.
 
@@ -26,10 +34,14 @@ long_function_name <- function(a = "a long argument",
 long_function_name <- function(a = "a long argument",
   b = "another argument",
   c = "another long argument") {
+  # Here it's hard to spot where the definition end and the
+  # code begins
 }
 ```
 
-Only use `return()` for early returns. Otherwise rely on R to return the result of the last row of a function.
+## `return()`
+
+Only use `return()` for early returns. Otherwise rely on R to return the result of the last evaluted expression.
 
 ```{r eval = FALSE}
 # Good
@@ -44,4 +56,7 @@ add_two <- function(x, y) {
 }
 ```
 
-Strive to keep blocks within a function on one screen, so around 20-30 lines maximum.  Some even argue that if a *function* has 20 lines, it should be split into smaller functions.
+## Comments
+
+Use comments to explain the "why" not the "what" or "how". Each line of a comment should begin with the comment symbol and a single space: `# `.
+

@@ -1,6 +1,8 @@
 # Pipes {#style-pipes}
 
-Use the `%>%` operator from the tidyverse when you find yourself composing more than two functions together into a nested call, or when you find yourself creating unnecessaty interim objects to avoid nesting functions together.
+## Introduction
+
+Use `%>%` when you find yourself composing more than three or more functions together into a nested call, or creating intermediate objects that you don't care about.
 
 ```{r eval = FALSE}
 # Good
@@ -10,6 +12,11 @@ foo_foo %>%
   bop(on = head)
 
 # Bad
+foo_foo <- hop(foo_foo, through = forest)
+foo_foo <- scoop(foo_foo, up = field_mice)
+foo_foo <- bop(foo_foo, on = head)
+
+# Bad
 bop(
   scoop(
     hop(foo_foo, through = forest),
@@ -17,35 +24,62 @@ bop(
   ), 
   on = head
 )
-
-foo_foo <- hop(foo_foo, through = forest)
-foo_foo <- scoop(foo_foo, up = field_mice)
-foo_foo <- bop(foo_foo, on = head)
 ```
 
-When you use the `%>%` operator, put each verb on its own line.  This makes it simpler to rearrange them later, and makes it harder to overlook a step. It is ok to keep a one-step pipe in one line.
+Avoid using the pipe when:
+
+* You need to manipulate more than one object at a time. Reserve pipes for a 
+  sequence of steps applied to one primary object.
+ 
+* You there are meaningful intermediate objects that could be given
+  informative names.
+
+## Spacing and indenting
+
+`%>%` should always have a space before it and a new line after it. After the first step, each line should be indented by two spaces.
 
 ```{r, eval = FALSE}
 # Good
 iris %>%
   group_by(Species) %>%
-  summarize_all(mean) %>%
+  summarize_if(is.numeric(), mean) %>%
   ungroup %>%
   gather(measure, value, -Species) %>%
   arrange(value)
 
-iris %>% arrange(Petal.Width)
-
 # Bad
 iris %>% group_by(Species) %>% summarize_all(mean) %>%
-  ungroup %>% gather(measure, value, -Species) %>%
-  arrange(value)
+ungroup %>% gather(measure, value, -Species) %>%
+arrange(value)
 ```
 
-## When not to use the pipe
+It is ok to keep a one-step pipe on one line, although depending on the context, you may want to rewrite to remove the pipe.
 
-Do not use a pipe if:
+```{r, eval = FALSE}
+# good
+iris %>% arrange(Petal.Width)
+arrange(iris, Petal.Width)
+```
 
-* You need to manipulate more than one object at a time. Reserve pipes for a sequence of steps applied to one primary object.
+## Long lines
 
-* You have more than (say) ten steps in your pipe. In that case, divide your pipe into shorter pipes that create intermediate objects with meaningful names.
+If the arguments to a function don't all fit on one line, put each argument on its own line and indent:
+
+```{r, eval = FALSE}
+iris %>%
+  group_by(Species) %>%
+  summarise(
+    Sepal.Length = mean(Sepal.Length),
+    Sepal.Width = mean(Sepal.Width),
+    Sepcies = n_distinct(Species)
+  )
+```
+
+## Assignment
+
+It feels natural to use `->` to create an object at the end of the pipe, but you should generally avoid. Starting with assignment is a little more work when writing, but makes it easier to read the code because the name acts as a heading, reminding you of the purpose of the code.
+
+## Comments
+
+Use comments to record important data analysis findings.  If you discover that you have more comments than code, considering switching to RMarkdown.
+

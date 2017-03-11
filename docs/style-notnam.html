@@ -109,15 +109,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3" data-path="style-syn.html"><a href="style-syn.html"><i class="fa fa-check"></i><b>3</b> Syntax</a><ul>
 <li class="chapter" data-level="3.1" data-path="style-syn.html"><a href="style-syn.html#spacing"><i class="fa fa-check"></i><b>3.1</b> Spacing</a></li>
-<li class="chapter" data-level="3.2" data-path="style-syn.html"><a href="style-syn.html#curly-braces"><i class="fa fa-check"></i><b>3.2</b> Curly braces</a></li>
-<li class="chapter" data-level="3.3" data-path="style-syn.html"><a href="style-syn.html#line-length"><i class="fa fa-check"></i><b>3.3</b> Line length</a></li>
-<li class="chapter" data-level="3.4" data-path="style-syn.html"><a href="style-syn.html#indentation"><i class="fa fa-check"></i><b>3.4</b> Indentation</a></li>
-<li class="chapter" data-level="3.5" data-path="style-syn.html"><a href="style-syn.html#assignment"><i class="fa fa-check"></i><b>3.5</b> Assignment</a></li>
-<li class="chapter" data-level="3.6" data-path="style-syn.html"><a href="style-syn.html#quotes"><i class="fa fa-check"></i><b>3.6</b> Quotes</a></li>
+<li class="chapter" data-level="3.2" data-path="style-syn.html"><a href="style-syn.html#indenting"><i class="fa fa-check"></i><b>3.2</b> Indenting</a></li>
+<li class="chapter" data-level="3.3" data-path="style-syn.html"><a href="style-syn.html#long-lines"><i class="fa fa-check"></i><b>3.3</b> Long lines</a></li>
+<li class="chapter" data-level="3.4" data-path="style-syn.html"><a href="style-syn.html#assignment"><i class="fa fa-check"></i><b>3.4</b> Assignment</a></li>
+<li class="chapter" data-level="3.5" data-path="style-syn.html"><a href="style-syn.html#quotes"><i class="fa fa-check"></i><b>3.5</b> Quotes</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="style-fun.html"><a href="style-fun.html"><i class="fa fa-check"></i><b>4</b> Functions</a></li>
+<li class="chapter" data-level="4" data-path="style-fun.html"><a href="style-fun.html"><i class="fa fa-check"></i><b>4</b> Functions</a><ul>
+<li class="chapter" data-level="4.1" data-path="style-fun.html"><a href="style-fun.html#naming"><i class="fa fa-check"></i><b>4.1</b> Naming</a></li>
+<li class="chapter" data-level="4.2" data-path="style-fun.html"><a href="style-fun.html#size"><i class="fa fa-check"></i><b>4.2</b> Size</a></li>
+<li class="chapter" data-level="4.3" data-path="style-fun.html"><a href="style-fun.html#long-lines-1"><i class="fa fa-check"></i><b>4.3</b> Long lines</a></li>
+<li class="chapter" data-level="4.4" data-path="style-fun.html"><a href="style-fun.html#return"><i class="fa fa-check"></i><b>4.4</b> <code>return()</code></a></li>
+<li class="chapter" data-level="4.5" data-path="style-fun.html"><a href="style-fun.html#comments"><i class="fa fa-check"></i><b>4.5</b> Comments</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="style-pipes.html"><a href="style-pipes.html"><i class="fa fa-check"></i><b>5</b> Pipes</a><ul>
-<li class="chapter" data-level="5.1" data-path="style-pipes.html"><a href="style-pipes.html#when-not-to-use-the-pipe"><i class="fa fa-check"></i><b>5.1</b> When not to use the pipe</a></li>
+<li class="chapter" data-level="5.1" data-path="style-pipes.html"><a href="style-pipes.html#introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="style-pipes.html"><a href="style-pipes.html#spacing-and-indenting"><i class="fa fa-check"></i><b>5.2</b> Spacing and indenting</a></li>
+<li class="chapter" data-level="5.3" data-path="style-pipes.html"><a href="style-pipes.html#long-lines-2"><i class="fa fa-check"></i><b>5.3</b> Long lines</a></li>
+<li class="chapter" data-level="5.4" data-path="style-pipes.html"><a href="style-pipes.html#assignment-1"><i class="fa fa-check"></i><b>5.4</b> Assignment</a></li>
+<li class="chapter" data-level="5.5" data-path="style-pipes.html"><a href="style-pipes.html#comments-1"><i class="fa fa-check"></i><b>5.5</b> Comments</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="style-org.html"><a href="style-org.html"><i class="fa fa-check"></i><b>6</b> Organisation</a><ul>
 <li class="chapter" data-level="6.1" data-path="style-org.html"><a href="style-org.html#commenting-guidelines"><i class="fa fa-check"></i><b>6.1</b> Commenting guidelines</a></li>
@@ -146,19 +155,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">2</span> Naming</h1>
 <div id="file-names" class="section level2">
 <h2><span class="header-section-number">2.1</span> File names</h2>
-<p>File names should be meaningful and end in <code>.R</code>.</p>
+<p>File names should be meaningful and end in <code>.R</code>. Avoid using special characters in file names - stick with numbers, letters, <code>-</code>, and <code>_</code>.</p>
 <pre><code># Good
 fit_models.R
 utility_functions.R
 
 # Bad
+fit models.R
 foo.r
 stuff.r</code></pre>
-<p>If files need to be run in sequence, prefix them with numbers:</p>
+<p>If files should be run in a particular order, prefix them with numbers:</p>
 <pre><code>0_download.R
 1_parse.R
 2_explore.R</code></pre>
-<p>Pay attention to capitalization, since you, or some of your collaborators, might be using an operating system with a case-insensitive file system (e.g., Microsoft Windows or OS X) which can lead to problems with (case-sensitive) revision control systems. Never use filenames that differ only in capitalization.</p>
+<p>Pay attention to capitalization, since you, or some of your collaborators, might be using an operating system with a case-insensitive file system (e.g., Microsoft Windows or OS X) which can lead to problems with (case-sensitive) revision control systems. Prefer file names that are all lower case, and never have names that differ only in their capitalization.</p>
 </div>
 <div id="object-names" class="section level2">
 <h2><span class="header-section-number">2.2</span> Object names</h2>
@@ -166,8 +176,9 @@ stuff.r</code></pre>
 <p>“There are only two hard things in Computer Science: cache invalidation and naming things.”</p>
 <p>— Phil Karlton</p>
 </blockquote>
-<p>Variable and function names should be lowercase. Use an underscore (<code>_</code>) to separate words within a name. Generally, variable names should be nouns and function names should be verbs. Strive for names that are concise and meaningful (this is not easy!).</p>
-<p>Although standard R uses dots extensively in function names (<code>contrib.url()</code>), methods (<code>all.equal</code>), or class names (<code>data.frame</code>), it’s better to use underscores. For example, the basic S3 scheme to define a method for a class, using a generic function, would be to concatenate them with a dot, like this <code>generic.class</code>. This can lead to confusing methods like <code>as.data.frame.data.frame()</code> whereas something like <code>print.my_class()</code> is unambiguous.</p>
+<p>Variable and function names should use only lowercase letters, numbers, and <code>_</code>.</p>
+<p>Use underscores (<code>_</code>) to separate words within a name. Base R uses dots in function names (<code>contrib.url()</code>) and class names (<code>data.frame</code>), but it’s better to reserve dots exclusively for S3.</p>
+<p>Generally, variable names should be nouns and function names should be verbs. Strive for names that are concise and meaningful (this is not easy!).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 day_one
 day_1
@@ -177,7 +188,7 @@ first_day_of_the_month
 DayOne
 dayone
 djm1</code></pre></div>
-<p>Where possible, avoid using names of existing functions and variables. This will cause confusion for the readers of your code.</p>
+<p>Where possible, avoid re-using names of common functions and variables. This will cause confusion for the readers of your code.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Bad</span>
 T &lt;-<span class="st"> </span><span class="ot">FALSE</span>
 c &lt;-<span class="st"> </span><span class="dv">10</span>
