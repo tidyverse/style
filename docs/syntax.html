@@ -257,6 +257,9 @@ if (y ==<span class="st"> </span><span class="dv">0</span>)
   <span class="kw">message</span>(<span class="st">&quot;x is negative or zero&quot;</span>)
     }
 } else { y ^<span class="st"> </span>x }</code></pre></div>
+<p>It’s ok to drop the curly braces if you have a very short <code>if</code> statement that can fit on one line:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="dv">10</span>
+x &lt;-<span class="st"> </span>if (y &lt;<span class="st"> </span><span class="dv">20</span>) <span class="st">&quot;Too low&quot;</span> else <span class="st">&quot;Too high&quot;</span></code></pre></div>
 </div>
 <div id="long-lines" class="section level2">
 <h2><span class="header-section-number">3.5</span> Long lines</h2>
