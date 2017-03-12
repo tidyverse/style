@@ -165,10 +165,12 @@ utility_functions.R
 fit models.R
 foo.r
 stuff.r</code></pre>
-<p>If files should be run in a particular order, prefix them with numbers:</p>
-<pre><code>0_download.R
-1_parse.R
-2_explore.R</code></pre>
+<p>If files should be run in a particular order, prefix them with numbers. If it seems likely you’ll have more than 10 files, left pad with zero:</p>
+<pre><code>00_download.R
+01_explore.R
+...
+09_model.R
+10_visualize.R</code></pre>
 <p>Pay attention to capitalization, since you, or some of your collaborators, might be using an operating system with a case-insensitive file system (e.g., Microsoft Windows or OS X) which can lead to problems with (case-sensitive) revision control systems. Prefer file names that are all lower case, and never have names that differ only in their capitalization.</p>
 </div>
 <div id="structure" class="section level2">
@@ -177,6 +179,7 @@ stuff.r</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load data ---------------------------</span>
 
 <span class="co"># Plot data ---------------------------</span></code></pre></div>
+<p>If your script uses add-on packages, load them all at once at the very beginning of the file. This is more transparent than sprinkling <code>library()</code> calls throughout your code or having hidden dependencies that are loaded in a startup file, such as <code>.Rprofile</code>.</p>
 
 </div>
 </div>

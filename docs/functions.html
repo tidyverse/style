@@ -196,7 +196,11 @@ find_abs &lt;-<span class="st"> </span>function(x, y){
 add_two &lt;-<span class="st"> </span>function(x, y) {
   <span class="kw">return</span>(x +<span class="st"> </span>y)
 }</code></pre></div>
-<p>If your function is called primarily for its side-effects, it should return the first argument invisibly. (This makes it possible to use the function as part of the pipe.)</p>
+<p>If your function is called primarily for its side-effects, it should return the first argument invisibly. This makes it possible to use the function as part of the pipe. <code>print</code> methods should usually do this, like this example from httr:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">print.url &lt;-<span class="st"> </span>function(x, ...) {
+  <span class="kw">cat</span>(<span class="st">&quot;Url: &quot;</span>, <span class="kw">build_url</span>(x), <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
+  <span class="kw">invisible</span>(x)
+}</code></pre></div>
 </div>
 <div id="comments" class="section level2">
 <h2><span class="header-section-number">3.4</span> Comments</h2>
