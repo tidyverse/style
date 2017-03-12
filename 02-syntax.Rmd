@@ -141,7 +141,7 @@ if (y == 0)
 } else { y ^ x }
 ```
 
-It's ok to drop the curly braces if you have a very short `if` statement that can fit on one line:
+It's ok to drop the curly braces if you have a very short `if` statement that fits on one line:
 
 ```{r}
 y <- 10
