@@ -31,7 +31,7 @@ Avoid using the pipe when:
 * You need to manipulate more than one object at a time. Reserve pipes for a 
   sequence of steps applied to one primary object.
  
-* You there are meaningful intermediate objects that could be given
+* There are meaningful intermediate objects that could be given
   informative names.
 
 ## Spacing and indenting
