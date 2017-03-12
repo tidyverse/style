@@ -33,3 +33,5 @@ Use commented lines of `-` and `=` to break up your file into easily readable ch
 
 # Plot data ---------------------------
 ```
+
+If your script uses add-on packages, load them all at once at the very beginning of the file. This is more transparent than sprinkling `library()` calls throughout your code or having hidden dependencies that are loaded in a startup file, such as `.Rprofile`.
