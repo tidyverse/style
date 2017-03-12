@@ -61,6 +61,23 @@ iris %>% arrange(Petal.Width)
 arrange(iris, Petal.Width)
 ```
 
+## No arguments
+
+magrittr allows you to omit `()` on functions that don't have arguments. Avoid this.
+
+```{r, eval = FALSE}
+# Good
+x %>% 
+  unique() %>%
+  sort()
+
+# Bad
+x %>% 
+  unique %>%
+  sort
+```
+
+
 ## Long lines
 
 If the arguments to a function don't all fit on one line, put each argument on its own line and indent:

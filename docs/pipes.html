@@ -128,9 +128,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4" data-path="pipes.html"><a href="pipes.html"><i class="fa fa-check"></i><b>4</b> Pipes</a><ul>
 <li class="chapter" data-level="4.1" data-path="pipes.html"><a href="pipes.html#introduction"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
 <li class="chapter" data-level="4.2" data-path="pipes.html"><a href="pipes.html#spacing-and-indenting"><i class="fa fa-check"></i><b>4.2</b> Spacing and indenting</a></li>
-<li class="chapter" data-level="4.3" data-path="pipes.html"><a href="pipes.html#long-lines-2"><i class="fa fa-check"></i><b>4.3</b> Long lines</a></li>
-<li class="chapter" data-level="4.4" data-path="pipes.html"><a href="pipes.html#assignment-1"><i class="fa fa-check"></i><b>4.4</b> Assignment</a></li>
-<li class="chapter" data-level="4.5" data-path="pipes.html"><a href="pipes.html#comments-1"><i class="fa fa-check"></i><b>4.5</b> Comments</a></li>
+<li class="chapter" data-level="4.3" data-path="pipes.html"><a href="pipes.html#no-arguments"><i class="fa fa-check"></i><b>4.3</b> No arguments</a></li>
+<li class="chapter" data-level="4.4" data-path="pipes.html"><a href="pipes.html#long-lines-2"><i class="fa fa-check"></i><b>4.4</b> Long lines</a></li>
+<li class="chapter" data-level="4.5" data-path="pipes.html"><a href="pipes.html#assignment-1"><i class="fa fa-check"></i><b>4.5</b> Assignment</a></li>
+<li class="chapter" data-level="4.6" data-path="pipes.html"><a href="pipes.html#comments-1"><i class="fa fa-check"></i><b>4.6</b> Comments</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -202,8 +203,21 @@ ungroup %&gt;%<span class="st"> </span><span class="kw">gather</span>(measure, v
 iris %&gt;%<span class="st"> </span><span class="kw">arrange</span>(Petal.Width)
 <span class="kw">arrange</span>(iris, Petal.Width)</code></pre></div>
 </div>
+<div id="no-arguments" class="section level2">
+<h2><span class="header-section-number">4.3</span> No arguments</h2>
+<p>magrittr allows you to omit <code>()</code> on functions that don’t have arguments. Avoid this.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
+x %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">unique</span>() %&gt;%
+<span class="st">  </span><span class="kw">sort</span>()
+
+<span class="co"># Bad</span>
+x %&gt;%<span class="st"> </span>
+<span class="st">  </span>unique %&gt;%
+<span class="st">  </span>sort</code></pre></div>
+</div>
 <div id="long-lines-2" class="section level2">
-<h2><span class="header-section-number">4.3</span> Long lines</h2>
+<h2><span class="header-section-number">4.4</span> Long lines</h2>
 <p>If the arguments to a function don’t all fit on one line, put each argument on its own line and indent:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%
 <span class="st">  </span><span class="kw">group_by</span>(Species) %&gt;%
@@ -214,12 +228,12 @@ iris %&gt;%<span class="st"> </span><span class="kw">arrange</span>(Petal.Width)
   )</code></pre></div>
 </div>
 <div id="assignment-1" class="section level2">
-<h2><span class="header-section-number">4.4</span> Assignment</h2>
+<h2><span class="header-section-number">4.5</span> Assignment</h2>
 <p>You can use to use <code>-&gt;</code> to create an object at the end of the pipe.</p>
 <p>Personally, I think you should avoid this technique. While starting with assignment is a little more work when writing, but makes it easier to read the code because the name acts as a heading, reminding you of the purpose of the code.</p>
 </div>
 <div id="comments-1" class="section level2">
-<h2><span class="header-section-number">4.5</span> Comments</h2>
+<h2><span class="header-section-number">4.6</span> Comments</h2>
 <p>Use comments to record important data analysis findings. If you discover that you have more comments than code, considering switching to RMarkdown.</p>
 
 </div>
