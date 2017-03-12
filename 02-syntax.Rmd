@@ -94,7 +94,7 @@ x[1 ,]  # Space goes after comma not before
 
 ## Argument names
 
-The arguments to a function typically fall into two broad sets: one set supplies the __data__ to compute on, and the other supplies arguments that control the __details__ of the computation. When you call a function, you typically omit the names of the data arguments, because they are used so commonly. If you override the default value of a detail argument, you should use the full name:
+A function's arguments typically fall into two broad categories: one supplies the __data__ to compute on; the other controls __details__ of computation. When you call a function, you typically omit the names of data arguments, because they are used so commonly. If you override the default value of an argument, use the full name:
 
 ```{r, eval = FALSE}
 # Good
