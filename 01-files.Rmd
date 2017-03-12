@@ -14,11 +14,13 @@ File names should be meaningful and end in `.R`. Avoid using special characters 
     foo.r
     stuff.r
 
-If files should be run in a particular order, prefix them with numbers:
+If files should be run in a particular order, prefix them with numbers. If it seems likely you'll have more than 10 files, left pad with zero:
 
-    0_download.R
-    1_parse.R
-    2_explore.R
+    00_download.R
+    01_explore.R
+    ...
+    09_model.R
+    10_visualize.R
 
 Pay attention to capitalization, since you, or some of your collaborators, might be using an operating system with a case-insensitive file system (e.g., Microsoft Windows or OS X) which can lead to problems with (case-sensitive) revision control systems. Prefer file names that are all lower case, and never have names that differ only in their capitalization.
 
