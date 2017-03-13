@@ -181,7 +181,7 @@ mean &lt;-<span class="st"> </span>function(x) <span class="kw">sum</span>(x)</c
 </div>
 <div id="spacing" class="section level2">
 <h2><span class="header-section-number">2.2</span> Spacing</h2>
-<p>Place spaces around all infix operators (<code>=</code>, <code>+</code>, <code>-</code>, <code>&lt;-</code>, etc.), and when naming arguments in function calls. Always put a space after a comma, and never before (just like in regular English).</p>
+<p>Put a space before and after all infix operators (=, +, -, &lt;-, etc.), and when naming arguments in function calls. Always put a space after a comma, and never before (just like in regular English).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 average &lt;-<span class="st"> </span><span class="kw">mean</span>(feet /<span class="st"> </span><span class="dv">12</span> +<span class="st"> </span>inches, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
 
@@ -220,7 +220,7 @@ x[<span class="dv">1</span> ,]  <span class="co"># Space goes after comma not be
 </div>
 <div id="argument-names" class="section level2">
 <h2><span class="header-section-number">2.3</span> Argument names</h2>
-<p>The arguments to a function typically fall into two broad sets: one set supplies the <strong>data</strong> to compute on, and the other supplies arguments that control the <strong>details</strong> of the computation. When you call a function, you typically omit the names of the data arguments, because they are used so commonly. If you override the default value of a detail argument, you should use the full name:</p>
+<p>A function’s arguments typically fall into two broad categories: one supplies the <strong>data</strong> to compute on; the other controls <strong>details</strong> of computation. When you call a function, you typically omit the names of data arguments, because they are used so commonly. If you override the default value of an argument, use the full name:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 <span class="kw">mean</span>(<span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
 
@@ -259,7 +259,7 @@ if (y ==<span class="st"> </span><span class="dv">0</span>)
   <span class="kw">message</span>(<span class="st">&quot;x is negative or zero&quot;</span>)
     }
 } else { y ^<span class="st"> </span>x }</code></pre></div>
-<p>It’s ok to drop the curly braces if you have a very short <code>if</code> statement that can fit on one line:</p>
+<p>It’s ok to drop the curly braces if you have a very short <code>if</code> statement that fits on one line:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="dv">10</span>
 x &lt;-<span class="st"> </span>if (y &lt;<span class="st"> </span><span class="dv">20</span>) <span class="st">&quot;Too low&quot;</span> else <span class="st">&quot;Too high&quot;</span></code></pre></div>
 </div>
