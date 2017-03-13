@@ -9,8 +9,6 @@ documentclass: book
 
 # Welcome {-}
 
-Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread. As with punctuation, there are many ways to style your code that you can choose from, but some ways are more reader-friendly than others. The style presented here is followed throughout the [tidyverse](http://tidyverse.org). 
+Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread. Just as with punctuation, while there are many code styles to choose from, some are more reader-friendly than others. The style presented here, which is used throughout the [tidyverse](http://tidyverse.org), is derived from [Google's R style guide](https://google.github.io/styleguide/Rguide.xml) and has evolved considerably over the years.
 
-This style guide is derived from [Google's R style guide](https://google.github.io/styleguide/Rguide.xml), but has evolved considerably over the years.
-
-To enforce this style guide automatically, use [lintr](https://github.com/jimhester/lintr). 
+To apply this style guide automatically, use [lintr](https://github.com/jimhester/lintr).
