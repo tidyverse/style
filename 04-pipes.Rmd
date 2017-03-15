@@ -96,7 +96,7 @@ iris %>%
 
 You can use to use `->` to create an object at the end of the pipe.
 
-Personally, I think you should avoid this technique. While starting with assignment is a little more work when writing, but makes it easier to read the code because the name acts as a heading, reminding you of the purpose of the code.
+Personally, I think you should avoid this technique. While starting with the assignment is a little more work when writing the code, it makes reading the code easier. The name acts as a heading, which reminds you of the purpose of the code.
 
 ## Comments
 
