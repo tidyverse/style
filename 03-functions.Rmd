@@ -72,9 +72,9 @@ There are two main design principles to bear in mind:
 
 *   A function should do one thing well. 
  
-    A function should be called because it has side-effects or because it
-    returns a value; not both. Strive to keep blocks within a function on 
-    one screen, <30 lines.
+    A function should be called either because it has side-effects or 
+    because it returns a value; not both. Strive to keep blocks within 
+    a function on one screen, < 30 lines.
 
 *   A function should be easily understandable in isolation.
 
