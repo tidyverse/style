@@ -52,7 +52,7 @@ add_two <- function(x, y) {
 }
 ```
 
-If your function is called primarily for its side-effects, it should return the first argument invisibly. This makes it possible to use the function as part of the pipe. `print` methods should usually do this, like this example from httr:
+If your function is called primarily for its side-effects, it should return the first argument invisibly. This makes it possible to use the function as part of a pipe. `print` methods should usually do this, like this example from httr:
 
 ```{r eval = FALSE}
 print.url <- function(x, ...) {
