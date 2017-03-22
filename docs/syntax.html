@@ -162,7 +162,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>— Phil Karlton</p>
 </blockquote>
 <p>Variable and function names should use only lowercase letters, numbers, and <code>_</code>.</p>
-<p>Use underscores (<code>_</code>) to separate words within a name. Base R uses dots in function names (<code>contrib.url()</code>) and class names (<code>data.frame</code>), but it’s better to reserve dots exclusively for S3.</p>
+<p>Use underscores (<code>_</code>) to separate words within a name. Base R uses dots in function names (<code>contrib.url()</code>) and class names (<code>data.frame</code>), but it’s better to reserve dots exclusively for the S3 object system. In S3, methods are given the name <code>function.class</code>; if you also use in <code>.</code> function and class names you end up with confusing methods like <code>as.data.frame.data.frame()</code>.</p>
 <p>Generally, variable names should be nouns and function names should be verbs. Strive for names that are concise and meaningful (this is not easy!).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 day_one
@@ -187,7 +187,7 @@ average &lt;-<span class="st"> </span><span class="kw">mean</span>(feet /<span c
 
 <span class="co"># Bad</span>
 average&lt;-<span class="kw">mean</span>(feet/<span class="dv">12</span>+inches,<span class="dt">na.rm=</span><span class="ot">TRUE</span>)</code></pre></div>
-<p>There’s a small exception to this rule: <code>:</code>, <code>::</code> and <code>:::</code> don’t need spaces around them.</p>
+<p>There’s a small exception to this rule: don’t use spaces around <code>:</code>, <code>::</code>, and <code>:::</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
 base::get
@@ -259,7 +259,7 @@ if (y ==<span class="st"> </span><span class="dv">0</span>)
   <span class="kw">message</span>(<span class="st">&quot;x is negative or zero&quot;</span>)
     }
 } else { y ^<span class="st"> </span>x }</code></pre></div>
-<p>It’s ok to drop the curly braces if you have a very short <code>if</code> statement that fits on one line:</p>
+<p>It’s ok to drop the curly braces if you have a very simple and short <code>if</code> statement that fits on one line. If you have any doubt, it’s better to use the full form.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="dv">10</span>
 x &lt;-<span class="st"> </span>if (y &lt;<span class="st"> </span><span class="dv">20</span>) <span class="st">&quot;Too low&quot;</span> else <span class="st">&quot;Too high&quot;</span></code></pre></div>
 </div>

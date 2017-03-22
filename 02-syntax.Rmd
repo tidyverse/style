@@ -9,7 +9,7 @@
 
 Variable and function names should use only lowercase letters, numbers, and `_`. 
 
-Use underscores (`_`) to separate words within a name. Base R uses dots in function names (`contrib.url()`) and class names (`data.frame`), but it's better to reserve dots exclusively for S3. 
+Use underscores (`_`) to separate words within a name. Base R uses dots in function names (`contrib.url()`) and class names (`data.frame`), but it's better to reserve dots exclusively for the S3 object system. In S3, methods are given the name `function.class`; if you also use in `.` function and class names you end up with confusing methods like `as.data.frame.data.frame()`.
 
 Generally, variable names should be nouns and function names should be verbs. Strive for names that are concise and meaningful (this is not easy!).
 
@@ -46,7 +46,7 @@ average <- mean(feet / 12 + inches, na.rm = TRUE)
 average<-mean(feet/12+inches,na.rm=TRUE)
 ```
 
-There's a small exception to this rule: `:`, `::` and `:::` don't need spaces around them.
+There's a small exception to this rule: don't use spaces around `:`, `::`, and `:::`.
 
 ```{r, eval = FALSE}
 # Good
@@ -141,7 +141,7 @@ if (y == 0)
 } else { y ^ x }
 ```
 
-It's ok to drop the curly braces if you have a very short `if` statement that fits on one line:
+It's ok to drop the curly braces if you have a very simple and short `if` statement that fits on one line. If you have any doubt, it's better to use the full form.
 
 ```{r}
 y <- 10

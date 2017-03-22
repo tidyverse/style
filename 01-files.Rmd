@@ -22,6 +22,8 @@ If files should be run in a particular order, prefix them with numbers. If it se
     09_model.R
     10_visualize.R
 
+If you later realise that you've missed some steps, it's tempting to use `02a`, `02b`, etc. However, I think it's generally better to bite the bullet and rename all files.
+
 Pay attention to capitalization, since you, or some of your collaborators, might be using an operating system with a case-insensitive file system (e.g., Microsoft Windows or OS X) which can lead to problems with (case-sensitive) revision control systems. Prefer file names that are all lower case, and never have names that differ only in their capitalization.
 
 ## Structure 

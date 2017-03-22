@@ -192,12 +192,15 @@ find_abs &lt;-<span class="st"> </span>function(x, y){
   if (x &gt;<span class="st"> </span><span class="dv">0</span>) <span class="kw">return</span>(x)
   x *<span class="st"> </span>-<span class="dv">1</span>
 }
+add_two &lt;-<span class="st"> </span>function(x, y) {
+  x +<span class="st"> </span>y
+}
 
 <span class="co"># Bad</span>
 add_two &lt;-<span class="st"> </span>function(x, y) {
   <span class="kw">return</span>(x +<span class="st"> </span>y)
 }</code></pre></div>
-<p>If your function is called primarily for its side-effects, it should return the first argument invisibly. This makes it possible to use the function as part of the pipe. <code>print</code> methods should usually do this, like this example from httr:</p>
+<p>If your function is called primarily for its side-effects (like printing, plotting, or saving to disk), it should return the first argument invisibly. This makes it possible to use the function as part of a pipe. <code>print</code> methods should usually do this, like this example from httr:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">print.url &lt;-<span class="st"> </span>function(x, ...) {
   <span class="kw">cat</span>(<span class="st">&quot;Url: &quot;</span>, <span class="kw">build_url</span>(x), <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
   <span class="kw">invisible</span>(x)
@@ -205,14 +208,14 @@ add_two &lt;-<span class="st"> </span>function(x, y) {
 </div>
 <div id="comments" class="section level2">
 <h2><span class="header-section-number">3.4</span> Comments</h2>
-<p>Use comments to explain the “why” not the “what” or “how”. Each line of a comment should begin with the comment symbol and a single space: <code>#</code>.</p>
+<p>In code, use comments to explain the “why” not the “what” or “how”. Each line of a comment should begin with the comment symbol and a single space: <code>#</code>.</p>
 </div>
 <div id="design" class="section level2">
 <h2><span class="header-section-number">3.5</span> Design</h2>
 <p>There are two main design principles to bear in mind:</p>
 <ul>
 <li><p>A function should do one thing well.</p>
-<p>A function should be called because it has side-effects or because it returns a value; not both. Strive to keep blocks within a function on one screen, &lt;30 lines.</p></li>
+<p>A function should be called either because it has side-effects or because it returns a value; not both. Strive to keep blocks within a function on one screen, &lt; 30 lines.</p></li>
 <li><p>A function should be easily understandable in isolation.</p>
 <p>Avoid global options. If your function has a transient side-effect (i.e. you need to create a temporary file or set an option), clean up after yourself with <code>on.exit()</code>.</p></li>
 </ul>

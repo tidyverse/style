@@ -45,6 +45,9 @@ find_abs <- function(x, y){
   if (x > 0) return(x)
   x * -1
 }
+add_two <- function(x, y) {
+  x + y
+}
 
 # Bad
 add_two <- function(x, y) {
@@ -52,7 +55,7 @@ add_two <- function(x, y) {
 }
 ```
 
-If your function is called primarily for its side-effects, it should return the first argument invisibly. This makes it possible to use the function as part of a pipe. `print` methods should usually do this, like this example from httr:
+If your function is called primarily for its side-effects (like printing, plotting, or saving to disk), it should return the first argument invisibly. This makes it possible to use the function as part of a pipe. `print` methods should usually do this, like this example from httr:
 
 ```{r eval = FALSE}
 print.url <- function(x, ...) {
@@ -61,10 +64,9 @@ print.url <- function(x, ...) {
 }
 ```
 
-
 ## Comments
 
-Use comments to explain the "why" not the "what" or "how". Each line of a comment should begin with the comment symbol and a single space: `# `.
+In code, use comments to explain the "why" not the "what" or "how". Each line of a comment should begin with the comment symbol and a single space: `# `.
 
 ## Design
 

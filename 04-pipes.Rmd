@@ -26,6 +26,8 @@ bop(
 )
 ```
 
+(If you're not familiar with Litte )
+
 Avoid using the pipe when:
 
 * You need to manipulate more than one object at a time. Reserve pipes for a 
@@ -100,5 +102,5 @@ Personally, I think you should avoid this technique. While starting with the ass
 
 ## Comments
 
-Use comments to record important data analysis findings.  If you discover that you have more comments than code, considering switching to RMarkdown.
+In data analysis code, use comments to record important findings and analysis decisions. If you need comments to explain what your code is doing, consider rewriting your code to be clearer. If you discover that you have more comments than code, considering switching to RMarkdown.
 
