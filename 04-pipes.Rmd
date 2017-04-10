@@ -45,7 +45,7 @@ Avoid using the pipe when:
 iris %>%
   group_by(Species) %>%
   summarize_if(is.numeric(), mean) %>%
-  ungroup %>%
+  ungroup() %>%
   gather(measure, value, -Species) %>%
   arrange(value)
 
