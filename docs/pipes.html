@@ -191,7 +191,7 @@ foo_foo &lt;-<span class="st"> </span><span class="kw">bop</span>(foo_foo, <span
 iris %&gt;%
 <span class="st">  </span><span class="kw">group_by</span>(Species) %&gt;%
 <span class="st">  </span><span class="kw">summarize_if</span>(<span class="kw">is.numeric</span>(), mean) %&gt;%
-<span class="st">  </span>ungroup %&gt;%
+<span class="st">  </span><span class="kw">ungroup</span>() %&gt;%
 <span class="st">  </span><span class="kw">gather</span>(measure, value, -Species) %&gt;%
 <span class="st">  </span><span class="kw">arrange</span>(value)
 
