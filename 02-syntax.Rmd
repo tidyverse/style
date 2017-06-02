@@ -9,7 +9,7 @@
 
 Variable and function names should use only lowercase letters, numbers, and `_`. 
 
-Use underscores (`_`) to separate words within a name. Base R uses dots in function names (`contrib.url()`) and class names (`data.frame`), but it's better to reserve dots exclusively for the S3 object system. In S3, methods are given the name `function.class`; if you also use in `.` function and class names you end up with confusing methods like `as.data.frame.data.frame()`.
+Use underscores (`_`) to separate words within a name. Base R uses dots in function names (`contrib.url()`) and class names (`data.frame`), but it's better to reserve dots exclusively for the S3 object system. In S3, methods are given the name `function.class`; if you also use `.` in function and class names you end up with confusing methods like `as.data.frame.data.frame()`.
 
 Generally, variable names should be nouns and function names should be verbs. Strive for names that are concise and meaningful (this is not easy!).
 

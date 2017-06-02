@@ -37,7 +37,7 @@ long_function_name <- function(a = "a long argument",
 
 ## `return()`
 
-Only use `return()` for early returns. Otherwise rely on R to return the result of the last evaluted expression.
+Only use `return()` for early returns. Otherwise rely on R to return the result of the last evaluated expression.
 
 ```{r eval = FALSE}
 # Good
