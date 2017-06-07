@@ -1,0 +1,110 @@
+# Code Documentation
+
+## Introduction
+
+Documentation of code is essential, even if the only person using your code 
+is future-you. Use 
+[roxygen2](https://github.com/klutometis/roxygen) with enabled [markdown](https://github.com/klutometis/roxygen/blob/master/vignettes/markdown.Rmd)
+support to keep the documentation close to your code.
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+## Title and Description
+For the title, describe concisely what the function does at the very 
+top of your function documentation. Do not use a dot at the end of the title 
+and use title style capitalization. For both the title and the description, 
+there is no need to use the explicit `@title` or `@description` tag. To 
+visually separate the title and the description, leave one line blank after 
+each of them.
+```{r}
+#' Combine Values into a Vector or List
+#' 
+#' This is a generic function which combines its arguments.
+#'
+```
+
+## Indention
+Always indent with one space after `#'`. If any description corresponding to a 
+`roxygen` tag spans over multiple lines, add another two spaces of extra 
+indention.
+```{r}
+#' @param key The bare (unquoted) name of the column whose values will be used 
+#'   as column headings. 
+```
+
+Alternatively, tags that span over multiple lines (like `@examples`) can have 
+the corresponding tag on its own line and subsequent lines do not need extra
+indention.
+```{r}
+#' @examples
+#' 1 + 1
+#' sin(pi)
+```
+The section 'Description' does not need extra indention either.
+
+## Capitalization
+The first letter of every description corresponding to a `roxygen` tag is 
+upper case.
+```{r}
+#' @param key The bare (unquoted) name of the column whose values will be used 
+#'   as column headings. 
+```
+
+An exception to this rule are words in `code font` (see below), in which case
+also lower case letters can occur.
+```{r}
+#' @seealso [fct_lump()] 
+```
+
+## Periods
+For all bullets, enumerations argument descriptions and the like, put a period 
+at the end of each text element, even if it is only a few words. Use a double 
+point before you start to enumerate.
+```{r}
+#' @details In the following, we present the bullets of the list:
+#' * item one.
+```
+
+## Reference
+Cross-referencing is encouraged, both within R's help file system as well as to 
+external resources. Use `()` when referencing function calls after the function
+name.
+```{r}
+#' @seealso [fct_lump()] 
+```
+
+When referring to other sections in the documentation, use single quotes and 
+upper title style capitalization.
+```{r}
+#' @param p1 Another parameter. See 'Details'.
+```
+
+## Line Break
+To force a line break in the `.Rd` file, simply put an empty line after the 
+line you want to insert the line break and `roxygen2` will do the job.
+```{r}
+#' Some stuff.
+#' 
+#' Some remotely related stuff on a new line.
+```
+
+## `Code Font`
+As a general rule, use code font when you are referring to something that has a 
+specific and well-defined meaning within the R language or your code 
+specifically. If such a specific meaning is attributed to a term, but you mean 
+just the general concept, do not use code font.
+```{r}
+#' A matrix can store data. Matematicians used matrices before R existed.
+```
+
+The general rule introduced above implies to use `code font` for:
+
+* Function names.
+* Function arguments. 
+* Logical values.
+* Literal R code.
+* `NA`, `NaN`, `...`, `NULL` etc.
+
+To refer to the R language, use \\R.

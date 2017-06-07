@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="syntax.html">
+<link rel="prev" href="pipes.html">
+
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -163,35 +163,72 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="files" class="section level1">
-<h1><span class="header-section-number">1</span> Files</h1>
-<div id="names" class="section level2">
-<h2><span class="header-section-number">1.1</span> Names</h2>
-<p>File names should be meaningful and end in <code>.R</code>. Avoid using special characters in file names - stick with numbers, letters, <code>-</code>, and <code>_</code>.</p>
-<pre><code># Good
-fit_models.R
-utility_functions.R
-
-# Bad
-fit models.R
-foo.r
-stuff.r</code></pre>
-<p>If files should be run in a particular order, prefix them with numbers. If it seems likely you’ll have more than 10 files, left pad with zero:</p>
-<pre><code>00_download.R
-01_explore.R
-...
-09_model.R
-10_visualize.R</code></pre>
-<p>If you later realise that you’ve missed some steps, it’s tempting to use <code>02a</code>, <code>02b</code>, etc. However, I think it’s generally better to bite the bullet and rename all files.</p>
-<p>Pay attention to capitalization, since you, or some of your collaborators, might be using an operating system with a case-insensitive file system (e.g., Microsoft Windows or OS X) which can lead to problems with (case-sensitive) revision control systems. Prefer file names that are all lower case, and never have names that differ only in their capitalization.</p>
+<div id="code-documentation" class="section level1">
+<h1><span class="header-section-number">5</span> Code Documentation</h1>
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">5.1</span> Introduction</h2>
+<p>Documentation of code is essential, even if the only person using your code is future-you. Use <a href="https://github.com/klutometis/roxygen">roxygen2</a> with enabled <a href="https://github.com/klutometis/roxygen/blob/master/vignettes/markdown.Rmd">markdown</a> support to keep the documentation close to your code.</p>
 </div>
-<div id="structure" class="section level2">
-<h2><span class="header-section-number">1.2</span> Structure</h2>
-<p>Use commented lines of <code>-</code> and <code>=</code> to break up your file into easily readable chunks.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load data ---------------------------</span>
-
-<span class="co"># Plot data ---------------------------</span></code></pre></div>
-<p>If your script uses add-on packages, load them all at once at the very beginning of the file. This is more transparent than sprinkling <code>library()</code> calls throughout your code or having hidden dependencies that are loaded in a startup file, such as <code>.Rprofile</code>.</p>
+<div id="title-and-description" class="section level2">
+<h2><span class="header-section-number">5.2</span> Title and Description</h2>
+<p>For the title, describe concisely what the function does at the very top of your function documentation. Do not use a dot at the end of the title and use title style capitalization. For both the title and the description, there is no need to use the explicit <code>@title</code> or <code>@description</code> tag. To visually separate the title and the description, leave one line blank after each of them.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Combine Values into a Vector or List</span>
+<span class="co">#&#39; </span>
+<span class="co">#&#39; This is a generic function which combines its arguments.</span>
+<span class="co">#&#39;</span></code></pre></div>
+</div>
+<div id="indention" class="section level2">
+<h2><span class="header-section-number">5.3</span> Indention</h2>
+<p>Always indent with one space after <code>#'</code>. If any description corresponding to a <code>roxygen</code> tag spans over multiple lines, add another two spaces of extra indention.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @param key The bare (unquoted) name of the column whose values will be used </span>
+<span class="co">#&#39;   as column headings. </span></code></pre></div>
+<p>Alternatively, tags that span over multiple lines (like <code>@examples</code>) can have the corresponding tag on its own line and subsequent lines do not need extra indention.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @examples</span>
+<span class="co">#&#39; 1 + 1</span>
+<span class="co">#&#39; sin(pi)</span></code></pre></div>
+<p>The section ‘Description’ does not need extra indention either.</p>
+</div>
+<div id="capitalization" class="section level2">
+<h2><span class="header-section-number">5.4</span> Capitalization</h2>
+<p>The first letter of every description corresponding to a <code>roxygen</code> tag is upper case.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @param key The bare (unquoted) name of the column whose values will be used </span>
+<span class="co">#&#39;   as column headings. </span></code></pre></div>
+<p>An exception to this rule are words in <code>code font</code> (see below), in which case also lower case letters can occur.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @seealso [fct_lump()] </span></code></pre></div>
+</div>
+<div id="periods" class="section level2">
+<h2><span class="header-section-number">5.5</span> Periods</h2>
+<p>For all bullets, enumerations argument descriptions and the like, put a period at the end of each text element, even if it is only a few words. Use a double point before you start to enumerate.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @details In the following, we present the bullets of the list:</span>
+<span class="co">#&#39; * item one.</span></code></pre></div>
+</div>
+<div id="reference" class="section level2">
+<h2><span class="header-section-number">5.6</span> Reference</h2>
+<p>Cross-referencing is encouraged, both within R’s help file system as well as to external resources. Use <code>()</code> when referencing function calls after the function name.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @seealso [fct_lump()] </span></code></pre></div>
+<p>When referring to other sections in the documentation, use single quotes and upper title style capitalization.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @param p1 Another parameter. See &#39;Details&#39;.</span></code></pre></div>
+</div>
+<div id="line-break" class="section level2">
+<h2><span class="header-section-number">5.7</span> Line Break</h2>
+<p>To force a line break in the <code>.Rd</code> file, simply put an empty line after the line you want to insert the line break and <code>roxygen2</code> will do the job.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Some stuff.</span>
+<span class="co">#&#39; </span>
+<span class="co">#&#39; Some remotely related stuff on a new line.</span></code></pre></div>
+</div>
+<div id="code-font" class="section level2">
+<h2><span class="header-section-number">5.8</span> <code>Code Font</code></h2>
+<p>As a general rule, use code font when you are referring to something that has a specific and well-defined meaning within the R language or your code specifically. If such a specific meaning is attributed to a term, but you mean just the general concept, do not use code font.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; A matrix can store data. Matematicians used matrices before R existed.</span></code></pre></div>
+<p>The general rule introduced above implies to use <code>code font</code> for:</p>
+<ul>
+<li>Function names.</li>
+<li>Function arguments.</li>
+<li>Logical values.</li>
+<li>Literal R code.</li>
+<li><code>NA</code>, <code>NaN</code>, <code>...</code>, <code>NULL</code> etc.</li>
+</ul>
+<p>To refer to the R language, use \R.</p>
 
 </div>
 </div>
@@ -200,8 +237,8 @@ stuff.r</code></pre>
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="syntax.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="pipes.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -220,7 +257,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/tidyverse/style/edit/master/01-files.Rmd",
+"link": "https://github.com/tidyverse/style/edit/master/05-documentation.Rmd",
 "text": "Edit"
 },
 "download": null,
