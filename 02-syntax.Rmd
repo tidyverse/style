@@ -105,7 +105,7 @@ mean(x = 1:10, , FALSE)
 mean(, TRUE, x = c(1:10, NA))
 ```
 
-Avoid partial matching.
+Avoid [partial matching](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Argument-matching).
 
 ## Indenting
 
