@@ -247,6 +247,10 @@ if (y ==<span class="st"> </span><span class="dv">0</span>) {
   y ^<span class="st"> </span>x
 }
 
+<span class="kw">test_that</span>(<span class="st">&quot;call1 returns an ordered factor&quot;</span>, {
+  <span class="kw">expect_s3_class</span>(<span class="kw">call1</span>(x, y), <span class="kw">c</span>(<span class="st">&quot;factor&quot;</span>, <span class="st">&quot;ordered&quot;</span>))
+})
+
 <span class="co"># Bad</span>
 if (y &lt;<span class="st"> </span><span class="dv">0</span> &amp;&amp;<span class="st"> </span>debug)
 <span class="kw">message</span>(<span class="st">&quot;Y is negative&quot;</span>)

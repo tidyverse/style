@@ -215,7 +215,7 @@ add_two &lt;-<span class="st"> </span>function(x, y) {
 <p>There are two main design principles to bear in mind:</p>
 <ul>
 <li><p>A function should do one thing well.</p>
-<p>A function should be called either because it has side-effects or because it returns a value; not both. Strive to keep blocks within a function on one screen, &lt; 30 lines.</p></li>
+<p>A function should be called either because it has side-effects or because it returns a value; not both. Strive to keep blocks within a function on one screen. 20-30 lines per function are common. For functions that are significantly longer, consider splitting it into smaller functions.</p></li>
 <li><p>A function should be easily understandable in isolation.</p>
 <p>Avoid global options. If your function has a transient side-effect (i.e. you need to create a temporary file or set an option), clean up after yourself with <code>on.exit()</code>.</p></li>
 </ul>

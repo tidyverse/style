@@ -157,7 +157,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">4</span> Pipes</h1>
 <div id="introduction" class="section level2">
 <h2><span class="header-section-number">4.1</span> Introduction</h2>
-<p>Use <code>%&gt;%</code> when you find yourself composing more than three or more functions together into a nested call, or creating intermediate objects that you don’t care about.</p>
+<p>Use <code>%&gt;%</code> when you find yourself composing more than three or more functions together into a nested call, or creating intermediate objects that you don’t care about. Put each verb on its own line. This makes it simpler to rearrange them later, and makes it harder to overlook a step. It is ok to keep a one-step pipe in one line.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 foo_foo %&gt;%
 <span class="st">  </span><span class="kw">hop</span>(<span class="dt">through =</span> forest) %&gt;%
@@ -169,7 +169,10 @@ foo_foo &lt;-<span class="st"> </span><span class="kw">hop</span>(foo_foo, <span
 foo_foo &lt;-<span class="st"> </span><span class="kw">scoop</span>(foo_foo, <span class="dt">up =</span> field_mice)
 foo_foo &lt;-<span class="st"> </span><span class="kw">bop</span>(foo_foo, <span class="dt">on =</span> head)
 
-<span class="co"># Bad</span>
+iris %&gt;%<span class="st"> </span><span class="kw">group_by</span>(up) %&gt;%<span class="st"> </span><span class="kw">summarize_all</span>(mean) %&gt;%
+<span class="st">  </span>ungroup %&gt;%<span class="st"> </span><span class="kw">gather</span>(field_mice, foo_foo, -on) %&gt;%
+<span class="st">  </span><span class="kw">arrange</span>(head)
+
 <span class="kw">bop</span>(
   <span class="kw">scoop</span>(
     <span class="kw">hop</span>(foo_foo, <span class="dt">through =</span> forest),
