@@ -127,6 +127,10 @@ if (y == 0) {
   y ^ x
 }
 
+test_that("call1 returns an ordered factor", {
+  expect_s3_class(call1(x, y), c("factor", "ordered"))
+})
+
 # Bad
 if (y < 0 && debug)
 message("Y is negative")

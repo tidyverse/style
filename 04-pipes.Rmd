@@ -1,8 +1,11 @@
 # Pipes
 
 ## Introduction
-
-Use `%>%` when you find yourself composing three or more functions together into a nested call, or creating intermediate objects that you don't care about.
+Use `%>%` when you find yourself composing three or more functions together 
+into a nested call, or creating intermediate objects that you don't care about.
+Put each verb on its own line.  This makes it simpler to rearrange 
+them later, and makes it harder to overlook a step. It is ok to keep a one-step 
+pipe in one line.
 
 ```{r eval = FALSE}
 # Good
@@ -16,7 +19,10 @@ foo_foo <- hop(foo_foo, through = forest)
 foo_foo <- scoop(foo_foo, up = field_mice)
 foo_foo <- bop(foo_foo, on = head)
 
-# Bad
+iris %>% group_by(up) %>% summarize_all(mean) %>%
+  ungroup %>% gather(field_mice, foo_foo, -on) %>%
+  arrange(head)
+
 bop(
   scoop(
     hop(foo_foo, through = forest),
@@ -38,7 +44,8 @@ Avoid using the pipe when:
 
 ## Spacing and indenting
 
-`%>%` should always have a space before it and a new line after it. After the first step, each line should be indented by two spaces.
+`%>%` should always have a space before it and a new line after it. After the 
+first step, each line should be indented by two spaces.
 
 ```{r, eval = FALSE}
 # Good
