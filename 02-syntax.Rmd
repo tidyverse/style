@@ -9,9 +9,14 @@
 
 Variable and function names should use only lowercase letters, numbers, and `_`. 
 
-Use underscores (`_`) to separate words within a name. Base R uses dots in function names (`contrib.url()`) and class names (`data.frame`), but it's better to reserve dots exclusively for the S3 object system. In S3, methods are given the name `function.class`; if you also use `.` in function and class names you end up with confusing methods like `as.data.frame.data.frame()`.
+Use underscores (`_`) to separate words within a name. Base R uses dots in 
+function names (`contrib.url()`) and class names (`data.frame`), but it's 
+better to reserve dots exclusively for the S3 object system. In S3, methods are 
+given the name `function.class`; if you also use `.` in function and class 
+names you end up with confusing methods like `as.data.frame.data.frame()`.
 
-Generally, variable names should be nouns and function names should be verbs. Strive for names that are concise and meaningful (this is not easy!).
+Generally, variable names should be nouns and function names should be verbs. 
+Strive for names that are concise and meaningful (this is not easy!).
 
 ```{r, eval = FALSE}
 # Good
@@ -25,7 +30,8 @@ dayone
 djm1
 ```
 
-Where possible, avoid re-using names of common functions and variables. This will cause confusion for the readers of your code.
+Where possible, avoid re-using names of common functions and variables. This 
+will cause confusion for the readers of your code.
 
 ```{r, eval = FALSE}
 # Bad
@@ -36,7 +42,9 @@ mean <- function(x) sum(x)
 
 ## Spacing
 
-Put a space before and after all infix operators (=, +, -, <-, etc.), and when naming arguments in function calls. Always put a space after a comma, and never before (just like in regular English).
+Put a space before and after all infix operators (=, +, -, <-, etc.), and when 
+naming arguments in function calls. Always put a space after a comma, and never 
+before (just like in regular English).
 
 ```{r, eval = FALSE}
 # Good
@@ -46,7 +54,8 @@ average <- mean(feet / 12 + inches, na.rm = TRUE)
 average<-mean(feet/12+inches,na.rm=TRUE)
 ```
 
-There's a small exception to this rule: don't use spaces around `:`, `::`, and `:::`.
+There's a small exception to this rule: don't use spaces around `:`, `::`, and 
+`:::`.
 
 ```{r, eval = FALSE}
 # Good
@@ -70,7 +79,8 @@ if(debug)show(x)
 plot (x, y)
 ```
 
-Extra spacing (i.e., more than one space in a row) is ok if it improves alignment of equal signs or assignments (`<-`).
+Extra spacing (i.e., more than one space in a row) is ok if it improves 
+alignment of equal signs or assignments (`<-`).
 
 ```{r, eval = FALSE}
 list(
@@ -79,7 +89,8 @@ list(
 )
 ```
 
-Do not place spaces around code in parentheses or square brackets (unless there's a comma, in which case see above).
+Do not place spaces around code in parentheses or square brackets (unless 
+there's a comma, in which case see above).
 
 ```{r, eval = FALSE}
 # Good
@@ -94,7 +105,11 @@ x[1 ,]  # Space goes after comma not before
 
 ## Argument names
 
-A function's arguments typically fall into two broad categories: one supplies the __data__ to compute on; the other controls __details__ of computation. When you call a function, you typically omit the names of data arguments, because they are used so commonly. If you override the default value of an argument, use the full name:
+A function's arguments typically fall into two broad categories: one supplies 
+the __data__ to compute on; the other controls __details__ of computation. When 
+you call a function, you typically omit the names of data arguments, because 
+they are used so commonly. If you override the default value of an argument, 
+use the full name:
 
 ```{r, eval = FALSE}
 # Good
@@ -109,7 +124,11 @@ Avoid partial matching.
 
 ## Indenting
 
-Curly braces, `{}`, define the the most important hierarchy of R code. To make this hierarchy easy to see, always indent the code inside `{}` by two spaces. A `{` should never go on its own line and should always be followed by a new line. A `}` should always go on its own line, unless it's followed by `else` or `)`. 
+Curly braces, `{}`, define the the most important hierarchy of R code. To make 
+this hierarchy easy to see, always indent the code inside `{}` by two spaces. 
+A `{` should never go on its own line and should always be followed by a new 
+line. A `}` should always go on its own line, unless it's followed by `else` 
+or `)`. 
 
 ```{r, eval = FALSE}
 # Good
@@ -145,7 +164,9 @@ if (y == 0)
 } else { y ^ x }
 ```
 
-It's ok to drop the curly braces if you have a very simple and short `if` statement that fits on one line. If you have any doubt, it's better to use the full form.
+It's ok to drop the curly braces if you have a very simple and short `if` 
+statement that fits on one line. If you have any doubt, it's better to use the 
+full form.
 
 ```{r}
 y <- 10
@@ -154,9 +175,14 @@ x <- if (y < 20) "Too low" else "Too high"
 
 ## Long lines
 
-Strive to limit your code to 80 characters per line. This fits comfortably on a printed page with a reasonably sized font. If you find yourself running out of room, this is a good indication that you should encapsulate some of the work in a separate function.
+Strive to limit your code to 80 characters per line. This fits comfortably on a 
+printed page with a reasonably sized font. If you find yourself running out of 
+room, this is a good indication that you should encapsulate some of the work in 
+a separate function.
 
-If a function call is too long to fit on a single line, use one line each for the function name, each argument, and the closing `)`. This makes the code easier to read and to change later. 
+If a function call is too long to fit on a single line, use one line each for 
+the function name, each argument, and the closing `)`. This makes the code 
+easier to read and to change later. 
 
 ```{r, eval = FALSE}
 # Good
@@ -172,7 +198,9 @@ do_something_very_complicated("that", requires, many, arguments,
                               )
 ```
 
-You may also place several arguments on the same line if they are closely related to each other, e.g., strings in calls to `paste()` or `stop()`. When building strings, where possible match one line of code to one line of output. 
+You may also place several arguments on the same line if they are closely 
+related to each other, e.g., strings in calls to `paste()` or `stop()`. When 
+building strings, where possible match one line of code to one line of output. 
 
 ```{r, eval = FALSE}
 # Good
@@ -202,11 +230,13 @@ x = 5
 
 ## Semicolons
 
-Don't put `;` at the end of a line, and don't use `;` to put multiple commands on one line.
+Don't put `;` at the end of a line, and don't use `;` to put multiple commands 
+on one line.
 
 ## Quotes
 
-Use `"`, not `'`, for quoting text. The only exception is when the text already contains double quotes and no single quotes.
+Use `"`, not `'`, for quoting text. The only exception is when the text already 
+contains double quotes and no single quotes.
 
 ```{r}
 # Good

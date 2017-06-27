@@ -16,7 +16,8 @@ permutation()
 
 ## Long lines
 
-If a function definition runs over multiple lines, indent the second line to where the definition starts.
+If a function definition runs over multiple lines, indent the second line to 
+where the definition starts.
 
 ```{r, eval = FALSE}
 # Good
@@ -36,8 +37,8 @@ long_function_name <- function(a = "a long argument",
 ```
 
 ## `return()`
-
-Only use `return()` for early returns. Otherwise rely on R to return the result of the last evaluated expression.
+Only use `return()` for early returns. Otherwise rely on R to return the result 
+of the last evaluated expression.
 
 ```{r eval = FALSE}
 # Good
@@ -55,7 +56,10 @@ add_two <- function(x, y) {
 }
 ```
 
-If your function is called primarily for its side-effects (like printing, plotting, or saving to disk), it should return the first argument invisibly. This makes it possible to use the function as part of a pipe. `print` methods should usually do this, like this example from httr:
+If your function is called primarily for its side-effects (like printing, 
+plotting, or saving to disk), it should return the first argument invisibly. 
+This makes it possible to use the function as part of a pipe. `print` methods 
+should usually do this, like this example from httr:
 
 ```{r eval = FALSE}
 print.url <- function(x, ...) {
@@ -66,7 +70,8 @@ print.url <- function(x, ...) {
 
 ## Comments
 
-In code, use comments to explain the "why" not the "what" or "how". Each line of a comment should begin with the comment symbol and a single space: `# `.
+In code, use comments to explain the "why" not the "what" or "how". Each line 
+of a comment should begin with the comment symbol and a single space: `# `.
 
 ## Design
 
