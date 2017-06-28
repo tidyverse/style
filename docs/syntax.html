@@ -172,7 +172,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>— Phil Karlton</p>
 </blockquote>
 <p>Variable and function names should use only lowercase letters, numbers, and <code>_</code>.</p>
-<p>Use underscores (<code>_</code>) to separate words within a name. Base R uses dots in function names (<code>contrib.url()</code>) and class names (<code>data.frame</code>), but it’s better to reserve dots exclusively for the S3 object system. In S3, methods are given the name <code>function.class</code>; if you also use in <code>.</code> function and class names you end up with confusing methods like <code>as.data.frame.data.frame()</code>.</p>
+<p>Use underscores (<code>_</code>) to separate words within a name. Base R uses dots in function names (<code>contrib.url()</code>) and class names (<code>data.frame</code>), but it’s better to reserve dots exclusively for the S3 object system. In S3, methods are given the name <code>function.class</code>; if you also use <code>.</code> in function and class names you end up with confusing methods like <code>as.data.frame.data.frame()</code>.</p>
 <p>Generally, variable names should be nouns and function names should be verbs. Strive for names that are concise and meaningful (this is not easy!).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 day_one
@@ -256,6 +256,10 @@ if (y ==<span class="st"> </span><span class="dv">0</span>) {
 } else {
   y ^<span class="st"> </span>x
 }
+
+<span class="kw">test_that</span>(<span class="st">&quot;call1 returns an ordered factor&quot;</span>, {
+  <span class="kw">expect_s3_class</span>(<span class="kw">call1</span>(x, y), <span class="kw">c</span>(<span class="st">&quot;factor&quot;</span>, <span class="st">&quot;ordered&quot;</span>))
+})
 
 <span class="co"># Bad</span>
 if (y &lt;<span class="st"> </span><span class="dv">0</span> &amp;&amp;<span class="st"> </span>debug)

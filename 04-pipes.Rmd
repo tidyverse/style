@@ -1,8 +1,11 @@
 # Pipes
 
 ## Introduction
-
-Use `%>%` when you find yourself composing more than three or more functions together into a nested call, or creating intermediate objects that you don't care about.
+Use `%>%` when you find yourself composing three or more functions together 
+into a nested call, or creating intermediate objects that you don't care about.
+Put each verb on its own line.  This makes it simpler to rearrange 
+them later, and makes it harder to overlook a step. It is ok to keep a one-step 
+pipe in one line.
 
 ```{r eval = FALSE}
 # Good
@@ -16,7 +19,10 @@ foo_foo <- hop(foo_foo, through = forest)
 foo_foo <- scoop(foo_foo, up = field_mice)
 foo_foo <- bop(foo_foo, on = head)
 
-# Bad
+iris %>% group_by(up) %>% summarize_all(mean) %>%
+  ungroup %>% gather(field_mice, foo_foo, -on) %>%
+  arrange(head)
+
 bop(
   scoop(
     hop(foo_foo, through = forest),
@@ -26,7 +32,7 @@ bop(
 )
 ```
 
-(If you're not familiar with Litte )
+(If you're not familiar with Litte)
 
 Avoid using the pipe when:
 
@@ -38,13 +44,14 @@ Avoid using the pipe when:
 
 ## Spacing and indenting
 
-`%>%` should always have a space before it and a new line after it. After the first step, each line should be indented by two spaces.
+`%>%` should always have a space before it and a new line after it. After the 
+first step, each line should be indented by two spaces.
 
 ```{r, eval = FALSE}
 # Good
 iris %>%
   group_by(Species) %>%
-  summarize_if(is.numeric(), mean) %>%
+  summarize_if(is.numeric, mean) %>%
   ungroup() %>%
   gather(measure, value, -Species) %>%
   arrange(value)
@@ -55,7 +62,8 @@ ungroup %>% gather(measure, value, -Species) %>%
 arrange(value)
 ```
 
-It is ok to keep a one-step pipe on one line, although depending on the context, you may want to rewrite to remove the pipe.
+It is ok to keep a one-step pipe on one line, although depending on the 
+context, you may want to rewrite to remove the pipe.
 
 ```{r, eval = FALSE}
 # good
@@ -65,7 +73,8 @@ arrange(iris, Petal.Width)
 
 ## No arguments
 
-magrittr allows you to omit `()` on functions that don't have arguments. Avoid this.
+magrittr allows you to omit `()` on functions that don't have arguments. Avoid 
+this.
 
 ```{r, eval = FALSE}
 # Good
@@ -82,7 +91,8 @@ x %>%
 
 ## Long lines
 
-If the arguments to a function don't all fit on one line, put each argument on its own line and indent:
+If the arguments to a function don't all fit on one line, put each argument on 
+its own line and indent:
 
 ```{r, eval = FALSE}
 iris %>%
@@ -96,11 +106,17 @@ iris %>%
 
 ## Assignment
 
-You can use to use `->` to create an object at the end of the pipe.
+You can use `->` to create an object at the end of the pipe.
 
-Personally, I think you should avoid this technique. While starting with the assignment is a little more work when writing the code, it makes reading the code easier. This is because the name acts as a heading, which reminds you of the purpose of the pipe.
+Personally, I think you should avoid this technique. While starting with the 
+assignment is a little more work when writing the code, it makes reading the 
+code easier. This is because the name acts as a heading, which reminds you of 
+the purpose of the pipe.
 
 ## Comments
 
-In data analysis code, use comments to record important findings and analysis decisions. If you need comments to explain what your code is doing, consider rewriting your code to be clearer. If you discover that you have more comments than code, considering switching to RMarkdown.
+In data analysis code, use comments to record important findings and analysis 
+decisions. If you need comments to explain what your code is doing, consider 
+rewriting your code to be clearer. If you discover that you have more comments 
+than code, considering switching to RMarkdown.
 
