@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="syntax.html">
-<link rel="next" href="pipes.html">
+<link rel="prev" href="pipes.html">
+
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -163,72 +163,72 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="functions" class="section level1">
-<h1><span class="header-section-number">3</span> Functions</h1>
-<div id="naming" class="section level2">
-<h2><span class="header-section-number">3.1</span> Naming</h2>
-<p>Use verbs for function names, where possible.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
-<span class="kw">add_row</span>()
-<span class="kw">permute</span>()
-
-<span class="co"># Bad</span>
-<span class="kw">row_adder</span>()
-<span class="kw">permutation</span>()</code></pre></div>
+<div id="code-documentation" class="section level1">
+<h1><span class="header-section-number">5</span> Code Documentation</h1>
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">5.1</span> Introduction</h2>
+<p>Documentation of code is essential, even if the only person using your code is future-you. Use <a href="https://github.com/klutometis/roxygen">roxygen2</a> with enabled <a href="https://github.com/klutometis/roxygen/blob/master/vignettes/markdown.Rmd">markdown</a> support to keep your documentation close to the code.</p>
 </div>
-<div id="long-lines-1" class="section level2">
-<h2><span class="header-section-number">3.2</span> Long lines</h2>
-<p>If a function definition runs over multiple lines, indent the second line to where the definition starts.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
-long_function_name &lt;-<span class="st"> </span>function(<span class="dt">a =</span> <span class="st">&quot;a long argument&quot;</span>,
-                               <span class="dt">b =</span> <span class="st">&quot;another argument&quot;</span>,
-                               <span class="dt">c =</span> <span class="st">&quot;another long argument&quot;</span>) {
-  <span class="co"># As usual code is indented by two spaces.</span>
-}
-
-<span class="co"># Bad</span>
-long_function_name &lt;-<span class="st"> </span>function(<span class="dt">a =</span> <span class="st">&quot;a long argument&quot;</span>,
-  <span class="dt">b =</span> <span class="st">&quot;another argument&quot;</span>,
-  <span class="dt">c =</span> <span class="st">&quot;another long argument&quot;</span>) {
-  <span class="co"># Here it&#39;s hard to spot where the definition end and the</span>
-  <span class="co"># code begins</span>
-}</code></pre></div>
+<div id="title-and-description" class="section level2">
+<h2><span class="header-section-number">5.2</span> Title and Description</h2>
+<p>For the title, describe concisely what the function does at the very top of your function documentation. Do not use a dot at the end of the title and use title style capitalization. For both the title and the description, there is no need to use the explicit <code>@title</code> or <code>@description</code> tag. To visually separate the title and the description, leave one line blank after each of them.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Combine Values into a Vector or List</span>
+<span class="co">#&#39; </span>
+<span class="co">#&#39; This is a generic function which combines its arguments.</span>
+<span class="co">#&#39;</span></code></pre></div>
 </div>
-<div id="return" class="section level2">
-<h2><span class="header-section-number">3.3</span> <code>return()</code></h2>
-<p>Only use <code>return()</code> for early returns. Otherwise rely on R to return the result of the last evaluated expression.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
-find_abs &lt;-<span class="st"> </span>function(x, y){
-  if (x &gt;<span class="st"> </span><span class="dv">0</span>) <span class="kw">return</span>(x)
-  x *<span class="st"> </span>-<span class="dv">1</span>
-}
-add_two &lt;-<span class="st"> </span>function(x, y) {
-  x +<span class="st"> </span>y
-}
-
-<span class="co"># Bad</span>
-add_two &lt;-<span class="st"> </span>function(x, y) {
-  <span class="kw">return</span>(x +<span class="st"> </span>y)
-}</code></pre></div>
-<p>If your function is called primarily for its side-effects (like printing, plotting, or saving to disk), it should return the first argument invisibly. This makes it possible to use the function as part of a pipe. <code>print</code> methods should usually do this, like this example from httr:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">print.url &lt;-<span class="st"> </span>function(x, ...) {
-  <span class="kw">cat</span>(<span class="st">&quot;Url: &quot;</span>, <span class="kw">build_url</span>(x), <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
-  <span class="kw">invisible</span>(x)
-}</code></pre></div>
+<div id="indention" class="section level2">
+<h2><span class="header-section-number">5.3</span> Indention</h2>
+<p>Always indent with one space after <code>#'</code>. If any description corresponding to a <code>roxygen</code> tag spans over multiple lines, add another two spaces of extra indention.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @param key The bare (unquoted) name of the column whose values will be used </span>
+<span class="co">#&#39;   as column headings. </span></code></pre></div>
+<p>Alternatively, tags that span over multiple lines (like <code>@examples</code>) can have the corresponding tag on its own line and subsequent lines do not need extra indention.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @examples</span>
+<span class="co">#&#39; 1 + 1</span>
+<span class="co">#&#39; sin(pi)</span></code></pre></div>
+<p>The section ‘Description’ does not need extra indention either.</p>
 </div>
-<div id="comments" class="section level2">
-<h2><span class="header-section-number">3.4</span> Comments</h2>
-<p>In code, use comments to explain the “why” not the “what” or “how”. Each line of a comment should begin with the comment symbol and a single space: <code>#</code>.</p>
+<div id="capitalization" class="section level2">
+<h2><span class="header-section-number">5.4</span> Capitalization</h2>
+<p>The first letter of every description corresponding to a <code>roxygen</code> tag is upper case.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @param key The bare (unquoted) name of the column whose values will be used </span>
+<span class="co">#&#39;   as column headings. </span></code></pre></div>
+<p>An exception to this rule are words in <code>code font</code> (see below), in which case also lower case letters can occur.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @seealso [fct_lump()] </span></code></pre></div>
 </div>
-<div id="design" class="section level2">
-<h2><span class="header-section-number">3.5</span> Design</h2>
-<p>There are two main design principles to bear in mind:</p>
+<div id="periods" class="section level2">
+<h2><span class="header-section-number">5.5</span> Periods</h2>
+<p>For all bullets, enumerations argument descriptions and the like, put a period at the end of each text element, even if it is only a few words. Use a double point before you start to enumerate.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @details In the following, we present the bullets of the list:</span>
+<span class="co">#&#39; * item one.</span></code></pre></div>
+</div>
+<div id="reference" class="section level2">
+<h2><span class="header-section-number">5.6</span> Reference</h2>
+<p>Cross-referencing is encouraged, both within R’s help file system as well as to external resources. Use <code>()</code> when referencing function calls after the function name.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @seealso [fct_lump()] </span></code></pre></div>
+<p>When referring to other sections in the documentation, use single quotes and upper title style capitalization.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @param p1 Another parameter. See &#39;Details&#39;.</span></code></pre></div>
+</div>
+<div id="line-break" class="section level2">
+<h2><span class="header-section-number">5.7</span> Line Break</h2>
+<p>To force a line break in the <code>.Rd</code> file, simply put an empty line after the line you want to insert the line break and <code>roxygen2</code> will do the job.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Some stuff.</span>
+<span class="co">#&#39; </span>
+<span class="co">#&#39; Some remotely related stuff on a new line.</span></code></pre></div>
+</div>
+<div id="code-font" class="section level2">
+<h2><span class="header-section-number">5.8</span> <code>Code Font</code></h2>
+<p>As a general rule, use code font when you are referring to something that has a specific and well-defined meaning within the R language or your code specifically. If such a specific meaning is attributed to a term, but you mean just the general concept, do not use code font.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; A matrix can store data. Matematicians used matrices before R existed.</span></code></pre></div>
+<p>The general rule introduced above implies to use <code>code font</code> for:</p>
 <ul>
-<li><p>A function should do one thing well.</p>
-<p>A function should be called either because it has side-effects or because it returns a value; not both. Strive to keep blocks within a function on one screen. 20-30 lines per function are common. For functions that are significantly longer, consider splitting it into smaller functions.</p></li>
-<li><p>A function should be easily understandable in isolation.</p>
-<p>Avoid global options. If your function has a transient side-effect (i.e. you need to create a temporary file or set an option), clean up after yourself with <code>on.exit()</code>.</p></li>
+<li>Function names.</li>
+<li>Function arguments.</li>
+<li>Logical values.</li>
+<li>Literal R code.</li>
+<li><code>NA</code>, <code>NaN</code>, <code>...</code>, <code>NULL</code> etc.</li>
 </ul>
+<p>To refer to the R language, use \R.</p>
 
 </div>
 </div>
@@ -237,8 +237,8 @@ add_two &lt;-<span class="st"> </span>function(x, y) {
           </div>
         </div>
       </div>
-<a href="syntax.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="pipes.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="pipes.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -257,7 +257,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/tidyverse/style/edit/master/03-functions.Rmd",
+"link": "https://github.com/tidyverse/style/edit/master/05-documentation.Rmd",
 "text": "Edit"
 },
 "download": null,

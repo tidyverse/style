@@ -1,0 +1,145 @@
+# Code Documentation
+
+## Introduction
+
+Documentation of code is essential, even if the only person using your code 
+is future-you. Use 
+[roxygen2](https://github.com/klutometis/roxygen) with enabled [markdown](https://github.com/klutometis/roxygen/blob/master/vignettes/markdown.Rmd)
+support to keep your documentation close to the code.
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+## Title and Description
+For the title, describe concisely what the function does at the very 
+top of your function documentation. Titles should use sentence case but not end 
+with a full stop.
+```{r}
+#' Combine Values into a Vector or List
+#' 
+#' This is a generic function which combines its arguments.
+#'
+```
+
+For both the title and the description, there is no need to use the explicit 
+`@title` or `@description` tag, except if the description is multiple 
+paragraphs or includes more complex formatting like a bulleted list. 
+```{r}
+#' Apply a function to each element of a vector
+#'
+#' @description
+#' The map function transform the input, returning a vector the same length
+#' as the input. `map()` returns a list or a data frame; `map_lgl()`,
+#' `map_int()`, `map_dbl()` and `map_chr()` return vectors of the
+#' corresponding type (or die trying); `map_dfr()` and `map_dfc()` return
+#' data frames created by row-binding and column-binding respectively.
+#' They require dplyr to be installed.
+
+```
+
+## Indention
+Always indent with one space after `#'`. If any description corresponding to a 
+`roxygen` tag spans over multiple lines, add another two spaces of extra 
+indention.
+```{r}
+#' @param key The bare (unquoted) name of the column whose values will be used 
+#'   as column headings. 
+```
+
+Alternatively, tags that span over multiple lines (like `@examples` and 
+`@section`) can have the corresponding tag on its own line and subsequent lines 
+do not need extra indention.
+```{r}
+#' @examples
+#' 1 + 1
+#' sin(pi)
+```
+The section 'Description' does not need extra indention either.
+
+## Documenting Parameters
+For most tags, like `@param`, `@seealso` and `@return`, the text should be a 
+sentence, starting with a capital letter and ending with a full stop.
+```{r}
+#' @param key The bare (unquoted) name of the column whose values will be used 
+#'   as column headings. 
+```
+
+If some functions share parameters, you can use `@inheritParams` to keep the 
+documentation in one place and avoid duplication descriptions in multiple places.
+```{r}
+#' @inheritParams argument function_to_inherit_from
+```
+
+## Capitalization and Full Stops
+For all bullets, enumerations argument descriptions and the like, use sentence
+case and put a period at the end of each text element, even if it is only a few 
+words. However, avoid capitalization of function names or packages since R is 
+case sensitive. Use a double point before you start to enumerate.
+```{r}
+#' @details In the following, we present the bullets of the list:
+#' * Four cats are few animals.
+#' * forcats is a package.
+```
+
+## Reference
+Cross-referencing is encouraged, both within R's help file system as well as to 
+external resources. Use `()` when referencing function calls after the function
+name.
+```{r}
+#' @seealso [fct_lump()] 
+```
+
+When referring to other sections in the documentation, use single quotes and 
+upper title style capitalization.
+```{r}
+#' @param p1 Another parameter. See 'Details'.
+```
+
+If you have a family of related functions, you can use the `@family` tag to 
+automatically add appropriate lists and interlinks to the `@seealso` section.
+Family names are plural. In dplyr, the verbs `arrange`, `filter`, `mutate`,
+`slice`, `summarize` form the family single table verbs.
+```{r}
+#' @family single table verbs
+```
+
+## Line Break
+Leave one line blank before / after each description. 
+```{r}
+#' @section Tidy data:
+#' When applied to a data frame, row names are silently dropped. To preserve,
+#' convert to an explicit variable with [tibble::rownames_to_column()].
+#'
+#' @section Scoped filtering:
+#' The three [scoped] variants ([filter_all()], [filter_if()] and
+#' [filter_at()]) make it easy to apply a filtering condition to a
+#' selection of variables.
+```
+
+If you want insert a line break within a section, also leave a line break in the 
+`.Rd` file.
+```{r}
+#' @param ... Data frames to combine.
+#'
+#'   Each argument can either be a data frame, a list that could be a data
+#'   frame, or a list of data frames.
+#'
+#'   When row-binding, columns are matched by name, and any missing
+#'   columns with be filled with NA.
+#'
+#'   When column-binding, rows are matched by position, so all data
+#'   frames must have the same number of rows. To match by value, not
+#'   position, see [join].
+```
+
+## `Code Font`
+Text that contains valid R code should be marked as such.
+
+* Function names.
+* Function arguments. 
+* Logical values.
+* Literal R code.
+* `NA`, `NaN`, `...`, `NULL` etc.
+
+To refer to the R language, use \\R.
