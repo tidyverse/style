@@ -137,8 +137,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.1" data-path="code-documentation.html"><a href="code-documentation.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.2" data-path="code-documentation.html"><a href="code-documentation.html#title-and-description"><i class="fa fa-check"></i><b>5.2</b> Title and Description</a></li>
 <li class="chapter" data-level="5.3" data-path="code-documentation.html"><a href="code-documentation.html#indention"><i class="fa fa-check"></i><b>5.3</b> Indention</a></li>
-<li class="chapter" data-level="5.4" data-path="code-documentation.html"><a href="code-documentation.html#capitalization"><i class="fa fa-check"></i><b>5.4</b> Capitalization</a></li>
-<li class="chapter" data-level="5.5" data-path="code-documentation.html"><a href="code-documentation.html#periods"><i class="fa fa-check"></i><b>5.5</b> Periods</a></li>
+<li class="chapter" data-level="5.4" data-path="code-documentation.html"><a href="code-documentation.html#documenting-parameters"><i class="fa fa-check"></i><b>5.4</b> Documenting Parameters</a></li>
+<li class="chapter" data-level="5.5" data-path="code-documentation.html"><a href="code-documentation.html#capitalization-and-full-stops"><i class="fa fa-check"></i><b>5.5</b> Capitalization and Full Stops</a></li>
 <li class="chapter" data-level="5.6" data-path="code-documentation.html"><a href="code-documentation.html#reference"><i class="fa fa-check"></i><b>5.6</b> Reference</a></li>
 <li class="chapter" data-level="5.7" data-path="code-documentation.html"><a href="code-documentation.html#line-break"><i class="fa fa-check"></i><b>5.7</b> Line Break</a></li>
 <li class="chapter" data-level="5.8" data-path="code-documentation.html"><a href="code-documentation.html#code-font"><i class="fa fa-check"></i><b>5.8</b> <code>Code Font</code></a></li>
@@ -171,36 +171,47 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="title-and-description" class="section level2">
 <h2><span class="header-section-number">5.2</span> Title and Description</h2>
-<p>For the title, describe concisely what the function does at the very top of your function documentation. Do not use a dot at the end of the title and use title style capitalization. For both the title and the description, there is no need to use the explicit <code>@title</code> or <code>@description</code> tag. To visually separate the title and the description, leave one line blank after each of them.</p>
+<p>For the title, describe concisely what the function does at the very top of your function documentation. Titles should use sentence case but not end with a full stop.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Combine Values into a Vector or List</span>
 <span class="co">#&#39; </span>
 <span class="co">#&#39; This is a generic function which combines its arguments.</span>
 <span class="co">#&#39;</span></code></pre></div>
+<p>For both the title and the description, there is no need to use the explicit <code>@title</code> or <code>@description</code> tag, except if the description is multiple paragraphs or includes more complex formatting like a bulleted list.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Apply a function to each element of a vector</span>
+<span class="co">#&#39;</span>
+<span class="co">#&#39; @description</span>
+<span class="co">#&#39; The map function transform the input, returning a vector the same length</span>
+<span class="co">#&#39; as the input. `map()` returns a list or a data frame; `map_lgl()`,</span>
+<span class="co">#&#39; `map_int()`, `map_dbl()` and `map_chr()` return vectors of the</span>
+<span class="co">#&#39; corresponding type (or die trying); `map_dfr()` and `map_dfc()` return</span>
+<span class="co">#&#39; data frames created by row-binding and column-binding respectively.</span>
+<span class="co">#&#39; They require dplyr to be installed.</span></code></pre></div>
 </div>
 <div id="indention" class="section level2">
 <h2><span class="header-section-number">5.3</span> Indention</h2>
 <p>Always indent with one space after <code>#'</code>. If any description corresponding to a <code>roxygen</code> tag spans over multiple lines, add another two spaces of extra indention.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @param key The bare (unquoted) name of the column whose values will be used </span>
 <span class="co">#&#39;   as column headings. </span></code></pre></div>
-<p>Alternatively, tags that span over multiple lines (like <code>@examples</code>) can have the corresponding tag on its own line and subsequent lines do not need extra indention.</p>
+<p>Alternatively, tags that span over multiple lines (like <code>@examples</code> and <code>@section</code>) can have the corresponding tag on its own line and subsequent lines do not need extra indention.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @examples</span>
 <span class="co">#&#39; 1 + 1</span>
 <span class="co">#&#39; sin(pi)</span></code></pre></div>
 <p>The section ‘Description’ does not need extra indention either.</p>
 </div>
-<div id="capitalization" class="section level2">
-<h2><span class="header-section-number">5.4</span> Capitalization</h2>
-<p>The first letter of every description corresponding to a <code>roxygen</code> tag is upper case.</p>
+<div id="documenting-parameters" class="section level2">
+<h2><span class="header-section-number">5.4</span> Documenting Parameters</h2>
+<p>For most tags, like <code>@param</code>, <code>@seealso</code> and <code>@return</code>, the text should be a sentence, starting with a capital letter and ending with a full stop.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @param key The bare (unquoted) name of the column whose values will be used </span>
 <span class="co">#&#39;   as column headings. </span></code></pre></div>
-<p>An exception to this rule are words in <code>code font</code> (see below), in which case also lower case letters can occur.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @seealso [fct_lump()] </span></code></pre></div>
+<p>If some functions share parameters, you can use <code>@inheritParams</code> to keep the documentation in one place and avoid duplication descriptions in multiple places.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @inheritParams argument function_to_inherit_from</span></code></pre></div>
 </div>
-<div id="periods" class="section level2">
-<h2><span class="header-section-number">5.5</span> Periods</h2>
-<p>For all bullets, enumerations argument descriptions and the like, put a period at the end of each text element, even if it is only a few words. Use a double point before you start to enumerate.</p>
+<div id="capitalization-and-full-stops" class="section level2">
+<h2><span class="header-section-number">5.5</span> Capitalization and Full Stops</h2>
+<p>For all bullets, enumerations argument descriptions and the like, use sentence case and put a period at the end of each text element, even if it is only a few words. However, avoid capitalization of function names or packages since R is case sensitive. Use a double point before you start to enumerate.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @details In the following, we present the bullets of the list:</span>
-<span class="co">#&#39; * item one.</span></code></pre></div>
+<span class="co">#&#39; * Four cats are few animals.</span>
+<span class="co">#&#39; * forcats is a package.</span></code></pre></div>
 </div>
 <div id="reference" class="section level2">
 <h2><span class="header-section-number">5.6</span> Reference</h2>
@@ -208,19 +219,36 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @seealso [fct_lump()] </span></code></pre></div>
 <p>When referring to other sections in the documentation, use single quotes and upper title style capitalization.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @param p1 Another parameter. See &#39;Details&#39;.</span></code></pre></div>
+<p>If you have a family of related functions, you can use the <code>@family</code> tag to automatically add appropriate lists and interlinks to the <code>@seealso</code> section. Family names are plural. In dplyr, the verbs <code>arrange</code>, <code>filter</code>, <code>mutate</code>, <code>slice</code>, <code>summarize</code> form the family single table verbs.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @family single table verbs</span></code></pre></div>
 </div>
 <div id="line-break" class="section level2">
 <h2><span class="header-section-number">5.7</span> Line Break</h2>
-<p>To force a line break in the <code>.Rd</code> file, simply put an empty line after the line you want to insert the line break and <code>roxygen2</code> will do the job.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Some stuff.</span>
-<span class="co">#&#39; </span>
-<span class="co">#&#39; Some remotely related stuff on a new line.</span></code></pre></div>
+<p>Leave one line blank before / after each description.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @section Tidy data:</span>
+<span class="co">#&#39; When applied to a data frame, row names are silently dropped. To preserve,</span>
+<span class="co">#&#39; convert to an explicit variable with [tibble::rownames_to_column()].</span>
+<span class="co">#&#39;</span>
+<span class="co">#&#39; @section Scoped filtering:</span>
+<span class="co">#&#39; The three [scoped] variants ([filter_all()], [filter_if()] and</span>
+<span class="co">#&#39; [filter_at()]) make it easy to apply a filtering condition to a</span>
+<span class="co">#&#39; selection of variables.</span></code></pre></div>
+<p>If you want insert a line break within a section, also leave a line break in the <code>.Rd</code> file.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @param ... Data frames to combine.</span>
+<span class="co">#&#39;</span>
+<span class="co">#&#39;   Each argument can either be a data frame, a list that could be a data</span>
+<span class="co">#&#39;   frame, or a list of data frames.</span>
+<span class="co">#&#39;</span>
+<span class="co">#&#39;   When row-binding, columns are matched by name, and any missing</span>
+<span class="co">#&#39;   columns with be filled with NA.</span>
+<span class="co">#&#39;</span>
+<span class="co">#&#39;   When column-binding, rows are matched by position, so all data</span>
+<span class="co">#&#39;   frames must have the same number of rows. To match by value, not</span>
+<span class="co">#&#39;   position, see [join].</span></code></pre></div>
 </div>
 <div id="code-font" class="section level2">
 <h2><span class="header-section-number">5.8</span> <code>Code Font</code></h2>
-<p>As a general rule, use code font when you are referring to something that has a specific and well-defined meaning within the R language or your code specifically. If such a specific meaning is attributed to a term, but you mean just the general concept, do not use code font.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; A matrix can store data. Matematicians used matrices before R existed.</span></code></pre></div>
-<p>The general rule introduced above implies to use <code>code font</code> for:</p>
+<p>Text that contains valid R code should be marked as such.</p>
 <ul>
 <li>Function names.</li>
 <li>Function arguments.</li>
