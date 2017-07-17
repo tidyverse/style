@@ -66,7 +66,7 @@ It is ok to keep a one-step pipe on one line, although depending on the
 context, you may want to rewrite to remove the pipe.
 
 ```{r, eval = FALSE}
-# good
+# Good
 iris %>% arrange(Petal.Width)
 arrange(iris, Petal.Width)
 ```
