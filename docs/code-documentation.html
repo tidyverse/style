@@ -6,9 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>The tidyverse style guide</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="The tidyverse style guide">
-  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="The tidyverse style guide" />
   <meta property="og:type" content="book" />
@@ -33,7 +32,6 @@
   
   
 <link rel="prev" href="pipes.html">
-
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -94,6 +92,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <body>
 
 
+
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
 
     <div class="book-summary">
@@ -142,6 +141,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.6" data-path="code-documentation.html"><a href="code-documentation.html#reference"><i class="fa fa-check"></i><b>5.6</b> Reference</a></li>
 <li class="chapter" data-level="5.7" data-path="code-documentation.html"><a href="code-documentation.html#line-break"><i class="fa fa-check"></i><b>5.7</b> Line Break</a></li>
 <li class="chapter" data-level="5.8" data-path="code-documentation.html"><a href="code-documentation.html#code-font"><i class="fa fa-check"></i><b>5.8</b> <code>Code Font</code></a></li>
+<li class="chapter" data-level="5.9" data-path="code-documentation.html"><a href="code-documentation.html#internal-functions"><i class="fa fa-check"></i><b>5.9</b> Internal Functions</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -171,12 +171,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="title-and-description" class="section level2">
 <h2><span class="header-section-number">5.2</span> Title and Description</h2>
-<p>For the title, describe concisely what the function does at the very top of your function documentation. Titles should use sentence case but not end with a full stop.</p>
+<p>For the title, describe concisely what the function does in the very first line of your function documentation. Titles should use sentence case but not end with a full stop.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Combine Values into a Vector or List</span>
 <span class="co">#&#39; </span>
 <span class="co">#&#39; This is a generic function which combines its arguments.</span>
 <span class="co">#&#39;</span></code></pre></div>
-<p>For both the title and the description, there is no need to use the explicit <code>@title</code> or <code>@description</code> tag, except if the description is multiple paragraphs or includes more complex formatting like a bulleted list.</p>
+<p>There is no need to use the explicit <code>@title</code> or <code>@description</code> tags, except in the case of the description if it is multiple paragraphs or includes more complex formatting like a bulleted list.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Apply a function to each element of a vector</span>
 <span class="co">#&#39;</span>
 <span class="co">#&#39; @description</span>
@@ -203,23 +203,23 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>For most tags, like <code>@param</code>, <code>@seealso</code> and <code>@return</code>, the text should be a sentence, starting with a capital letter and ending with a full stop.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @param key The bare (unquoted) name of the column whose values will be used </span>
 <span class="co">#&#39;   as column headings. </span></code></pre></div>
-<p>If some functions share parameters, you can use <code>@inheritParams</code> to keep the documentation in one place and avoid duplication descriptions in multiple places.</p>
+<p>If some functions share parameters, you can use <code>@inheritParams</code> to avoid duplication of content in multiple places.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @inheritParams argument function_to_inherit_from</span></code></pre></div>
 </div>
 <div id="capitalization-and-full-stops" class="section level2">
 <h2><span class="header-section-number">5.5</span> Capitalization and Full Stops</h2>
-<p>For all bullets, enumerations argument descriptions and the like, use sentence case and put a period at the end of each text element, even if it is only a few words. However, avoid capitalization of function names or packages since R is case sensitive. Use a double point before you start to enumerate.</p>
+<p>For all bullets, enumerations, argument descriptions and the like, use sentence case and put a period at the end of each text element, even if it is only a few words. However, avoid capitalization of function names or packages since R is case sensitive. Use a semi-colon before you start to enumerate.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @details In the following, we present the bullets of the list:</span>
 <span class="co">#&#39; * Four cats are few animals.</span>
 <span class="co">#&#39; * forcats is a package.</span></code></pre></div>
 </div>
 <div id="reference" class="section level2">
 <h2><span class="header-section-number">5.6</span> Reference</h2>
-<p>Cross-referencing is encouraged, both within R’s help file system as well as to external resources. Use <code>()</code> when referencing function calls after the function name.</p>
+<p>Cross-referencing is encouraged, both within R’s help file system as well as to external resources. Include parentheses after function names when referencing function calls.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @seealso [fct_lump()] </span></code></pre></div>
-<p>When referring to other sections in the documentation, use single quotes and upper title style capitalization.</p>
+<p>When referring to other sections in the documentation, use single quotes and title case.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @param p1 Another parameter. See &#39;Details&#39;.</span></code></pre></div>
-<p>If you have a family of related functions, you can use the <code>@family</code> tag to automatically add appropriate lists and interlinks to the <code>@seealso</code> section. Family names are plural. In dplyr, the verbs <code>arrange</code>, <code>filter</code>, <code>mutate</code>, <code>slice</code>, <code>summarize</code> form the family single table verbs.</p>
+<p>If you have a family of related functions, you can use the <code>@family</code> tag to automatically add appropriate lists and interlinks to the <code>@seealso</code> section. Family names are plural. In dplyr, the verbs <code>arrange</code>, <code>filter</code>, <code>mutate</code>, <code>slice</code>, <code>summarize</code> form the family of single table verbs.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @family single table verbs</span></code></pre></div>
 </div>
 <div id="line-break" class="section level2">
@@ -233,7 +233,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co">#&#39; The three [scoped] variants ([filter_all()], [filter_if()] and</span>
 <span class="co">#&#39; [filter_at()]) make it easy to apply a filtering condition to a</span>
 <span class="co">#&#39; selection of variables.</span></code></pre></div>
-<p>If you want insert a line break within a section, also leave a line break in the <code>.Rd</code> file.</p>
+<p>If you want to insert a line break within a section, also leave a line break in the <code>.Rd</code> file.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @param ... Data frames to combine.</span>
 <span class="co">#&#39;</span>
 <span class="co">#&#39;   Each argument can either be a data frame, a list that could be a data</span>
@@ -257,6 +257,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><code>NA</code>, <code>NaN</code>, <code>...</code>, <code>NULL</code> etc.</li>
 </ul>
 <p>To refer to the R language, use \R.</p>
+</div>
+<div id="internal-functions" class="section level2">
+<h2><span class="header-section-number">5.9</span> Internal Functions</h2>
+<p>Internal functions should be documented with <code>#'</code> comments as per usual. Use the <code>@noRd</code> tag to prevent <code>.Rd</code> files from being generated.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Drop last</span>
+<span class="co">#&#39;</span>
+<span class="co">#&#39; Drops the last element from a vector.</span>
+<span class="co">#&#39;</span>
+<span class="co">#&#39; @param x A vector object to be trimmed.</span>
+<span class="co">#&#39;</span>
+<span class="co">#&#39; @noRd</span></code></pre></div>
 
 </div>
 </div>
@@ -267,7 +278,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       </div>
 <a href="pipes.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
