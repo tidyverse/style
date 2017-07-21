@@ -143,3 +143,18 @@ Text that contains valid R code should be marked as such.
 * `NA`, `NaN`, `...`, `NULL` etc.
 
 To refer to the R language, use \\R.
+
+## Internal Functions
+
+Internal functions should be documented with `#'` comments as per usual. 
+Use the `@noRd` tag to prevent `.Rd` files from being generated.
+
+```{r}
+#' Drop last
+#'
+#' Drops the last element from a vector.
+#'
+#' @param x A vector object to be trimmed.
+#'
+#' @noRd
+```
