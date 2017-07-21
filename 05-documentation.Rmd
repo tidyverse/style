@@ -12,11 +12,13 @@ knitr::opts_chunk$set(eval = FALSE)
 ```
 
 ## Title and Description
+
 For the title, describe concisely what the function does in the very 
 first line of your function documentation. Titles should use sentence case 
 but not end with a full stop.
+
 ```{r}
-#' Combine Values into a Vector or List
+#' Combine values into a vector or list
 #' 
 #' This is a generic function which combines its arguments.
 #'
@@ -24,7 +26,8 @@ but not end with a full stop.
 
 There is no need to use the explicit `@title` or `@description` tags, except 
 in the case of the description if it is multiple paragraphs or includes 
-more complex formatting like a bulleted list. 
+more complex formatting like a bulleted list.
+
 ```{r}
 #' Apply a function to each element of a vector
 #'
@@ -39,27 +42,33 @@ more complex formatting like a bulleted list.
 ```
 
 ## Indention
+
 Always indent with one space after `#'`. If any description corresponding to a 
 `roxygen` tag spans over multiple lines, add another two spaces of extra 
 indention.
+
 ```{r}
 #' @param key The bare (unquoted) name of the column whose values will be used 
 #'   as column headings. 
 ```
 
 Alternatively, tags that span over multiple lines (like `@examples` and 
-`@section`) can have the corresponding tag on its own line and subsequent lines 
-do not need extra indention.
+`@section`) can have the corresponding tag on its own line and then subsequent 
+lines don't need extra indention.
+
 ```{r}
 #' @examples
 #' 1 + 1
 #' sin(pi)
 ```
+
 The section 'Description' does not need extra indention either.
 
 ## Documenting Parameters
+
 For most tags, like `@param`, `@seealso` and `@return`, the text should be a 
 sentence, starting with a capital letter and ending with a full stop.
+
 ```{r}
 #' @param key The bare (unquoted) name of the column whose values will be used 
 #'   as column headings. 
@@ -67,15 +76,18 @@ sentence, starting with a capital letter and ending with a full stop.
 
 If some functions share parameters, you can use `@inheritParams` to avoid 
 duplication of content in multiple places.
+
 ```{r}
 #' @inheritParams argument function_to_inherit_from
 ```
 
 ## Capitalization and Full Stops
+
 For all bullets, enumerations, argument descriptions and the like, use sentence
 case and put a period at the end of each text element, even if it is only a few 
 words. However, avoid capitalization of function names or packages since R is 
-case sensitive. Use a semi-colon before you start to enumerate.
+case sensitive. Use a colon before enumerations or bulleted lists.
+
 ```{r}
 #' @details In the following, we present the bullets of the list:
 #' * Four cats are few animals.
@@ -83,15 +95,18 @@ case sensitive. Use a semi-colon before you start to enumerate.
 ```
 
 ## Reference
+
 Cross-referencing is encouraged, both within R's help file system as well as to 
-external resources. Include parentheses after function names when 
-referencing function calls.
+external resources. Include parentheses after function names when referencing 
+function calls.
+
 ```{r}
 #' @seealso [fct_lump()] 
 ```
 
 When referring to other sections in the documentation, use single quotes and 
 title case.
+
 ```{r}
 #' @param p1 Another parameter. See 'Details'.
 ```
@@ -100,12 +115,15 @@ If you have a family of related functions, you can use the `@family` tag to
 automatically add appropriate lists and interlinks to the `@seealso` section.
 Family names are plural. In dplyr, the verbs `arrange`, `filter`, `mutate`,
 `slice`, `summarize` form the family of single table verbs.
+
 ```{r}
 #' @family single table verbs
 ```
 
 ## Line Break
-Leave one line blank before / after each description. 
+
+Leave one line blank before / after each description.
+
 ```{r}
 #' @section Tidy data:
 #' When applied to a data frame, row names are silently dropped. To preserve,
@@ -117,8 +135,9 @@ Leave one line blank before / after each description.
 #' selection of variables.
 ```
 
-If you want to insert a line break within a section, also leave a line break in the 
-`.Rd` file.
+If you want to insert a line break within a section, also leave a line break in 
+the roxygen comments.
+
 ```{r}
 #' @param ... Data frames to combine.
 #'
@@ -130,10 +149,11 @@ If you want to insert a line break within a section, also leave a line break in 
 #'
 #'   When column-binding, rows are matched by position, so all data
 #'   frames must have the same number of rows. To match by value, not
-#'   position, see [join].
+#'   position, see [join()].
 ```
 
 ## `Code Font`
+
 Text that contains valid R code should be marked as such.
 
 * Function names.
