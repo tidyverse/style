@@ -1,6 +1,7 @@
 # Pipes
 
 ## Introduction
+
 Use `%>%` when you find yourself composing three or more functions together 
 into a nested call, or creating intermediate objects that you don't care about.
 Put each verb on its own line.  This makes it simpler to rearrange 
