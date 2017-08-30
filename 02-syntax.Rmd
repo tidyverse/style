@@ -54,6 +54,34 @@ average <- mean(feet / 12 + inches, na.rm = TRUE)
 average<-mean(feet/12+inches,na.rm=TRUE)
 ```
 
+Put a space after the bang operators (`!!` and `!!!`) but not
+before them. Note that the sequence of exclamation marks must not be interrupted
+with spaces, otherwise the meaning is changed to the logical operator `!`.
+
+```{r, eval = FALSE}
+# Good
+call(!! xyz)
+
+# Bad
+call( !! xyz)
+call(! !xyz)
+```
+
+Since all arithmetic and comparison operators bind more tightly than bang 
+operators, one needs to be explicit about operator precedence. Enclose the 
+expression to unquote in parenthesis or use `UQ()` and friends if arithmetic and 
+comparison operators are involved.
+
+```{r, eval = FALSE}
+# Bad
+quo(1 + !! 1 + 2 + 3 + 10)
+
+# Good
+quo(1 + (1 + 2 + 3) + 10)
+quo(1 + UQ(1 + 2 + 3) + 10)
+```
+
+
 There's a small exception to this rule: don't use spaces around `:`, `::`, and 
 `:::`.
 
