@@ -42,9 +42,9 @@ mean <- function(x) sum(x)
 
 ## Spacing
 
-Put a space before and after all infix operators (=, +, -, <-, etc.), and when 
-naming arguments in function calls. Always put a space after a comma, and never 
-before (just like in regular English).
+Put a space before and after all infix operators (`=`, `+`, `-`, `<-`, etc.), and 
+when naming arguments in function calls. Always put a space after a comma, and 
+never before (just like in regular English).
 
 ```{r, eval = FALSE}
 # Good
