@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>The tidyverse style guide</title>
   <meta name="description" content="The tidyverse style guide">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="The tidyverse style guide" />
   <meta property="og:type" content="book" />
@@ -172,7 +172,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="title-and-description" class="section level2">
 <h2><span class="header-section-number">5.2</span> Title and Description</h2>
 <p>For the title, describe concisely what the function does in the very first line of your function documentation. Titles should use sentence case but not end with a full stop.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Combine Values into a Vector or List</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Combine values into a vector or list</span>
 <span class="co">#&#39; </span>
 <span class="co">#&#39; This is a generic function which combines its arguments.</span>
 <span class="co">#&#39;</span></code></pre></div>
@@ -192,7 +192,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Always indent with one space after <code>#'</code>. If any description corresponding to a <code>roxygen</code> tag spans over multiple lines, add another two spaces of extra indention.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @param key The bare (unquoted) name of the column whose values will be used </span>
 <span class="co">#&#39;   as column headings. </span></code></pre></div>
-<p>Alternatively, tags that span over multiple lines (like <code>@examples</code> and <code>@section</code>) can have the corresponding tag on its own line and subsequent lines do not need extra indention.</p>
+<p>Alternatively, tags that span over multiple lines (like <code>@examples</code> and <code>@section</code>) can have the corresponding tag on its own line and then subsequent lines don’t need extra indention.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @examples</span>
 <span class="co">#&#39; 1 + 1</span>
 <span class="co">#&#39; sin(pi)</span></code></pre></div>
@@ -208,7 +208,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="capitalization-and-full-stops" class="section level2">
 <h2><span class="header-section-number">5.5</span> Capitalization and Full Stops</h2>
-<p>For all bullets, enumerations, argument descriptions and the like, use sentence case and put a period at the end of each text element, even if it is only a few words. However, avoid capitalization of function names or packages since R is case sensitive. Use a semi-colon before you start to enumerate.</p>
+<p>For all bullets, enumerations, argument descriptions and the like, use sentence case and put a period at the end of each text element, even if it is only a few words. However, avoid capitalization of function names or packages since R is case sensitive. Use a colon before enumerations or bulleted lists.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @details In the following, we present the bullets of the list:</span>
 <span class="co">#&#39; * Four cats are few animals.</span>
 <span class="co">#&#39; * forcats is a package.</span></code></pre></div>
@@ -233,7 +233,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co">#&#39; The three [scoped] variants ([filter_all()], [filter_if()] and</span>
 <span class="co">#&#39; [filter_at()]) make it easy to apply a filtering condition to a</span>
 <span class="co">#&#39; selection of variables.</span></code></pre></div>
-<p>If you want to insert a line break within a section, also leave a line break in the <code>.Rd</code> file.</p>
+<p>If you want to insert a line break within a section, also leave a line break in the roxygen comments.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; @param ... Data frames to combine.</span>
 <span class="co">#&#39;</span>
 <span class="co">#&#39;   Each argument can either be a data frame, a list that could be a data</span>
@@ -244,7 +244,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co">#&#39;</span>
 <span class="co">#&#39;   When column-binding, rows are matched by position, so all data</span>
 <span class="co">#&#39;   frames must have the same number of rows. To match by value, not</span>
-<span class="co">#&#39;   position, see [join].</span></code></pre></div>
+<span class="co">#&#39;   position, see [join()].</span></code></pre></div>
 </div>
 <div id="code-font" class="section level2">
 <h2><span class="header-section-number">5.8</span> <code>Code Font</code></h2>
@@ -288,7 +288,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": false,
 "fontsettings": {

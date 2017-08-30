@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>The tidyverse style guide</title>
   <meta name="description" content="The tidyverse style guide">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="The tidyverse style guide" />
   <meta property="og:type" content="book" />
@@ -176,7 +176,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Generally, variable names should be nouns and function names should be verbs. Strive for names that are concise and meaningful (this is not easy!).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
 day_one
-day_1
+day_<span class="dv">1</span>
 
 <span class="co"># Bad</span>
 first_day_of_the_month
@@ -187,44 +187,44 @@ djm1</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Bad</span>
 T &lt;-<span class="st"> </span><span class="ot">FALSE</span>
 c &lt;-<span class="st"> </span><span class="dv">10</span>
-mean &lt;-<span class="st"> </span>function(x) <span class="kw">sum</span>(x)</code></pre></div>
+mean &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">sum</span>(x)</code></pre></div>
 </div>
 <div id="spacing" class="section level2">
 <h2><span class="header-section-number">2.2</span> Spacing</h2>
 <p>Put a space before and after all infix operators (=, +, -, &lt;-, etc.), and when naming arguments in function calls. Always put a space after a comma, and never before (just like in regular English).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
-average &lt;-<span class="st"> </span><span class="kw">mean</span>(feet /<span class="st"> </span><span class="dv">12</span> +<span class="st"> </span>inches, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+average &lt;-<span class="st"> </span><span class="kw">mean</span>(feet <span class="op">/</span><span class="st"> </span><span class="dv">12</span> <span class="op">+</span><span class="st"> </span>inches, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
 
 <span class="co"># Bad</span>
-average&lt;-<span class="kw">mean</span>(feet/<span class="dv">12</span>+inches,<span class="dt">na.rm=</span><span class="ot">TRUE</span>)</code></pre></div>
+average&lt;-<span class="kw">mean</span>(feet<span class="op">/</span><span class="dv">12</span><span class="op">+</span>inches,<span class="dt">na.rm=</span><span class="ot">TRUE</span>)</code></pre></div>
 <p>There’s a small exception to this rule: don’t use spaces around <code>:</code>, <code>::</code>, and <code>:::</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
-x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
-base::get
+x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>
+base<span class="op">::</span>get
 
 <span class="co"># Bad</span>
-x &lt;-<span class="st"> </span><span class="dv">1</span> :<span class="st"> </span><span class="dv">10</span>
-base ::<span class="st"> </span>get</code></pre></div>
+x &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">:</span><span class="st"> </span><span class="dv">10</span>
+base <span class="op">::</span><span class="st"> </span>get</code></pre></div>
 <p>Place a space before <code>(</code>, except when it’s part of a function call.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
-if (debug) <span class="kw">show</span>(x)
+<span class="cf">if</span> (debug) <span class="kw">show</span>(x)
 <span class="kw">plot</span>(x, y)
 
 <span class="co"># Bad</span>
-if(debug)<span class="kw">show</span>(x)
+<span class="cf">if</span>(debug)<span class="kw">show</span>(x)
 <span class="kw">plot</span> (x, y)</code></pre></div>
 <p>Extra spacing (i.e., more than one space in a row) is ok if it improves alignment of equal signs or assignments (<code>&lt;-</code>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list</span>(
-  <span class="dt">total =</span> a +<span class="st"> </span>b +<span class="st"> </span>c,
-  <span class="dt">mean  =</span> (a +<span class="st"> </span>b +<span class="st"> </span>c) /<span class="st"> </span>n
+  <span class="dt">total =</span> a <span class="op">+</span><span class="st"> </span>b <span class="op">+</span><span class="st"> </span>c,
+  <span class="dt">mean  =</span> (a <span class="op">+</span><span class="st"> </span>b <span class="op">+</span><span class="st"> </span>c) <span class="op">/</span><span class="st"> </span>n
 )</code></pre></div>
 <p>Do not place spaces around code in parentheses or square brackets (unless there’s a comma, in which case see above).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
-if (debug) <span class="kw">do</span>(x)
+<span class="cf">if</span> (debug) <span class="kw">do</span>(x)
 diamonds[<span class="dv">5</span>, ]
 
 <span class="co"># Bad</span>
-if ( debug ) <span class="kw">do</span>(x)  <span class="co"># No spaces around debug</span>
+<span class="cf">if</span> ( debug ) <span class="kw">do</span>(x)  <span class="co"># No spaces around debug</span>
 x[<span class="dv">1</span>,]   <span class="co"># Needs a space after the comma</span>
 x[<span class="dv">1</span> ,]  <span class="co"># Space goes after comma not before</span></code></pre></div>
 </div>
@@ -232,29 +232,29 @@ x[<span class="dv">1</span> ,]  <span class="co"># Space goes after comma not be
 <h2><span class="header-section-number">2.3</span> Argument names</h2>
 <p>A function’s arguments typically fall into two broad categories: one supplies the <strong>data</strong> to compute on; the other controls <strong>details</strong> of computation. When you call a function, you typically omit the names of data arguments, because they are used so commonly. If you override the default value of an argument, use the full name:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
-<span class="kw">mean</span>(<span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+<span class="kw">mean</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
 
 <span class="co"># Bad</span>
-<span class="kw">mean</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">10</span>, , <span class="ot">FALSE</span>)
-<span class="kw">mean</span>(, <span class="ot">TRUE</span>, <span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">10</span>, <span class="ot">NA</span>))</code></pre></div>
+<span class="kw">mean</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, , <span class="ot">FALSE</span>)
+<span class="kw">mean</span>(, <span class="ot">TRUE</span>, <span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="ot">NA</span>))</code></pre></div>
 <p>Avoid partial matching.</p>
 </div>
 <div id="indenting" class="section level2">
 <h2><span class="header-section-number">2.4</span> Indenting</h2>
 <p>Curly braces, <code>{}</code>, define the the most important hierarchy of R code. To make this hierarchy easy to see, always indent the code inside <code>{}</code> by two spaces. A <code>{</code> should never go on its own line and should always be followed by a new line. A <code>}</code> should always go on its own line, unless it’s followed by <code>else</code> or <code>)</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
-if (y &lt;<span class="st"> </span><span class="dv">0</span> &amp;&amp;<span class="st"> </span>debug) {
+<span class="cf">if</span> (y <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;&amp;</span><span class="st"> </span>debug) {
   <span class="kw">message</span>(<span class="st">&quot;y is negative&quot;</span>)
 }
 
-if (y ==<span class="st"> </span><span class="dv">0</span>) {
-  if (x &gt;<span class="st"> </span><span class="dv">0</span>) {
+<span class="cf">if</span> (y <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) {
+  <span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {
     <span class="kw">log</span>(x)
-  } else {
+  } <span class="cf">else</span> {
     <span class="kw">message</span>(<span class="st">&quot;x is negative or zero&quot;</span>)
   }
-} else {
-  y ^<span class="st"> </span>x
+} <span class="cf">else</span> {
+  y <span class="op">^</span><span class="st"> </span>x
 }
 
 <span class="kw">test_that</span>(<span class="st">&quot;call1 returns an ordered factor&quot;</span>, {
@@ -262,20 +262,20 @@ if (y ==<span class="st"> </span><span class="dv">0</span>) {
 })
 
 <span class="co"># Bad</span>
-if (y &lt;<span class="st"> </span><span class="dv">0</span> &amp;&amp;<span class="st"> </span>debug)
+<span class="cf">if</span> (y <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;&amp;</span><span class="st"> </span>debug)
 <span class="kw">message</span>(<span class="st">&quot;Y is negative&quot;</span>)
 
-if (y ==<span class="st"> </span><span class="dv">0</span>)
+<span class="cf">if</span> (y <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)
 {
-    if (x &gt;<span class="st"> </span><span class="dv">0</span>) {
+    <span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {
       <span class="kw">log</span>(x)
-    } else {
+    } <span class="cf">else</span> {
   <span class="kw">message</span>(<span class="st">&quot;x is negative or zero&quot;</span>)
     }
-} else { y ^<span class="st"> </span>x }</code></pre></div>
+} <span class="cf">else</span> { y <span class="op">^</span><span class="st"> </span>x }</code></pre></div>
 <p>It’s ok to drop the curly braces if you have a very simple and short <code>if</code> statement that fits on one line. If you have any doubt, it’s better to use the full form.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="dv">10</span>
-x &lt;-<span class="st"> </span>if (y &lt;<span class="st"> </span><span class="dv">20</span>) <span class="st">&quot;Too low&quot;</span> else <span class="st">&quot;Too high&quot;</span></code></pre></div>
+x &lt;-<span class="st"> </span><span class="cf">if</span> (y <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>) <span class="st">&quot;Too low&quot;</span> <span class="cf">else</span> <span class="st">&quot;Too high&quot;</span></code></pre></div>
 </div>
 <div id="long-lines" class="section level2">
 <h2><span class="header-section-number">2.5</span> Long lines</h2>
@@ -353,7 +353,7 @@ x =<span class="st"> </span><span class="dv">5</span></code></pre></div>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": false,
 "fontsettings": {
