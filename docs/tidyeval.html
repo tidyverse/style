@@ -181,13 +181,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="operator-precedence" class="section level2">
 <h2><span class="header-section-number">5.2</span> Operator precedence</h2>
-<p>Since all arithmetic and comparison operators bind more tightly than bang operators, one should be explicit about operator precedence. Enclose the expression to unquote in parenthesis or use <code>UQ()</code> and friends if arithmetic and comparison operators are involved.</p>
+<p>Since all arithmetic and comparison operators bind more tightly than bang operators, one should be explicit about operator precedence. Enclose the expression to unquote in parenthesis if arithmetic or comparison operators are involved.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Bad</span>
 <span class="kw">quo</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="op">!!</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>)
 
 <span class="co"># Good</span>
-<span class="kw">quo</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>))
-<span class="kw">quo</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="kw">UQ</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>))</code></pre></div>
+<span class="kw">quo</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(<span class="op">!!</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>))</code></pre></div>
 
 </div>
 </div>
