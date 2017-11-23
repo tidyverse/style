@@ -122,7 +122,7 @@ iris %>%
   summarise(
     Sepal.Length = mean(Sepal.Length),
     Sepal.Width = mean(Sepal.Width),
-    Sepcies = n_distinct(Species)
+    Species = n_distinct(Species)
   )
 ```
 
