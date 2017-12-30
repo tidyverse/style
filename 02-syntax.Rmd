@@ -42,27 +42,24 @@ mean <- function(x) sum(x)
 
 ## Spacing
 
-Put a space before and after all infix operators (=, +, -, <-, etc.), and when 
-naming arguments in function calls. Always put a space after a comma, and never 
-before (just like in regular English).
+Put a space before and after `=` when naming arguments in function calls.
+Most infix operators (`==`, `+`, `-`, `<-`, etc.) are also surrounded by
+spaces, except those with relatively high precedence: `^`, `:`, `::`, and `:::`.
+
+Always put a space after a comma,
+and never before (just like in regular English).  Prefer parentheses over
+irregular spacing to highlight operator precedence.
 
 ```{r, eval = FALSE}
 # Good
-average <- mean(feet / 12 + inches, na.rm = TRUE)
-
-# Bad
-average<-mean(feet/12+inches,na.rm=TRUE)
-```
-
-There's a small exception to this rule: don't use spaces around `:`, `::`, and 
-`:::`.
-
-```{r, eval = FALSE}
-# Good
+average <- mean((feet / 12) + inches, na.rm = TRUE)
+sqrt(x^2 + y^2)
 x <- 1:10
 base::get
 
 # Bad
+average<-mean(feet/12 + inches,na.rm=TRUE)
+sqrt(x ^ 2 + y ^ 2)
 x <- 1 : 10
 base :: get
 ```
