@@ -31,7 +31,7 @@ long_function_name <- function(a = "a long argument",
 long_function_name <- function(a = "a long argument",
   b = "another argument",
   c = "another long argument") {
-  # Here it's hard to spot where the definition end and the
+  # Here it's hard to spot where the definition ends and the
   # code begins
 }
 ```
