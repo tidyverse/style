@@ -5,8 +5,6 @@ sudo: false
 cache: packages
 
 before_install:
-- mkdir ~/.R
-- cp Makevars ~/.R
 - npm install netlify-cli -g
 
 script:
