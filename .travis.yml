@@ -2,7 +2,11 @@
 
 language: R
 sudo: false
-cache: packages
+cache:
+  packages: true
+  directories:
+  - _bookdown_files
+  - $HOME/.npm
 
 before_install:
 - npm install netlify-cli -g
