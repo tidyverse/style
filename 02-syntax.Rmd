@@ -42,27 +42,24 @@ mean <- function(x) sum(x)
 
 ## Spacing
 
-Put a space before and after all infix operators (`=`, `+`, `-`, `<-`, etc.), and 
-when naming arguments in function calls. Always put a space after a comma, and 
-never before (just like in regular English).
+Put a space before and after `=` when naming arguments in function calls.
+Most infix operators (`==`, `+`, `-`, `<-`, etc.) are also surrounded by
+spaces, except those with relatively high precedence: `^`, `:`, `::`, and `:::`.
+
+Always put a space after a comma,
+and never before (just like in regular English).  Prefer parentheses over
+irregular spacing to highlight operator precedence.
 
 ```{r, eval = FALSE}
 # Good
-average <- mean(feet / 12 + inches, na.rm = TRUE)
-
-# Bad
-average<-mean(feet/12+inches,na.rm=TRUE)
-```
-
-There's a small exception to this rule: don't use spaces around `:`, `::`, and 
-`:::`.
-
-```{r, eval = FALSE}
-# Good
+average <- mean((feet / 12) + inches, na.rm = TRUE)
+sqrt(x^2 + y^2)
 x <- 1:10
 base::get
 
 # Bad
+average<-mean(feet/12 + inches,na.rm=TRUE)
+sqrt(x ^ 2 + y ^ 2)
 x <- 1 : 10
 base :: get
 ```
@@ -125,10 +122,12 @@ Avoid partial matching.
 ## Indenting
 
 Curly braces, `{}`, define the the most important hierarchy of R code. To make 
-this hierarchy easy to see, always indent the code inside `{}` by two spaces. 
-A `{` should never go on its own line and should always be followed by a new 
-line. A `}` should always go on its own line, unless it's followed by `else` 
-or `)`. 
+this hierarchy easy to see, always indent the code inside `{}` by two spaces.
+
+A symmetrical arrangement helps finding related braces: The opening brace is the
+last, the closing brace is the first non-whitespace character in a line.  Code
+that is related to a brace (e.g., an `if` clause, a function declaration, a
+trailing comma, ...) must be on the same line.
 
 ```{r, eval = FALSE}
 # Good
@@ -149,6 +148,16 @@ if (y == 0) {
 test_that("call1 returns an ordered factor", {
   expect_s3_class(call1(x, y), c("factor", "ordered"))
 })
+
+tryCatch(
+  {
+    x <- scan()
+    cat("Total: ", sum(x), "\n", sep = "")
+  },
+  interrupt = function(e) {
+    message("Aborted by user")
+  }
+)
 
 # Bad
 if (y < 0 && debug)
