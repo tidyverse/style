@@ -1,0 +1,12 @@
+Package: tidyversestyle
+Title: Tidyverse style
+Version: 1.0.0
+Authors@R: c(
+  person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre"))
+  )
+URL: https://github.com/hadley/adv-r
+Depends: 
+    R (>= 3.1.0)
+Imports: 
+    bookdown,
+    rmarkdown
