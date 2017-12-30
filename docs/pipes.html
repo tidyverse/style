@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>The tidyverse style guide</title>
   <meta name="description" content="The tidyverse style guide">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="The tidyverse style guide" />
   <meta property="og:type" content="book" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="functions.html">
-<link rel="next" href="code-documentation.html">
+<link rel="next" href="tidyeval.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -132,16 +132,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.5" data-path="pipes.html"><a href="pipes.html#assignment-1"><i class="fa fa-check"></i><b>4.5</b> Assignment</a></li>
 <li class="chapter" data-level="4.6" data-path="pipes.html"><a href="pipes.html#comments-1"><i class="fa fa-check"></i><b>4.6</b> Comments</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="code-documentation.html"><a href="code-documentation.html"><i class="fa fa-check"></i><b>5</b> Code Documentation</a><ul>
-<li class="chapter" data-level="5.1" data-path="code-documentation.html"><a href="code-documentation.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
-<li class="chapter" data-level="5.2" data-path="code-documentation.html"><a href="code-documentation.html#title-and-description"><i class="fa fa-check"></i><b>5.2</b> Title and Description</a></li>
-<li class="chapter" data-level="5.3" data-path="code-documentation.html"><a href="code-documentation.html#indention"><i class="fa fa-check"></i><b>5.3</b> Indention</a></li>
-<li class="chapter" data-level="5.4" data-path="code-documentation.html"><a href="code-documentation.html#documenting-parameters"><i class="fa fa-check"></i><b>5.4</b> Documenting Parameters</a></li>
-<li class="chapter" data-level="5.5" data-path="code-documentation.html"><a href="code-documentation.html#capitalization-and-full-stops"><i class="fa fa-check"></i><b>5.5</b> Capitalization and Full Stops</a></li>
-<li class="chapter" data-level="5.6" data-path="code-documentation.html"><a href="code-documentation.html#reference"><i class="fa fa-check"></i><b>5.6</b> Reference</a></li>
-<li class="chapter" data-level="5.7" data-path="code-documentation.html"><a href="code-documentation.html#line-break"><i class="fa fa-check"></i><b>5.7</b> Line Break</a></li>
-<li class="chapter" data-level="5.8" data-path="code-documentation.html"><a href="code-documentation.html#code-font"><i class="fa fa-check"></i><b>5.8</b> <code>Code Font</code></a></li>
-<li class="chapter" data-level="5.9" data-path="code-documentation.html"><a href="code-documentation.html#internal-functions"><i class="fa fa-check"></i><b>5.9</b> Internal Functions</a></li>
+<li class="chapter" data-level="5" data-path="tidyeval.html"><a href="tidyeval.html"><i class="fa fa-check"></i><b>5</b> Tidyeval</a><ul>
+<li class="chapter" data-level="5.1" data-path="tidyeval.html"><a href="tidyeval.html#spacing-1"><i class="fa fa-check"></i><b>5.1</b> Spacing</a></li>
+<li class="chapter" data-level="5.2" data-path="tidyeval.html"><a href="tidyeval.html#operator-precedence"><i class="fa fa-check"></i><b>5.2</b> Operator precedence</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="code-documentation.html"><a href="code-documentation.html"><i class="fa fa-check"></i><b>6</b> Code Documentation</a><ul>
+<li class="chapter" data-level="6.1" data-path="code-documentation.html"><a href="code-documentation.html#introduction-1"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="code-documentation.html"><a href="code-documentation.html#title-and-description"><i class="fa fa-check"></i><b>6.2</b> Title and Description</a></li>
+<li class="chapter" data-level="6.3" data-path="code-documentation.html"><a href="code-documentation.html#indention"><i class="fa fa-check"></i><b>6.3</b> Indention</a></li>
+<li class="chapter" data-level="6.4" data-path="code-documentation.html"><a href="code-documentation.html#documenting-parameters"><i class="fa fa-check"></i><b>6.4</b> Documenting Parameters</a></li>
+<li class="chapter" data-level="6.5" data-path="code-documentation.html"><a href="code-documentation.html#capitalization-and-full-stops"><i class="fa fa-check"></i><b>6.5</b> Capitalization and Full Stops</a></li>
+<li class="chapter" data-level="6.6" data-path="code-documentation.html"><a href="code-documentation.html#reference"><i class="fa fa-check"></i><b>6.6</b> Reference</a></li>
+<li class="chapter" data-level="6.7" data-path="code-documentation.html"><a href="code-documentation.html#line-break"><i class="fa fa-check"></i><b>6.7</b> Line Break</a></li>
+<li class="chapter" data-level="6.8" data-path="code-documentation.html"><a href="code-documentation.html#code-font"><i class="fa fa-check"></i><b>6.8</b> <code>Code Font</code></a></li>
+<li class="chapter" data-level="6.9" data-path="code-documentation.html"><a href="code-documentation.html#internal-functions"><i class="fa fa-check"></i><b>6.9</b> Internal Functions</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -169,18 +173,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">4.1</span> Introduction</h2>
 <p>Use <code>%&gt;%</code> when you find yourself composing three or more functions together into a nested call, or creating intermediate objects that you don’t care about. Put each verb on its own line. This makes it simpler to rearrange them later, and makes it harder to overlook a step. It is ok to keep a one-step pipe in one line.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
-foo_foo %&gt;%
-<span class="st">  </span><span class="kw">hop</span>(<span class="dt">through =</span> forest) %&gt;%
-<span class="st">  </span><span class="kw">scoop</span>(<span class="dt">up =</span> field_mouse) %&gt;%
+foo_foo <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">hop</span>(<span class="dt">through =</span> forest) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">scoop</span>(<span class="dt">up =</span> field_mouse) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">bop</span>(<span class="dt">on =</span> head)
+
+foo_foo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fall</span>(<span class="st">&quot;asleep&quot;</span>)
 
 <span class="co"># Bad</span>
 foo_foo &lt;-<span class="st"> </span><span class="kw">hop</span>(foo_foo, <span class="dt">through =</span> forest)
 foo_foo &lt;-<span class="st"> </span><span class="kw">scoop</span>(foo_foo, <span class="dt">up =</span> field_mice)
 foo_foo &lt;-<span class="st"> </span><span class="kw">bop</span>(foo_foo, <span class="dt">on =</span> head)
 
-iris %&gt;%<span class="st"> </span><span class="kw">group_by</span>(up) %&gt;%<span class="st"> </span><span class="kw">summarize_all</span>(mean) %&gt;%
-<span class="st">  </span>ungroup %&gt;%<span class="st"> </span><span class="kw">gather</span>(field_mice, foo_foo, -on) %&gt;%
+iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(up) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize_all</span>(mean) <span class="op">%&gt;%</span>
+<span class="st">  </span>ungroup <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">gather</span>(field_mice, foo_foo, <span class="op">-</span>on) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">arrange</span>(head)
 
 <span class="kw">bop</span>(
@@ -196,45 +202,61 @@ iris %&gt;%<span class="st"> </span><span class="kw">group_by</span>(up) %&gt;%<
 <li><p>You need to manipulate more than one object at a time. Reserve pipes for a sequence of steps applied to one primary object.</p></li>
 <li><p>There are meaningful intermediate objects that could be given informative names.</p></li>
 </ul>
+<p>There’s one exception to this rule: sometimes it’s useful to include a short pipe as an argument to a function in a longer pipe. Carefully consider whether the code is more readable with a short inline pipe (which doesn’t require a lookup elsewhere) or if it’s better to move the code outside the pipe and give it an evocative name.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
+x <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(a, b, w) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">left_join</span>(y <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(a, b, v), <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>))
+
+x_join &lt;-
+<span class="st">  </span>x <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(a, b, w)
+y_join &lt;-
+<span class="st">  </span>y <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>u) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">gather</span>(a, v, <span class="op">-</span>b) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(a, b, v)
+<span class="kw">left_join</span>(x_join, y_join, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>))
+
+<span class="co"># Bad</span>
+x <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(a, b, w) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">left_join</span>(y <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="op">!</span>u) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">gather</span>(a, v, <span class="op">-</span>b) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(a, b, v), <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>))</code></pre></div>
 </div>
 <div id="spacing-and-indenting" class="section level2">
 <h2><span class="header-section-number">4.2</span> Spacing and indenting</h2>
 <p><code>%&gt;%</code> should always have a space before it and a new line after it. After the first step, each line should be indented by two spaces.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
-iris %&gt;%
-<span class="st">  </span><span class="kw">group_by</span>(Species) %&gt;%
-<span class="st">  </span><span class="kw">summarize_if</span>(is.numeric, mean) %&gt;%
-<span class="st">  </span><span class="kw">ungroup</span>() %&gt;%
-<span class="st">  </span><span class="kw">gather</span>(measure, value, -Species) %&gt;%
+iris <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Species) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarize_if</span>(is.numeric, mean) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">gather</span>(measure, value, <span class="op">-</span>Species) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">arrange</span>(value)
 
 <span class="co"># Bad</span>
-iris %&gt;%<span class="st"> </span><span class="kw">group_by</span>(Species) %&gt;%<span class="st"> </span><span class="kw">summarize_all</span>(mean) %&gt;%
-ungroup %&gt;%<span class="st"> </span><span class="kw">gather</span>(measure, value, -Species) %&gt;%
+iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Species) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize_all</span>(mean) <span class="op">%&gt;%</span>
+ungroup <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">gather</span>(measure, value, <span class="op">-</span>Species) <span class="op">%&gt;%</span>
 <span class="kw">arrange</span>(value)</code></pre></div>
-<p>It is ok to keep a one-step pipe on one line, although depending on the context, you may want to rewrite to remove the pipe.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
-iris %&gt;%<span class="st"> </span><span class="kw">arrange</span>(Petal.Width)
-<span class="kw">arrange</span>(iris, Petal.Width)</code></pre></div>
 </div>
 <div id="no-arguments" class="section level2">
 <h2><span class="header-section-number">4.3</span> No arguments</h2>
 <p>magrittr allows you to omit <code>()</code> on functions that don’t have arguments. Avoid this.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
-x %&gt;%<span class="st"> </span>
-<span class="st">  </span><span class="kw">unique</span>() %&gt;%
+x <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">unique</span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">sort</span>()
 
 <span class="co"># Bad</span>
-x %&gt;%<span class="st"> </span>
-<span class="st">  </span>unique %&gt;%
+x <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>unique <span class="op">%&gt;%</span>
 <span class="st">  </span>sort</code></pre></div>
 </div>
 <div id="long-lines-2" class="section level2">
 <h2><span class="header-section-number">4.4</span> Long lines</h2>
 <p>If the arguments to a function don’t all fit on one line, put each argument on its own line and indent:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%
-<span class="st">  </span><span class="kw">group_by</span>(Species) %&gt;%
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Species) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">summarise</span>(
     <span class="dt">Sepal.Length =</span> <span class="kw">mean</span>(Sepal.Length),
     <span class="dt">Sepal.Width =</span> <span class="kw">mean</span>(Sepal.Width),
@@ -243,8 +265,23 @@ x %&gt;%<span class="st"> </span>
 </div>
 <div id="assignment-1" class="section level2">
 <h2><span class="header-section-number">4.5</span> Assignment</h2>
-<p>You can use <code>-&gt;</code> to create an object at the end of the pipe.</p>
-<p>Personally, I think you should avoid this technique. While starting with the assignment is a little more work when writing the code, it makes reading the code easier. This is because the name acts as a heading, which reminds you of the purpose of the pipe.</p>
+<p>Use a separate line for the target of the assignment followed by <code>&lt;-</code>.</p>
+<p>Personally, I think you should avoid using <code>-&gt;</code> to create an object at the end of the pipe. While starting with the assignment is a little more work when writing the code, it makes reading the code easier. This is because the name acts as a heading, which reminds you of the purpose of the pipe.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
+iris_long &lt;-
+<span class="st">  </span>iris <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">gather</span>(measure, value, <span class="op">-</span>Species) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">arrange</span>(<span class="op">-</span>value)
+
+<span class="co"># Bad</span>
+iris_long &lt;-<span class="st"> </span>iris <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">gather</span>(measure, value, <span class="op">-</span>Species) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">arrange</span>(<span class="op">-</span>value)
+
+iris <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">gather</span>(measure, value, <span class="op">-</span>Species) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">arrange</span>(<span class="op">-</span>value) -&gt;
+<span class="st">  </span>iris_long</code></pre></div>
 </div>
 <div id="comments-1" class="section level2">
 <h2><span class="header-section-number">4.6</span> Comments</h2>
@@ -258,7 +295,7 @@ x %&gt;%<span class="st"> </span>
         </div>
       </div>
 <a href="functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="code-documentation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tidyeval.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -269,7 +306,7 @@ x %&gt;%<span class="st"> </span>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": false,
 "fontsettings": {

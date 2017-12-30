@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>The tidyverse style guide</title>
   <meta name="description" content="The tidyverse style guide">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="The tidyverse style guide" />
   <meta property="og:type" content="book" />
@@ -132,16 +132,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.5" data-path="pipes.html"><a href="pipes.html#assignment-1"><i class="fa fa-check"></i><b>4.5</b> Assignment</a></li>
 <li class="chapter" data-level="4.6" data-path="pipes.html"><a href="pipes.html#comments-1"><i class="fa fa-check"></i><b>4.6</b> Comments</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="code-documentation.html"><a href="code-documentation.html"><i class="fa fa-check"></i><b>5</b> Code Documentation</a><ul>
-<li class="chapter" data-level="5.1" data-path="code-documentation.html"><a href="code-documentation.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
-<li class="chapter" data-level="5.2" data-path="code-documentation.html"><a href="code-documentation.html#title-and-description"><i class="fa fa-check"></i><b>5.2</b> Title and Description</a></li>
-<li class="chapter" data-level="5.3" data-path="code-documentation.html"><a href="code-documentation.html#indention"><i class="fa fa-check"></i><b>5.3</b> Indention</a></li>
-<li class="chapter" data-level="5.4" data-path="code-documentation.html"><a href="code-documentation.html#documenting-parameters"><i class="fa fa-check"></i><b>5.4</b> Documenting Parameters</a></li>
-<li class="chapter" data-level="5.5" data-path="code-documentation.html"><a href="code-documentation.html#capitalization-and-full-stops"><i class="fa fa-check"></i><b>5.5</b> Capitalization and Full Stops</a></li>
-<li class="chapter" data-level="5.6" data-path="code-documentation.html"><a href="code-documentation.html#reference"><i class="fa fa-check"></i><b>5.6</b> Reference</a></li>
-<li class="chapter" data-level="5.7" data-path="code-documentation.html"><a href="code-documentation.html#line-break"><i class="fa fa-check"></i><b>5.7</b> Line Break</a></li>
-<li class="chapter" data-level="5.8" data-path="code-documentation.html"><a href="code-documentation.html#code-font"><i class="fa fa-check"></i><b>5.8</b> <code>Code Font</code></a></li>
-<li class="chapter" data-level="5.9" data-path="code-documentation.html"><a href="code-documentation.html#internal-functions"><i class="fa fa-check"></i><b>5.9</b> Internal Functions</a></li>
+<li class="chapter" data-level="5" data-path="tidyeval.html"><a href="tidyeval.html"><i class="fa fa-check"></i><b>5</b> Tidyeval</a><ul>
+<li class="chapter" data-level="5.1" data-path="tidyeval.html"><a href="tidyeval.html#spacing-1"><i class="fa fa-check"></i><b>5.1</b> Spacing</a></li>
+<li class="chapter" data-level="5.2" data-path="tidyeval.html"><a href="tidyeval.html#operator-precedence"><i class="fa fa-check"></i><b>5.2</b> Operator precedence</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="code-documentation.html"><a href="code-documentation.html"><i class="fa fa-check"></i><b>6</b> Code Documentation</a><ul>
+<li class="chapter" data-level="6.1" data-path="code-documentation.html"><a href="code-documentation.html#introduction-1"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="code-documentation.html"><a href="code-documentation.html#title-and-description"><i class="fa fa-check"></i><b>6.2</b> Title and Description</a></li>
+<li class="chapter" data-level="6.3" data-path="code-documentation.html"><a href="code-documentation.html#indention"><i class="fa fa-check"></i><b>6.3</b> Indention</a></li>
+<li class="chapter" data-level="6.4" data-path="code-documentation.html"><a href="code-documentation.html#documenting-parameters"><i class="fa fa-check"></i><b>6.4</b> Documenting Parameters</a></li>
+<li class="chapter" data-level="6.5" data-path="code-documentation.html"><a href="code-documentation.html#capitalization-and-full-stops"><i class="fa fa-check"></i><b>6.5</b> Capitalization and Full Stops</a></li>
+<li class="chapter" data-level="6.6" data-path="code-documentation.html"><a href="code-documentation.html#reference"><i class="fa fa-check"></i><b>6.6</b> Reference</a></li>
+<li class="chapter" data-level="6.7" data-path="code-documentation.html"><a href="code-documentation.html#line-break"><i class="fa fa-check"></i><b>6.7</b> Line Break</a></li>
+<li class="chapter" data-level="6.8" data-path="code-documentation.html"><a href="code-documentation.html#code-font"><i class="fa fa-check"></i><b>6.8</b> <code>Code Font</code></a></li>
+<li class="chapter" data-level="6.9" data-path="code-documentation.html"><a href="code-documentation.html#internal-functions"><i class="fa fa-check"></i><b>6.9</b> Internal Functions</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -180,14 +184,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">3.2</span> Long lines</h2>
 <p>If a function definition runs over multiple lines, indent the second line to where the definition starts.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
-long_function_name &lt;-<span class="st"> </span>function(<span class="dt">a =</span> <span class="st">&quot;a long argument&quot;</span>,
+long_function_name &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">a =</span> <span class="st">&quot;a long argument&quot;</span>,
                                <span class="dt">b =</span> <span class="st">&quot;another argument&quot;</span>,
                                <span class="dt">c =</span> <span class="st">&quot;another long argument&quot;</span>) {
   <span class="co"># As usual code is indented by two spaces.</span>
 }
 
 <span class="co"># Bad</span>
-long_function_name &lt;-<span class="st"> </span>function(<span class="dt">a =</span> <span class="st">&quot;a long argument&quot;</span>,
+long_function_name &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">a =</span> <span class="st">&quot;a long argument&quot;</span>,
   <span class="dt">b =</span> <span class="st">&quot;another argument&quot;</span>,
   <span class="dt">c =</span> <span class="st">&quot;another long argument&quot;</span>) {
   <span class="co"># Here it&#39;s hard to spot where the definition end and the</span>
@@ -198,20 +202,20 @@ long_function_name &lt;-<span class="st"> </span>function(<span class="dt">a =</
 <h2><span class="header-section-number">3.3</span> <code>return()</code></h2>
 <p>Only use <code>return()</code> for early returns. Otherwise rely on R to return the result of the last evaluated expression.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
-find_abs &lt;-<span class="st"> </span>function(x, y){
-  if (x &gt;<span class="st"> </span><span class="dv">0</span>) <span class="kw">return</span>(x)
-  x *<span class="st"> </span>-<span class="dv">1</span>
+find_abs &lt;-<span class="st"> </span><span class="cf">function</span>(x, y){
+  <span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="kw">return</span>(x)
+  x <span class="op">*</span><span class="st"> </span><span class="op">-</span><span class="dv">1</span>
 }
-add_two &lt;-<span class="st"> </span>function(x, y) {
-  x +<span class="st"> </span>y
+add_two &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {
+  x <span class="op">+</span><span class="st"> </span>y
 }
 
 <span class="co"># Bad</span>
-add_two &lt;-<span class="st"> </span>function(x, y) {
-  <span class="kw">return</span>(x +<span class="st"> </span>y)
+add_two &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {
+  <span class="kw">return</span>(x <span class="op">+</span><span class="st"> </span>y)
 }</code></pre></div>
 <p>If your function is called primarily for its side-effects (like printing, plotting, or saving to disk), it should return the first argument invisibly. This makes it possible to use the function as part of a pipe. <code>print</code> methods should usually do this, like this example from httr:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">print.url &lt;-<span class="st"> </span>function(x, ...) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">print.url &lt;-<span class="st"> </span><span class="cf">function</span>(x, ...) {
   <span class="kw">cat</span>(<span class="st">&quot;Url: &quot;</span>, <span class="kw">build_url</span>(x), <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
   <span class="kw">invisible</span>(x)
 }</code></pre></div>
@@ -249,7 +253,7 @@ add_two &lt;-<span class="st"> </span>function(x, y) {
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": false,
 "fontsettings": {
