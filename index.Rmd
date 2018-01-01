@@ -11,4 +11,10 @@ documentclass: book
 
 Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread. Just as with punctuation, while there are many code styles to choose from, some are more reader-friendly than others. The style presented here, which is used throughout the [tidyverse](http://tidyverse.org), is derived from [Google's R style guide](https://google.github.io/styleguide/Rguide.xml) and has evolved considerably over the years.
 
-To apply this style guide automatically, use [lintr](https://github.com/jimhester/lintr).
+Two R packages support this style guide:
+
+* [styler](http://styler.r-lib.org) allows you to interactively restyle
+  selected text, files, or entire projects.
+
+* [lintr](https://github.com/jimhester/lintr) performs automated checks
+  to confirm that your conform to the style guide.
