@@ -42,7 +42,7 @@ of the last evaluated expression.
 
 ```{r eval = FALSE}
 # Good
-find_abs <- function(x, y){
+find_abs <- function(x, y) {
   if (x > 0) return(x)
   x * -1
 }
