@@ -149,13 +149,12 @@ the roxygen comments.
 
 Text that contains valid R code should be marked as such.
 
-* Function names.
-* Function arguments. 
-* Logical values.
-* Literal R code.
-* `NA`, `NaN`, `...`, `NULL` etc.
+* Function names, which should be followed by `()`, e.g. `tibble()`.
+* Function arguments, e.g. `na.rm`. 
+* Values, e.g. `TRUE`, `FALSE`, `NA`, `NaN`, `...`, `NULL` 
+* Literal R code, e.g. `mean(x, na.rm = TRUE)`
 
-To refer to the R language, use \\R.
+Do not use code font for package names. If package name is ambiguous in the context, disambiguate with words, e.g. "the foo package".
 
 ## Internal functions
 
