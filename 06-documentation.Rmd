@@ -11,7 +11,7 @@ support to keep your documentation close to the code.
 knitr::opts_chunk$set(eval = FALSE)
 ```
 
-## Title and Description
+## Title and description
 
 For the title, describe concisely what the function does in the very 
 first line of your function documentation. Titles should use sentence case 
@@ -64,7 +64,7 @@ lines don't need extra indention.
 
 The section 'Description' does not need extra indention either.
 
-## Documenting Parameters
+## Documenting parameters
 
 For most tags, like `@param`, `@seealso` and `@return`, the text should be a 
 sentence, starting with a capital letter and ending with a full stop.
@@ -81,7 +81,7 @@ duplication of content in multiple places.
 #' @inheritParams argument function_to_inherit_from
 ```
 
-## Capitalization and Full Stops
+## Capitalization and full stops
 
 For all bullets, enumerations, argument descriptions and the like, use sentence
 case and put a period at the end of each text element, even if it is only a few 
@@ -104,13 +104,6 @@ function calls.
 #' @seealso [fct_lump()] 
 ```
 
-When referring to other sections in the documentation, use single quotes and 
-title case.
-
-```{r}
-#' @param p1 Another parameter. See 'Details'.
-```
-
 If you have a family of related functions, you can use the `@family` tag to 
 automatically add appropriate lists and interlinks to the `@seealso` section.
 Family names are plural. In dplyr, the verbs `arrange`, `filter`, `mutate`,
@@ -120,7 +113,7 @@ Family names are plural. In dplyr, the verbs `arrange`, `filter`, `mutate`,
 #' @family single table verbs
 ```
 
-## Line Break
+## Line break
 
 Leave one line blank before / after each description.
 
@@ -152,7 +145,7 @@ the roxygen comments.
 #'   position, see [join()].
 ```
 
-## `Code Font`
+## `Code font`
 
 Text that contains valid R code should be marked as such.
 
@@ -164,7 +157,7 @@ Text that contains valid R code should be marked as such.
 
 To refer to the R language, use \\R.
 
-## Internal Functions
+## Internal functions
 
 Internal functions should be documented with `#'` comments as per usual. 
 Use the `@noRd` tag to prevent `.Rd` files from being generated.
