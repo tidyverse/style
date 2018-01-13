@@ -177,3 +177,20 @@ Good hints are difficult to write because, as above, you want to avoid steering 
     they will not look correct if the console is narrower (or much wider) than 
     expected. Instead, use bullets to break up the error into shorter logical
     components.
+
+## Before and after
+
+More examples culled from around the tidyverse.
+
+```{r}
+# BEFORE
+dplyr::filter(mtcars, cyl)
+#> Error in filter_impl(.data, quo) : 
+#> Argument 2 filter condition does not evaluate to a logical vector 
+
+# AFTER
+dplyr::filter(mtcars, cyl)
+#> Error: Each argument must be a logical vector:
+#> * Argument 2 (`cyl`) is an integer vector
+```
+
