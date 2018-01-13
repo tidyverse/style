@@ -1,6 +1,12 @@
 # Error messages
 
-(This guide is almost entirely aspirational; most of the bad examples come from existing tidyverse code.)
+```{r}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+An error message should start with a general statement of the problem then give a concise description of what went wrong. Consistent use of punctuation and formatting makes errors easier to parse.
+
+(This guide is currently almost entirely aspirational; most of the bad examples come from existing tidyverse code.)
 
 ## Problem statement
 
@@ -8,7 +14,7 @@ Every error message should start with general statement of the problem. It shoul
 
 *   If the cause of the problem is clear use "must":
 
-    ```{r, eval = FALSE}
+    ```{r}
     dplyr::nth(1:10, "x")
     #> Error: `n` must be a numeric vector, not a character vector
     
@@ -20,7 +26,7 @@ Every error message should start with general statement of the problem. It shoul
 
 *   If you can't state what was expected, use "can't":
 
-    ```{r, eval = FALSE}
+    ```{r}
     mtcars %>% pull(b)
     #> Error: Can't find column `b` in `.data`
     
@@ -31,16 +37,17 @@ Every error message should start with general statement of the problem. It shoul
     #> Error: Can't find specified `.depth` in `.x`
     ```
 
-Use `stop(call. = TRUE)`, `rlang::abort()`, `Rf_errorcall(R_NilValue, ...)` to avoid cluttering the error message with the name of the function that generated it. That information is often not informative, and can easily be accessed via `traceback()` or IDE equivalent.
+Use `stop(call. = FALSE)`, `rlang::abort()`, `Rf_errorcall(R_NilValue, ...)` to avoid cluttering the error message with the name of the function that generated it. That information is often not informative, and can easily be accessed via `traceback()` or IDE equivalent.
 
 ## Error location
 
 Do your best to reveal the location, name, and/or content of the troublesome component. The goal is to make it easy as possible for the user to find and fix the problem.
 
-```{r, eval = FALSE}
+```{r}
 # GOOD
 map_int(1:5, ~ "x")
-#> Error: Each result must be a single integer; result 1 is a character vector
+#> Error: Each result must be a single integer:
+#> * Result 1 is a character vector
 
 # BAD
 map_int(1:5, ~ "x")
@@ -51,7 +58,7 @@ map_int(1:5, ~ "x")
 
 If the source of the error is unclear, avoid pointing the user in the wrong direction by giving an opinion about the source of the error:
 
-```{r, eval = FALSE}
+```{r}
 # GOOD
 pull(mtcars, b)
 #> Error: Can't find column `b` in `.data`
@@ -63,7 +70,7 @@ tibble(x = 1:2, y = 1:3, z = 1)
 
 # BAD: implies one argument at fault
 pull(mtcars, b)
-#> Error: Column `b` doesn't exist in `.data`
+#> Error: Column `b` must exist in `.data`
 
 pull(mtcars, b)
 #> Error: `.data` must contain column `b`
@@ -72,17 +79,9 @@ tibble(x = 1:2, y = 1:3, z = 1)
 #> Error: Column `x` must be length 1 or 3, not 2 
 ```
 
-If the source of the error is clear and common, you may want provide a hint as how to fix it:
-
-```{r}
-dplyr::filter(iris, Species = "setosa")
-#> Error: Filter specifications must be named. 
-#> Did you mean `Species == "setosa"`?
-```
-
 If there are multiple issues, or an inconsistency revealed across several arguments or items, prefer a bulleted list:
 
-```{r, eval = FALSE}
+```{r}
 # GOOD
 purrr::reduce2(1:4, 1:2, `+`)
 #> Error: `.x` and `.y` must have compatible lengths:
@@ -95,21 +94,59 @@ purrr::reduce2(1:4, 1:2, `+`)
 #> `.y` has length 2
 ```
 
+## Hints
+
+If the source of the error is clear and common, you may want provide a hint as how to fix it:
+
+```{r}
+dplyr::filter(iris, Species = "setosa")
+#> Error: Filter specifications must be named
+#> Did you mean `Species == "setosa"`?
+
+ggplot2::ggplot(ggplot2::aes())
+#> Error: Can't plot data with class "uneval". 
+#> Did you accidentally provide the results of aes() to the `data` argument?
+```
+
+Hints should always end in a question mark.
+
+Hints are particularly important if the source of the error is far away from the root cause:
+
+```{r}
+# BAD
+mean[[1]]
+#> Error in mean[[1]] : object of type 'closure' is not subsettable
+
+# BETTER
+mean[[1]]
+#> Error: Can't subset a function.
+
+# BEST
+mean[[1]]
+#> Error: Can't subset a function
+#> Have you forgotten to define a variable named `mean`?
+```
+
+Good hints are difficult to write because, as above, you want to avoid steering users in the wrong direction. Generally, I avoid writing a hint unless the problem is common, and you can easily find a common pattern of incorrect usage (e.g. by searching StackOverflow).
+
 ## Punctuation
 
-*   Errors generally follow the same rule as headings; they should be written in 
-    sentence case, and should not have a full stop. 
+*   Errors should be written in sentence case, and should end in a full stop.
+    Bullets should formatted similarly; make sure to capitalise the first word
+    (unless it's an argument or column name).
     
-*   Prefer the use of the singular:
+*   Prefer the singular in problem statements:
 
-    ```{r, eval = FALSE}
+    ```{r}
     # GOOD
     map_int(1:2, ~ "a")
-    #> Error: Each result must be coercible to a single integer; result 1 is a character vector
+    #> Error: Each result must be coercible to a single integer:
+    #> * Result 1 is a character vector
     
     # BAD
     map_int(1:2, ~ "a")
-    #> Error: Results must be a coercible to single integers; result 1 is a character vector
+    #> Error: Results must be coercible to single integers: 
+    #> * Result 1 is a character vector
     ```
 
 *   If you can detect multiple problems, list up to five. This allows the user
@@ -131,9 +168,12 @@ purrr::reduce2(1:4, 1:2, `+`)
 *   Pick a natural connector between problem statement and error location:
     this may be ", not", ";", or ":" depending on the context.
 
-*   Surround the names of variables in backticks, e.g. `` `x` ``
+*   Surround the names of arguments in backticks, e.g. `` `x` ``. 
+    Use "column" to disambiguiate columns and arguments: `` Column `x` ``.
+    Avoid "variable", because it is ambiguous.
  
 *   Ideally, each component of the error message should be less than 80 
     characters wide. Do not add manual line breaks to long error messages; 
     they will not look correct if the console is narrower (or much wider) than 
-    expected.
+    expected. Instead, use bullets to break up the error into shorter logical
+    components.
