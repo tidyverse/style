@@ -1,6 +1,6 @@
 # Error messages
 
-```{r}
+```{r, include = FALSE}
 knitr::opts_chunk$set(eval = FALSE)
 ```
 
@@ -156,7 +156,7 @@ Good hints are difficult to write because, as above, you want to avoid steering 
     ```{r}
     # BETTER
     map_int(1:10, ~ "a")
-    #> Error: Results must be a coercible to single integers:
+    #> Error: Each result must be coercible to a single integer:
     #> * Result 1 is a character vector
     #> * Result 2 is a character vector
     #> * Result 3 is a character vector
@@ -180,17 +180,28 @@ Good hints are difficult to write because, as above, you want to avoid steering 
 
 ## Before and after
 
-More examples culled from around the tidyverse.
+More examples gathered from around the tidyverse.
 
 ```{r}
-# BEFORE
 dplyr::filter(mtcars, cyl)
-#> Error in filter_impl(.data, quo) : 
-#> Argument 2 filter condition does not evaluate to a logical vector 
-
-# AFTER
-dplyr::filter(mtcars, cyl)
-#> Error: Each argument must be a logical vector:
+#> BEFORE: Argument 2 filter condition does not evaluate to a logical vector 
+#> AFTER:  Each argument must be a logical vector:
 #> * Argument 2 (`cyl`) is an integer vector
+
+tibble::tribble("x", "y")
+#> BEFORE: Expected at least one column name; e.g. `~name` 
+#> AFTER:  Must supply at least one column name, e.g. `~name`
+
+ggplot2::ggplot(data = diamonds) + ggplot2::geom_line(ggplot2::aes(x = cut))
+#> BEFORE: geom_line requires the following missing aesthetics: y
+#> AFTER:  `geom_line()` must have the following aesthetics: `y`
+
+dplyr::rename(mtcars, cyl = xxx)
+#> BEFORE: `xxx` contains unknown variables
+#> AFTER:  Can't find column `xxx` in `.data`
+
+dplyr::arrange(mtcars, xxx)
+#> BEFORE: Evaluation error: object 'xxx' not found.
+#> AFTER:  Can't find column `xxx` in `.data`
 ```
 
