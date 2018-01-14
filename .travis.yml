@@ -17,3 +17,4 @@ script:
 deploy:
   provider: script
   script: netlify deploy -t $NETLIFY_PAT
+  skip_cleanup: true
