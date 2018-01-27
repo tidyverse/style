@@ -46,9 +46,8 @@ Put a space before and after `=` when naming arguments in function calls.
 Most infix operators (`==`, `+`, `-`, `<-`, etc.) are also surrounded by
 spaces, except those with relatively high precedence: `^`, `:`, `::`, and `:::`.
 
-Always put a space after a comma,
-and never before (just like in regular English).  Prefer parentheses over
-irregular spacing to highlight operator precedence.
+Always put a space after a comma, never before, just like in regular English.  
+To highlight operator precedence, use parentheses rather than irregular spacing.
 
 ```{r, eval = FALSE}
 # Good
