@@ -1,0 +1,39 @@
+# News
+
+## During development
+
+Each change should be accompanied by a bullet in `NEWS.md`. The goal of the bullet is to:
+
+* Briefly describe the change, starting with the name of function. This can be
+  similar to the commit message, but often the commit message will be developer 
+  facing, and the bullet will be user facing.
+
+* Link to the related issue, if present.
+
+* Credit the author, if the contribution was a PR.
+
+```
+* `drop_na()` no longer drops columns (@jennybryan, #245), and works with 
+  list-cols (#280). Equivalent of `NA` in a list column is any empty 
+  (length 0) data structure.
+```
+
+Each new bullet should be added to the top of the file (under the version heading).
+
+It is not necessary to describes minor documentation changes.
+
+## Before release
+
+Prior to release, the NEWS file needs to be thoroughly proof read and groomed. If there are many bullets, they should be grouped in to related areas using level 2 headings (`##`). Typically, this will include a catch-all "Minor improvements and bug fixes". 
+
+If there are API breaking changes, these should appear at the top, including a description of the symptoms of the change, and what is needed to fix it.
+
+```
+## Breaking changes
+
+* `separate()` now correctly uses -1 to refer to the far right position, 
+  instead of -2. If you depended on this behaviour, you'll need to condition
+  on `packageVersion("tidyr") > "0.7.2"`
+```
+
+Within a section, bullets should be ordered alphabetically by the first function mentioned (which should be near the start of the sentence)
