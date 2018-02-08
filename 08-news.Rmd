@@ -2,7 +2,7 @@
 
 ## During development
 
-Each change should be accompanied by a bullet in `NEWS.md`. The goal of the bullet is to:
+Each user-facing change should be accompanied by a bullet in `NEWS.md`. The goal of the bullet is to:
 
 * Briefly describe the change, starting with the name of function. This can be
   similar to the commit message, but often the commit message will be developer 
@@ -20,7 +20,7 @@ Each change should be accompanied by a bullet in `NEWS.md`. The goal of the bull
 
 Each new bullet should be added to the top of the file (under the version heading).
 
-It is not necessary to describes minor documentation changes.
+It is not necessary to describe changes minor documentation changes.
 
 ## Before release
 
