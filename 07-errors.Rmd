@@ -10,7 +10,7 @@ An error message should start with a general statement of the problem then give 
 
 ## Problem statement
 
-Every error message should start with general statement of the problem. It should be concise, but informative. (This is hard!)
+Every error message should start with a general statement of the problem. It should be concise, but informative. (This is hard!)
 
 *   If the cause of the problem is clear use "must":
 
@@ -132,8 +132,8 @@ Good hints are difficult to write because, as above, you want to avoid steering 
 ## Punctuation
 
 *   Errors should be written in sentence case, and should end in a full stop.
-    Bullets should formatted similarly; make sure to capitalise the first word
-    (unless it's an argument or column name).
+    Bullets should be formatted similarly; make sure to capitalise the first
+    word (unless it's an argument or column name).
     
 *   Prefer the singular in problem statements:
 

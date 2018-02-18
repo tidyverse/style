@@ -4,9 +4,9 @@
 
 Each user-facing change should be accompanied by a bullet in `NEWS.md`. The goal of the bullet is to:
 
-* Briefly describe the change, starting with the name of function. This can be
-  similar to the commit message, but often the commit message will be developer 
-  facing, and the bullet will be user facing.
+* Briefly describe the change, starting with the name of the function. This can
+  be similar to the commit message, but often the commit message will be
+  developer facing, and the bullet will be user facing.
 
 * Link to the related issue, if present.
 
