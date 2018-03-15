@@ -100,6 +100,18 @@ x[1,]   # Needs a space after the comma
 x[1 ,]  # Space goes after comma not before
 ```
 
+Do not put a space after the tidy evaluation bang-bang (`!!`) and bang-bang-bang (`!!!`) operators. 
+
+```{r, eval = FALSE}
+# Good
+call(!!xyz)
+
+# Bad
+call(!! xyz)
+call( !! xyz)
+call(! !xyz)
+```
+
 ## Argument names
 
 A function's arguments typically fall into two broad categories: one supplies 
