@@ -24,7 +24,7 @@ It is not necessary to describe minor documentation changes.
 
 ## Before release
 
-Prior to release, the NEWS file needs to be thoroughly proof read and groomed. If there are many bullets, they should be grouped in to related areas using level 2 headings (`##`). Typically, this will include a catch-all "Minor improvements and bug fixes". 
+Prior to release, the NEWS file needs to be thoroughly proofread and groomed. If there are many bullets, they should be grouped into related areas using level 2 headings (`##`). Typically, this will include a catch-all "Minor improvements and bug fixes". 
 
 If there are API breaking changes, these should appear at the top, including a description of the symptoms of the change, and what is needed to fix it.
 
