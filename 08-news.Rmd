@@ -20,7 +20,7 @@ Each user-facing change should be accompanied by a bullet in `NEWS.md`. The goal
 
 Each new bullet should be added to the top of the file (under the version heading).
 
-It is not necessary to describe changes minor documentation changes.
+It is not necessary to describe minor documentation changes.
 
 ## Before release
 
