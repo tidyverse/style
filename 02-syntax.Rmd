@@ -45,6 +45,8 @@ mean <- function(x) sum(x)
 Put a space before and after `=` when naming arguments in function calls.
 Most infix operators (`==`, `+`, `-`, `<-`, etc.) are also surrounded by
 spaces, except those with relatively high precedence: `^`, `:`, `::`, and `:::`.
+Tildes (`~`) in formulas with both LHS and RHS are surrounded by a space, if 
+there is no LHS, put no space after `~`. 
 
 Always put a space after a comma, never before, just like in regular English.  
 To highlight operator precedence, use parentheses rather than irregular spacing.
@@ -55,12 +57,18 @@ average <- mean((feet / 12) + inches, na.rm = TRUE)
 sqrt(x^2 + y^2)
 x <- 1:10
 base::get
+y ~ x
+tribble( 
+  ~col1, ~col2,
+  "a", "b"
+)
 
 # Bad
 average<-mean(feet/12 + inches,na.rm=TRUE)
 sqrt(x ^ 2 + y ^ 2)
 x <- 1 : 10
 base :: get
+y~x
 ```
 
 Place a space before `(`, except when it's part of a function call.
