@@ -267,7 +267,7 @@ on one line.
 Use `"`, not `'`, for quoting text. The only exception is when the text already 
 contains double quotes and no single quotes.
 
-```{r}
+```{r, eval=FALSE}
 # Good
 "Text"
 'Text with "quotes"'
