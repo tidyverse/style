@@ -132,8 +132,8 @@ Avoid partial matching.
 
 ## Indenting
 
-Curly braces, `{}`, define the the most important hierarchy of R code. To make 
-this hierarchy easy to see, always indent the code inside `{}` by two spaces.
+Curly braces, `{}`, define the most important hierarchy of R code. To make this 
+hierarchy easy to see, always indent the code inside `{}` by two spaces.
 
 A symmetrical arrangement helps finding related braces: The opening brace is the
 last, the closing brace is the first non-whitespace character in a line.  Code
