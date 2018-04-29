@@ -29,7 +29,7 @@ Prior to release, the NEWS file needs to be thoroughly proofread and groomed. If
 If there are API breaking changes, these should appear at the top, including a description of the symptoms of the change, and what is needed to fix it.
 
 ```
-## Breaking changes
+## Interface-breaking changes
 
 * `separate()` now correctly uses -1 to refer to the far right position, 
   instead of -2. If you depended on this behaviour, you'll need to condition
