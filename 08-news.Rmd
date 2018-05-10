@@ -36,4 +36,4 @@ If there are API breaking changes, these should appear at the top, including a d
   on `packageVersion("tidyr") > "0.7.2"`
 ```
 
-Within a section, bullets should be ordered alphabetically by the first function mentioned (which should be near the start of the sentence)
+Within a section, bullets should be ordered alphabetically by the first function mentioned (which should be near the start of the sentence). Bullets that don't mention a function come first.
