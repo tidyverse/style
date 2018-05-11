@@ -1,32 +1,125 @@
 # News
 
-## During development
+## News bullets
 
-Each user-facing change should be accompanied by a bullet in `NEWS.md`. The goal of the bullet is to:
+Each user-facing change should be accompanied by a bullet in `NEWS.md`. The goal of the bullet is to briefly describe the change so users of the packages can understand what's changed. This can be similar to the commit message, but often the commit message will be developer  facing, and the bullet will be user facing. 
 
-* Briefly describe the change, starting with the name of the function. This can
-  be similar to the commit message, but often the commit message will be
-  developer facing, and the bullet will be user facing.
+It is not necessary to describe minor documentation changes. But it's worthwhile to draw attention to sweeping changes, and to new vignettes.
 
-* Link to the related issue, if present.
+New bullets should be added to the top of the file (under the version heading). Organisation of bullets will happen later, during the release process (as described below). 
 
-* Credit the author, if the contribution was a PR.
+### General style
+
+Strive to place the name of the function as close to the beginning of the bullet as possible. A consistent location makes the bullets easier to scan, and easier to organise prior to release.
 
 ```
-* `drop_na()` no longer drops columns (@jennybryan, #245), and works with 
-  list-cols (#280). Equivalent of `NA` in a list column is any empty 
-  (length 0) data structure.
+# Good
+* `ggsave()` now uses full argument names to avoid partial match warning (#2355).
+
+# Bad
+* Fixed partial argument matches in `ggsave()` (#2355).
 ```
 
-Each new bullet should be added to the top of the file (under the version heading).
+Lines should be wrapped to 80 characters, and each bullet should end in a full stop.
 
-It is not necessary to describe minor documentation changes.
+Frame bullets positively (i.e. what now happens, not what used to happen), and use the present tense.
 
-## Before release
+```
+# Good
+* `ggsave()` now uses full argument names to avoid partial match warnings (#2355).
 
-Prior to release, the NEWS file needs to be thoroughly proofread and groomed. If there are many bullets, they should be grouped into related areas using level 2 headings (`##`). Typically, this will include a catch-all "Minor improvements and bug fixes". 
+# Bad
+* `ggsave()` no longer partially matches argument names (#2355).
+```
 
-If there are API breaking changes, these should appear at the top, including a description of the symptoms of the change, and what is needed to fix it.
+If the bullet is related to a issue, include the issue number. If the contribution was a PR, and the author is not a package author, include their GitHub user name. Both items should be wrapped in parentheses and will generally come before the final period.
+
+```
+# Good
+* `ggsave()` now uses full argument names to avoid partial match warnings 
+  (@wch, #2355).
+
+# Bad
+* `ggsave()` now uses full argument names to avoid partial match warnings.
+* `ggsave()` now uses full argument names to avoid partial match warnings.
+  (@wch, #2355)
+```
+
+Functions and arguments should be wrapped in back ticks, and function names should include parentheses. For more complex features, include longer examples in fenced code blocks (```` ``` ````). These will be useful inspiration when you later write the blog post.
+
+```
+# Good
+* In `stat_bin()`, `binwidth` now also takes functions.
+
+# Bad
+* In the `stat_bin` function, the `binwidth` now also takes functions.
+```
+
+### Common patterns
+
+The following exercepts from tidyverse news entries provide helpful templates to follow.
+
+*   New family of functions
+
+    ```
+    * Support for ordered factors is improved. Ordered factors throw a warning 
+      when mapped to shape (unordered factors do not), and do not throw warnings 
+      when mapped to size or alpha (unordered factors do). Viridis is used as 
+      default colour and fill scale for ordered factors (@karawoo, #1526).
+    
+    * `possibly()`, `safely()` and friends no longer capture interrupts: this
+      means that you can now terminate a mapper using one of these with
+      Escape or Ctrl + C (#314)
+    ```
+    
+*   New function
+
+    ```
+    * New `position_dodge2()` provides enhanced dogding for boxplots...
+    
+    * New `stat_qq_line()` makes it easy to add a simple line to a Q-Q plot. This
+      line makes it easier to judge the fit of the theoretical distribution 
+      (@nicksolomon).
+    ```
+
+*   New argument to existing function:
+
+    ```
+    * `geom_segment()` gains a `linejoin` parameter.
+    ```
+
+*   Function argument changes behaviour:
+
+    ```
+    * In `separate()`, `col = -1` now refers to the far right position. 
+      Previously, and incorrectly, `col = -2` referred to the far-right 
+      position.
+    ```
+    
+*   Function changes behaviour. 
+
+    ```
+    * `map()` and `modify()` now work with calls and pairlists (#412).
+
+    * `flatten_dfr()` and `flatten_dfc()` now aborts with informative 
+       message if dplyr is not installed (#454).
+
+    * `reduce()` now throws an error if `.x` is empty and `.init` is not
+      supplied.
+    ```
+
+
+## Organisation
+
+Prior to release, the NEWS file needs to be thoroughly proof read and groomed. 
+
+If there are many bullets, they should be grouped in to related areas using level 2 headings (`##`). Typically, this will include a catch-all "Minor improvements and bug fixes".  It is not worth while to do this organisation during development, as it's not typically obvious what the groups will be in advance.
+
+Within a section, bullets should be ordered alphabetically by the first function mentioned. If no function is mentioned, place at the top of the section.
+
+### Breaking changes
+
+If there are API breaking changes (as discovered during revdepchecks) these should also appear in their own section at the top. Each bullet should include a description of the symptoms of the change, and what is needed to fix it. The bullet should also be repeated in the appropriate section.
 
 ```
 ## Breaking changes
@@ -36,4 +129,6 @@ If there are API breaking changes, these should appear at the top, including a d
   on `packageVersion("tidyr") > "0.7.2"`
 ```
 
-Within a section, bullets should be ordered alphabetically by the first function mentioned (which should be near the start of the sentence)
+## Blog post
+
+For all major and minor releases, the latest news should be turned into a blog post. The blog post should hightlight major user facing changes, and point to the release notes for more deatils. Generally, you should focus on new features and major improvements, including examples showing the new features in action. You don't need to describe minor improvements and bug fixes, as the motivated reader can find these in the release notes.
