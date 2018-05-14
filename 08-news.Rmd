@@ -2,15 +2,23 @@
 
 ## News bullets
 
-Each user-facing change should be accompanied by a bullet in `NEWS.md`. The goal of the bullet is to briefly describe the change so users of the packages can understand what's changed. This can be similar to the commit message, but often the commit message will be developer  facing, and the bullet will be user facing. 
+Each user-facing change should be accompanied by a bullet in `NEWS.md`. The goal
+of the bullet is to briefly describe the change so users of the packages can
+understand what's changed. This can be similar to the commit message, but often
+the commit message will be developer facing, and the bullet will be user facing.
 
-It is not necessary to describe minor documentation changes. But it's worthwhile to draw attention to sweeping changes, and to new vignettes.
+It is not necessary to describe minor documentation changes. But it's worthwhile
+to draw attention to sweeping changes, and to new vignettes.
 
-New bullets should be added to the top of the file (under the version heading). Organisation of bullets will happen later, during the release process (as described below). 
+New bullets should be added to the top of the file (under the version heading).
+Organisation of bullets will happen later, during the release process (as
+described below).
 
 ### General style
 
-Strive to place the name of the function as close to the beginning of the bullet as possible. A consistent location makes the bullets easier to scan, and easier to organise prior to release.
+Strive to place the name of the function as close to the beginning of the bullet
+as possible. A consistent location makes the bullets easier to scan, and easier
+to organise prior to release.
 
 ```
 # Good
@@ -20,9 +28,11 @@ Strive to place the name of the function as close to the beginning of the bullet
 * Fixed partial argument matches in `ggsave()` (#2355).
 ```
 
-Lines should be wrapped to 80 characters, and each bullet should end in a full stop.
+Lines should be wrapped to 80 characters, and each bullet should end in a full
+stop.
 
-Frame bullets positively (i.e. what now happens, not what used to happen), and use the present tense.
+Frame bullets positively (i.e. what now happens, not what used to happen), and
+use the present tense.
 
 ```
 # Good
@@ -32,7 +42,10 @@ Frame bullets positively (i.e. what now happens, not what used to happen), and u
 * `ggsave()` no longer partially matches argument names (#2355).
 ```
 
-If the bullet is related to a issue, include the issue number. If the contribution was a PR, and the author is not a package author, include their GitHub user name. Both items should be wrapped in parentheses and will generally come before the final period.
+If the bullet is related to a issue, include the issue number. If the
+contribution was a PR, and the author is not a package author, include their
+GitHub user name. Both items should be wrapped in parentheses and will generally
+come before the final period.
 
 ```
 # Good
@@ -45,19 +58,23 @@ If the bullet is related to a issue, include the issue number. If the contributi
   (@wch, #2355)
 ```
 
-Functions and arguments should be wrapped in back ticks, and function names should include parentheses. For more complex features, include longer examples in fenced code blocks (```` ``` ````). These will be useful inspiration when you later write the blog post.
+Functions and arguments should be wrapped in back ticks, and function names
+should include parentheses. For more complex features, include longer examples
+in fenced code blocks (```` ``` ````). These will be useful inspiration when you
+later write the blog post.
 
 ```
 # Good
 * In `stat_bin()`, `binwidth` now also takes functions.
 
 # Bad
-* In the `stat_bin` function, the `binwidth` now also takes functions.
+* In the `stat_bin` function, the `binwidth` argument now also takes functions.
 ```
 
 ### Common patterns
 
-The following exercepts from tidyverse news entries provide helpful templates to follow.
+The following exercepts from tidyverse news entries provide helpful templates to
+follow.
 
 *   New family of functions
 
@@ -69,7 +86,7 @@ The following exercepts from tidyverse news entries provide helpful templates to
     
     * `possibly()`, `safely()` and friends no longer capture interrupts: this
       means that you can now terminate a mapper using one of these with
-      Escape or Ctrl + C (#314)
+      Escape or Ctrl + C (#314).
     ```
     
 *   New function
@@ -77,8 +94,8 @@ The following exercepts from tidyverse news entries provide helpful templates to
     ```
     * New `position_dodge2()` provides enhanced dogding for boxplots...
     
-    * New `stat_qq_line()` makes it easy to add a simple line to a Q-Q plot. This
-      line makes it easier to judge the fit of the theoretical distribution 
+    * New `stat_qq_line()` makes it easy to add a simple line to a Q-Q plot. 
+      This line makes it easier to judge the fit of the theoretical distribution 
       (@nicksolomon).
     ```
 
@@ -111,24 +128,37 @@ The following exercepts from tidyverse news entries provide helpful templates to
 
 ## Organisation
 
-Prior to release, the NEWS file needs to be thoroughly proof read and groomed. 
+Prior to release, the NEWS file needs to be thoroughly proof read and groomed.
 
-If there are many bullets, they should be grouped in to related areas using level 2 headings (`##`). Typically, this will include a catch-all "Minor improvements and bug fixes".  It is not worth while to do this organisation during development, as it's not typically obvious what the groups will be in advance.
+If there are many bullets, they should be grouped into related areas using
+level 2 headings (`##`). Typically, this will include a catch-all "Minor
+improvements and bug fixes". It is not worthwhile to do this organisation
+during development, as it's not typically obvious what the groups will be in
+advance.
 
-Within a section, bullets should be ordered alphabetically by the first function mentioned. If no function is mentioned, place at the top of the section.
+Within a section, bullets should be ordered alphabetically by the first function
+mentioned. If no function is mentioned, place at the top of the section.
 
 ### Breaking changes
 
-If there are API breaking changes (as discovered during revdepchecks) these should also appear in their own section at the top. Each bullet should include a description of the symptoms of the change, and what is needed to fix it. The bullet should also be repeated in the appropriate section.
+If there are API breaking changes (as discovered during revdepchecks) these
+should also appear in their own section at the top. Each bullet should include
+a description of the symptoms of the change, and what is needed to fix it. The
+bullet should also be repeated in the appropriate section.
 
 ```
 ## Breaking changes
 
 * `separate()` now correctly uses -1 to refer to the far right position, 
   instead of -2. If you depended on this behaviour, you'll need to condition
-  on `packageVersion("tidyr") > "0.7.2"`
+  on `packageVersion("tidyr") > "0.7.2"`.
 ```
 
 ## Blog post
 
-For all major and minor releases, the latest news should be turned into a blog post. The blog post should hightlight major user facing changes, and point to the release notes for more deatils. Generally, you should focus on new features and major improvements, including examples showing the new features in action. You don't need to describe minor improvements and bug fixes, as the motivated reader can find these in the release notes.
+For all major and minor releases, the latest news should be turned into a blog
+post. The blog post should hightlight major user-facing changes, and point to
+the release notes for more deatils. Generally, you should focus on new features
+and major improvements, including examples showing the new features in action.
+You don't need to describe minor improvements and bug fixes, as the motivated
+reader can find these in the release notes.
