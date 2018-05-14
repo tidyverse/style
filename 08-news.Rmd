@@ -72,7 +72,7 @@ should include parentheses.
 
 Many news bullets will be a single sentence. This is typically adequate when describing a bug fix or minor improvement, but you may need more detail when describing a new feature. For more complex features, include longer examples in fenced code blocks (```` ``` ````). These will be useful inspiration when you later write the blog post.
 
-```
+````
 # Good
 * In `stat_bin()`, `binwidth` now also takes functions.
 
@@ -98,7 +98,7 @@ Many news bullets will be a single sentence. This is typically adequate when des
     geom_histogram(binwidth = sturges) + 
     facet_wrap(~ cut)
   ```
-```
+````
 
 ### Common patterns
 
