@@ -54,14 +54,13 @@ come before the final period.
 
 # Bad
 * `ggsave()` now uses full argument names to avoid partial match warnings.
+
 * `ggsave()` now uses full argument names to avoid partial match warnings.
   (@wch, #2355)
 ```
 
 Functions and arguments should be wrapped in back ticks, and function names
-should include parentheses. For more complex features, include longer examples
-in fenced code blocks (```` ``` ````). These will be useful inspiration when you
-later write the blog post.
+should include parentheses. 
 
 ```
 # Good
@@ -69,6 +68,36 @@ later write the blog post.
 
 # Bad
 * In the `stat_bin` function, the `binwidth` argument now also takes functions.
+```
+
+Many news bullets will be a single sentence. This is typically adequate when describing a bug fix or minor improvement, but you may need more detail when describing a new feature. For more complex features, include longer examples in fenced code blocks (```` ``` ````). These will be useful inspiration when you later write the blog post.
+
+```
+# Good
+* In `stat_bin()`, `binwidth` now also takes functions.
+
+# Better
+* In `stat_bin()`, `binwidth` now also takes functions. The function is 
+  called with the scaled `x` values, and should return a single number.
+  This makes it possible to use classical binwidth computatons with ggplot2.
+
+# Best
+* In `stat_bin()`, `binwidth` now also takes functions. The function is 
+  called with the scaled `x` values, and should return a single number.
+  With a little work, this makes it possible to use classical bin size 
+  computatons with ggplot2.
+  
+  ```R
+  sturges <- function(x) {
+    rng <- range(x)
+    bins <- nclass.Sturges(x)
+    
+    (rng[2] - rng[1]) / bins
+  }
+  ggplot(diamonds, aes(price)) +
+    geom_histogram(binwidth = sturges) + 
+    facet_wrap(~ cut)
+  ```
 ```
 
 ### Common patterns
