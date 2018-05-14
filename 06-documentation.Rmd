@@ -6,8 +6,8 @@
 
 Documentation of code is essential, even if the only person using your code 
 is future-you. Use [roxygen2](https://github.com/klutometis/roxygen) with 
-enabled [markdown](https://github.com/klutometis/roxygen/blob/master/vignettes/markdown.Rmd)
-support to keep your documentation close to the code.
+[markdown](https://github.com/klutometis/roxygen/blob/master/vignettes/markdown.Rmd)
+support enabled to keep your documentation close to the code.
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(eval = FALSE)
@@ -17,7 +17,7 @@ knitr::opts_chunk$set(eval = FALSE)
 
 For the title, describe concisely what the function does in the very 
 first line of your function documentation. Titles should use sentence case 
-but not end with a full stop.
+but not end with a full stop (`.`).
 
 ```{r}
 #' Combine values into a vector or list
@@ -108,8 +108,8 @@ function calls.
 
 If you have a family of related functions, you can use the `@family` tag to 
 automatically add appropriate lists and interlinks to the `@seealso` section.
-Family names are plural. In dplyr, the verbs `arrange`, `filter`, `mutate`,
-`slice`, `summarize` form the family of single table verbs.
+Family names are plural. In dplyr, the verbs `arrange()`, `filter()`, 
+`mutate()`, `slice()`, `summarize()` form the family of single table verbs.
 
 ```{r}
 #' @family single table verbs
@@ -149,14 +149,15 @@ the roxygen comments.
 
 ## `Code font`
 
-Text that contains valid R code should be marked as such.
+Text that contains valid R code should be marked as such using backticks.
 
-* Function names, which should be followed by `()`, e.g. `tibble()`.
+* Function names should be followed by `()`, e.g. `tibble()`.
 * Function arguments, e.g. `na.rm`. 
 * Values, e.g. `TRUE`, `FALSE`, `NA`, `NaN`, `...`, `NULL` 
 * Literal R code, e.g. `mean(x, na.rm = TRUE)`
 
-Do not use code font for package names. If package name is ambiguous in the context, disambiguate with words, e.g. "the foo package".
+Do not use code font for package names. If package name is ambiguous in the 
+context, disambiguate with words, e.g. "the foo package".
 
 ## Internal functions
 
