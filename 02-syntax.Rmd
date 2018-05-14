@@ -13,7 +13,7 @@ Use underscores (`_`) to separate words within a name. Base R uses dots in
 function names (`contrib.url()`) and class names (`data.frame`), but it's 
 better to reserve dots exclusively for the S3 object system. In S3, methods are 
 given the name `function.class`; if you also use `.` in function and class 
-names you end up with confusing methods like `as.data.frame.data.frame()`.
+names, you end up with confusing methods like `as.data.frame.data.frame()`.
 
 Generally, variable names should be nouns and function names should be verbs. 
 Strive for names that are concise and meaningful (this is not easy!).
@@ -44,9 +44,9 @@ mean <- function(x) sum(x)
 
 Put a space before and after `=` when naming arguments in function calls.
 Most infix operators (`==`, `+`, `-`, `<-`, etc.) are also surrounded by
-spaces, except those with relatively high precedence: `^`, `:`, `::`, and `:::`.
-Tildes (`~`) in formulas with both LHS and RHS are surrounded by a space, if 
-there is no LHS, put no space after `~`. 
+spaces, except those with relatively [high precedence](http://stat.ethz.ch/R-manual/R-patched/library/base/html/Syntax.html): 
+`^`, `:`, `::`, and `:::`. Tildes (`~`) in formulas with both LHS and RHS are 
+surrounded by a space, if there is no LHS, put no space after `~`. 
 
 Always put a space after a comma, never before, just like in regular English.  
 To highlight operator precedence, use parentheses rather than irregular spacing.
@@ -69,6 +69,10 @@ sqrt(x ^ 2 + y ^ 2)
 x <- 1 : 10
 base :: get
 y~x
+tribble( 
+  ~col1, ~col2 ,
+  "a" , "b"
+)
 ```
 
 Place a space before `(`, except when it's part of a function call.
@@ -107,7 +111,7 @@ x[1,]   # Needs a space after the comma
 x[1 ,]  # Space goes after comma not before
 ```
 
-Do not put a space after the tidy evaluation bang-bang (`!!`) and bang-bang-bang (`!!!`) operators. 
+Do not put a space after the tidy evaluation bang-bang (`!!`) or bang-bang-bang (`!!!`) operators. 
 
 ```{r, eval = FALSE}
 # Good
@@ -122,10 +126,10 @@ call(! !xyz)
 ## Argument names
 
 A function's arguments typically fall into two broad categories: one supplies 
-the __data__ to compute on; the other controls __details__ of computation. When 
-you call a function, you typically omit the names of data arguments, because 
-they are used so commonly. If you override the default value of an argument, 
-use the full name:
+the __data__ to compute on; the other controls the __details__ of computation. 
+When you call a function, you typically omit the names of data arguments, 
+because they are used so commonly. If you override the default value of an 
+argument, use the full name:
 
 ```{r, eval = FALSE}
 # Good
@@ -143,10 +147,10 @@ Avoid partial matching.
 Curly braces, `{}`, define the most important hierarchy of R code. To make this 
 hierarchy easy to see, always indent the code inside `{}` by two spaces.
 
-A symmetrical arrangement helps finding related braces: The opening brace is the
-last, the closing brace is the first non-whitespace character in a line.  Code
-that is related to a brace (e.g., an `if` clause, a function declaration, a
-trailing comma, ...) must be on the same line.
+A symmetrical arrangement helps with finding related braces: the opening brace 
+is the last, the closing brace is the first non-whitespace character in a line.  
+Code that is related to a brace (e.g., an `if` clause, a function declaration, a
+trailing comma, ...) must be on the same line as the opening brace.
 
 ```{r, eval = FALSE}
 # Good
@@ -207,9 +211,11 @@ Strive to limit your code to 80 characters per line. This fits comfortably on a
 printed page with a reasonably sized font. If you find yourself running out of 
 room, this is a good indication that you should encapsulate some of the work in 
 a separate function.
+
 If a function call is too long to fit on a single line, use one line each for 
 the function name, each argument, and the closing `)`. 
 This makes the code easier to read and to change later. 
+
 ```{r, eval = FALSE}
 # Good
 do_something_very_complicated(
@@ -228,6 +234,7 @@ As described under [Argument names], you can omit the argument names
 for very common arguments (i.e. for arguments that are used in almost every 
 invocation of the function). Short unnamed arguments can also go on the same 
 line as the function name, even if the whole function call spans multiple lines.
+
 ```{r, eval = FALSE}
 map(x, f,
   extra_argument_a = 10,
