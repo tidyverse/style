@@ -154,16 +154,70 @@ follow.
       supplied.
     ```
 
-
 ## Organisation
 
 Prior to release, the NEWS file needs to be thoroughly proof read and groomed.
 
-If there are many bullets, they should be grouped into related areas using
-level 2 headings (`##`). Typically, this will include a catch-all "Minor
-improvements and bug fixes". It is not worthwhile to do this organisation
-during development, as it's not typically obvious what the groups will be in
-advance.
+Each release should have a level 1 heading (`#`) containing the package name 
+and version number. For smaller packages or patch releases this amount of
+organisation may be sufficient. For example, here is the NEWS for model 0.1.2:
+
+```
+
+# modelr 0.1.2
+
+* `data_grid()` no longer fails with modern tidyr (#58).
+
+* New `mape()` and `rsae()` model quality statistics (@paulponcet, #33).
+
+* `rsquare()` use more robust calculation 1 - SS_res / SS_tot rather 
+  than SS_reg / SS_tot (#37).
+
+* `typical()` gains `ordered` and `integer` methods (@jrnold, #44), 
+  and `...` argument (@jrnold, #42).
+```
+
+If there are manymany bullets, the version heading should be following issues 
+grouped into related areas with level 2 headings (`##`). Three commonly
+used sections are shown below:
+
+```
+# package 1.1.0
+
+## Breaking changes
+
+## New features
+
+## Minor improvements and fixes
+```
+
+It is fine to deviate from these headings if another organisation makes sense. 
+Indeed, larger packages will often require a finer break down. For example, 
+ggplot2 2.3.0
+included these headings:
+
+```
+# ggplot 2.3.0
+## Breaking changes
+## New features
+### Tidy evaluation
+### sf
+### Layers: geoms, stats, and position adjustments
+### Scales and guides
+### Margins
+## Extension points
+## Minor bug fixes and improvements
+### Facetting
+### Scales
+### Layers
+### Coords
+### Themes
+### Guides
+### Other
+```
+
+It is not worthwhile to organis bullets into headings during development, as 
+it's not typically obvious what the groups will be in advance.
 
 Within a section, bullets should be ordered alphabetically by the first function
 mentioned. If no function is mentioned, place at the top of the section.
