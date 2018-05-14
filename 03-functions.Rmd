@@ -37,7 +37,8 @@ long_function_name <- function(a = "a long argument",
 ```
 
 ## `return()`
-Only use `return()` for early returns. Otherwise rely on R to return the result 
+
+Only use `return()` for early returns. Otherwise, rely on R to return the result 
 of the last evaluated expression.
 
 ```{r eval = FALSE}
@@ -59,7 +60,7 @@ add_two <- function(x, y) {
 If your function is called primarily for its side-effects (like printing, 
 plotting, or saving to disk), it should return the first argument invisibly. 
 This makes it possible to use the function as part of a pipe. `print` methods 
-should usually do this, like this example from httr:
+should usually do this, like this example from [httr](http://httr.r-lib.org/):
 
 ```{r eval = FALSE}
 print.url <- function(x, ...) {
