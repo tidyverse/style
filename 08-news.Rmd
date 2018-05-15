@@ -216,7 +216,7 @@ included these headings:
 ### Other
 ```
 
-It is not worthwhile to organis bullets into headings during development, as 
+It is not worthwhile to organise bullets into headings during development, as 
 it's not typically obvious what the groups will be in advance.
 
 Within a section, bullets should be ordered alphabetically by the first function
