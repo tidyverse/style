@@ -102,10 +102,10 @@ Many news bullets will be a single sentence. This is typically adequate when des
 
 ### Common patterns
 
-The following exercepts from tidyverse news entries provide helpful templates to
+The following excerpts from tidyverse news entries provide helpful templates to
 follow.
 
-*   New family of functions
+*   New family of functions:
 
     ```
     * Support for ordered factors is improved. Ordered factors throw a warning 
@@ -118,7 +118,7 @@ follow.
       Escape or Ctrl + C (#314).
     ```
     
-*   New function
+*   New function:
 
     ```
     * New `position_dodge2()` provides enhanced dogding for boxplots...
@@ -142,7 +142,7 @@ follow.
       position.
     ```
     
-*   Function changes behaviour. 
+*   Function changes behaviour: 
 
     ```
     * `map()` and `modify()` now work with calls and pairlists (#412).
@@ -163,7 +163,6 @@ and version number. For smaller packages or patch releases this amount of
 organisation may be sufficient. For example, here is the NEWS for model 0.1.2:
 
 ```
-
 # modelr 0.1.2
 
 * `data_grid()` no longer fails with modern tidyr (#58).
@@ -177,7 +176,7 @@ organisation may be sufficient. For example, here is the NEWS for model 0.1.2:
   and `...` argument (@jrnold, #42).
 ```
 
-If there are manymany bullets, the version heading should be following issues 
+If there are many bullets, the version heading should be followed by issues 
 grouped into related areas with level 2 headings (`##`). Three commonly
 used sections are shown below:
 
@@ -240,8 +239,8 @@ bullet should also be repeated in the appropriate section.
 ## Blog post
 
 For all major and minor releases, the latest news should be turned into a blog
-post. The blog post should hightlight major user-facing changes, and point to
-the release notes for more deatils. Generally, you should focus on new features
+post. The blog post should highlight major user-facing changes, and point to
+the release notes for more details. Generally, you should focus on new features
 and major improvements, including examples showing the new features in action.
 You don't need to describe minor improvements and bug fixes, as the motivated
 reader can find these in the release notes.
