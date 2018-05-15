@@ -241,7 +241,7 @@ bullet should also be repeated in the appropriate section.
 
 For all major and minor releases, the latest news should be turned into a blog
 post. The blog post should hightlight major user-facing changes, and point to
-the release notes for more deatils. Generally, you should focus on new features
+the release notes for more details. Generally, you should focus on new features
 and major improvements, including examples showing the new features in action.
 You don't need to describe minor improvements and bug fixes, as the motivated
 reader can find these in the release notes.
