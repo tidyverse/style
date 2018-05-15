@@ -53,7 +53,7 @@ To highlight operator precedence, use parentheses rather than irregular spacing.
 
 ```{r, eval = FALSE}
 # Good
-average <- mean((feet / 12) + inches, na.rm = TRUE)
+average <- mean((feet * 12) + inches, na.rm = TRUE)
 sqrt(x^2 + y^2)
 x <- 1:10
 base::get
@@ -64,7 +64,7 @@ tribble(
 )
 
 # Bad
-average<-mean(feet/12 + inches,na.rm=TRUE)
+average<-mean(feet*12 + inches,na.rm=TRUE)
 sqrt(x ^ 2 + y ^ 2)
 x <- 1 : 10
 base :: get
