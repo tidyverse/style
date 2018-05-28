@@ -177,7 +177,7 @@ organisation may be sufficient. For example, here is the NEWS for model 0.1.2:
   and `...` argument (@jrnold, #42).
 ```
 
-If there are manymany bullets, the version heading should be following issues 
+If there are many bullets, the version heading should be following issues 
 grouped into related areas with level 2 headings (`##`). Three commonly
 used sections are shown below:
 
