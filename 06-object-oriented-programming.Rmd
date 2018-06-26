@@ -1,0 +1,160 @@
+# Object Oriented Programming
+
+## Introduction
+
+R has three object oriented programming (OOP) systems: S3, S4 and R6. Broadly 
+speaking, the previously outlined aspects of code style still apply within each 
+of these systems, with a few exceptions (e.g. in contrast to the general naming 
+rules outlined in Section \@ref(object-names), S4 and R6 class names should by 
+convention be UpperCamelCase).
+
+However, as highlighted in [Advanced R](http://adv-r.hadley.nz/oo-tradeoffs.html), 
+S4 should generally be avoided (since in the majority of cases the added 
+complexity does not yield any significant benefits over S3), and R6 should only 
+be used if there are compelling reasons to do so.
+
+This chapter will thus focus only on S3. S3 is the most commonly used within the 
+tidyverse (and CRAN packages in general) and should be the default choice for 
+OOP. S3 has few built-in constraints and is very flexible. This makes it 
+especially important that developers adhere to best practice and convention in 
+order to use S3 sensibly.
+
+## Class names
+
+Class names in S3 should contain only lower case letters and underscores (i.e. 
+snake_case). Dots should be strictly avoided due to the confusion this creates 
+with the identification of S3 methods.
+
+```{r, eval = FALSE}
+# Good
+foo_bar
+
+# Bad
+foo.bar
+fooBar
+FooBar
+```
+
+## Constructors
+
+When creating an S3 class, you should always provide a constructor that 
+efficiently creates new objects. The constructor should:
+
+- be named `new_classname()`
+- have an argument for the base object, and one for each attribute
+- check types of the base object and each attribute
+
+```{r, eval = FALSE}
+# Good
+new_foo_bar <- function(x, size = "small") {
+  stopifnot(is.double(x))
+  stopifnot(is.character(size), length(size) == 1)
+  
+  structure(x, class = "foo_bar", size = size)
+}
+
+# Bad
+foo_bar_maker <- function(x) {
+  structure(x$x, class = "foo_bar", size = x$size)
+}
+```
+
+Constructors usually shouldn't do any additional checking, in order to keep them 
+lightweight and performant.
+
+## Validators
+
+A validator performs more expensive checks on a created object to see that it 
+has the expected properties. The validator should be named `validate_classname()` 
+and should return the object if it is valid (this allows the validator to be 
+re-used in the helper function and also supports piping).
+
+```{r, eval = FALSE}
+# Good
+validate_foo_bar <- function(x) {
+  
+  values <- unclass(x)
+  size <- attr(x, "size")
+  
+  if (!all(!is.na(values) & values > 0)) {
+    stop(
+      "All `x` values must be non-missing and greater than zero",
+      call. = FALSE
+    )
+  }
+  
+  if (!(size %in% c("small", "medium", "large"))) {
+    stop(
+      "The `size` attribute needs to be either 'small', 'medium', or 'large'",
+      call. = FALSE
+    )
+  }
+  
+  x
+}
+```
+
+## Helpers
+
+It's a good idea, especially for complex classes, to also provide a helper, that 
+provides a convenient and neatly parameterised way for others to construct and 
+validate objects of this class. This function should be called `classname()`.
+
+```{r, eval = FALSE}
+# Good
+foo_bar <- function(x, size = "small") {
+  validate_foo_bar(new_foo_bar(x, size = size))
+}
+```
+
+## Base types
+
+When creating classes, you should generally use a scalar (list) style, since 
+this is easiest to work with. 
+
+Otherwise it’s usually clear if you need to use a data-frame style. Only use the 
+vector style if your class closely resembles an existing vector type.
+
+## Generics and methods
+
+Generics should generally dispatch based on the first argument (unless there is 
+an existing constraint or good reason not to).
+
+When creating a new generic, you should implement `generic.default()`.
+
+Always avoid calling S3 methods directly, except in special circumstances when 
+you can guarantee the type of the argument(s) and need to bypass method dispatch 
+in order to improve performance.
+
+## Arguments
+
+Methods should always have the same arguments as their generics, because this 
+will avoid confusing behaviour.
+
+The one exception to this is when a generic has the `...` argument - as this 
+allows methods to have additional arguments.
+
+## Coercion
+
+If the S3 object can be naturally created from existing objects (of certain 
+types), you should provide an (S3 generic) coercion function called 
+`as_classname()` and implement coercion methods for the relevant base types 
+which re-use the constructor/validator/helper. It's also good practice to 
+provide a default method that gives a suitable error message when coercion isn't 
+possible.
+
+Note that though class is stored as an attribute, one should never change this 
+attribute directly.
+
+```{r, eval = FALSE}
+# Bad
+attr(x, "class") <- "foo"
+```
+
+If the class must be set directly, use the `class()` function, since this 
+communicates intent more clearly.
+
+```{r, eval = FALSE}
+# Good
+class(x) <- "foo"
+```
