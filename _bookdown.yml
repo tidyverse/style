@@ -2,6 +2,8 @@ output_dir: "docs"
 
 
 rmd_files: [
+  "index.Rmd",
+  
   "analyses.Rmd",
   "files.Rmd",
   "syntax.Rmd",
