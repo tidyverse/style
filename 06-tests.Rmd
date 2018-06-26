@@ -2,4 +2,8 @@
 
 ## Organisation
 
-The organisation of test files should match the organsiation of `R/` files: if a function lives in `R/foofy.R`, then its tests should live in `tests/testthat/test-foofy.R`.
+The organisation of test files should match the organsiation of `R/` files: if a function lives in `R/foofy.R`, then its tests should live in `tests/testthat/test-foofy.R`. 
+
+Use `usethis::use_test()` to automatically create a file with the correct name.
+
+The `context()` is not very important; a future version of testthat will replace display the file name instead of the context in output.
