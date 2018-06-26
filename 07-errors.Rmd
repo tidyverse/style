@@ -41,6 +41,8 @@ should be concise, but informative. (This is hard!)
     #> Error: Can't find specified `.depth` in `.x`.
     ```
 
+The problem statement should use sentence case and end with a full stop.
+
 Use `stop(call. = FALSE)`, `rlang::abort()`, `Rf_errorcall(R_NilValue, ...)` to
 avoid cluttering the error message with the name of the function that generated
 it. That information is often not informative, and can easily be accessed via
@@ -106,6 +108,13 @@ purrr::reduce2(1:4, 1:2, `+`)
 purrr::reduce2(1:4, 1:2, `+`)
 #> Error: `.x` and `.y` must have compatible lengths: `.x` has length 4 and 
 #> `.y` has length 2
+```
+
+If the list of issues might be long, make sure to truncate to only show the first few:
+
+```{r}
+# GOOD
+#> Error: NAs found at 1,000,000 locations: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ...
 ```
 
 ## Hints
