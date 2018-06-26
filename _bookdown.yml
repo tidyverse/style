@@ -1,1 +1,17 @@
 output_dir: "docs"
+
+
+rmd_files: [
+  "analyses.Rmd",
+  "files.Rmd",
+  "syntax.Rmd",
+  "functions.Rmd",
+  "pipes.Rmd",
+  
+  "packages.Rmd",
+  "documentation.Rmd",
+  "tests.Rmd",
+  "errors.Rmd",
+  "news.Rmd"
+
+]
