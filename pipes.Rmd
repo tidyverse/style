@@ -50,7 +50,7 @@ iris %>%
 
 It is ok to keep a one-step pipe in one line:
 
-```{r}
+```{r, eval = FALSE}
 # Good
 iris %>% arrange(Species)
 
