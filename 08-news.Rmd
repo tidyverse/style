@@ -4,8 +4,8 @@
 
 Each user-facing change should be accompanied by a bullet in `NEWS.md`. The goal
 of the bullet is to briefly describe the change so users of the packages can
-understand what's changed. This can be similar to the commit message, but often
-the commit message will be developer facing, and the bullet will be user facing.
+understand what's changed. This can be similar to the commit message, but
+write it with a user in mind.
 
 It is not necessary to describe minor documentation changes. But it's worthwhile
 to draw attention to sweeping changes, and to new vignettes.
@@ -42,7 +42,7 @@ use the present tense.
 * `ggsave()` no longer partially matches argument names (#2355).
 ```
 
-If the bullet is related to a issue, include the issue number. If the
+If the bullet is related to an issue, include the issue number. If the
 contribution was a PR, and the author is not a package author, include their
 GitHub user name. Both items should be wrapped in parentheses and will generally
 come before the final period.
