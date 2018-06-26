@@ -2,40 +2,7 @@
 
 ## Introduction
 
-Use `%>%` when you find yourself composing three or more functions together 
-into a nested call, or creating intermediate objects that you don't care about.
-Put each verb on its own line.  This makes it simpler to rearrange 
-them later, and makes it harder to overlook a step. It is ok to keep a one-step 
-pipe in one line.
-
-```{r eval = FALSE}
-# Good
-foo_foo %>%
-  hop(through = forest) %>%
-  scoop(up = field_mouse) %>%
-  bop(on = head)
-
-foo_foo %>% fall("asleep")
-
-# Bad
-foo_foo <- hop(foo_foo, through = forest)
-foo_foo <- scoop(foo_foo, up = field_mice)
-foo_foo <- bop(foo_foo, on = head)
-
-iris %>% group_by(up) %>% summarize_all(mean) %>%
-  ungroup %>% gather(field_mice, foo_foo, -on) %>%
-  arrange(head)
-
-bop(
-  scoop(
-    hop(foo_foo, through = forest),
-    up = field_mice
-  ),
-  on = head
-)
-```
-
-(If you're not familiar with Litte)
+Use `%>%` to emphasise a sequence of actions, rather than the object that the actions are being performed on. 
 
 Avoid using the pipe when:
 
@@ -45,11 +12,58 @@ Avoid using the pipe when:
 * There are meaningful intermediate objects that could be given
   informative names.
 
-There's one exception to this rule: sometimes it's useful to include a short
-pipe as an argument to a function in a longer pipe. Carefully consider whether
-the code is more readable with a short inline pipe (which doesn't require a
-lookup elsewhere) or if it's better to move the code outside the pipe and give
-it an evocative name.
+## Whitespace
+
+`%>%` should always have a space before it, and should usually be followed by a new line. After the first step, each line should be indented by two spaces. This structure makes it easier to add new steps (or rearrange existing steps) and harder to overlook a step.
+
+```{r, eval = FALSE}
+# Good
+iris %>%
+  group_by(Species) %>%
+  summarize_if(is.numeric, mean) %>%
+  ungroup() %>%
+  gather(measure, value, -Species) %>%
+  arrange(value)
+
+# Bad
+iris %>% group_by(Species) %>% summarize_all(mean) %>%
+ungroup %>% gather(measure, value, -Species) %>%
+arrange(value)
+```
+
+## Long lines
+
+If the arguments to a function don't all fit on one line, put each argument on 
+its own line and indent:
+
+```{r, eval = FALSE}
+iris %>%
+  group_by(Species) %>%
+  summarise(
+    Sepal.Length = mean(Sepal.Length),
+    Sepal.Width = mean(Sepal.Width),
+    Species = n_distinct(Species)
+  )
+```
+
+## Short pipes
+
+It is ok to keep a one-step pipe in one line:
+
+```{r}
+# Good
+iris %>% arrange(Species)
+
+iris %>% 
+  arrange(Species)
+
+arrange(iris, Species)
+```
+
+Sometimes it's useful to include a short pipe as an argument to a function in a 
+longer pipe. Carefully consider whether the code is more readable with a short 
+inline pipe (which doesn't require a lookup elsewhere) or if it's better to move 
+the code outside the pipe and give it an evocative name.
 
 ```{r, eval = FALSE}
 # Good
@@ -70,27 +84,10 @@ left_join(x_join, y_join, by = c("a", "b"))
 # Bad
 x %>%
   select(a, b, w) %>%
-  left_join(y %>% filter(!u) %>% gather(a, v, -b) %>% select(a, b, v), by = c("a", "b"))
-```
-
-## Spacing and indenting
-
-`%>%` should always have a space before it. After the first step, each line 
-should be indented by two spaces.
-
-```{r, eval = FALSE}
-# Good
-iris %>%
-  group_by(Species) %>%
-  summarize_if(is.numeric, mean) %>%
-  ungroup() %>%
-  gather(measure, value, -Species) %>%
-  arrange(value)
-
-# Bad
-iris %>% group_by(Species) %>% summarize_all(mean) %>%
-ungroup %>% gather(measure, value, -Species) %>%
-arrange(value)
+  left_join(
+    y %>% filter(!u) %>% gather(a, v, -b) %>% select(a, b, v), 
+    by = c("a", "b")
+  )
 ```
 
 ## No arguments
@@ -108,22 +105,6 @@ x %>%
 x %>% 
   unique %>%
   sort
-```
-
-
-## Long lines
-
-If the arguments to a function don't all fit on one line, put each argument on 
-its own line and indent:
-
-```{r, eval = FALSE}
-iris %>%
-  group_by(Species) %>%
-  summarise(
-    Sepal.Length = mean(Sepal.Length),
-    Sepal.Width = mean(Sepal.Width),
-    Species = n_distinct(Species)
-  )
 ```
 
 ## Assignment
