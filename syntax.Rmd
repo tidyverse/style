@@ -316,3 +316,9 @@ contains double quotes and no single quotes.
 'Text with "double" and \'single\' quotes'
 ```
 
+## Comments
+
+In data analysis code, use comments to record important findings and analysis 
+decisions. If you need comments to explain what your code is doing, consider 
+rewriting your code to be clearer. If you discover that you have more comments 
+than code, considering switching to RMarkdown.
