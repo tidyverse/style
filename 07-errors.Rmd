@@ -117,6 +117,8 @@ If the list of issues might be long, make sure to truncate to only show the firs
 #> Error: NAs found at 1,000,000 locations: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ...
 ```
 
+If you want to correctly pluralise the error message, consider using `ngettext()`. See the notes in `?ngettext()` for some challenges related to correct translation to other languages.
+
 ## Hints
 
 If the source of the error is clear and common, you may want provide a hint as
