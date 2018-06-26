@@ -16,7 +16,7 @@ come from existing tidyverse code.)
 Every error message should start with a general statement of the problem. It
 should be concise, but informative. (This is hard!)
 
-*   If the cause of the problem is clear use "must":
+*   If the cause of the problem is clear, use "must":
 
     ```{r}
     dplyr::nth(1:10, "x")
@@ -49,8 +49,8 @@ it. That information is often not informative, and can easily be accessed via
 ## Error location
 
 Do your best to reveal the location, name, and/or content of the troublesome
-component. The goal is to make it easy as possible for the user to find and fix
-the problem.
+component. The goal is to make it as easy as possible for the user to find and 
+fix the problem.
 
 ```{r}
 # GOOD
@@ -111,7 +111,7 @@ purrr::reduce2(1:4, 1:2, `+`)
 ## Hints
 
 If the source of the error is clear and common, you may want provide a hint as
-how to fix it:
+to how to fix it:
 
 ```{r}
 dplyr::filter(iris, Species = "setosa")
@@ -188,7 +188,7 @@ problem is common, and you can easily find a common pattern of incorrect usage
     this may be ", not", ";", or ":" depending on the context.
 
 *   Surround the names of arguments in backticks, e.g. `` `x` ``. 
-    Use "column" to disambiguiate columns and arguments: `` Column `x` ``.
+    Use "column" to disambiguate columns and arguments: `` Column `x` ``.
     Avoid "variable", because it is ambiguous.
  
 *   Ideally, each component of the error message should be less than 80 
