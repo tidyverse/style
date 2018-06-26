@@ -74,20 +74,3 @@ print.url <- function(x, ...) {
 In code, use comments to explain the "why" not the "what" or "how". Each line 
 of a comment should begin with the comment symbol and a single space: `# `.
 
-## Design
-
-There are two main design principles to bear in mind:
-
-*   A function should do one thing well. 
- 
-    A function should be called either because it has side-effects or 
-    because it returns a value; not both. Strive to keep blocks within 
-    a function on one screen. 20-30 lines per function are common. For 
-    functions that are significantly longer, consider splitting it into smaller 
-    functions.
-
-*   A function should be easily understandable in isolation.
-
-    Avoid global options. If your function has a transient side-effect
-    (i.e. you need to create a temporary file or set an option), clean up
-    after yourself with `on.exit()`.
