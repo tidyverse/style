@@ -2,7 +2,7 @@
 
 ## Naming
 
-Use verbs for function names, where possible.
+As well as following the general advice for [object names], strive to use verbs for function names:
 
 ```{r eval = FALSE}
 # Good

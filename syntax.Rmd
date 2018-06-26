@@ -8,15 +8,7 @@
 > --- Phil Karlton
 
 Variable and function names should use only lowercase letters, numbers, and `_`. 
-
-Use underscores (`_`) to separate words within a name. Base R uses dots in 
-function names (`contrib.url()`) and class names (`data.frame`), but it's 
-better to reserve dots exclusively for the S3 object system. In S3, methods are 
-given the name `function.class`; if you also use `.` in function and class 
-names, you end up with confusing methods like `as.data.frame.data.frame()`.
-
-Generally, variable names should be nouns and function names should be verbs. 
-Strive for names that are concise and meaningful (this is not easy!).
+Use underscores (`_`) (so called snake case) to separate words within a name. 
 
 ```{r, eval = FALSE}
 # Good
@@ -24,9 +16,25 @@ day_one
 day_1
 
 # Bad
-first_day_of_the_month
 DayOne
 dayone
+```
+
+Base R uses dots in function names (`contrib.url()`) and class names 
+(`data.frame`), but it's better to reserve dots exclusively for the S3 object 
+system. In S3, methods are given the name `function.class`; if you also use 
+`.` in function and class names, you end up with confusing methods like
+`as.data.frame.data.frame()`.
+
+Generally, variable names should be nouns and function names should be verbs. 
+Strive for names that are concise and meaningful (this is not easy!).
+
+```{r, eval = FALSE}
+# Good
+day_one
+
+# Bad
+first_day_of_the_month
 djm1
 ```
 
@@ -43,35 +51,50 @@ mean <- function(x) sum(x)
 ## Spacing
 
 Put a space before and after `=` when naming arguments in function calls.
-Most infix operators (`==`, `+`, `-`, `<-`, etc.) are also surrounded by
-spaces, except those with relatively [high precedence](http://stat.ethz.ch/R-manual/R-patched/library/base/html/Syntax.html): 
-`^`, `:`, `::`, and `:::`. Tildes (`~`) in formulas with both LHS and RHS are 
-surrounded by a space, if there is no LHS, put no space after `~`. 
-
 Always put a space after a comma, never before, just like in regular English.  
-To highlight operator precedence, use parentheses rather than irregular spacing.
 
 ```{r, eval = FALSE}
 # Good
-average <- mean((feet * 12) + inches, na.rm = TRUE)
+average <- mean(x, na.rm = TRUE)
+
+# Bad
+average<-mean(x,na.rm=TRUE)
+average <- mean(x ,na.rm = TRUE)
+```
+
+Most infix operators (`==`, `+`, `-`, `<-`, etc.) should be surrounded by
+spaces. The exception are those with relatively [high precedence](http://stat.ethz.ch/R-manual/R-patched/library/base/html/Syntax.html):
+`^`, `:`, `::`, and `:::`. To highlight operator precedence, use parentheses rather than irregular spacing.
+
+```{r, eval = FALSE}
+# Good
+height <- (feet * 12) + inches
 sqrt(x^2 + y^2)
 x <- 1:10
 base::get
-y ~ x
-tribble( 
-  ~col1, ~col2,
-  "a", "b"
-)
 
 # Bad
-average<-mean(feet*12 + inches,na.rm=TRUE)
+height<-feet*12 + inches
 sqrt(x ^ 2 + y ^ 2)
 x <- 1 : 10
 base :: get
+```
+
+Put spaces around `~` in double-sided formulas, but omit it in single-sided formulas.
+
+```{r, eval = FALSE}
+# Good
+y ~ x
+tribble( 
+  ~col1, ~col2,
+  "a",   "b"
+)
+
+# Bad
 y~x
 tribble( 
-  ~col1, ~col2 ,
-  "a" , "b"
+  ~ col1, ~ col2,
+  "a", "b"
 )
 ```
 
