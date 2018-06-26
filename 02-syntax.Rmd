@@ -75,16 +75,16 @@ tribble(
 )
 ```
 
-Place a space before `(`, except when it's part of a function call.
+Place a space before `(` when its used with a keyword like `if`, `for` or `function`:
 
 ```{r, eval = FALSE}
 # Good
 if (debug) show(x)
-plot(x, y)
+plot((x + y) ^ 2, (x - y) ^ 2)
 
 # Bad
 if(debug)show(x)
-plot (x, y)
+plot ( (x + y) ^ 2, (x - y) ^ 2)
 ```
 
 Extra spacing (i.e., more than one space in a row) is ok if it improves 
