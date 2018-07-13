@@ -130,7 +130,8 @@ dplyr::filter(iris, Species = "setosa")
 #> Did you mean `Species == "setosa"`?
 
 ggplot2::ggplot(ggplot2::aes())
-#> Error: Can't plot data with class "uneval". 
+#> Error: `data` must be a data frame, or other object coercible by `fortify()`, 
+#> not an S3 object with class uneval. 
 #> Did you accidentally provide the results of aes() to the `data` argument?
 ```
 
