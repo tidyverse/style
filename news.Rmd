@@ -96,7 +96,7 @@ Many news bullets will be a single sentence. This is typically adequate when des
   }
   ggplot(diamonds, aes(price)) +
     geom_histogram(binwidth = sturges) + 
-    facet_wrap(~ cut)
+    facet_wrap(~cut)
   ```
 ````
 
