@@ -42,34 +42,6 @@ use the present tense.
 * `ggsave()` no longer partially matches argument names (#2355).
 ```
 
-If the bullet is related to an issue, include the issue number. If the
-contribution was a PR, and the author is not a package author, include their
-GitHub user name. Both items should be wrapped in parentheses and will generally
-come before the final period.
-
-```
-# Good
-* `ggsave()` now uses full argument names to avoid partial match warnings 
-  (@wch, #2355).
-
-# Bad
-* `ggsave()` now uses full argument names to avoid partial match warnings.
-
-* `ggsave()` now uses full argument names to avoid partial match warnings.
-  (@wch, #2355)
-```
-
-Functions and arguments should be wrapped in back ticks, and function names
-should include parentheses. 
-
-```
-# Good
-* In `stat_bin()`, `binwidth` now also takes functions.
-
-# Bad
-* In the `stat_bin` function, the `binwidth` argument now also takes functions.
-```
-
 Many news bullets will be a single sentence. This is typically adequate when describing a bug fix or minor improvement, but you may need more detail when describing a new feature. For more complex features, include longer examples in fenced code blocks (```` ``` ````). These will be useful inspiration when you later write the blog post.
 
 ````
@@ -99,6 +71,38 @@ Many news bullets will be a single sentence. This is typically adequate when des
     facet_wrap(~ cut)
   ```
 ````
+
+### Acknowledgement
+
+If the bullet is related to an issue, include the issue number. If the
+contribution was a PR, and the author is not a package author, include their
+GitHub user name. Both items should be wrapped in parentheses and will generally
+come before the final period.
+
+```
+# Good
+* `ggsave()` now uses full argument names to avoid partial match warnings 
+  (@wch, #2355).
+
+# Bad
+* `ggsave()` now uses full argument names to avoid partial match warnings.
+
+* `ggsave()` now uses full argument names to avoid partial match warnings.
+  (@wch, #2355)
+```
+
+### Code style
+
+Functions and arguments should be wrapped in back ticks, and function names
+should include parentheses. 
+
+```
+# Good
+* In `stat_bin()`, `binwidth` now also takes functions.
+
+# Bad
+* In the `stat_bin` function, the `binwidth` argument now also takes functions.
+```
 
 ### Common patterns
 
