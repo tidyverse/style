@@ -80,11 +80,12 @@ x <- 1 : 10
 base :: get
 ```
 
-Put spaces around `~` in double-sided formulas, but omit it in single-sided formulas.
+Put spaces around `~` in formulas, only omit the space in single-sided formulas where the rhs is a single identifier.
 
 ```{r, eval = FALSE}
 # Good
 y ~ x
+~ .x + .y
 tribble( 
   ~col1, ~col2,
   "a",   "b"
@@ -92,6 +93,7 @@ tribble(
 
 # Bad
 y~x
+~.x + .y
 tribble( 
   ~ col1, ~ col2,
   "a", "b"
