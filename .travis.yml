@@ -16,5 +16,5 @@ script:
 
 deploy:
   provider: script
-  script: netlify deploy --prod --dir _book
+  script: netlify deploy --prod --dir docs
   skip_cleanup: true
