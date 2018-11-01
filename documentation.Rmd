@@ -134,7 +134,7 @@ Text that contains valid R code should be marked as such using backticks. This i
 * Class names, e.g. "a tibble will have class `tbl_df` ..."
 
 Do not use code font for package names. If the package name is ambiguous in the 
-context, disambiguate with words, e.g. "the foo package".
+context, disambiguate with words, e.g. "the foo package". Do not capitalize the function name if it occurs at the start of a sentence.
 
 ## Internal functions
 
