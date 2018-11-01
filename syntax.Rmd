@@ -50,103 +50,148 @@ mean <- function(x) sum(x)
 
 ## Spacing
 
-Put a space before and after `=` when naming arguments in function calls.
+### Commas
+
 Always put a space after a comma, never before, just like in regular English.  
 
 ```{r, eval = FALSE}
 # Good
-average <- mean(x, na.rm = TRUE)
+x[, 1]
 
 # Bad
-average<-mean(x,na.rm=TRUE)
-average <- mean(x ,na.rm = TRUE)
+x[,1]
+x[ ,1]
+x[ , 1]
 ```
 
-Most infix operators (`==`, `+`, `-`, `<-`, etc.) should be surrounded by
-spaces. The exception are those with relatively [high precedence](http://stat.ethz.ch/R-manual/R-patched/library/base/html/Syntax.html):
-`^`, `:`, `::`, and `:::`. To highlight operator precedence, use parentheses rather than irregular spacing.
+### Parentheses
+
+Do not put spaces inside or outside parentheses for regular function calls.
 
 ```{r, eval = FALSE}
 # Good
-height <- (feet * 12) + inches
-sqrt(x^2 + y^2)
-x <- 1:10
-base::get
+mean(x, na.rm = TRUE)
 
 # Bad
-height<-feet*12 + inches
-sqrt(x ^ 2 + y ^ 2)
-x <- 1 : 10
-base :: get
+mean (x, na.rm = TRUE)
+mean( x, na.rm = TRUE )
 ```
 
-Put spaces around `~` in formulas, only omit the space in single-sided formulas where the rhs is a single identifier.
-
-```{r, eval = FALSE}
-# Good
-y ~ x
-~ .x + .y
-tribble( 
-  ~col1, ~col2,
-  "a",   "b"
-)
-
-# Bad
-y~x
-~.x + .y
-tribble( 
-  ~ col1, ~ col2,
-  "a", "b"
-)
-```
-
-Place a space before `(` when its used with a keyword like `if`, `for` or `function`:
+Place a space before and after `()` when used with  `if`, `for`, or `while`.
 
 ```{r, eval = FALSE}
 # Good
 if (debug) show(x)
-plot((x + y)^2, (x - y)^2)
 
 # Bad
 if(debug)show(x)
-plot ( (x + y) ^ 2, (x - y) ^ 2)
 ```
 
-Extra spacing (i.e., more than one space in a row) is ok if it improves 
-alignment of equal signs or assignments (`<-`).
+Place a space after `()` used for function arguments:
 
 ```{r, eval = FALSE}
+# Good
+function(x) {}
+
+# Bad
+function (x) {}
+function(x){}
+```
+
+### Infix operators
+
+Most infix operators (`==`, `+`, `-`, `<-`, etc.) should always be surrounded by
+spaces:
+
+```{r, eval = FALSE}
+# Good
+height <- (feet * 12) + inches
+mean(x, na.rm = 10)
+
+# Bad
+height<-feet*12+inches
+mean(x, na.rm=10)
+```
+
+There are a few exceptions, which should never be surrounded by spaces:
+
+*   The operators with [high precedence][syntax]: `::`, `:::`, `$`, `@`, `[`, 
+    `[[`, `^`, unary `-`, unary `+`, and `:`.
+  
+    ```{r, eval = FALSE}
+    # Good
+    sqrt(x^2 + y^2)
+    df$z
+    x <- 1:10
+
+    # Bad
+    sqrt(x ^ 2 + y ^ 2)
+    df $ z
+    x <- 1 : 10
+    ```
+  
+*   Single-sided formulas when the right-hand side is a single identifer:
+
+    ```{r, eval = FALSE}
+    # Good
+    ~ .x + .y
+    tribble( 
+      ~col1, ~col2,
+      "a",   "b"
+    )
+    
+    # Bad
+    ~.x + .y
+    tribble( 
+      ~ col1, ~ col2,
+      "a", "b"
+    )
+    ```
+
+*   When used in tidy evaluation `!!` (bang-bang) and `!!!` (bang-bang-bang)
+    (because have precedence equivalent to unary `-`/`+`)
+
+    ```{r, eval = FALSE}
+    # Good
+    call(!!xyz)
+    
+    # Bad
+    call(!! xyz)
+    call( !! xyz)
+    call(! !xyz)
+    ```
+
+*   The help operator
+
+    ```{r, eval = FALSE}
+    # Good
+    package?stats
+    ?mean
+    
+    # Bad
+    package ? stats
+    ? mean
+    ```
+    
+### Extra spaces
+
+Adding extra spaces ok if it improves alignment of `=` or `<-`. 
+
+```{r, eval = FALSE}
+# Good
 list(
   total = a + b + c,
   mean  = (a + b + c) / n
 )
+
+# Also fine
+list(
+  total = a + b + c,
+  mean = (a + b + c) / n
+)
 ```
 
-Do not place spaces around code in parentheses or square brackets (unless 
-there's a comma, in which case see above).
-
-```{r, eval = FALSE}
-# Good
-if (debug) do(x)
-diamonds[5, ]
-
-# Bad
-if ( debug ) do(x)  # No spaces around debug
-x[1,]   # Needs a space after the comma
-x[1 ,]  # Space goes after comma not before
-```
-
-Do not put a space after the tidy evaluation bang-bang (`!!`) or bang-bang-bang (`!!!`) operators. 
-
-```{r, eval = FALSE}
-# Good
-call(!!xyz)
-
-# Bad
-call(!! xyz)
-call( !! xyz)
-call(! !xyz)
-```
+Do not add extra spaces to places where space is not usually allowed.
 
 ## Argument names
 
@@ -324,3 +369,5 @@ In data analysis code, use comments to record important findings and analysis
 decisions. If you need comments to explain what your code is doing, consider 
 rewriting your code to be clearer. If you discover that you have more comments 
 than code, considering switching to RMarkdown.
+
+[syntax]:http://stat.ethz.ch/R-manual/R-patched/library/base/html/Syntax.html
