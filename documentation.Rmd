@@ -131,8 +131,9 @@ Text that contains valid R code should be marked as such using backticks. This i
 * Function arguments, e.g. `na.rm`. 
 * Values, e.g. `TRUE`, `FALSE`, `NA`, `NaN`, `...`, `NULL` 
 * Literal R code, e.g. `mean(x, na.rm = TRUE)`
+* Class names, e.g. "a tibble will have class `tbl_df` ..."
 
-Do not use code font for package names. If package name is ambiguous in the 
+Do not use code font for package names. If the package name is ambiguous in the 
 context, disambiguate with words, e.g. "the foo package".
 
 ## Internal functions
