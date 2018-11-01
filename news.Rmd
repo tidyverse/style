@@ -94,7 +94,8 @@ come before the final period.
 ### Code style
 
 Functions and arguments should be wrapped in back ticks, and function names
-should include parentheses. 
+should include parentheses. Both `NAMESPACE`, and `DESCRIPTION` should be 
+surrounded by back ticks, as well.
 
 ```
 # Good
