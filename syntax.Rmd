@@ -134,18 +134,28 @@ There are a few exceptions, which should never be surrounded by spaces:
 
     ```{r, eval = FALSE}
     # Good
-    ~ .x + .y
-    tribble( 
+    ~foo
+    tribble(
       ~col1, ~col2,
       "a",   "b"
     )
-    
+
     # Bad
-    ~.x + .y
-    tribble( 
+    ~ foo
+    tribble(
       ~ col1, ~ col2,
       "a", "b"
     )
+    ```
+
+    Note that single-sided formulas with a complex right-hand side do need a space:
+
+    ```{r, eval = FALSE}
+    # Good
+    ~ .x + .y
+
+    # Bad
+    ~.x + .y
     ```
 
 *   When used in tidy evaluation `!!` (bang-bang) and `!!!` (bang-bang-bang)
