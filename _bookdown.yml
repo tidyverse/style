@@ -1,19 +1,20 @@
 output_dir: "docs"
 
 
-rmd_files: [
-  "index.Rmd",
+rmd_files:
+  - "index.Rmd"
+   
+  - "analyses.Rmd"
+  - "files.Rmd"
+  - "syntax.Rmd"
+  - "functions.Rmd"
+  - "pipes.Rmd"
+   
+  - "packages.Rmd"
+  - "documentation.Rmd"
+  - "tests.Rmd"
+  - "errors.Rmd"
+  - "news.Rmd"
   
-  "analyses.Rmd",
-  "files.Rmd",
-  "syntax.Rmd",
-  "functions.Rmd",
-  "pipes.Rmd",
-  
-  "packages.Rmd",
-  "documentation.Rmd",
-  "tests.Rmd",
-  "errors.Rmd",
-  "news.Rmd"
-
-]
+  - "infrastructure.Rmd"
+  - "continuous-integration.Rmd"
