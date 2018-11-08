@@ -1,0 +1,35 @@
+# Continuous integration
+
+Continuous integration (CI) services, such as [Travis CI](https://travis-ci.org), can be used to automate important development tasks, like testing and building artefacts. Typically, this goes hand in hand with the practice of hosting development on a site like [GitHub.com](https://travis-ci.org). Each time the developer pushes new work to GitHub, it triggers a Travis job to run `R CMD check` or build and deploy a website.
+
+The `usethis::use_tidy_ci()` function does some basic setup that's relevant to almost any tidyverse or r-lib package. But there's a long tail of more specialized tasks that we implement in a more artisanal way. Here we record some of the common principles and mechanics, since they cannot be (yet?) be automated.
+
+## Secrets
+
+Many CI tasks require a piece of secret info that gives, say, Travis the permission to do something on behalf of the developer. Examples: make requests to a Google API, make commits back to the project repo, deploy to a hosting service. Managing these secrets requires care, but it's often worth it to test software more thoroughly or to keep a rendered book or website up-to-date.
+
+*What follows in a brain dump*
+
+Use the simplest, smallest secret possible.
+
+  * A small, static token > an OAuth2 token or a `.httr-oauth` file.
+  * Often means secret can be provided as an encrypted env var, as opposed to encrypting a file with CI provider's preferred tool, commiting that to the project, and putting explicit decryption commands in the CI config file.
+  
+Store the secret *outside* the project, i.e. in an env var or in a specific, semi-hidden place at the user-level. For example, store a secret file in some well-named folder below `~/.R/` or define an env var in `~/.Renviron`.
+
+  * This reduces the chance that the secret is leaked by being synced to a cloud provider by accident.
+  
+Plan for graceful and partial failure when the secret is not available.
+
+  * Make any explicit secret decryption commands in CI config files conditional on not being an external pull request. Remember these can often be avoided by the use of (encrypted) env vars.
+  * Use a test helper to find and activate the secret (or not).
+  * Write a custom test skipper so secret-requiring tests can be skipped, as opposed to letting them fail.
+  * This resilience will pay off when you are having troubles with your secret. At least, CI will still do something and provide more info for *post mortem* analysis. It also means you will get more out of CI from external pull requests, which cannot access the secret info.
+
+## Other possible topics
+
+Automatic rendering of
+
+  * bookdown sites
+  * blogdown sites
+  * pkgdown sites
