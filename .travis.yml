@@ -9,6 +9,7 @@ cache:
   - $HOME/.npm
 
 before_install:
+- nvm install stable
 - npm install netlify-cli -g
 
 script:
