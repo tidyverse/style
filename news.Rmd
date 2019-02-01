@@ -1,18 +1,13 @@
 # News
 
-## News bullets
+Each user-facing change to a package should be accompanied by a bullet in `NEWS.md`. Minor changes to documentation don't need to be documented, but it's worthwhile to draw attention to sweeping changes and to new vignettes.
 
-Each user-facing change should be accompanied by a bullet in `NEWS.md`. The goal
-of the bullet is to briefly describe the change so users of the packages can
-understand what's changed. This can be similar to the commit message, but
-write it with a user in mind.
+## Bullets
 
-It is not necessary to describe minor documentation changes. But it's worthwhile
-to draw attention to sweeping changes, and to new vignettes.
+The goal of the bullet is to briefly describe the change so users of the packages can understand what's changed. This can be similar to the commit message, but written with a user (not developer) in mind.
 
-New bullets should be added to the top of the file (under the version heading).
-Organisation of bullets will happen later, during the release process (as
-described below).
+New bullets should be added to the top of the file (under the first heading).
+Organisation of bullets will happen later, during the release process (Section \@ref(news-release)).
 
 ### General style
 
@@ -93,9 +88,7 @@ come before the final period.
 
 ### Code style
 
-Functions and arguments should be wrapped in backticks, and function names
-should include parentheses. Both `NAMESPACE`, and `DESCRIPTION` should be 
-surrounded by backticks, as well.
+Functions, arguments, and file names should be wrapped in backticks. 
 
 ```
 # Good
@@ -103,6 +96,16 @@ surrounded by backticks, as well.
 
 # Bad
 * In the `stat_bin` function, the `binwidth` argument now also takes functions.
+```
+
+Function names should include parentheses. 
+
+```
+# Good
+* In `stat_bin()`, `binwidth` now also takes functions.
+
+# Bad
+* In the `stat_bin` function, `binwidth` now also takes functions.
 ```
 
 ### Common patterns
@@ -173,9 +176,9 @@ During development, new bullets should be added to top of the file, immediately 
 * First update.
 ```
 
-### Release
+### Release {#news-release}
 
-Prior to release, the NEWS file needs to be thoroughly proof read and groomed.
+Prior to release, the NEWS file needs to be thoroughly proofread and groomed.
 
 Each release should have a level 1 heading (`#`) containing the package name 
 and version number. For smaller packages or patch releases this amount of
