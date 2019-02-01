@@ -12,6 +12,7 @@ rmd_files: [
   "pipes.Rmd",
   
   "packages.Rmd",
+  "package-files.Rmd",
   "documentation.Rmd",
   "tests.Rmd",
   "errors.Rmd",
