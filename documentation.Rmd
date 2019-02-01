@@ -107,11 +107,23 @@ case sensitive. Use a colon before enumerations or bulleted lists.
 ## Cross-linking
 
 Cross-referencing is encouraged, both within R's help file system as well as to 
-external resources. Include parentheses after function names when referencing 
-function calls.
+external resources. 
+
+List closely related functions in `@seealso`. A single related function can be written as a sentence:
 
 ```{r}
-#' @seealso [fct_lump()] 
+#' @seealso [fct_lump()] to automatically convert the rarest (or most common)
+#'   levels to "other".
+```
+
+More recommendations should be organised in a bulleted list:
+
+```{r}
+#' @seealso
+#' * [tibble()] constructs from individual columns.
+#' * [enframe()] converts a named vector into a two-column tibble (names and 
+#'   values).
+#' * [name-repair] documents the details of name repair.
 ```
 
 If you have a family of related functions, you can use the `@family` tag to 
