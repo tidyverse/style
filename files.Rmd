@@ -34,7 +34,11 @@ Microsoft Windows or OS X) which can lead to problems with (case-sensitive)
 revision control systems. Prefer file names that are all lower case, and never 
 have names that differ only in their capitalization.
 
-## Structure 
+## Organisation
+
+It's hard to describe exactly how you should organise your code across multiple files. I think the best rule of thumb is that if you can give a file a concise name that still evokes its contents, you've arrived at a good organisation. But getting to that point is hard.
+
+## Internal structure 
 
 Use commented lines of `-` and `=` to break up your file into easily readable 
 chunks.
