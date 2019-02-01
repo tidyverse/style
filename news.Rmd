@@ -161,6 +161,20 @@ follow.
 
 ## Organisation
 
+### Development
+
+During development, new bullets should be added to top of the file, immediately under an "development" heading:
+
+```
+# haven (development version)
+
+* Second update.
+
+* First update.
+```
+
+### Release
+
 Prior to release, the NEWS file needs to be thoroughly proof read and groomed.
 
 Each release should have a level 1 heading (`#`) containing the package name 
