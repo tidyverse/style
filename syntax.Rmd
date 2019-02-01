@@ -26,6 +26,8 @@ system. In S3, methods are given the name `function.class`; if you also use
 `.` in function and class names, you end up with confusing methods like
 `as.data.frame.data.frame()`.
 
+If you find yourself attempting to cram data into variable names (e.g. `model_2018`, `model_2019`, `model_2020`), consider using a list or data frame instead.
+
 Generally, variable names should be nouns and function names should be verbs. 
 Strive for names that are concise and meaningful (this is not easy!).
 
