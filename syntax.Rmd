@@ -83,10 +83,14 @@ Place a space before and after `()` when used with  `if`, `for`, or `while`.
 
 ```{r, eval = FALSE}
 # Good
-if (debug) show(x)
+if (debug) {
+  show(x)
+}
 
 # Bad
-if(debug)show(x)
+if(debug){
+  show(x)
+}
 ```
 
 Place a space after `()` used for function arguments:
@@ -224,15 +228,18 @@ mean(, TRUE, x = c(1:10, NA))
 
 Avoid partial matching.
 
-## Indenting
+## Code blocks {#indenting}
 
 Curly braces, `{}`, define the most important hierarchy of R code. To make this 
-hierarchy easy to see, always indent the code inside `{}` by two spaces.
+hierarchy easy to see:
 
-A symmetrical arrangement helps with finding related braces: the opening brace 
-is the last, the closing brace is the first non-whitespace character in a line.  
-Code that is related to a brace (e.g., an `if` clause, a function declaration, a
-trailing comma, ...) must be on the same line as the opening brace.
+* `{` should be the last character on the line. Related code (e.g., an `if` 
+  clause, a function declaration, a trailing comma, ...) must be on the same
+  line as the opening brace.
+
+* The contents should be indented by two spaces.
+
+* `}` should be the first character on the line.
 
 ```{r, eval = FALSE}
 # Good
@@ -265,8 +272,9 @@ tryCatch(
 )
 
 # Bad
-if (y < 0 && debug)
+if (y < 0 && debug) {
 message("Y is negative")
+}
 
 if (y == 0)
 {
@@ -278,13 +286,41 @@ if (y == 0)
 } else { y ^ x }
 ```
 
-It's ok to drop the curly braces if you have a very simple and short `if` 
-statement that fits on one line. If you have any doubt, it's better to use the 
-full form.
+### Inline statements
+
+It's ok to drop the curly braces for very simple statements that fit on one line, as long as they don't have side-effects.
 
 ```{r}
+# Good
 y <- 10
 x <- if (y < 20) "Too low" else "Too high"
+```
+
+Function calls that affect control flow (like `return()`, `stop()` or `continue`) should always go in their own `{}` block:
+
+```{r}
+# Good
+if (y < 0) {
+  stop("Y is negative")
+}
+
+find_abs <- function(x, y) {
+  if (x > 0) {
+    return(x)
+  }
+  x * -1
+}
+
+# Bad
+if (y < 0) stop("Y is negative")
+
+if (y < 0)
+  stop("Y is negative")
+
+find_abs <- function(x, y) {
+  if (x > 0) return(x)
+  x * -1
+}
 ```
 
 ## Long lines
