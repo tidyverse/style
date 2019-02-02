@@ -1,0 +1,21 @@
+# Git/GitHub
+
+## Commit messages
+
+Follow [standard git commit message advice](https://chris.beams.io/posts/git-commit/). In brief:
+
+* The first line is the subject, and should summarise the changes in the commit
+  in under 50 character.
+  
+* If additional details are required, add a blank line, and then provide
+  explanation and context in paragraph format.
+
+* If the commit fixes a GitHub issue include `Fixes #<issue-number>`.
+  This will ensure that the issue is automatically closed when the commit
+  is merged into master.
+
+## Pull requests
+
+The title of a pull request should briefly describe the changes made. The title should be standalone and should not include the related issue number (i.e. don't write `Fixes #10`).
+
+For very simple changes, you can leave the description blank as there's no need to describe what will be obvious from looking at the diff. For more complex changes, you should give an overview of the changes. If the PR fixes an issue, make sure to include `Fixes #<issue-number>` in the description.

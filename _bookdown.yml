@@ -16,6 +16,8 @@ rmd_files: [
   "documentation.Rmd",
   "tests.Rmd",
   "errors.Rmd",
-  "news.Rmd"
+  "news.Rmd",
+  
+  "git.Rmd",
 
 ]
