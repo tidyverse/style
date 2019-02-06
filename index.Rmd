@@ -25,4 +25,4 @@ Two R packages support this style guide:
 
     
 *   [lintr](https://github.com/jimhester/lintr) performs automated checks
-    to confirm that your conform to the style guide.
+    to confirm that you conform to the style guide.
