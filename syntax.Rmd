@@ -136,7 +136,7 @@ There are a few exceptions, which should never be surrounded by spaces:
     x <- 1 : 10
     ```
   
-*   Single-sided formulas when the right-hand side is a single identifer:
+*   Single-sided formulas when the right-hand side is a single identifier:
 
     ```{r, eval = FALSE}
     # Good
@@ -254,7 +254,7 @@ if (y == 0) {
     message("x is negative or zero")
   }
 } else {
-  y ^ x
+  y^x
 }
 
 test_that("call1 returns an ordered factor", {
@@ -304,7 +304,7 @@ if (y < 0) {
   stop("Y is negative")
 }
 
-find_abs <- function(x, y) {
+find_abs <- function(x) {
   if (x > 0) {
     return(x)
   }
@@ -317,7 +317,7 @@ if (y < 0) stop("Y is negative")
 if (y < 0)
   stop("Y is negative")
 
-find_abs <- function(x, y) {
+find_abs <- function(x) {
   if (x > 0) return(x)
   x * -1
 }
