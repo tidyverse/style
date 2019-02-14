@@ -136,7 +136,7 @@ There are a few exceptions, which should never be surrounded by spaces:
     x <- 1 : 10
     ```
   
-*   Single-sided formulas when the right-hand side is a single identifer:
+*   Single-sided formulas when the right-hand side is a single identifier:
 
     ```{r, eval = FALSE}
     # Good
