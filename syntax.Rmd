@@ -254,7 +254,7 @@ if (y == 0) {
     message("x is negative or zero")
   }
 } else {
-  y ^ x
+  y^x
 }
 
 test_that("call1 returns an ordered factor", {
