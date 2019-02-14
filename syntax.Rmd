@@ -317,7 +317,7 @@ if (y < 0) stop("Y is negative")
 if (y < 0)
   stop("Y is negative")
 
-find_abs <- function(x, y) {
+find_abs <- function(x) {
   if (x > 0) return(x)
   x * -1
 }
