@@ -59,7 +59,7 @@ add_two <- function(x, y) {
 }
 ```
 
-Note that return statements should always be on their own line because they have important effects on the control flow. See also [inline statements](#inline-statements).
+Return statements should always be on their own line because they have important effects on the control flow. See also [inline statements](#inline-statements).
 
 ```{r, eval = FALSE}
 # Good
