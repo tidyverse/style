@@ -44,7 +44,9 @@ of the last evaluated expression.
 ```{r eval = FALSE}
 # Good
 find_abs <- function(x) {
-  if (x > 0) return(x)
+  if (x > 0) {
+    return(x)
+  }
   x * -1
 }
 add_two <- function(x, y) {
@@ -54,6 +56,24 @@ add_two <- function(x, y) {
 # Bad
 add_two <- function(x, y) {
   return(x + y)
+}
+```
+
+Note that return statements should always be on their own line because they have important effects on the control flow. See also [inline statements](#inline-statements).
+
+```{r, eval = FALSE}
+# Good
+find_abs <- function(x) {
+  if (x > 0) {
+    return(x)
+  }
+  x * -1
+}
+
+# Bad
+find_abs <- function(x) {
+  if (x > 0) return(x)
+  x * -1
 }
 ```
 
