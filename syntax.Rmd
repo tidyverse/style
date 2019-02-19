@@ -286,7 +286,7 @@ if (y == 0)
 } else { y ^ x }
 ```
 
-### Inline statements
+### Inline statements {#inline-statements}
 
 It's ok to drop the curly braces for very simple statements that fit on one line, as long as they don't have side-effects.
 
