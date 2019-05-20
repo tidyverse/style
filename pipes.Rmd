@@ -131,7 +131,7 @@ There are three acceptable forms of assignment:
     harder: when the name comes first, it can act as a heading to remind
     you of the purpose of the pipe.
 
-The magrittr package provides the `%<>%` operator as for shortcut modifying an object in place. Avoid this operator.
+The magrittr package provides the `%<>%` operator as a shortcut for modifying an object in place. Avoid this operator.
 
 ```{r, eval = FALSE}
 # Good
