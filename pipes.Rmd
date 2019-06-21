@@ -72,12 +72,8 @@ x %>%
   left_join(y %>% select(a, b, v), by = c("a", "b"))
 
 # Better
-x_join <- x %>% 
-  select(a, b, w)
-y_join <- y %>%
-  filter(!u) %>%
-  gather(a, v, -b) %>%
-  select(a, b, v)
+x_join <- x %>% select(a, b, w)
+y_join <- y %>% select(a, b, v)
 left_join(x_join, y_join, by = c("a", "b"))
 ```
 
