@@ -92,10 +92,10 @@ Functions, arguments, and file names should be wrapped in backticks.
 
 ```
 # Good
-* In `stat_bin()`, `binwidth` now also takes functions.
+* In `stat_bin()`, `binwidth` now also takes functions and `...` can be used to pass other arguments on to `layer()`.
 
 # Bad
-* In the stat_bin function, the "binwidth" argument now also takes functions.
+* In the stat_bin() function, binwidth now also takes functions and the "..." argument can be used to pass other arguments on to the layer function.
 ```
 
 Function names should include parentheses. 
