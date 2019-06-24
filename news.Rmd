@@ -182,7 +182,7 @@ Prior to release, the NEWS file needs to be thoroughly proofread and groomed.
 
 Each release should have a level 1 heading (`#`) containing the package name 
 and version number. For smaller packages or patch releases this amount of
-organisation may be sufficient. For example, here is the NEWS for model 0.1.2:
+organisation may be sufficient. For example, here is the NEWS for modelr 0.1.2:
 
 ```
 # modelr 0.1.2
