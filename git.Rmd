@@ -5,7 +5,7 @@
 Follow [standard git commit message advice](https://chris.beams.io/posts/git-commit/). In brief:
 
 * The first line is the subject, and should summarise the changes in the commit
-  in under 50 character.
+  in under 50 characters.
   
 * If additional details are required, add a blank line, and then provide
   explanation and context in paragraph format.
