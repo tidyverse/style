@@ -95,7 +95,7 @@ Functions, arguments, and file names should be wrapped in backticks.
 * In `stat_bin()`, `binwidth` now also takes functions.
 
 # Bad
-* In the `stat_bin` function, the `binwidth` argument now also takes functions.
+* In the stat_bin function, the "binwidth" argument now also takes functions.
 ```
 
 Function names should include parentheses. 
