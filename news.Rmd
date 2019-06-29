@@ -88,24 +88,14 @@ come before the final period.
 
 ### Code style
 
-Functions, arguments, and file names should be wrapped in backticks. 
+Functions, arguments, and file names should be wrapped in backticks. Function names should include parentheses; omit "the argument" or "the function"
 
 ```
 # Good
 * In `stat_bin()`, `binwidth` now also takes functions.
 
 # Bad
-* In the `stat_bin` function, the `binwidth` argument now also takes functions.
-```
-
-Function names should include parentheses. 
-
-```
-# Good
-* In `stat_bin()`, `binwidth` now also takes functions.
-
-# Bad
-* In the `stat_bin` function, `binwidth` now also takes functions.
+* In the stat_bin function, "binwidth" now also takes functions.
 ```
 
 ### Common patterns
