@@ -107,7 +107,7 @@ x <- map_if(x, is_bare_list, recurse)
 x <- map_if(x, is_bare_list, recurse)
 ```
 
-Comments are capitalised and don't end with a full stop, unless they
+Comments should be in sentence case, and only end with a full stop if they
 contain at least two sentences:
 
 ```{r, eval = FALSE}
