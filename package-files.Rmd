@@ -7,7 +7,7 @@ The majority of advice in Chapter \@ref(files) also applies to files in packages
 * If a file contains a single function, give the file the same name as the 
   function.
 
-* If a file contains multiple related functions, given them it a concise,
+* If a file contains multiple related functions, give it a concise,
   but evocative name.
   
 * Deprecated functions should live in a file with `deprec-` prefix.

@@ -121,7 +121,7 @@ If you want to correctly pluralise the error message, consider using `ngettext()
 
 ## Hints
 
-If the source of the error is clear and common, you may want provide a hint as
+If the source of the error is clear and common, you may want to provide a hint as
 to how to fix it:
 
 ```{r}
