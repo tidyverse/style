@@ -9,7 +9,8 @@ documentclass: book
 
 # Welcome {-}
 
-Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread. This site describes the style used throughout the [tidyverse](http://tidyverse.org). It was originally derived from [Google's R style guide](https://google.github.io/styleguide/Rguide.xml), but has evolved and expanded considerably over the years.
+Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread. This site describes the style used throughout the [tidyverse](http://tidyverse.org). It was derived from Google's original R Style Guide - but
+Google's [current guide](https://google.github.io/styleguide/Rguide.html) is derived from the tidyverse style guide.
 
 All style guides are fundamentally opinionated. Some decisions genuinely do make code easier to use (especially matching indenting to programming structure), but many decisions are arbitrary. The most important thing about a style guide is that it provides consistency, making code easier to write because you need to make fewer decisions.
 
