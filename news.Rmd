@@ -46,13 +46,13 @@ Many news bullets will be a single sentence. This is typically adequate when des
 # Better
 * In `stat_bin()`, `binwidth` now also takes functions. The function is 
   called with the scaled `x` values, and should return a single number.
-  This makes it possible to use classical binwidth computatons with ggplot2.
+  This makes it possible to use classical binwidth computations with ggplot2.
 
 # Best
 * In `stat_bin()`, `binwidth` now also takes functions. The function is 
   called with the scaled `x` values, and should return a single number.
   With a little work, this makes it possible to use classical bin size 
-  computatons with ggplot2.
+  computations with ggplot2.
   
   ```R
   sturges <- function(x) {
@@ -156,7 +156,7 @@ follow.
 
 ### Development
 
-During development, new bullets should be added to top of the file, immediately under an "development" heading:
+During development, new bullets should be added to the top of the file, immediately under a "development" heading:
 
 ```
 # haven (development version)
@@ -172,7 +172,7 @@ Prior to release, the NEWS file needs to be thoroughly proofread and groomed.
 
 Each release should have a level 1 heading (`#`) containing the package name 
 and version number. For smaller packages or patch releases this amount of
-organisation may be sufficient. For example, here is the NEWS for model 0.1.2:
+organisation may be sufficient. For example, here is the NEWS for modelr 0.1.2:
 
 ```
 # modelr 0.1.2
@@ -231,7 +231,7 @@ It is not worthwhile to organise bullets into headings during development, as
 it's not typically obvious what the groups will be in advance.
 
 Within a section, bullets should be ordered alphabetically by the first function
-mentioned. If no function is mentioned, place at the top of the section.
+mentioned. If no function is mentioned, place the bullet at the top of the section.
 
 ### Breaking changes
 
