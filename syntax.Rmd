@@ -68,15 +68,25 @@ x[ , 1]
 
 ### Parentheses
 
-Do not put spaces inside or outside parentheses for regular function calls.
+Do not put spaces inside or outside parentheses for regular function calls or for the `{{` operator when using tidy evaluation.
 
 ```{r, eval = FALSE}
 # Good
 mean(x, na.rm = TRUE)
+max_by <- function(data, var, by) {
+  data %>%
+    group_by({{by}}) %>%
+    summarise(maximum = max({{var}}, na.rm = TRUE))
+}
 
 # Bad
 mean (x, na.rm = TRUE)
 mean( x, na.rm = TRUE )
+max_by <- function(data, var, by) {
+  data %>%
+    group_by({{ by }}) %>%
+    summarise(maximum = max({{ var }}, na.rm = TRUE))
+}
 ```
 
 Place a space before and after `()` when used with  `if`, `for`, or `while`.
