@@ -413,6 +413,9 @@ contains double quotes and no single quotes.
 
 ## Comments
 
+Each line of a comment should begin with the comment symbol and a single 
+space: `# `
+
 In data analysis code, use comments to record important findings and analysis 
 decisions. If you need comments to explain what your code is doing, consider 
 rewriting your code to be clearer. If you discover that you have more comments 
