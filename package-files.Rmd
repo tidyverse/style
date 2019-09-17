@@ -21,6 +21,9 @@ documentation should appear first, with private functions appearing after all
 documented functions. If multiple public functions share the same documentation,
 they should all immediately follow the documentation block.
 
+See \@ref(documentation) for more thorough guidance on documenting functions
+in packages.
+
 ```
 # Bad
 help_compute <- function() {
@@ -33,7 +36,28 @@ help_compute <- function() {
 #' ...
 #' @export
 do_something_cool <- function() {
-  # ... even more code
+  # ... even more code ...
   help_compute()
+}
+```
+
+```
+# Good
+#' Lots of functions for doing something cool
+#'
+#' ... Complete documentation ...
+#' @name something-cool
+NULL
+
+#' @describeIn something-cool Get the mean
+#' @export
+get_cool_mean <- function(x) {
+  # ...
+}
+
+#' @describeIn something-cool Get the sum
+#' @export
+get_cool_sum <- function(x) {
+  # ...
 }
 ```
