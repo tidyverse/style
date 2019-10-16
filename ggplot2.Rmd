@@ -62,8 +62,6 @@ iris %>%
   geom_point()
 
 # Bad
-iris %>%
-  filter(Species == "setosa") %>%
-  ggplot(filter(iris, Species == "setosa"), aes(x = Sepal.Width, y = Sepal.Length)) +
+ggplot(filter(iris, Species == "setosa"), aes(x = Sepal.Width, y = Sepal.Length)) +
   geom_point()
 ```
