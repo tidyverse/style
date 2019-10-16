@@ -1,0 +1,67 @@
+# ggplot2
+
+
+## Introduction
+
+Styling suggestions for `+` used to separate ggplot2 layers are very similar to those for `%>%` in pipelines.
+
+
+## Whitespace
+
+`+` should always have a space before it, and should be followed by a new line. This is true even if your plot has only two layers. After the first step, each line should be indented by two spaces.
+
+If you are creating a ggplot off of a dplyr pipeline, there should only be one level of indentation.
+
+```{r eval=FALSE}
+# Good
+iris %>%
+  filter(Species == "setosa") %>%
+  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) +
+  geom_point()
+
+# Bad
+iris %>%
+  filter(Species == "setosa") %>%
+  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) +
+    geom_point()
+
+# Bad
+iris %>%
+  filter(Species == "setosa") %>%
+  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) + geom_point()
+```
+
+
+## Long lines
+
+If the arguments to a ggplot2 layer don't all fit on one line, put each argument on its own line and indent:
+
+```{r, eval = FALSE}
+# Good
+ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
+  geom_point() +
+  labs(
+    x = "Sepal width, in cm",
+    y = "Sepal length, in cm",
+    title = "Sepal length vs. width of irises"
+  ) 
+
+# Bad
+ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
+  geom_point() +
+  labs(x = "Sepal width, in cm", y = "Sepal length, in cm", title = "Sepal length vs. width of irises") 
+```
+
+ggplot2 allows you to do data manipulation, such as filtering or slicing, within the `data` argument. Avoid this, and instead do the data manipulation in a pipeline before starting plotting.
+
+```{r eval=FALSE}
+# Good
+iris %>%
+  filter(Species == "setosa") %>%
+  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) +
+  geom_point()
+
+# Bad
+ggplot(filter(iris, Species == "setosa"), aes(x = Sepal.Width, y = Sepal.Length)) +
+  geom_point()
+```

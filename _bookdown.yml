@@ -10,6 +10,7 @@ rmd_files: [
   "syntax.Rmd",
   "functions.Rmd",
   "pipes.Rmd",
+  "ggplot2.Rmd",
   
   "packages.Rmd",
   "package-files.Rmd",
