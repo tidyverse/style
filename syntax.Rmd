@@ -411,6 +411,10 @@ contains double quotes and no single quotes.
 'Text with "double" and \'single\' quotes'
 ```
 
+## Logical values
+
+Prefer `TRUE` and `FALSE` over `T` and `F`.
+
 ## Comments
 
 In data analysis code, use comments to record important findings and analysis 
