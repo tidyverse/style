@@ -416,6 +416,7 @@ contains double quotes and no single quotes.
 In data analysis code, use comments to record important findings and analysis 
 decisions. If you need comments to explain what your code is doing, consider 
 rewriting your code to be clearer. If you discover that you have more comments 
-than code, considering switching to RMarkdown.
+than code, consider switching to [R Markdown][rmd].
 
-[syntax]:http://stat.ethz.ch/R-manual/R-patched/library/base/html/Syntax.html
+[syntax]: https://rdrr.io/r/base/Syntax.html
+[rmd]:    https://rmarkdown.rstudio.com/
