@@ -104,6 +104,26 @@ function (x) {}
 function(x){}
 ```
 
+### Embracing
+
+The embracing operator, `{{ }}`, should always have inner spaces to help emphasise its special behaviour:
+
+```{r, eval = FALSE}
+# Good
+max_by <- function(data, var, by) {
+  data %>%
+    group_by({{ by }}) %>%
+    summarise(maximum = max({{ var }}, na.rm = TRUE))
+}
+
+# Bad
+max_by <- function(data, var, by) {
+  data %>%
+    group_by({{by}}) %>%
+    summarise(maximum = max({{var}}, na.rm = TRUE))
+}
+```
+
 ### Infix operators
 
 Most infix operators (`==`, `+`, `-`, `<-`, etc.) should always be surrounded by
