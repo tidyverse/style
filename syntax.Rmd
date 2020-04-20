@@ -249,7 +249,9 @@ mean(, TRUE, x = c(1:10, NA))
 
 Avoid partial matching.
 
-## Code blocks {#indenting}
+## Control flow
+
+### Code blocks {#indenting}
 
 Curly braces, `{}`, define the most important hierarchy of R code. To make this 
 hierarchy easy to see:
@@ -341,6 +343,22 @@ if (y < 0)
 find_abs <- function(x) {
   if (x > 0) return(x)
   x * -1
+}
+```
+
+### Implicit type coercion
+
+Avoid implicit type coercion (e.g. from numeric to logical) in `if` statements:
+
+```{r, eval = FALSE}
+# Good
+if (length(x) > 0) {
+  # do something
+}
+
+# Bad
+if (length(x)) {
+  # do something
 }
 ```
 
