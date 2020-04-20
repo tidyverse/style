@@ -362,6 +362,28 @@ if (length(x)) {
 }
 ```
 
+### Switch statements
+
+* Avoid position-based `switch()` statements (i.e. prefer names).
+* Each element should go on its own line.
+* Elements that fall through to the following element should have a space after `=`.
+* Provide a fall-through error, unless you have previously validated the input.
+
+```{r, eval = FALSE}
+# Good 
+switch(x
+  a = ,
+  b = 1, 
+  c = 2,
+  stop("Unknown `x`", call. = FALSE)
+)
+
+# Bad
+switch(x, a = , b = 1, c = 2)
+switch(x, a =, b = 1, c = 2)
+switch(y, 1, 2, 3)
+```
+
 ## Long lines
 
 Strive to limit your code to 80 characters per line. This fits comfortably on a 
