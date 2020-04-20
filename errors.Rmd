@@ -16,7 +16,7 @@ come from existing tidyverse code.)
 Every error message should start with a general statement of the problem. It
 should be concise, but informative. (This is hard!)
 
-It is encouraged to be as informative as possible, but each sentence should be very simple to make localisation and translation possible. [A Localization Horror Story: It Could Happen To You](https://metacpan.org/pod/distribution/Locale-Maketext/lib/Locale/Maketext/TPJ13.pod) is a good summary of the challenges of localising error messages. You might not support localised messages right now but you should make it as easy as possible to do it in the future.
+It is encouraged to be as informative as possible, but each sentence should be very simple to make localisation and translation possible. [A Localization Horror Story: It Could Happen To You](https://metacpan.org/pod/distribution/Locale-Maketext/lib/Locale/Maketext/TPJ13.pod) is a Good summary of the challenges of localising error messages. You might not support localised messages right now but you should make it as easy as possible to do it in the future.
 
 Ideally each sentence should contain a single phrase, and should only mention one variable quantity. Because we avoid complex sentences, we prefer to lay out information in a bullet list. Start with a list of _contextual_ information, and finish with a list of information about _faulty_ user input. These lists should be prefixed with `ℹ`  and `✖` respectively if UTF-8 is available (and in blue and red if colour is available), or the ASCII `*` character otherwise.
 
@@ -59,13 +59,13 @@ Use simple sentences layed out in a bullet list of `ℹ` and `✖` elements:
 *   The sentences should be short and bulleted:
 
     ```{r}
-    # GOOD
+    # Good
     vec_slice(letters, 100)
     #> Must index an existing element:
     #> ℹ There are 26 elements.
     #> ✖ You've tried to subset element 100.
 
-    # BAD
+    # Bad
     vec_slice(letters, 100)
     #> Must index an existing element.
     #> There are 26 elements and you've tried to subset element 100.
@@ -74,13 +74,13 @@ Use simple sentences layed out in a bullet list of `ℹ` and `✖` elements:
 *   The contextual information should be first:
 
     ```{r}
-    # GOOD
+    # Good
     vec_slice(letters, 100)
     #> Must index an existing element:
     #> ℹ There are 26 elements.
     #> ✖ You've tried to subset element 100.
 
-    # BAD
+    # Bad
     vec_slice(letters, 100)
     #> Must index an existing element:
     #> ✖ You've tried to subset element 100.
@@ -94,12 +94,12 @@ component. The goal is to make it as easy as possible for the user to find and
 fix the problem.
 
 ```{r}
-# GOOD
+# Good
 map_int(1:5, ~ "x")
 #> Error: Each result must be a single integer:
 #> ✖ Result 1 is a character vector.
 
-# BAD
+# Bad
 map_int(1:5, ~ "x")
 #> Error: Each result must be a single integer
 ```
@@ -113,7 +113,7 @@ If the source of the error is unclear, avoid pointing the user in the wrong
 direction by giving an opinion about the source of the error:
 
 ```{r}
-# GOOD
+# Good
 pull(mtcars, b)
 #> Error: Can't find column `b` in `.data`.
 
@@ -122,7 +122,7 @@ tibble(x = 1:2, y = 1:3, z = 1)
 #> ✖ Column `x` has length 2
 #> ✖ Column `y` has length 3
 
-# BAD: implies one argument at fault
+# Bad: implies one argument at fault
 pull(mtcars, b)
 #> Error: Column `b` must exist in `.data`
 
@@ -137,13 +137,13 @@ If there are multiple issues, or an inconsistency revealed across several
 arguments or items, prefer a bulleted list:
 
 ```{r}
-# GOOD
+# Good
 purrr::reduce2(1:4, 1:2, `+`)
 #> Error: `.x` and `.y` must have compatible lengths:
 #> ✖ `.x` has length 4
 #> ✖ `.y` has length 2
 
-# BAD: harder to scan
+# Bad: harder to scan
 purrr::reduce2(1:4, 1:2, `+`)
 #> Error: `.x` and `.y` must have compatible lengths: `.x` has length 4 and 
 #> `.y` has length 2
@@ -152,7 +152,7 @@ purrr::reduce2(1:4, 1:2, `+`)
 If the list of issues might be long, make sure to truncate to only show the first few:
 
 ```{r}
-# GOOD
+# Good
 #> Error: NAs found at 1,000,000 locations: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ...
 ```
 
@@ -179,7 +179,7 @@ Hints are particularly important if the source of the error is far away from the
 root cause:
 
 ```{r}
-# BAD
+# Bad
 mean[[1]]
 #> Error in mean[[1]] : object of type 'closure' is not subsettable
 
@@ -207,12 +207,12 @@ problem is common, and you can easily find a common pattern of incorrect usage
 *   Prefer the singular in problem statements:
 
     ```{r}
-    # GOOD
+    # Good
     map_int(1:2, ~ "a")
     #> Error: Each result must be coercible to a single integer:
     #> ✖ Result 1 is a character vector.
     
-    # BAD
+    # Bad
     map_int(1:2, ~ "a")
     #> Error: Results must be coercible to single integers: 
     #> ✖ Result 1 is a character vector
