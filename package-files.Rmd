@@ -13,3 +13,51 @@ The majority of advice in Chapter \@ref(files) also applies to files in packages
 * Deprecated functions should live in a file with `deprec-` prefix.
 
 * Compatibility functions should live in a file with `compat-` prefix.
+
+## Organisation
+
+In a file that contains multiple functions, public functions and their
+documentation should appear first, with private functions appearing after all
+documented functions. If multiple public functions share the same documentation,
+they should all immediately follow the documentation block.
+
+See \@ref(documentation) for more thorough guidance on documenting functions
+in packages.
+
+```
+# Bad
+help_compute <- function() {
+  # ... Lots of code ...
+}
+
+#' My public function
+#'
+#' This is where the documentation of my function begins.
+#' ...
+#' @export
+do_something_cool <- function() {
+  # ... even more code ...
+  help_compute()
+}
+```
+
+```
+# Good
+#' Lots of functions for doing something cool
+#'
+#' ... Complete documentation ...
+#' @name something-cool
+NULL
+
+#' @describeIn something-cool Get the mean
+#' @export
+get_cool_mean <- function(x) {
+  # ...
+}
+
+#' @describeIn something-cool Get the sum
+#' @export
+get_cool_sum <- function(x) {
+  # ...
+}
+```
