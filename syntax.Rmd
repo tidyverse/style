@@ -230,7 +230,9 @@ list(
 
 Do not add extra spaces to places where space is not usually allowed.
 
-## Argument names
+## Function calls
+
+### Named arguments {#argument-names}
 
 A function's arguments typically fall into two broad categories: one supplies 
 the __data__ to compute on; the other controls the __details__ of computation. 
@@ -248,6 +250,30 @@ mean(, TRUE, x = c(1:10, NA))
 ```
 
 Avoid partial matching.
+
+### Assignment
+
+Avoid assignment in function calls:
+
+```{r, eval = FALSE}
+# Good
+x <- complicated_function()
+if (nzchar(x) < 1) {
+  # do something
+}
+
+# Bad
+if (nzchar(x <- complicated_function()) < 1) {
+  # do something
+}
+```
+
+The only exception is in functions that capture side-effects:
+
+```{r, eval = FALSE}
+output <- capture.output(x <- f())
+```
+
 
 ## Control flow
 
