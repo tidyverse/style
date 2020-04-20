@@ -87,7 +87,7 @@ If some functions share parameters, you can use `@inheritParams` to avoid
 duplication of content in multiple places.
 
 ```{r}
-#' @inheritParams argument function_to_inherit_from
+#' @inheritParams function_to_inherit_from
 ```
 
 ## Capitalization and full stops
