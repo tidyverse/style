@@ -112,11 +112,11 @@ spaces:
 ```{r, eval = FALSE}
 # Good
 height <- (feet * 12) + inches
-mean(x, na.rm = 10)
+mean(x, na.rm = TRUE)
 
 # Bad
 height<-feet*12+inches
-mean(x, na.rm=10)
+mean(x, na.rm=TRUE)
 ```
 
 There are a few exceptions, which should never be surrounded by spaces:
