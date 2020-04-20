@@ -16,16 +16,22 @@ come from existing tidyverse code.)
 Every error message should start with a general statement of the problem. It
 should be concise, but informative. (This is hard!)
 
+It is encouraged to be as informative as possible, but each sentence should be very simple to make localisation and translation possible. [A Localization Horror Story: It Could Happen To You](https://metacpan.org/pod/distribution/Locale-Maketext/lib/Locale/Maketext/TPJ13.pod) is a good summary of the challenges of localising error messages. You might not support localised messages right now but you should make it as easy as possible to do it in the future.
+
+Ideally each sentence should contain a single phrase, and should only mention one variable quantity. Because we avoid complex sentences, we prefer to lay out information in a bullet list. Start with a list of _contextual_ information, and finish with a list of information about _faulty_ user input. These lists should be prefixed with `ℹ`  and `✖` respectively if UTF-8 is available (and in blue and red if colour is available), or the ASCII `*` character otherwise.
+
 *   If the cause of the problem is clear, use "must":
 
     ```{r}
     dplyr::nth(1:10, "x")
-    #> Error: `n` must be a numeric vector, not a character vector.
-    
+    #> Error: `n` must be a numeric vector:
+    #> ✖ You've supplied a character vector.
+
     dplyr::nth(1:10, 1:2)
-    #> Error: `n` must have length 1, not length 2.
+    #> Error: `n` must have length 1
+    #> ✖ You've supplied a vector of length 2.
     ```
-    
+
     Clear cut causes typically involve incorrect types or lengths.
 
 *   If you cannot state what was expected, use "can't":
@@ -48,6 +54,39 @@ avoid cluttering the error message with the name of the function that generated
 it. That information is often not informative, and can easily be accessed via
 `traceback()` or an IDE equivalent.
 
+Use simple sentences layed out in a bullet list of `ℹ` and `✖` elements:
+
+*   The sentences should be short and bulleted:
+
+    ```{r}
+    # GOOD
+    vec_slice(letters, 100)
+    #> Must index an existing element:
+    #> ℹ There are 26 elements.
+    #> ✖ You've tried to subset element 100.
+
+    # BAD
+    vec_slice(letters, 100)
+    #> Must index an existing element.
+    #> There are 26 elements and you've tried to subset element 100.
+    ```
+
+*   The contextual information should be first:
+
+    ```{r}
+    # GOOD
+    vec_slice(letters, 100)
+    #> Must index an existing element:
+    #> ℹ There are 26 elements.
+    #> ✖ You've tried to subset element 100.
+
+    # BAD
+    vec_slice(letters, 100)
+    #> Must index an existing element:
+    #> ✖ You've tried to subset element 100.
+    #> ℹ There are 26 elements.
+    ```
+
 ## Error location
 
 Do your best to reveal the location, name, and/or content of the troublesome
@@ -58,7 +97,7 @@ fix the problem.
 # GOOD
 map_int(1:5, ~ "x")
 #> Error: Each result must be a single integer:
-#> * Result 1 is a character vector.
+#> ✖ Result 1 is a character vector.
 
 # BAD
 map_int(1:5, ~ "x")
@@ -80,8 +119,8 @@ pull(mtcars, b)
 
 tibble(x = 1:2, y = 1:3, z = 1)
 #> Error: Columns must have consistent lengths: 
-#> * Column `x` has length 2
-#> * Column `y` has length 3
+#> ✖ Column `x` has length 2
+#> ✖ Column `y` has length 3
 
 # BAD: implies one argument at fault
 pull(mtcars, b)
@@ -101,8 +140,8 @@ arguments or items, prefer a bulleted list:
 # GOOD
 purrr::reduce2(1:4, 1:2, `+`)
 #> Error: `.x` and `.y` must have compatible lengths:
-#> * `.x` has length 4
-#> * `.y` has length 2
+#> ✖ `.x` has length 4
+#> ✖ `.y` has length 2
 
 # BAD: harder to scan
 purrr::reduce2(1:4, 1:2, `+`)
@@ -122,16 +161,16 @@ If you want to correctly pluralise the error message, consider using `ngettext()
 ## Hints
 
 If the source of the error is clear and common, you may want to provide a hint as
-to how to fix it:
+to how to fix it. If UTF-8 is available, prefix with `ℹ` (in blue if colour is available):
 
 ```{r}
 dplyr::filter(iris, Species = "setosa")
 #> Error: Filter specifications must be named.
-#> Did you mean `Species == "setosa"`?
+#> ℹ Did you mean `Species == "setosa"`?
 
 ggplot2::ggplot(ggplot2::aes())
 #> Error: Can't plot data with class "uneval". 
-#> Did you accidentally provide the results of aes() to the `data` argument?
+#> ℹ Did you accidentally provide the results of aes() to the `data` argument?
 ```
 
 Hints should always end in a question mark.
@@ -151,7 +190,7 @@ mean[[1]]
 # BEST
 mean[[1]]
 #> Error: Can't subset a function.
-#> Have you forgotten to define a variable named `mean`?
+#> ℹ Have you forgotten to define a variable named `mean`?
 ```
 
 Good hints are difficult to write because, as above, you want to avoid steering
@@ -171,12 +210,12 @@ problem is common, and you can easily find a common pattern of incorrect usage
     # GOOD
     map_int(1:2, ~ "a")
     #> Error: Each result must be coercible to a single integer:
-    #> * Result 1 is a character vector.
+    #> ✖ Result 1 is a character vector.
     
     # BAD
     map_int(1:2, ~ "a")
     #> Error: Results must be coercible to single integers: 
-    #> * Result 1 is a character vector
+    #> ✖ Result 1 is a character vector
     ```
 
 *   If you can detect multiple problems, list up to five. This allows the user
@@ -187,12 +226,12 @@ problem is common, and you can easily find a common pattern of incorrect usage
     # BETTER
     map_int(1:10, ~ "a")
     #> Error: Each result must be coercible to a single integer:
-    #> * Result 1 is a character vector
-    #> * Result 2 is a character vector
-    #> * Result 3 is a character vector
-    #> * Result 4 is a character vector
-    #> * Result 5 is a character vector
-    #> * ... and 5 more problems
+    #> ✖ Result 1 is a character vector
+    #> ✖ Result 2 is a character vector
+    #> ✖ Result 3 is a character vector
+    #> ✖ Result 4 is a character vector
+    #> ✖ Result 5 is a character vector
+    #> ... and 5 more problems
     ```
 
 *   Pick a natural connector between problem statement and error location:
