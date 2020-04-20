@@ -135,6 +135,8 @@ Family names are plural. In dplyr, the verbs `arrange()`, `filter()`,
 #' @family single table verbs
 ```
 
+When linking to external resources either include the full url inline with `<>`,  or the surrounding prose and link text should make it extremely clear where the hyperlink goes. Avoid text like ["click here"](https://www.smashingmagazine.com/2012/06/links-should-never-say-click-here/). 
+
 ## R code
 
 Text that contains valid R code should be marked as such using backticks. This includes:
