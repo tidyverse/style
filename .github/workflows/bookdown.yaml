@@ -19,13 +19,13 @@ jobs:
           brew install pandoc
           brew install pandoc-citeproc
 
-      - name: Cache Renv packages
+      - name: Cache R packages
         uses: actions/cache@v1
         with:
-          path: $HOME/.local/share/renv
-          key: r-${{ hashFiles('renv.lock') }}
+          path: ${{ env.R_LIBS_USER }}
+          key: r-${{ hashFiles('DESCRIPTION') }}
           restore-keys: r-
-
+      
       - name: Cache bookdown results
         uses: actions/cache@v1
         with:
