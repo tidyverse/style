@@ -1,4 +1,4 @@
-output_dir: "docs"
+output_dir: "book_"
 
 delete_merged_file: true
 
