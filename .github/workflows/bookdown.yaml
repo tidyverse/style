@@ -14,6 +14,9 @@ jobs:
       - name: Setup R
         uses: r-lib/actions/setup-r@master
 
+      - name: Install tinytex
+        uses: r-lib/actions/setup-tinytex@master
+
       - name: Install pandoc and pandoc citeproc
         run: |
           brew install pandoc
