@@ -397,7 +397,7 @@ if (length(x)) {
 
 ```{r, eval = FALSE}
 # Good 
-switch(x
+switch(x, 
   a = ,
   b = 1, 
   c = 2,
