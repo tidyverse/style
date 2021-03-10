@@ -6,6 +6,7 @@ Follow [standard git commit message advice](https://chris.beams.io/posts/git-com
 
 * The first line is the subject, and should summarise the changes in the commit
   in under 50 characters.
+  Use sentence case, but no period at the end.
   
 * If additional details are required, add a blank line, and then provide
   explanation and context in paragraph format.
