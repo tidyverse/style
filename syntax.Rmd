@@ -435,10 +435,11 @@ do_something_very_complicated("that", requires, many, arguments,
                               )
 ```
 
-As described under [Argument names], you can omit the argument names
-for very common arguments (i.e. for arguments that are used in almost every 
-invocation of the function). Short unnamed arguments can also go on the same 
-line as the function name, even if the whole function call spans multiple lines.
+As described under section \@ref(argument-names), you can omit the argument
+names for very common arguments (i.e. for arguments that are used in almost
+every invocation of the function). Short unnamed arguments can also go on the
+same line as the function name, even if the whole function call spans multiple
+lines.
 
 ```{r, eval = FALSE}
 map(x, f,
