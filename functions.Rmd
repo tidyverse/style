@@ -16,15 +16,25 @@ permutation()
 
 ## Long lines
 
-If a function definition runs over multiple lines, indent the second line to 
-where the definition starts.
+If the function name and definition can't fit on a single line, place each argument on its own indented line. The trailing `)` and leading `{` should go on their own line.
 
 ```{r, eval = FALSE}
 # Good
-long_function_name <- function(a = "a long argument",
+long_function_name <- function(
+  a = "a long argument",
+  b = "another argument",
+  c = "another long argument"
+) {
+  # As usual code is indented by two spaces.
+}
+
+# No longer recommended because it doesn't work very well when the function
+# name is very long, which is not uncommon with S3 methods.
+long_function_name <- function(
+                               a = "a long argument",
                                b = "another argument",
                                c = "another long argument") {
-  # As usual code is indented by two spaces.
+  ...
 }
 
 # Bad
@@ -35,6 +45,8 @@ long_function_name <- function(a = "a long argument",
   # code begins
 }
 ```
+
+If a function argument can't fit on a single line, this is a sign you should extract out the long default argument into its own helper function.
 
 ## `return()`
 
