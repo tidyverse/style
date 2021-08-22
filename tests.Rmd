@@ -6,4 +6,4 @@ The organisation of test files should match the organisation of `R/` files: if a
 
 Use `usethis::use_test()` to automatically create a file with the correct name.
 
-The `context()` is not very important; a future version of testthat will display the file name instead of the context in output.
+The file name will be displayed in output in order to get context.
