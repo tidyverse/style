@@ -290,6 +290,8 @@ hierarchy easy to see:
 
 * `}` should be the first character on the line.
 
+* If used, `else` should be on the same line as `}`.
+
 ```{r, eval = FALSE}
 # Good
 if (y < 0 && debug) {
