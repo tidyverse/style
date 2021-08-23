@@ -1,21 +1,22 @@
 on:
   push:
-    branches: master
+    branches:
+      - main
+      - master
 
 name: bookdown
 
 jobs:
   build:
     runs-on: macOS-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
 
       - name: Setup R
-        uses: r-lib/actions/setup-r@master
-
-      - name: Install tinytex
-        uses: r-lib/actions/setup-tinytex@master
+        uses: r-lib/actions/setup-r@v1
 
       - name: Install pandoc
         run: |
@@ -27,9 +28,9 @@ jobs:
           path: ${{ env.R_LIBS_USER }}
           key: r-${{ hashFiles('DESCRIPTION') }}
           restore-keys: r-
-      
+
       - name: Cache bookdown results
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: _bookdown_files
           key: bookdown-${{ hashFiles('**/*Rmd') }}
@@ -37,8 +38,8 @@ jobs:
 
       - name: Install packages
         run: |
-          R -e 'install.packages("remotes")'
-          R -e 'remotes::install_deps(dependencies = TRUE)'
+          R -e 'install.packages("renv")'
+          R -e 'renv::restore()'
 
       - name: Build site
         run: |
