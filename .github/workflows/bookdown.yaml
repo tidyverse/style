@@ -17,10 +17,9 @@ jobs:
       - name: Install tinytex
         uses: r-lib/actions/setup-tinytex@master
 
-      - name: Install pandoc and pandoc citeproc
+      - name: Install pandoc
         run: |
           brew install pandoc
-          brew install pandoc-citeproc
 
       - name: Cache R packages
         uses: actions/cache@v1
