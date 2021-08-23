@@ -2,7 +2,7 @@
 title: "The tidyverse style guide"
 author: ["Hadley Wickham"]
 site: bookdown::bookdown_site
-output: bookdown::gitbook
+output: bookdown::bs4_book
 github-repo: tidyverse/style
 documentclass: book
 ---
