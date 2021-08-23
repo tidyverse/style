@@ -24,7 +24,7 @@ they should all immediately follow the documentation block.
 See \@ref(documentation) for more thorough guidance on documenting functions
 in packages.
 
-```
+```{r}
 # Bad
 help_compute <- function() {
   # ... Lots of code ...
@@ -41,7 +41,7 @@ do_something_cool <- function() {
 }
 ```
 
-```
+```{r}
 # Good
 #' Lots of functions for doing something cool
 #'
