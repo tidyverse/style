@@ -51,7 +51,7 @@ jobs:
 
       - name: Build site
         run: |
-          bookdown::render_book('index.Rmd', 'bookdown::gitbook', quiet = TRUE)
+          bookdown::render_book('index.Rmd', 'bookdown::bs4_book', quiet = TRUE)
           bookdown::render_book('index.Rmd', 'bookdown::pdf_book', quiet = TRUE)
           bookdown::render_book('index.Rmd', 'bookdown::epub_book', quiet = TRUE)
         shell: Rscript {0}
