@@ -10,4 +10,7 @@ Depends:
 Imports: 
     bookdown,
     rmarkdown,
-    png
+    png,
+    bslib,
+    downlit, 
+    xml2
