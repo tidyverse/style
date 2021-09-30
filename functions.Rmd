@@ -16,25 +16,46 @@ permutation()
 
 ## Long lines
 
-If a function definition runs over multiple lines, indent the second line to 
-where the definition starts.
+There are two options if the function name and definition can't fit on a single line:
+
+*   Function-indent: place each argument on its own line, and indent to match the opening `(` of `function`:
+
+    ```{r, eval = FALSE}
+    long_function_name <- function(a = "a long argument",
+                                   b = "another argument",
+                                   c = "another long argument") {
+      # As usual code is indented by two spaces.
+    }
+    ```
+
+*   Double-indent: Place each argument of its own **double** indented line.
+
+    ```{r, eval = FALSE}
+    long_function_name <- function(
+        a = "a long argument",
+        b = "another argument",
+        c = "another long argument") {
+      # As usual code is indented by two spaces.
+    }
+    ```
+
+In both cases the trailing `)` and leading `{` should go on the same line as the last argument.
+
+Prefer function-indent style to double-indent style when it fits.
+
+These styles are designed to clearly separate the function definition from its body.
 
 ```{r, eval = FALSE}
-# Good
-long_function_name <- function(a = "a long argument",
-                               b = "another argument",
-                               c = "another long argument") {
-  # As usual code is indented by two spaces.
-}
-
 # Bad
 long_function_name <- function(a = "a long argument",
   b = "another argument",
   c = "another long argument") {
   # Here it's hard to spot where the definition ends and the
-  # code begins
+  # code begins, and to see all three function arguments
 }
 ```
+
+If a function argument can't fit on a single line, this is a sign you should rework the argument to keep it [short and sweet](https://design.tidyverse.org/def-short.html).
 
 ## `return()`
 
