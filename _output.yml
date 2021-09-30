@@ -1,16 +1,7 @@
-bookdown::gitbook:
+bookdown::bs4_book:
   includes:
     in_header: [ga_script.html]
-  css: style.css
-  config:
-    toc:
-      before: |
-        <li><a href="./">R Style Guide</a></li>
-      after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/tidyverse/style/edit/master/%s
-    sharing: no
-    download: ["pdf", "epub"]
+  repo: https://github.com/tidyverse/style
 
 bookdown::pdf_book:
   latex_engine: xelatex
