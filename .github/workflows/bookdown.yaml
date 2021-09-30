@@ -13,9 +13,15 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
+
       - uses: r-lib/actions/setup-r@v1
-      - uses: r-lib/actions/install-r-dependencies@master
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v1
+
       - uses: r-lib/actions/setup-tinytex@v1
+
       - uses: r-lib/actions/setup-pandoc@v1
 
       - name: Cache bookdown results
