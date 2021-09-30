@@ -290,8 +290,6 @@ hierarchy easy to see:
 
 * `}` should be the first character on the line.
 
-* If used, `else` should be on the same line as `}`.
-
 ```{r, eval = FALSE}
 # Good
 if (y < 0 && debug) {
@@ -336,6 +334,34 @@ if (y == 0)
     }
 } else { y ^ x }
 ```
+
+### If statements
+
+* If used, `else` should be on the same line as `}`.
+
+* `&` and `|` should never be used inside of an `if` clause because they can
+  return vectors. Always use `&&` and `||` instead.
+  
+* NB: `ifelse(x, a, b)` is not a drop-in replacement for `if (x) a else b`.
+  `ifelse()` is vectorised (i.e. if `length(x) > 1`, then `a` and `b`  will be 
+  recycled to match) and it is eager (i.e. both `a` and `b` will always be 
+  evaluated). 
+  
+    If you want to rewrite a simple but lengthy `if` block:
+        
+    ```{r, eval = FALSE}
+    if (x > 10) {
+      message <- "big"
+    } else {
+      message <- "small"
+    }
+    ```
+    
+    Just write it all on one line:
+    
+    ```{r, eval = FALSE}
+    message <- if (x > 10) "big" else "small"
+    ```
 
 ### Inline statements {#inline-statements}
 
