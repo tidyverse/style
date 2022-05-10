@@ -25,5 +25,5 @@ Two R packages support this style guide:
     ```
 
     
-*   [lintr](https://github.com/jimhester/lintr) performs automated checks
+*   [lintr](https://github.com/r-lib/lintr) performs automated checks
     to confirm that you conform to the style guide.
