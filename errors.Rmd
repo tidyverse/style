@@ -59,13 +59,13 @@ Use simple sentences layed out in a bullet list of `ℹ` and `✖` elements:
     ```{r}
     # Good
     vec_slice(letters, 100)
-    #> Must index an existing element:
-    #> ℹ There are 26 elements.
-    #> ✖ You've tried to subset element 100.
+    #> ! Can't subset elements past the end.
+    #> ℹ Location 100 doesn't exist.
+    #> ℹ There are only 26 elements.
 
     # Bad
     vec_slice(letters, 100)
-    #> Must index an existing element.
+    #> ! Must index an existing element.
     #> There are 26 elements and you've tried to subset element 100.
     ```
 
