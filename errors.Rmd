@@ -69,22 +69,6 @@ Use simple sentences layed out in a bullet list of `ℹ` and `✖` elements:
     #> There are 26 elements and you've tried to subset element 100.
     ```
 
-*   The contextual information should be first:
-
-    ```{r}
-    # Good
-    vec_slice(letters, 100)
-    #> Must index an existing element:
-    #> ℹ There are 26 elements.
-    #> ✖ You've tried to subset element 100.
-
-    # Bad
-    vec_slice(letters, 100)
-    #> Must index an existing element:
-    #> ✖ You've tried to subset element 100.
-    #> ℹ There are 26 elements.
-    ```
-
 ## Error location
 
 Do your best to reveal the location, name, and/or content of the troublesome
