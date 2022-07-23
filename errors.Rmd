@@ -13,23 +13,24 @@ come from existing tidyverse code.)
 
 ## Problem statement
 
-Every error message should start with a general statement of the problem. It
-should be concise, but informative. (This is hard!)
+Every error message should start with a general statement of the problem. It should be concise, but informative. (This is hard!) It is encouraged to be as informative as possible, but each sentence should be very simple to make localisation and translation possible. [A Localization Horror Story: It Could Happen To You](https://metacpan.org/pod/distribution/Locale-Maketext/lib/Locale/Maketext/TPJ13.pod) is a Good summary of the challenges of localising error messages. You might not support localised messages right now but you should make it as easy as possible to do it in the future.
 
-It is encouraged to be as informative as possible, but each sentence should be very simple to make localisation and translation possible. [A Localization Horror Story: It Could Happen To You](https://metacpan.org/pod/distribution/Locale-Maketext/lib/Locale/Maketext/TPJ13.pod) is a Good summary of the challenges of localising error messages. You might not support localised messages right now but you should make it as easy as possible to do it in the future.
+Ideally each sentence should be simple and avoid presenting multiple information. Because we avoid complex sentences, we prefer to lay out information in a bullet list. First let the user know what the problem is with cross bullets then provide contextual information in info bullets.
 
-Ideally each sentence should contain a single phrase, and should only mention one variable quantity. Because we avoid complex sentences, we prefer to lay out information in a bullet list. Start with a list of _contextual_ information, and finish with a list of information about _faulty_ user input. These lists should be prefixed with `ℹ`  and `✖` respectively if UTF-8 is available (and in blue and red if colour is available), or the ASCII `*` character otherwise.
+One exception to the bullet layout is when you are contrasting two alternatives, such as actual versus expected input. In this case, try to mention the two alternatives in the same sentence.
+
+Bullet lists are prefixed with `ℹ`  and `✖` respectively if UTF-8 is available (and in blue and red if colour is available), or the ASCII `*` character otherwise. The cli and rlang packages provide an easy way of creating these bullet lists with the appropriate symbols.
 
 *   If the cause of the problem is clear, use "must":
 
     ```{r}
     dplyr::nth(1:10, "x")
-    #> Error: `n` must be a numeric vector:
-    #> ✖ You've supplied a character vector.
+    #> Error:
+    #> ! `n` must be a numeric vector, not a character vector.
 
     dplyr::nth(1:10, 1:2)
-    #> Error: `n` must have length 1
-    #> ✖ You've supplied a vector of length 2.
+    #> Error:
+    #> ! `n` must have length 1, not length 2.
     ```
 
     Clear cut causes typically involve incorrect types or lengths.
