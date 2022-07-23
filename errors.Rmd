@@ -178,7 +178,7 @@ mean[[1]]
 ```
 
 Good hints are difficult to write because, as above, you want to avoid steering
-users in the wrong direction. Generally, I avoid writing a hint unless the
+users in the wrong direction. Generally, we avoid writing a hint unless the
 problem is common, and you can easily find a common pattern of incorrect usage
 (e.g. by searching StackOverflow).
 
