@@ -4,24 +4,19 @@
 knitr::opts_chunk$set(eval = FALSE)
 ```
 
-An error message should start with a general statement of the problem then give
-a concise description of what went wrong. Consistent use of punctuation and
-formatting makes errors easier to parse.
+An error message should start with a general statement of the problem then give a concise description of what went wrong.
+Consistent use of punctuation and formatting makes errors easier to parse.
 
-(This guide is currently almost entirely aspirational; most of the bad examples
-come from existing tidyverse code.)
+This guide assumes that you're using `rlang::abort()`.
+Much of the same advice applies if you're using `stop()`, but the code you'll need to achieve those goals is different.
 
 ## Problem statement
 
-Every error message should start with a general statement of the problem. It should be concise, but informative. (This is hard!) It is encouraged to be as informative as possible, but each sentence should be very simple to make localisation and translation possible. [A Localization Horror Story: It Could Happen To You](https://metacpan.org/pod/distribution/Locale-Maketext/lib/Locale/Maketext/TPJ13.pod) is a Good summary of the challenges of localising error messages. You might not support localised messages right now but you should make it as easy as possible to do it in the future.
+Every error message should start with a general statement of the problem.
+It should be concise, but informative (This is hard!).
+The problem statement should use sentence case and end with a full stop.
 
-Ideally each sentence should be simple and avoid presenting multiple information. Because we avoid complex sentences, we prefer to lay out information in a bullet list. First let the user know what the problem is with cross bullets then provide contextual information in info bullets.
-
-One exception to the bullet layout is when you are contrasting two alternatives, such as actual versus expected input. In this case, try to mention the two alternatives in the same sentence.
-
-Bullet lists are prefixed with `ℹ`  and `✖` respectively if UTF-8 is available (and in blue and red if colour is available), or the ASCII `*` character otherwise. The cli and rlang packages provide an easy way of creating these bullet lists with the appropriate symbols.
-
-*   If the cause of the problem is clear, use "must":
+-   If the cause of the problem is clear (e.g. an incorrect type or size), use "**must**":
 
     ```{r}
     dplyr::nth(1:10, "x")
@@ -33,9 +28,9 @@ Bullet lists are prefixed with `ℹ`  and `✖` respectively if UTF-8 is availab
     #> ! `n` must have length 1, not length 2.
     ```
 
-    Clear cut causes typically involve incorrect types or lengths.
+    Do your best to tell the user both what is expected ("a numeric vector") and what they actually provided ("a character vector").
 
-*   If you cannot state what was expected, use "can't":
+-   If you cannot state what was expected, use "**can't**":
 
     ```{r}
     mtcars %>% pull(b)
@@ -51,32 +46,39 @@ Bullet lists are prefixed with `ℹ`  and `✖` respectively if UTF-8 is availab
     #> ! Can't find specified `.depth` in `.x`.
     ```
 
-The problem statement should use sentence case and end with a full stop.
-
-Ideally the error message should mention the failing function call. If you throw the error from an error helper such as `check_string()` though, the function call will likely not be informative. In this case, use `stop(call. = FALSE)` to hide the function call, or pass the relevant call to `rlang::abort()` if you use rlang. See <https://rlang.r-lib.org/reference/topic-error-call.html> for more about how to pass calls through error helpers.
-
-Use simple sentences layed out in a bullet list of `ℹ` and `✖` elements:
-
-*   The sentences should be short and bulleted:
-
-    ```{r}
-    # Good
-    vec_slice(letters, 100)
-    #> ! Can't subset elements past the end.
-    #> ℹ Location 100 doesn't exist.
-    #> ℹ There are only 26 elements.
-
-    # Bad
-    vec_slice(letters, 100)
-    #> ! Must index an existing element.
-    #> There are 26 elements and you've tried to subset element 100.
-    ```
-
 ## Error location
 
-Do your best to reveal the location, name, and/or content of the troublesome
-component. The goal is to make it as easy as possible for the user to find and 
-fix the problem.
+Ideally the error message should mention the failing function call.
+
+<!--# I think it'd be useful to include a small example here -->
+
+See <https://rlang.r-lib.org/reference/topic-error-call.html> for more about how to pass calls through error helpers.
+
+## Error details
+
+After the problem statement, use a bulleted list to provide further information.
+Use cross bullets (`x`) to let the user know what the problem is, then use info bullets (`i`) to provide contextual information.
+These are easy to create with `abort()`: <!--# Include brief example here -->
+
+<!--# Can you reorganise to show cross bullets then info bullets -->
+
+Keep the sentences should be short and sweet:
+
+```{r}
+# Good
+vec_slice(letters, 100)
+#> ! Can't subset elements past the end.
+#> ℹ Location 100 doesn't exist.
+#> ℹ There are only 26 elements.
+
+# Bad
+vec_slice(letters, 100)
+#> ! Must index an existing element.
+#> There are 26 elements and you've tried to subset element 100.
+```
+
+Do your best to reveal the location, name, and/or content of the troublesome component.
+The goal is to make it as easy as possible for the user to find and fix the problem.
 
 ```{r}
 # Good
@@ -91,13 +93,9 @@ map_int(1:5, ~ "x")
 #> ! Each result must be a single integer
 ```
 
-(It is often not easy to identify the exact problem; it may require passing
-around extra arguments so that error messages generated at a lower-level can
-know the original source. For frequently used functions, the effort is typically
-worth it.)
+(It is often not easy to identify the exact problem; it may require passing around extra arguments so that error messages generated at a lower-level can know the original source. For frequently used functions, the effort is typically worth it.)
 
-If the source of the error is unclear, avoid pointing the user in the wrong
-direction by giving an opinion about the source of the error:
+If the source of the error is unclear, avoid pointing the user in the wrong direction by giving an opinion about the source of the error:
 
 ```{r}
 # Good
@@ -126,8 +124,7 @@ tibble(x = 1:2, y = 1:3, z = 1)
 #> ! Column `x` must be length 1 or 3, not 2.
 ```
 
-If there are multiple issues, or an inconsistency revealed across several
-arguments or items, prefer a bulleted list:
+If there are multiple issues, or an inconsistency revealed across several arguments or items, prefer a bulleted list:
 
 ```{r}
 # Good
@@ -151,12 +148,13 @@ If the list of issues might be long, make sure to truncate to only show the firs
 #> Error: NAs found at 1,000,000 locations: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ...
 ```
 
-If you want to correctly pluralise the error message, consider using `ngettext()`. See the notes in `?ngettext()` for some challenges related to correct translation to other languages.
+If you want to correctly pluralise the error message, consider using `ngettext()`.
+See the notes in `?ngettext()` for some challenges related to correct translation to other languages.
 
 ## Hints
 
-If the source of the error is clear and common, you may want to provide a hint as
-to how to fix it. If UTF-8 is available, prefix with `ℹ` (in blue if colour is available):
+If the source of the error is clear and common, you may want to provide a hint as to how to fix it.
+Use an info bullet (`i`) and the end in a question mark.
 
 ```{r}
 dplyr::filter(iris, Species = "setosa")
@@ -168,12 +166,14 @@ ggplot2::ggplot(ggplot2::aes())
 #> Error:
 #> ! Can't plot data with class "uneval".
 #> ℹ Did you accidentally provide the results of aes() to the `data` argument?
+
+mtcars |> ggplot() |> geom_point()
+#> Error in `validate_mapping()`:
+#> ! `mapping` must be created by `aes()`
+#> ℹ Did you use %>% instead of +?
 ```
 
-Hints should always end in a question mark.
-
-Hints are particularly important if the source of the error is far away from the
-root cause:
+Hints are particularly important if the source of the error is far away from the root cause:
 
 ```{r}
 # Bad
@@ -193,18 +193,17 @@ mean[[1]]
 #> ℹ Have you forgotten to define a variable named `mean`?
 ```
 
-Good hints are difficult to write because, as above, you want to avoid steering
-users in the wrong direction. Generally, we avoid writing a hint unless the
-problem is common, and you can easily find a common pattern of incorrect usage
-(e.g. by searching StackOverflow).
+Good hints are difficult to write because, as above, you want to avoid steering users in the wrong direction.
+Generally, we avoid writing a hint unless the problem is common, and you can easily find a common pattern of incorrect usage (e.g. by searching StackOverflow).
 
 ## Punctuation
 
-*   Errors should be written in sentence case, and should end in a full stop.
-    Bullets should be formatted similarly; make sure to capitalise the first
-    word (unless it's an argument or column name).
-    
-*   Prefer the singular in problem statements:
+<!--# This should be spread amongst the relevant sections. -->
+
+-   Errors should be written in sentence case, and should end in a full stop.
+    Bullets should be formatted similarly; make sure to capitalise the first word (unless it's an argument or column name).
+
+-   Prefer the singular in problem statements:
 
     ```{r}
     # Good
@@ -220,9 +219,10 @@ problem is common, and you can easily find a common pattern of incorrect usage
     #> ✖ Result 1 is a character vector.
     ```
 
-*   If you can detect multiple problems, list up to five. This allows the user
-    to fix multiple problems in a single pass without being overwhelmed by
-    many errors that may have the same source.
+-   If you can detect multiple problems, list up to five.
+    This allows the user to fix multiple problems in a single pass without being overwhelmed by many errors that may have the same source.
+
+    <!--# Mention cli helper here -->
 
     ```{r}
     # BETTER
@@ -237,18 +237,15 @@ problem is common, and you can easily find a common pattern of incorrect usage
     #> ... and 5 more problems
     ```
 
-*   Pick a natural connector between problem statement and error location:
-    this may be ", not", ";", or ":" depending on the context.
+-   Pick a natural connector between problem statement and error location: this may be ", not", ";", or ":" depending on the context.
 
-*   Surround the names of arguments in backticks, e.g. `` `x` ``. 
+-   Surround the names of arguments in backticks, e.g. `` `x` ``.
     Use "column" to disambiguate columns and arguments: `` Column `x` ``.
     Avoid "variable", because it is ambiguous.
- 
-*   Ideally, each component of the error message should be less than 80 
-    characters wide. Do not add manual line breaks to long error messages; 
-    they will not look correct if the console is narrower (or much wider) than 
-    expected. Instead, use bullets to break up the error into shorter logical
-    components.
+
+-   Ideally, each component of the error message should be less than 80 characters wide.
+    Do not add manual line breaks to long error messages; they will not look correct if the console is narrower (or much wider) than expected.
+    Instead, use bullets to break up the error into shorter logical components.
 
 ## Before and after
 
@@ -280,3 +277,8 @@ dplyr::arrange(mtcars, xxx)
 #>  AFTER: ! Can't find column `xxx` in `.data`.
 ```
 
+## Localisation
+
+It is encouraged to be as informative as possible, but each sentence should be very simple to make localisation and translation possible.
+[A Localization Horror Story: It Could Happen To You](https://metacpan.org/pod/distribution/Locale-Maketext/lib/Locale/Maketext/TPJ13.pod) is a Good summary of the challenges of localising error messages.
+You might not support localised messages right now but you should make it as easy as possible to do it in the future.
