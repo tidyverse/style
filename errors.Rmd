@@ -50,10 +50,7 @@ Bullet lists are prefixed with `ℹ`  and `✖` respectively if UTF-8 is availab
 
 The problem statement should use sentence case and end with a full stop.
 
-Use `stop(call. = FALSE)`, `rlang::abort()`, `Rf_errorcall(R_NilValue, ...)` to
-avoid cluttering the error message with the name of the function that generated
-it. That information is often not informative, and can easily be accessed via
-`traceback()` or an IDE equivalent.
+Ideally the error message should mention the failing function call. If you throw the error from an error helper such as `check_string()` though, the function call will likely not be informative. In this case, use `stop(call. = FALSE)` to hide the function call, or pass the relevant call to `rlang::abort()` if you use rlang. See <https://rlang.r-lib.org/reference/topic-error-call.html> for more about how to pass calls through error helpers.
 
 Use simple sentences layed out in a bullet list of `ℹ` and `✖` elements:
 
