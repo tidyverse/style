@@ -18,6 +18,8 @@ We are transitioning to use this function in the tidyverse because it:
 
 Much of the advice in this guide still applies if you're using `stop()`, but it will be be much more work to generate the message.
 
+<!--# Need a brief description of the overall structure of an error here, as a guide to the following sections -->
+
 ## Problem statement
 
 Every error message should start with a general statement of the problem.
@@ -54,6 +56,8 @@ The problem statement should use sentence case and end with a full stop.
     #> ! Can't find specified `.depth` in `.x`.
     ```
 
+<!--# Are there other forms that we use? Would be good to have some examples -->
+
 ## Error location
 
 Ideally the error message should mention the failing function call.
@@ -66,7 +70,7 @@ See <https://rlang.r-lib.org/reference/topic-error-call.html> for more about how
 
 After the problem statement, use a bulleted list to provide further information.
 Use cross bullets (`x`) to let the user know what the problem is, then use info bullets (`i`) to provide contextual information.
-These are easy to create with `abort()`: <!--# Include brief example here -->
+These are easy to create with `cli_abort()`: <!--# Include brief example here -->
 
 <!--# Can you reorganise to show cross bullets then info bullets -->
 
@@ -162,7 +166,7 @@ See the notes in `?ngettext()` for some challenges related to correct translatio
 ## Hints
 
 If the source of the error is clear and common, you may want to provide a hint as to how to fix it.
-Use an info bullet (`i`) and the end in a question mark.
+The hint should be the last bullet, use an info bullet (`i`), and end in a question mark.
 
 ```{r}
 dplyr::filter(iris, Species = "setosa")
@@ -201,7 +205,7 @@ mean[[1]]
 #> ℹ Have you forgotten to define a variable named `mean`?
 ```
 
-Good hints are difficult to write because, as above, you want to avoid steering users in the wrong direction.
+Good hints are difficult to write because you want to avoid steering users in the wrong direction.
 Generally, we avoid writing a hint unless the problem is common, and you can easily find a common pattern of incorrect usage (e.g. by searching StackOverflow).
 
 ## Punctuation
@@ -250,10 +254,12 @@ Generally, we avoid writing a hint unless the problem is common, and you can eas
 -   Surround the names of arguments in backticks, e.g. `` `x` ``.
     Use "column" to disambiguate columns and arguments: `` Column `x` ``.
     Avoid "variable", because it is ambiguous.
+    <!--# Needs to be updated to refer to cli inline formatting -->
 
 -   Ideally, each component of the error message should be less than 80 characters wide.
     Do not add manual line breaks to long error messages; they will not look correct if the console is narrower (or much wider) than expected.
     Instead, use bullets to break up the error into shorter logical components.
+    <!--# is this still true? or do we not care since cli will automatically wrap -->
 
 ## Before and after
 
