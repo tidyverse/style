@@ -116,9 +116,11 @@ pull(mtcars, b)
 #> Error: Can't find column `b` in `.data`.
 
 tibble(x = 1:2, y = 1:3, z = 1)
-#> Error: Columns must have consistent lengths: 
-#> ✖ Column `x` has length 2
-#> ✖ Column `y` has length 3
+#> Error:
+#> ! Tibble columns must have compatible sizes.
+#> • Size 2: Existing data.
+#> • Size 3: Column `y`.
+#> ℹ Only values of size one are recycled.
 
 # Bad: implies one argument at fault
 pull(mtcars, b)
