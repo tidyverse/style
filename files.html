@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>1 Files | The tidyverse style guide</title>
+<meta name="author" content="Hadley Wickham">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta property="og:title" content="1 Files | The tidyverse style guide">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1 Files | The tidyverse style guide">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-115082821-1"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-115082821-1');
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<meta name="description" content="1.1 Names File names should be meaningful and end in .R. Avoid using special characters in file names - stick with numbers, letters, -, and _. # Good fit_models.R utility_functions.R # Bad fit...">
+<meta property="og:description" content="1.1 Names File names should be meaningful and end in .R. Avoid using special characters in file names - stick with numbers, letters, -, and _. # Good fit_models.R utility_functions.R # Bad fit...">
+<meta name="twitter:description" content="1.1 Names File names should be meaningful and end in .R. Avoid using special characters in file names - stick with numbers, letters, -, and _. # Good fit_models.R utility_functions.R # Bad fit...">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">The tidyverse style guide</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li class="book-part">Analyses</li>
+<li><a class="active" href="files.html"><span class="header-section-number">1</span> Files</a></li>
+<li><a class="" href="syntax.html"><span class="header-section-number">2</span> Syntax</a></li>
+<li><a class="" href="functions.html"><span class="header-section-number">3</span> Functions</a></li>
+<li><a class="" href="pipes.html"><span class="header-section-number">4</span> Pipes</a></li>
+<li><a class="" href="ggplot2.html"><span class="header-section-number">5</span> ggplot2</a></li>
+<li class="book-part">Packages</li>
+<li><a class="" href="package-files.html"><span class="header-section-number">6</span> Files</a></li>
+<li><a class="" href="documentation.html"><span class="header-section-number">7</span> Documentation</a></li>
+<li><a class="" href="tests.html"><span class="header-section-number">8</span> Tests</a></li>
+<li><a class="" href="error-messages.html"><span class="header-section-number">9</span> Error messages</a></li>
+<li><a class="" href="news.html"><span class="header-section-number">10</span> News</a></li>
+<li><a class="" href="gitgithub.html"><span class="header-section-number">11</span> Git/GitHub</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/tidyverse/style">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="files" class="section level1" number="1">
+<h1>
+<span class="header-section-number">1</span> Files<a class="anchor" aria-label="anchor" href="#files"><i class="fas fa-link"></i></a>
+</h1>
+<div id="names" class="section level2" number="1.1">
+<h2>
+<span class="header-section-number">1.1</span> Names<a class="anchor" aria-label="anchor" href="#names"><i class="fas fa-link"></i></a>
+</h2>
+<p>File names should be meaningful and end in <code>.R</code>. Avoid using special characters
+in file names - stick with numbers, letters, <code>-</code>, and <code>_</code>.</p>
+<pre><code># Good
+fit_models.R
+utility_functions.R
+
+# Bad
+fit models.R
+foo.r
+stuff.r</code></pre>
+<p>If files should be run in a particular order, prefix them with numbers. If it
+seems likely you’ll have more than 10 files, left pad with zero:</p>
+<pre><code>00_download.R
+01_explore.R
+...
+09_model.R
+10_visualize.R</code></pre>
+<p>If you later realise that you’ve missed some steps, it’s tempting to use <code>02a</code>,
+<code>02b</code>, etc. However, I think it’s generally better to bite the bullet and
+rename all files.</p>
+<p>Pay attention to capitalization, since you, or some of your collaborators,
+might be using an operating system with a case-insensitive file system (e.g.,
+Microsoft Windows or OS X) which can lead to problems with (case-sensitive)
+revision control systems. Prefer file names that are all lower case, and never
+have names that differ only in their capitalization.</p>
+</div>
+<div id="organisation" class="section level2" number="1.2">
+<h2>
+<span class="header-section-number">1.2</span> Organisation<a class="anchor" aria-label="anchor" href="#organisation"><i class="fas fa-link"></i></a>
+</h2>
+<p>It’s hard to describe exactly how you should organise your code across multiple files. I think the best rule of thumb is that if you can give a file a concise name that still evokes its contents, you’ve arrived at a good organisation. But getting to that point is hard.</p>
+</div>
+<div id="internal-structure" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> Internal structure<a class="anchor" aria-label="anchor" href="#internal-structure"><i class="fas fa-link"></i></a>
+</h2>
+<p>Use commented lines of <code>-</code> and <code>=</code> to break up your file into easily readable
+chunks.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Load data ---------------------------</span></span>
+<span></span>
+<span><span class="co"># Plot data ---------------------------</span></span></code></pre></div>
+<p>If your script uses add-on packages, load them all at once at the very
+beginning of the file. This is more transparent than sprinkling <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>
+calls throughout your code or having hidden dependencies that are loaded in a
+startup file, such as <code>.Rprofile</code>.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html">Welcome</a></div>
+<div class="next"><a href="syntax.html"><span class="header-section-number">2</span> Syntax</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#files"><span class="header-section-number">1</span> Files</a></li>
+<li><a class="nav-link" href="#names"><span class="header-section-number">1.1</span> Names</a></li>
+<li><a class="nav-link" href="#organisation"><span class="header-section-number">1.2</span> Organisation</a></li>
+<li><a class="nav-link" href="#internal-structure"><span class="header-section-number">1.3</span> Internal structure</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/tidyverse/style/blob/master/files.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/tidyverse/style/edit/master/files.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>The tidyverse style guide</strong>" was written by Hadley Wickham. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

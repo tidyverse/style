@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>10 News | The tidyverse style guide</title>
+<meta name="author" content="Hadley Wickham">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta property="og:title" content="10 News | The tidyverse style guide">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="10 News | The tidyverse style guide">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-115082821-1"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-115082821-1');
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<meta name="description" content="Each user-facing change to a package should be accompanied by a bullet in NEWS.md. Minor changes to documentation don’t need to be documented, but it’s worthwhile to draw attention to sweeping...">
+<meta property="og:description" content="Each user-facing change to a package should be accompanied by a bullet in NEWS.md. Minor changes to documentation don’t need to be documented, but it’s worthwhile to draw attention to sweeping...">
+<meta name="twitter:description" content="Each user-facing change to a package should be accompanied by a bullet in NEWS.md. Minor changes to documentation don’t need to be documented, but it’s worthwhile to draw attention to sweeping...">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">The tidyverse style guide</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li class="book-part">Analyses</li>
+<li><a class="" href="files.html"><span class="header-section-number">1</span> Files</a></li>
+<li><a class="" href="syntax.html"><span class="header-section-number">2</span> Syntax</a></li>
+<li><a class="" href="functions.html"><span class="header-section-number">3</span> Functions</a></li>
+<li><a class="" href="pipes.html"><span class="header-section-number">4</span> Pipes</a></li>
+<li><a class="" href="ggplot2.html"><span class="header-section-number">5</span> ggplot2</a></li>
+<li class="book-part">Packages</li>
+<li><a class="" href="package-files.html"><span class="header-section-number">6</span> Files</a></li>
+<li><a class="" href="documentation.html"><span class="header-section-number">7</span> Documentation</a></li>
+<li><a class="" href="tests.html"><span class="header-section-number">8</span> Tests</a></li>
+<li><a class="" href="error-messages.html"><span class="header-section-number">9</span> Error messages</a></li>
+<li><a class="active" href="news.html"><span class="header-section-number">10</span> News</a></li>
+<li><a class="" href="gitgithub.html"><span class="header-section-number">11</span> Git/GitHub</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/tidyverse/style">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="news" class="section level1" number="10">
+<h1>
+<span class="header-section-number">10</span> News<a class="anchor" aria-label="anchor" href="#news"><i class="fas fa-link"></i></a>
+</h1>
+<p>Each user-facing change to a package should be accompanied by a bullet in <code>NEWS.md</code>. Minor changes to documentation don’t need to be documented, but it’s worthwhile to draw attention to sweeping changes and to new vignettes.</p>
+<div id="bullets" class="section level2" number="10.1">
+<h2>
+<span class="header-section-number">10.1</span> Bullets<a class="anchor" aria-label="anchor" href="#bullets"><i class="fas fa-link"></i></a>
+</h2>
+<p>The goal of the bullet is to briefly describe the change so users of the packages can understand what’s changed. This can be similar to the commit message, but written with a user (not developer) in mind.</p>
+<p>New bullets should be added to the top of the file (under the first heading).
+Organisation of bullets will happen later, during the release process (Section <a href="news.html#news-release">10.2.2</a>).</p>
+<div id="general-style" class="section level3" number="10.1.1">
+<h3>
+<span class="header-section-number">10.1.1</span> General style<a class="anchor" aria-label="anchor" href="#general-style"><i class="fas fa-link"></i></a>
+</h3>
+<p>Strive to place the name of the function as close to the beginning of the bullet
+as possible. A consistent location makes the bullets easier to scan, and easier
+to organise prior to release.</p>
+<pre><code># Good
+* `ggsave()` now uses full argument names to avoid partial match warning (#2355).
+
+# Bad
+* Fixed partial argument matches in `ggsave()` (#2355).</code></pre>
+<p>Lines should be wrapped to 80 characters, and each bullet should end in a full
+stop.</p>
+<p>Frame bullets positively (i.e. what now happens, not what used to happen), and
+use the present tense.</p>
+<pre><code># Good
+* `ggsave()` now uses full argument names to avoid partial match warnings (#2355).
+
+# Bad
+* `ggsave()` no longer partially matches argument names (#2355).</code></pre>
+<p>Many news bullets will be a single sentence. This is typically adequate when describing a bug fix or minor improvement, but you may need more detail when describing a new feature. For more complex features, include longer examples in fenced code blocks (<code>```</code>). These will be useful inspiration when you later write the blog post.</p>
+<pre><code># Good
+* In `stat_bin()`, `binwidth` now also takes functions.
+
+# Better
+* In `stat_bin()`, `binwidth` now also takes functions. The function is 
+  called with the scaled `x` values, and should return a single number.
+  This makes it possible to use classical binwidth computations with ggplot2.
+
+# Best
+* In `stat_bin()`, `binwidth` now also takes functions. The function is 
+  called with the scaled `x` values, and should return a single number.
+  With a little work, this makes it possible to use classical bin size 
+  computations with ggplot2.
+  
+  ```R
+  sturges &lt;- function(x) {
+    rng &lt;- range(x)
+    bins &lt;- nclass.Sturges(x)
+    
+    (rng[2] - rng[1]) / bins
+  }
+  ggplot(diamonds, aes(price)) +
+    geom_histogram(binwidth = sturges) + 
+    facet_wrap(~cut)
+  ```</code></pre>
+</div>
+<div id="acknowledgement" class="section level3" number="10.1.2">
+<h3>
+<span class="header-section-number">10.1.2</span> Acknowledgement<a class="anchor" aria-label="anchor" href="#acknowledgement"><i class="fas fa-link"></i></a>
+</h3>
+<p>If the bullet is related to an issue, include the issue number. If the
+contribution was a PR, and the author is not a package author, include their
+GitHub user name. Both items should be wrapped in parentheses and will generally
+come before the final period.</p>
+<pre><code># Good
+* `ggsave()` now uses full argument names to avoid partial match warnings 
+  (@wch, #2355).
+
+# Bad
+* `ggsave()` now uses full argument names to avoid partial match warnings.
+
+* `ggsave()` now uses full argument names to avoid partial match warnings.
+  (@wch, #2355)</code></pre>
+</div>
+<div id="code-style" class="section level3" number="10.1.3">
+<h3>
+<span class="header-section-number">10.1.3</span> Code style<a class="anchor" aria-label="anchor" href="#code-style"><i class="fas fa-link"></i></a>
+</h3>
+<p>Functions, arguments, and file names should be wrapped in backticks. Function names should include parentheses; omit “the argument” or “the function”</p>
+<pre><code># Good
+* In `stat_bin()`, `binwidth` now also takes functions.
+
+# Bad
+* In the stat_bin function, "binwidth" now also takes functions.</code></pre>
+</div>
+<div id="common-patterns" class="section level3" number="10.1.4">
+<h3>
+<span class="header-section-number">10.1.4</span> Common patterns<a class="anchor" aria-label="anchor" href="#common-patterns"><i class="fas fa-link"></i></a>
+</h3>
+<p>The following excerpts from tidyverse news entries provide helpful templates to
+follow.</p>
+<ul>
+<li>
+<p>New family of functions:</p>
+<pre><code>* Support for ordered factors is improved. Ordered factors throw a warning 
+  when mapped to shape (unordered factors do not), and do not throw warnings 
+  when mapped to size or alpha (unordered factors do). Viridis is used as 
+  default colour and fill scale for ordered factors (@karawoo, #1526).
+
+* `possibly()`, `safely()` and friends no longer capture interrupts: this
+  means that you can now terminate a mapper using one of these with
+  Escape or Ctrl + C (#314).</code></pre>
+</li>
+<li>
+<p>New function:</p>
+<pre><code>* New `position_dodge2()` provides enhanced dogding for boxplots...
+
+* New `stat_qq_line()` makes it easy to add a simple line to a Q-Q plot. 
+  This line makes it easier to judge the fit of the theoretical distribution 
+  (@nicksolomon).</code></pre>
+</li>
+<li>
+<p>New argument to existing function:</p>
+<pre><code>* `geom_segment()` gains a `linejoin` parameter.</code></pre>
+</li>
+<li>
+<p>Function argument changes behaviour:</p>
+<pre><code>* In `separate()`, `col = -1` now refers to the far right position. 
+  Previously, and incorrectly, `col = -2` referred to the far-right 
+  position.</code></pre>
+</li>
+<li>
+<p>Function changes behaviour:</p>
+<pre><code>* `map()` and `modify()` now work with calls and pairlists (#412).
+
+* `flatten_dfr()` and `flatten_dfc()` now aborts with informative 
+   message if dplyr is not installed (#454).
+
+* `reduce()` now throws an error if `.x` is empty and `.init` is not
+  supplied.</code></pre>
+</li>
+</ul>
+</div>
+</div>
+<div id="organisation-3" class="section level2" number="10.2">
+<h2>
+<span class="header-section-number">10.2</span> Organisation<a class="anchor" aria-label="anchor" href="#organisation-3"><i class="fas fa-link"></i></a>
+</h2>
+<div id="development" class="section level3" number="10.2.1">
+<h3>
+<span class="header-section-number">10.2.1</span> Development<a class="anchor" aria-label="anchor" href="#development"><i class="fas fa-link"></i></a>
+</h3>
+<p>During development, new bullets should be added to the top of the file, immediately under a “development” heading:</p>
+<pre><code># haven (development version)
+
+* Second update.
+
+* First update.</code></pre>
+</div>
+<div id="news-release" class="section level3" number="10.2.2">
+<h3>
+<span class="header-section-number">10.2.2</span> Release<a class="anchor" aria-label="anchor" href="#news-release"><i class="fas fa-link"></i></a>
+</h3>
+<p>Prior to release, the NEWS file needs to be thoroughly proofread and groomed.</p>
+<p>Each release should have a level 1 heading (<code>#</code>) containing the package name
+and version number. For smaller packages or patch releases this amount of
+organisation may be sufficient. For example, here is the NEWS for modelr 0.1.2:</p>
+<pre><code># modelr 0.1.2
+
+* `data_grid()` no longer fails with modern tidyr (#58).
+
+* New `mape()` and `rsae()` model quality statistics (@paulponcet, #33).
+
+* `rsquare()` use more robust calculation 1 - SS_res / SS_tot rather 
+  than SS_reg / SS_tot (#37).
+
+* `typical()` gains `ordered` and `integer` methods (@jrnold, #44), 
+  and `...` argument (@jrnold, #42).</code></pre>
+<p>If there are many bullets, the version heading should be followed by issues
+grouped into related areas with level 2 headings (<code>##</code>). Three commonly
+used sections are shown below:</p>
+<pre><code># package 1.1.0
+
+## Breaking changes
+
+## New features
+
+## Minor improvements and fixes</code></pre>
+<p>It is fine to deviate from these headings if another organisation makes sense.
+Indeed, larger packages will often require a finer break down. For example,
+ggplot2 2.3.0
+included these headings:</p>
+<pre><code># ggplot 2.3.0
+## Breaking changes
+## New features
+### Tidy evaluation
+### sf
+### Layers: geoms, stats, and position adjustments
+### Scales and guides
+### Margins
+## Extension points
+## Minor bug fixes and improvements
+### Facetting
+### Scales
+### Layers
+### Coords
+### Themes
+### Guides
+### Other</code></pre>
+<p>It is not worthwhile to organise bullets into headings during development, as
+it’s not typically obvious what the groups will be in advance.</p>
+<p>Within a section, bullets should be ordered alphabetically by the first function
+mentioned. If no function is mentioned, place the bullet at the top of the section.</p>
+</div>
+<div id="breaking-changes" class="section level3" number="10.2.3">
+<h3>
+<span class="header-section-number">10.2.3</span> Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes"><i class="fas fa-link"></i></a>
+</h3>
+<p>If there are API breaking changes (as discovered during revdepchecks) these
+should also appear in their own section at the top. Each bullet should include
+a description of the symptoms of the change, and what is needed to fix it. The
+bullet should also be repeated in the appropriate section.</p>
+<pre><code>## Breaking changes
+
+* `separate()` now correctly uses -1 to refer to the far right position, 
+  instead of -2. If you depended on this behaviour, you'll need to condition
+  on `packageVersion("tidyr") &gt; "0.7.2"`.</code></pre>
+</div>
+</div>
+<div id="blog-post" class="section level2" number="10.3">
+<h2>
+<span class="header-section-number">10.3</span> Blog post<a class="anchor" aria-label="anchor" href="#blog-post"><i class="fas fa-link"></i></a>
+</h2>
+<p>For all major and minor releases, the latest news should be turned into a blog
+post. The blog post should highlight major user-facing changes, and point to
+the release notes for more details. Generally, you should focus on new features
+and major improvements, including examples showing the new features in action.
+You don’t need to describe minor improvements and bug fixes, as the motivated
+reader can find these in the release notes.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="error-messages.html"><span class="header-section-number">9</span> Error messages</a></div>
+<div class="next"><a href="gitgithub.html"><span class="header-section-number">11</span> Git/GitHub</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#news"><span class="header-section-number">10</span> News</a></li>
+<li>
+<a class="nav-link" href="#bullets"><span class="header-section-number">10.1</span> Bullets</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#general-style"><span class="header-section-number">10.1.1</span> General style</a></li>
+<li><a class="nav-link" href="#acknowledgement"><span class="header-section-number">10.1.2</span> Acknowledgement</a></li>
+<li><a class="nav-link" href="#code-style"><span class="header-section-number">10.1.3</span> Code style</a></li>
+<li><a class="nav-link" href="#common-patterns"><span class="header-section-number">10.1.4</span> Common patterns</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#organisation-3"><span class="header-section-number">10.2</span> Organisation</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#development"><span class="header-section-number">10.2.1</span> Development</a></li>
+<li><a class="nav-link" href="#news-release"><span class="header-section-number">10.2.2</span> Release</a></li>
+<li><a class="nav-link" href="#breaking-changes"><span class="header-section-number">10.2.3</span> Breaking changes</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#blog-post"><span class="header-section-number">10.3</span> Blog post</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/tidyverse/style/blob/master/news.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/tidyverse/style/edit/master/news.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>The tidyverse style guide</strong>" was written by Hadley Wickham. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

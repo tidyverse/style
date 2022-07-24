@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>2 Syntax | The tidyverse style guide</title>
+<meta name="author" content="Hadley Wickham">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta property="og:title" content="2 Syntax | The tidyverse style guide">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2 Syntax | The tidyverse style guide">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-115082821-1"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-115082821-1');
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<meta name="description" content="2.1 Object names  “There are only two hard things in Computer Science: cache invalidation and naming things.” — Phil Karlton Variable and function names should use only lowercase letters, numbers,...">
+<meta property="og:description" content="2.1 Object names  “There are only two hard things in Computer Science: cache invalidation and naming things.” — Phil Karlton Variable and function names should use only lowercase letters, numbers,...">
+<meta name="twitter:description" content="2.1 Object names  “There are only two hard things in Computer Science: cache invalidation and naming things.” — Phil Karlton Variable and function names should use only lowercase letters, numbers,...">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">The tidyverse style guide</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li class="book-part">Analyses</li>
+<li><a class="" href="files.html"><span class="header-section-number">1</span> Files</a></li>
+<li><a class="active" href="syntax.html"><span class="header-section-number">2</span> Syntax</a></li>
+<li><a class="" href="functions.html"><span class="header-section-number">3</span> Functions</a></li>
+<li><a class="" href="pipes.html"><span class="header-section-number">4</span> Pipes</a></li>
+<li><a class="" href="ggplot2.html"><span class="header-section-number">5</span> ggplot2</a></li>
+<li class="book-part">Packages</li>
+<li><a class="" href="package-files.html"><span class="header-section-number">6</span> Files</a></li>
+<li><a class="" href="documentation.html"><span class="header-section-number">7</span> Documentation</a></li>
+<li><a class="" href="tests.html"><span class="header-section-number">8</span> Tests</a></li>
+<li><a class="" href="error-messages.html"><span class="header-section-number">9</span> Error messages</a></li>
+<li><a class="" href="news.html"><span class="header-section-number">10</span> News</a></li>
+<li><a class="" href="gitgithub.html"><span class="header-section-number">11</span> Git/GitHub</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/tidyverse/style">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="syntax" class="section level1" number="2">
+<h1>
+<span class="header-section-number">2</span> Syntax<a class="anchor" aria-label="anchor" href="#syntax"><i class="fas fa-link"></i></a>
+</h1>
+<div id="object-names" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> Object names<a class="anchor" aria-label="anchor" href="#object-names"><i class="fas fa-link"></i></a>
+</h2>
+<blockquote>
+<p>“There are only two hard things in Computer Science: cache invalidation and
+naming things.”</p>
+<p>— Phil Karlton</p>
+</blockquote>
+<p>Variable and function names should use only lowercase letters, numbers, and <code>_</code>.
+Use underscores (<code>_</code>) (so called snake case) to separate words within a name.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="va">day_one</span></span>
+<span><span class="va">day_1</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="va">DayOne</span></span>
+<span><span class="va">dayone</span></span></code></pre></div>
+<p>Base R uses dots in function names (<code><a href="https://rdrr.io/r/utils/contrib.url.html">contrib.url()</a></code>) and class names
+(<code>data.frame</code>), but it’s better to reserve dots exclusively for the S3 object
+system. In S3, methods are given the name <code>function.class</code>; if you also use
+<code>.</code> in function and class names, you end up with confusing methods like
+<code><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame.data.frame()</a></code>.</p>
+<p>If you find yourself attempting to cram data into variable names (e.g. <code>model_2018</code>, <code>model_2019</code>, <code>model_2020</code>), consider using a list or data frame instead.</p>
+<p>Generally, variable names should be nouns and function names should be verbs.
+Strive for names that are concise and meaningful (this is not easy!).</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="va">day_one</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="va">first_day_of_the_month</span></span>
+<span><span class="va">djm1</span></span></code></pre></div>
+<p>Where possible, avoid re-using names of common functions and variables. This
+will cause confusion for the readers of your code.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Bad</span></span>
+<span><span class="cn">T</span> <span class="op">&lt;-</span> <span class="cn">FALSE</span></span>
+<span><span class="va">c</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">mean</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="spacing" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> Spacing<a class="anchor" aria-label="anchor" href="#spacing"><i class="fas fa-link"></i></a>
+</h2>
+<div id="commas" class="section level3" number="2.2.1">
+<h3>
+<span class="header-section-number">2.2.1</span> Commas<a class="anchor" aria-label="anchor" href="#commas"><i class="fas fa-link"></i></a>
+</h3>
+<p>Always put a space after a comma, never before, just like in regular English.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="va">x</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="va">x</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span></span>
+<span><span class="va">x</span><span class="op">[</span> ,<span class="fl">1</span><span class="op">]</span></span>
+<span><span class="va">x</span><span class="op">[</span> , <span class="fl">1</span><span class="op">]</span></span></code></pre></div>
+</div>
+<div id="parentheses" class="section level3" number="2.2.2">
+<h3>
+<span class="header-section-number">2.2.2</span> Parentheses<a class="anchor" aria-label="anchor" href="#parentheses"><i class="fas fa-link"></i></a>
+</h3>
+<p>Do not put spaces inside or outside parentheses for regular function calls.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span> <span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span> <span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span> <span class="op">)</span></span></code></pre></div>
+<p>Place a space before and after <code>()</code> when used with <code>if</code>, <code>for</code>, or <code>while</code>.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="va">debug</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu">show</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="va">debug</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="fu">show</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>Place a space after <code>()</code> used for function arguments:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="kw">function</span> <span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span></span>
+<span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="op">}</span></span></code></pre></div>
+</div>
+<div id="embracing" class="section level3" number="2.2.3">
+<h3>
+<span class="header-section-number">2.2.3</span> Embracing<a class="anchor" aria-label="anchor" href="#embracing"><i class="fas fa-link"></i></a>
+</h3>
+<p>The embracing operator, <code>{{ }}</code>, should always have inner spaces to help emphasise its special behaviour:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="va">max_by</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">var</span>, <span class="va">by</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">data</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="op">{</span><span class="op">{</span> <span class="va">by</span> <span class="op">}</span><span class="op">}</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">summarise</span><span class="op">(</span>maximum <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="op">{</span><span class="op">{</span> <span class="va">var</span> <span class="op">}</span><span class="op">}</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="va">max_by</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">var</span>, <span class="va">by</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">data</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="op">{</span><span class="op">{</span><span class="va">by</span><span class="op">}</span><span class="op">}</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">summarise</span><span class="op">(</span>maximum <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="op">{</span><span class="op">{</span><span class="va">var</span><span class="op">}</span><span class="op">}</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+</div>
+<div id="infix-operators" class="section level3" number="2.2.4">
+<h3>
+<span class="header-section-number">2.2.4</span> Infix operators<a class="anchor" aria-label="anchor" href="#infix-operators"><i class="fas fa-link"></i></a>
+</h3>
+<p>Most infix operators (<code>==</code>, <code>+</code>, <code>-</code>, <code>&lt;-</code>, etc.) should always be surrounded by
+spaces:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="va">height</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">feet</span> <span class="op">*</span> <span class="fl">12</span><span class="op">)</span> <span class="op">+</span> <span class="va">inches</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="va">height</span><span class="op">&lt;-</span><span class="va">feet</span><span class="op">*</span><span class="fl">12</span><span class="op">+</span><span class="va">inches</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p>There are a few exceptions, which should never be surrounded by spaces:</p>
+<ul>
+<li>
+<p>The operators with <a href="https://rdrr.io/r/base/Syntax.html">high precedence</a>: <code>::</code>, <code>:::</code>, <code>$</code>, <code>@</code>, <code>[</code>,
+<code>[[</code>, <code>^</code>, unary <code>-</code>, unary <code>+</code>, and <code>:</code>.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">x</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="va">y</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">df</span><span class="op">$</span><span class="va">z</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">x</span> <span class="op">^</span> <span class="fl">2</span> <span class="op">+</span> <span class="va">y</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">$</span> <span class="va">z</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">:</span> <span class="fl">10</span></span></code></pre></div>
+</li>
+<li>
+<p>Single-sided formulas when the right-hand side is a single identifier:</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="op">~</span><span class="va">foo</span></span>
+<span><span class="fu">tribble</span><span class="op">(</span></span>
+<span>  <span class="op">~</span><span class="va">col1</span>, <span class="op">~</span><span class="va">col2</span>,</span>
+<span>  <span class="st">"a"</span>,   <span class="st">"b"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="op">~</span> <span class="va">foo</span></span>
+<span><span class="fu">tribble</span><span class="op">(</span></span>
+<span>  <span class="op">~</span> <span class="va">col1</span>, <span class="op">~</span> <span class="va">col2</span>,</span>
+<span>  <span class="st">"a"</span>, <span class="st">"b"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>Note that single-sided formulas with a complex right-hand side do need a space:</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="op">~</span> <span class="va">.x</span> <span class="op">+</span> <span class="va">.y</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="op">~</span><span class="va">.x</span> <span class="op">+</span> <span class="va">.y</span></span></code></pre></div>
+</li>
+<li>
+<p>When used in tidy evaluation <code>!!</code> (bang-bang) and <code>!!!</code> (bang-bang-bang)
+(because have precedence equivalent to unary <code>-</code>/<code>+</code>)</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/call.html">call</a></span><span class="op">(</span><span class="op">!</span><span class="op">!</span><span class="va">xyz</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/call.html">call</a></span><span class="op">(</span><span class="op">!</span><span class="op">!</span> <span class="va">xyz</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/call.html">call</a></span><span class="op">(</span> <span class="op">!</span><span class="op">!</span> <span class="va">xyz</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/call.html">call</a></span><span class="op">(</span><span class="op">!</span> <span class="op">!</span><span class="va">xyz</span><span class="op">)</span></span></code></pre></div>
+</li>
+<li>
+<p>The help operator</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="va">package</span><span class="op">?</span><span class="va">stats</span></span>
+<span><span class="op">?</span><span class="va">mean</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="va">package</span> <span class="op">?</span> <span class="va">stats</span></span>
+<span><span class="op">?</span> <span class="va">mean</span></span></code></pre></div>
+</li>
+</ul>
+</div>
+<div id="extra-spaces" class="section level3" number="2.2.5">
+<h3>
+<span class="header-section-number">2.2.5</span> Extra spaces<a class="anchor" aria-label="anchor" href="#extra-spaces"><i class="fas fa-link"></i></a>
+</h3>
+<p>Adding extra spaces is ok if it improves alignment of <code>=</code> or <code>&lt;-</code>.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>  total <span class="op">=</span> <span class="va">a</span> <span class="op">+</span> <span class="va">b</span> <span class="op">+</span> <span class="va">c</span>,</span>
+<span>  mean  <span class="op">=</span> <span class="op">(</span><span class="va">a</span> <span class="op">+</span> <span class="va">b</span> <span class="op">+</span> <span class="va">c</span><span class="op">)</span> <span class="op">/</span> <span class="va">n</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Also fine</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>  total <span class="op">=</span> <span class="va">a</span> <span class="op">+</span> <span class="va">b</span> <span class="op">+</span> <span class="va">c</span>,</span>
+<span>  mean <span class="op">=</span> <span class="op">(</span><span class="va">a</span> <span class="op">+</span> <span class="va">b</span> <span class="op">+</span> <span class="va">c</span><span class="op">)</span> <span class="op">/</span> <span class="va">n</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>Do not add extra spaces to places where space is not usually allowed.</p>
+</div>
+</div>
+<div id="function-calls" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Function calls<a class="anchor" aria-label="anchor" href="#function-calls"><i class="fas fa-link"></i></a>
+</h2>
+<div id="argument-names" class="section level3" number="2.3.1">
+<h3>
+<span class="header-section-number">2.3.1</span> Named arguments<a class="anchor" aria-label="anchor" href="#argument-names"><i class="fas fa-link"></i></a>
+</h3>
+<p>A function’s arguments typically fall into two broad categories: one supplies
+the <strong>data</strong> to compute on; the other controls the <strong>details</strong> of computation.
+When you call a function, you typically omit the names of data arguments,
+because they are used so commonly. If you override the default value of an
+argument, use the full name:</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, , <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span>, <span class="cn">TRUE</span>, x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>Avoid partial matching.</p>
+</div>
+<div id="assignment" class="section level3" number="2.3.2">
+<h3>
+<span class="header-section-number">2.3.2</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment"><i class="fas fa-link"></i></a>
+</h3>
+<p>Avoid assignment in function calls:</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">complicated_function</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nzchar</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co"># do something</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nzchar</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">complicated_function</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co"># do something</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>The only exception is in functions that capture side-effects:</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/capture.output.html">capture.output</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">f</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
+<div id="control-flow" class="section level2" number="2.4">
+<h2>
+<span class="header-section-number">2.4</span> Control flow<a class="anchor" aria-label="anchor" href="#control-flow"><i class="fas fa-link"></i></a>
+</h2>
+<div id="indenting" class="section level3" number="2.4.1">
+<h3>
+<span class="header-section-number">2.4.1</span> Code blocks<a class="anchor" aria-label="anchor" href="#indenting"><i class="fas fa-link"></i></a>
+</h3>
+<p>Curly braces, <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code>, define the most important hierarchy of R code. To make this
+hierarchy easy to see:</p>
+<ul>
+<li><p><code>{</code> should be the last character on the line. Related code (e.g., an <code>if</code>
+clause, a function declaration, a trailing comma, …) must be on the same
+line as the opening brace.</p></li>
+<li><p>The contents should be indented by two spaces.</p></li>
+<li><p><code>}</code> should be the first character on the line.</p></li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="va">y</span> <span class="op">&lt;</span> <span class="fl">0</span> <span class="op">&amp;&amp;</span> <span class="va">debug</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"y is negative"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="va">y</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"x is negative or zero"</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="va">y</span><span class="op">^</span><span class="va">x</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">test_that</span><span class="op">(</span><span class="st">"call1 returns an ordered factor"</span>, <span class="op">{</span></span>
+<span>  <span class="fu">expect_s3_class</span><span class="op">(</span><span class="fu">call1</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"factor"</span>, <span class="st">"ordered"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/conditions.html">tryCatch</a></span><span class="op">(</span></span>
+<span>  <span class="op">{</span></span>
+<span>    <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scan.html">scan</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Total: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="st">"\n"</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
+<span>  <span class="op">}</span>,</span>
+<span>  interrupt <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"Aborted by user"</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="va">y</span> <span class="op">&lt;</span> <span class="fl">0</span> <span class="op">&amp;&amp;</span> <span class="va">debug</span><span class="op">)</span> <span class="op">{</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"Y is negative"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="va">y</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="op">{</span></span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span>    <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"x is negative or zero"</span><span class="op">)</span></span>
+<span>    <span class="op">}</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span> <span class="va">y</span> <span class="op">^</span> <span class="va">x</span> <span class="op">}</span></span></code></pre></div>
+</div>
+<div id="if-statements" class="section level3" number="2.4.2">
+<h3>
+<span class="header-section-number">2.4.2</span> If statements<a class="anchor" aria-label="anchor" href="#if-statements"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li><p>If used, <code>else</code> should be on the same line as <code>}</code>.</p></li>
+<li><p><code>&amp;</code> and <code>|</code> should never be used inside of an <code>if</code> clause because they can
+return vectors. Always use <code>&amp;&amp;</code> and <code>||</code> instead.</p></li>
+<li>
+<p>NB: <code>ifelse(x, a, b)</code> is not a drop-in replacement for <code>if (x) a else b</code>.
+<code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> is vectorised (i.e. if <code>length(x) &gt; 1</code>, then <code>a</code> and <code>b</code> will be
+recycled to match) and it is eager (i.e. both <code>a</code> and <code>b</code> will always be
+evaluated).</p>
+<p>If you want to rewrite a simple but lengthy <code>if</code> block:</p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">10</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">message</span> <span class="op">&lt;-</span> <span class="st">"big"</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="va">message</span> <span class="op">&lt;-</span> <span class="st">"small"</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>Just write it all on one line:</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">message</span> <span class="op">&lt;-</span> <span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">10</span><span class="op">)</span> <span class="st">"big"</span> <span class="kw">else</span> <span class="st">"small"</span></span></code></pre></div>
+</li>
+</ul>
+</div>
+<div id="inline-statements" class="section level3" number="2.4.3">
+<h3>
+<span class="header-section-number">2.4.3</span> Inline statements<a class="anchor" aria-label="anchor" href="#inline-statements"><i class="fas fa-link"></i></a>
+</h3>
+<p>It’s ok to drop the curly braces for very simple statements that fit on one line, as long as they don’t have side-effects.</p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="kw">if</span> <span class="op">(</span><span class="va">y</span> <span class="op">&lt;</span> <span class="fl">20</span><span class="op">)</span> <span class="st">"Too low"</span> <span class="kw">else</span> <span class="st">"Too high"</span></span></code></pre></div>
+<p>Function calls that affect control flow (like <code><a href="https://rdrr.io/r/base/function.html">return()</a></code>, <code><a href="https://rdrr.io/r/base/stop.html">stop()</a></code> or <code>continue</code>) should always go in their own <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code> block:</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="va">y</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"Y is negative"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">find_abs</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span>  <span class="va">x</span> <span class="op">*</span> <span class="op">-</span><span class="fl">1</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="va">y</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"Y is negative"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="va">y</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"Y is negative"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">find_abs</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span>  <span class="va">x</span> <span class="op">*</span> <span class="op">-</span><span class="fl">1</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+</div>
+<div id="implicit-type-coercion" class="section level3" number="2.4.4">
+<h3>
+<span class="header-section-number">2.4.4</span> Implicit type coercion<a class="anchor" aria-label="anchor" href="#implicit-type-coercion"><i class="fas fa-link"></i></a>
+</h3>
+<p>Avoid implicit type coercion (e.g. from numeric to logical) in <code>if</code> statements:</p>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co"># do something</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co"># do something</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+</div>
+<div id="switch-statements" class="section level3" number="2.4.5">
+<h3>
+<span class="header-section-number">2.4.5</span> Switch statements<a class="anchor" aria-label="anchor" href="#switch-statements"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Avoid position-based <code><a href="https://rdrr.io/r/base/switch.html">switch()</a></code> statements (i.e. prefer names).</li>
+<li>Each element should go on its own line.</li>
+<li>Elements that fall through to the following element should have a space after <code>=</code>.</li>
+<li>Provide a fall-through error, unless you have previously validated the input.</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good </span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/switch.html">switch</a></span><span class="op">(</span><span class="va">x</span>, </span>
+<span>  a <span class="op">=</span> ,</span>
+<span>  b <span class="op">=</span> <span class="fl">1</span>, </span>
+<span>  c <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"Unknown `x`"</span>, call. <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/switch.html">switch</a></span><span class="op">(</span><span class="va">x</span>, a <span class="op">=</span> , b <span class="op">=</span> <span class="fl">1</span>, c <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/switch.html">switch</a></span><span class="op">(</span><span class="va">x</span>, a <span class="op">=</span>, b <span class="op">=</span> <span class="fl">1</span>, c <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/switch.html">switch</a></span><span class="op">(</span><span class="va">y</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
+<div id="long-lines" class="section level2" number="2.5">
+<h2>
+<span class="header-section-number">2.5</span> Long lines<a class="anchor" aria-label="anchor" href="#long-lines"><i class="fas fa-link"></i></a>
+</h2>
+<p>Strive to limit your code to 80 characters per line. This fits comfortably on a
+printed page with a reasonably sized font. If you find yourself running out of
+room, this is a good indication that you should encapsulate some of the work in
+a separate function.</p>
+<p>If a function call is too long to fit on a single line, use one line each for
+the function name, each argument, and the closing <code>)</code>.
+This makes the code easier to read and to change later.</p>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="fu">do_something_very_complicated</span><span class="op">(</span></span>
+<span>  something <span class="op">=</span> <span class="st">"that"</span>,</span>
+<span>  requires <span class="op">=</span> <span class="va">many</span>,</span>
+<span>  arguments <span class="op">=</span> <span class="st">"some of which may be long"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="fu">do_something_very_complicated</span><span class="op">(</span><span class="st">"that"</span>, <span class="va">requires</span>, <span class="va">many</span>, <span class="va">arguments</span>,</span>
+<span>                              <span class="st">"some of which may be long"</span></span>
+<span>                              <span class="op">)</span></span></code></pre></div>
+<p>As described under <a href="syntax.html#argument-names">Named arguments</a>, you can omit the argument names
+for very common arguments (i.e. for arguments that are used in almost every
+invocation of the function). Short unnamed arguments can also go on the same
+line as the function name, even if the whole function call spans multiple lines.</p>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">map</span><span class="op">(</span><span class="va">x</span>, <span class="va">f</span>,</span>
+<span>  extra_argument_a <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  extra_argument_b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">43</span>, <span class="fl">390</span>, <span class="fl">210209</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>You may also place several arguments on the same line if they are closely
+related to each other, e.g., strings in calls to <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> or <code><a href="https://rdrr.io/r/base/stop.html">stop()</a></code>. When
+building strings, where possible match one line of code to one line of output.</p>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span></span>
+<span>  <span class="st">"Requirement: "</span>, <span class="va">requires</span>, <span class="st">"\n"</span>,</span>
+<span>  <span class="st">"Result: "</span>, <span class="va">result</span>, <span class="st">"\n"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span></span>
+<span>  <span class="st">"Requirement: "</span>, <span class="va">requires</span>,</span>
+<span>  <span class="st">"\n"</span>, <span class="st">"Result: "</span>,</span>
+<span>  <span class="va">result</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="semicolons" class="section level2" number="2.6">
+<h2>
+<span class="header-section-number">2.6</span> Semicolons<a class="anchor" aria-label="anchor" href="#semicolons"><i class="fas fa-link"></i></a>
+</h2>
+<p>Don’t put <code>;</code> at the end of a line, and don’t use <code>;</code> to put multiple commands
+on one line.</p>
+</div>
+<div id="assignment-1" class="section level2" number="2.7">
+<h2>
+<span class="header-section-number">2.7</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Use <code>&lt;-</code>, not <code>=</code>, for assignment.</p>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="va">x</span> <span class="op">=</span> <span class="fl">5</span></span></code></pre></div>
+</div>
+<div id="data" class="section level2" number="2.8">
+<h2>
+<span class="header-section-number">2.8</span> Data<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
+</h2>
+<div id="character-vectors" class="section level3" number="2.8.1">
+<h3>
+<span class="header-section-number">2.8.1</span> Character vectors<a class="anchor" aria-label="anchor" href="#character-vectors"><i class="fas fa-link"></i></a>
+</h3>
+<p>Use <code>"</code>, not <code>'</code>, for quoting text. The only exception is when the text already
+contains double quotes and no single quotes.</p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="st">"Text"</span></span>
+<span><span class="st">'Text with "quotes"'</span></span>
+<span><span class="st">'&lt;a href="http://style.tidyverse.org"&gt;A link&lt;/a&gt;'</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="st">'Text'</span></span>
+<span><span class="st">'Text with "double" and \'single\' quotes'</span></span></code></pre></div>
+</div>
+<div id="logical-vectors" class="section level3" number="2.8.2">
+<h3>
+<span class="header-section-number">2.8.2</span> Logical vectors<a class="anchor" aria-label="anchor" href="#logical-vectors"><i class="fas fa-link"></i></a>
+</h3>
+<p>Prefer <code>TRUE</code> and <code>FALSE</code> over <code>T</code> and <code>F</code>.</p>
+</div>
+</div>
+<div id="comments" class="section level2" number="2.9">
+<h2>
+<span class="header-section-number">2.9</span> Comments<a class="anchor" aria-label="anchor" href="#comments"><i class="fas fa-link"></i></a>
+</h2>
+<p>Each line of a comment should begin with the comment symbol and a single
+space: <code>#</code></p>
+<p>In data analysis code, use comments to record important findings and analysis
+decisions. If you need comments to explain what your code is doing, consider
+rewriting your code to be clearer. If you discover that you have more comments
+than code, consider switching to <a href="https://rmarkdown.rstudio.com/">R Markdown</a>.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="files.html"><span class="header-section-number">1</span> Files</a></div>
+<div class="next"><a href="functions.html"><span class="header-section-number">3</span> Functions</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#syntax"><span class="header-section-number">2</span> Syntax</a></li>
+<li><a class="nav-link" href="#object-names"><span class="header-section-number">2.1</span> Object names</a></li>
+<li>
+<a class="nav-link" href="#spacing"><span class="header-section-number">2.2</span> Spacing</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#commas"><span class="header-section-number">2.2.1</span> Commas</a></li>
+<li><a class="nav-link" href="#parentheses"><span class="header-section-number">2.2.2</span> Parentheses</a></li>
+<li><a class="nav-link" href="#embracing"><span class="header-section-number">2.2.3</span> Embracing</a></li>
+<li><a class="nav-link" href="#infix-operators"><span class="header-section-number">2.2.4</span> Infix operators</a></li>
+<li><a class="nav-link" href="#extra-spaces"><span class="header-section-number">2.2.5</span> Extra spaces</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#function-calls"><span class="header-section-number">2.3</span> Function calls</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#argument-names"><span class="header-section-number">2.3.1</span> Named arguments</a></li>
+<li><a class="nav-link" href="#assignment"><span class="header-section-number">2.3.2</span> Assignment</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#control-flow"><span class="header-section-number">2.4</span> Control flow</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#indenting"><span class="header-section-number">2.4.1</span> Code blocks</a></li>
+<li><a class="nav-link" href="#if-statements"><span class="header-section-number">2.4.2</span> If statements</a></li>
+<li><a class="nav-link" href="#inline-statements"><span class="header-section-number">2.4.3</span> Inline statements</a></li>
+<li><a class="nav-link" href="#implicit-type-coercion"><span class="header-section-number">2.4.4</span> Implicit type coercion</a></li>
+<li><a class="nav-link" href="#switch-statements"><span class="header-section-number">2.4.5</span> Switch statements</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#long-lines"><span class="header-section-number">2.5</span> Long lines</a></li>
+<li><a class="nav-link" href="#semicolons"><span class="header-section-number">2.6</span> Semicolons</a></li>
+<li><a class="nav-link" href="#assignment-1"><span class="header-section-number">2.7</span> Assignment</a></li>
+<li>
+<a class="nav-link" href="#data"><span class="header-section-number">2.8</span> Data</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#character-vectors"><span class="header-section-number">2.8.1</span> Character vectors</a></li>
+<li><a class="nav-link" href="#logical-vectors"><span class="header-section-number">2.8.2</span> Logical vectors</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#comments"><span class="header-section-number">2.9</span> Comments</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/tidyverse/style/blob/master/syntax.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/tidyverse/style/edit/master/syntax.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>The tidyverse style guide</strong>" was written by Hadley Wickham. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
