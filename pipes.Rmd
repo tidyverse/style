@@ -41,8 +41,7 @@ iris %>%
   group_by(Species) %>%
   summarise(
     Sepal.Length = mean(Sepal.Length),
-    Sepal.Width = mean(Sepal.Width),
-    Species = n_distinct(Species)
+    Sepal.Width = mean(Sepal.Width)
   )
 ```
 
