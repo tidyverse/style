@@ -13,7 +13,7 @@ Follow [standard git commit message advice](https://chris.beams.io/posts/git-com
 
 * If the commit fixes a GitHub issue include `Fixes #<issue-number>`.
   This will ensure that the issue is automatically closed when the commit
-  is merged into master.
+  is merged into main.
 
 ## Pull requests
 
