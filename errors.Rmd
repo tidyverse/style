@@ -16,7 +16,7 @@ We are transitioning to use this function in the tidyverse because it:
 -   Provides convenient tools to [chain errors together](https://rlang.r-lib.org/reference/topic-error-chaining.html).
 -   Can control the [name of the function](https://rlang.r-lib.org/reference/topic-error-call.html) shown in the error.
 
-Much of the advice in this guide still applies if you're using `stop()`, but it will be be much more work to generate the message.
+Much of the advice in this guide still applies if you're using `stop()`, but it will be much more work to generate the message.
 
 <!--# Need a brief description of the overall structure of an error here, as a guide to the following sections -->
 
