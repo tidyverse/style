@@ -55,7 +55,7 @@ long_function_name <- function(a = "a long argument",
 }
 ```
 
-If a function argument can't fit on a single line, this is a sign you should rework the argument to keep it [short and sweet](https://design.tidyverse.org/def-short.html).
+If a function argument can't fit on a single line, this is a sign you should rework the argument to keep it short and sweet.
 
 ## `return()`
 
