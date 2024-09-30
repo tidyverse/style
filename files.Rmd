@@ -2,7 +2,7 @@
 
 ## Names
 
-File names should be meaningful and end in `.R`. Avoid using special characters 
+File names should be meaningful and end in `.R`. Avoid using special characters
 in file names - stick with numbers, letters, `-`, and `_`.
 
 
@@ -15,7 +15,7 @@ in file names - stick with numbers, letters, `-`, and `_`.
     foo.r
     stuff.r
 
-If files should be run in a particular order, prefix them with numbers. If it 
+If files should be run in a particular order, prefix them with numbers. If it
 seems likely you'll have more than 10 files, left pad with zero:
 
     00_download.R
@@ -24,23 +24,23 @@ seems likely you'll have more than 10 files, left pad with zero:
     09_model.R
     10_visualize.R
 
-If you later realise that you've missed some steps, it's tempting to use `02a`, 
-`02b`, etc. However, I think it's generally better to bite the bullet and 
+If you later realise that you've missed some steps, it's tempting to use `02a`,
+`02b`, etc. However, I think it's generally better to bite the bullet and
 rename all files.
 
-Pay attention to capitalization, since you, or some of your collaborators, 
-might be using an operating system with a case-insensitive file system (e.g., 
-Microsoft Windows or OS X) which can lead to problems with (case-sensitive) 
-revision control systems. Prefer file names that are all lower case, and never 
+Pay attention to capitalization, since you, or some of your collaborators,
+might be using an operating system with a case-insensitive file system (e.g.,
+Microsoft Windows or OS X) which can lead to problems with (case-sensitive)
+revision control systems. Prefer file names that are all lower case, and never
 have names that differ only in their capitalization.
 
 ## Organisation
 
 It's hard to describe exactly how you should organise your code across multiple files. I think the best rule of thumb is that if you can give a file a concise name that still evokes its contents, you've arrived at a good organisation. But getting to that point is hard.
 
-## Internal structure 
+## Internal structure
 
-Use commented lines of `-` and `=` to break up your file into easily readable 
+Use commented lines of `-` and `=` to break up your file into easily readable
 chunks.
 
 ```{r, eval = FALSE}
@@ -49,7 +49,7 @@ chunks.
 # Plot data ---------------------------
 ```
 
-If your script uses add-on packages, load them all at once at the very 
-beginning of the file. This is more transparent than sprinkling `library()` 
-calls throughout your code or having hidden dependencies that are loaded in a 
+If your script uses add-on packages, load them all at once at the very
+beginning of the file. This is more transparent than sprinkling `library()`
+calls throughout your code or having hidden dependencies that are loaded in a
 startup file, such as `.Rprofile`.

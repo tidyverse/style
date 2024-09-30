@@ -59,7 +59,7 @@ If a function argument can't fit on a single line, this is a sign you should rew
 
 ## `return()`
 
-Only use `return()` for early returns. Otherwise, rely on R to return the result 
+Only use `return()` for early returns. Otherwise, rely on R to return the result
 of the last evaluated expression.
 
 ```{r eval = FALSE}
@@ -98,9 +98,9 @@ find_abs <- function(x) {
 }
 ```
 
-If your function is called primarily for its side-effects (like printing, 
-plotting, or saving to disk), it should return the first argument invisibly. 
-This makes it possible to use the function as part of a pipe. `print` methods 
+If your function is called primarily for its side-effects (like printing,
+plotting, or saving to disk), it should return the first argument invisibly.
+This makes it possible to use the function as part of a pipe. `print` methods
 should usually do this, like this example from [httr](http://httr.r-lib.org/):
 
 ```{r eval = FALSE}
@@ -112,7 +112,7 @@ print.url <- function(x, ...) {
 
 ## Comments
 
-In code, use comments to explain the "why" not the "what" or "how". Each line 
+In code, use comments to explain the "why" not the "what" or "how". Each line
 of a comment should begin with the comment symbol and a single space: `# `.
 
 ```{r, eval = FALSE}

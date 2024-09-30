@@ -2,8 +2,8 @@
 
 ## Introduction
 
-Documentation of code is essential, even if the only person using your code 
-is future-you. Use [roxygen2](https://github.com/klutometis/roxygen) with 
+Documentation of code is essential, even if the only person using your code
+is future-you. Use [roxygen2](https://github.com/klutometis/roxygen) with
 [markdown](https://github.com/klutometis/roxygen/blob/master/vignettes/markdown.Rmd)
 support enabled to keep your documentation close to the code.
 
@@ -18,13 +18,13 @@ but not end with a full stop (`.`).
 
 ```{r}
 #' Combine values into a vector or list
-#' 
+#'
 #' This is a generic function which combines its arguments.
 #'
 ```
 
-There is no need to use the explicit `@title` or `@description` tags, except 
-in the case of the description if it is multiple paragraphs or includes 
+There is no need to use the explicit `@title` or `@description` tags, except
+in the case of the description if it is multiple paragraphs or includes
 more complex formatting like a bulleted list.
 
 ```{r}
@@ -32,24 +32,24 @@ more complex formatting like a bulleted list.
 #'
 #' @description
 #' The map function transform the input, returning a vector the same length
-#' as the input. 
-#' 
+#' as the input.
+#'
 #' * `map()` returns a list or a data frame
-#' * `map_lgl()`, `map_int()`, `map_dbl()` and `map_chr()` return 
-#'    vectors of the corresponding type (or die trying); 
-#' * `map_dfr()` and `map_dfc()` return data frames created by row-binding 
+#' * `map_lgl()`, `map_int()`, `map_dbl()` and `map_chr()` return
+#'    vectors of the corresponding type (or die trying);
+#' * `map_dfr()` and `map_dfc()` return data frames created by row-binding
 #'    and column-binding respectively. They require dplyr to be installed.
 ```
 
 ## Indents and line breaks
 
-Always indent with one space after `#'`. If any description corresponding to a 
-`roxygen` tag spans over multiple lines, add another two spaces of extra 
+Always indent with one space after `#'`. If any description corresponding to a
+`roxygen` tag spans over multiple lines, add another two spaces of extra
 indention.
 
 ```{r}
-#' @param key The bare (unquoted) name of the column whose values will be used 
-#'   as column headings. 
+#' @param key The bare (unquoted) name of the column whose values will be used
+#'   as column headings.
 ```
 
 Alternatively, tags that span over multiple lines (like `@description`, `@examples` and `@section`) can have the corresponding tag on its own line and then subsequent lines don't need to be indented.
@@ -75,15 +75,15 @@ Use line breaks before/after sections where needed:
 
 ## Documenting parameters
 
-For most tags, like `@param`, `@seealso` and `@return`, the text should be a 
+For most tags, like `@param`, `@seealso` and `@return`, the text should be a
 sentence, starting with a capital letter and ending with a full stop.
 
 ```{r}
-#' @param key The bare (unquoted) name of the column whose values will be used 
-#'   as column headings. 
+#' @param key The bare (unquoted) name of the column whose values will be used
+#'   as column headings.
 ```
 
-If some functions share parameters, you can use `@inheritParams` to avoid 
+If some functions share parameters, you can use `@inheritParams` to avoid
 duplication of content in multiple places.
 
 ```{r}
@@ -93,12 +93,12 @@ duplication of content in multiple places.
 ## Capitalization and full stops
 
 For all bullets, enumerations, argument descriptions and the like, use sentence
-case and put a period at the end of each text element, even if it is only a few 
-words. However, avoid capitalization of function names or packages since R is 
+case and put a period at the end of each text element, even if it is only a few
+words. However, avoid capitalization of function names or packages since R is
 case sensitive. Use a colon before enumerations or bulleted lists.
 
 ```{r}
-#' @details 
+#' @details
 #' In the following, we present the bullets of the list:
 #' * Four cats are few animals.
 #' * forcats is a package.
@@ -106,8 +106,8 @@ case sensitive. Use a colon before enumerations or bulleted lists.
 
 ## Cross-linking
 
-Cross-referencing is encouraged, both within R's help file system as well as to 
-external resources. 
+Cross-referencing is encouraged, both within R's help file system as well as to
+external resources.
 
 List closely related functions in `@seealso`. A single related function can be written as a sentence:
 
@@ -121,38 +121,38 @@ More recommendations should be organised in a bulleted list:
 ```{r}
 #' @seealso
 #' * [tibble()] constructs from individual columns.
-#' * [enframe()] converts a named vector into a two-column tibble (names and 
+#' * [enframe()] converts a named vector into a two-column tibble (names and
 #'   values).
 #' * [name-repair] documents the details of name repair.
 ```
 
-If you have a family of related functions, you can use the `@family` tag to 
+If you have a family of related functions, you can use the `@family` tag to
 automatically add appropriate lists and interlinks to the `@seealso` section.
-Family names are plural. In dplyr, the verbs `arrange()`, `filter()`, 
+Family names are plural. In dplyr, the verbs `arrange()`, `filter()`,
 `mutate()`, `slice()`, `summarize()` form the family of single table verbs.
 
 ```{r}
 #' @family single table verbs
 ```
 
-When linking to external resources either include the full url inline with `<>`,  or the surrounding prose and link text should make it extremely clear where the hyperlink goes. Avoid text like ["click here"](https://www.smashingmagazine.com/2012/06/links-should-never-say-click-here/). 
+When linking to external resources either include the full url inline with `<>`,  or the surrounding prose and link text should make it extremely clear where the hyperlink goes. Avoid text like ["click here"](https://www.smashingmagazine.com/2012/06/links-should-never-say-click-here/).
 
 ## R code
 
 Text that contains valid R code should be marked as such using backticks. This includes:
 
 * Function names, which should be followed by `()`, e.g. `tibble()`.
-* Function arguments, e.g. `na.rm`. 
-* Values, e.g. `TRUE`, `FALSE`, `NA`, `NaN`, `...`, `NULL` 
+* Function arguments, e.g. `na.rm`.
+* Values, e.g. `TRUE`, `FALSE`, `NA`, `NaN`, `...`, `NULL`
 * Literal R code, e.g. `mean(x, na.rm = TRUE)`
 * Class names, e.g. "a tibble will have class `tbl_df` ..."
 
-Do not use code font for package names. If the package name is ambiguous in the 
+Do not use code font for package names. If the package name is ambiguous in the
 context, disambiguate with words, e.g. "the foo package". Do not capitalize the function name if it occurs at the start of a sentence.
 
 ## Internal functions
 
-Internal functions should be documented with `#'` comments as per usual. 
+Internal functions should be documented with `#'` comments as per usual.
 Use the `@noRd` tag to prevent `.Rd` files from being generated.
 
 ```{r}

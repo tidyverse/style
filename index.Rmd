@@ -1,4 +1,4 @@
---- 
+---
 title: "The tidyverse style guide"
 author: ["Hadley Wickham"]
 site: bookdown::bookdown_site
@@ -19,11 +19,11 @@ Two R packages support this style guide:
 *   [styler](http://styler.r-lib.org) allows you to interactively restyle
     selected text, files, or entire projects. It includes an RStudio add-in,
     the easiest way to re-style existing code.
-    
+
     ```{r, echo = FALSE, fig.align = "center"}
     knitr::include_graphics("styler-addin.png", dpi = 220)
     ```
 
-    
+
 *   [lintr](https://github.com/r-lib/lintr) performs automated checks
     to confirm that you conform to the style guide.

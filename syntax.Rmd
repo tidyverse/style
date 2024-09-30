@@ -2,13 +2,13 @@
 
 ## Object names
 
-> "There are only two hard things in Computer Science: cache invalidation and 
-> naming things." 
+> "There are only two hard things in Computer Science: cache invalidation and
+> naming things."
 >
 > --- Phil Karlton
 
-Variable and function names should use only lowercase letters, numbers, and `_`. 
-Use underscores (`_`) (so called snake case) to separate words within a name. 
+Variable and function names should use only lowercase letters, numbers, and `_`.
+Use underscores (`_`) (so called snake case) to separate words within a name.
 
 ```{r, eval = FALSE}
 # Good
@@ -20,15 +20,15 @@ DayOne
 dayone
 ```
 
-Base R uses dots in function names (`contrib.url()`) and class names 
-(`data.frame`), but it's better to reserve dots exclusively for the S3 object 
-system. In S3, methods are given the name `function.class`; if you also use 
+Base R uses dots in function names (`contrib.url()`) and class names
+(`data.frame`), but it's better to reserve dots exclusively for the S3 object
+system. In S3, methods are given the name `function.class`; if you also use
 `.` in function and class names, you end up with confusing methods like
 `as.data.frame.data.frame()`.
 
 If you find yourself attempting to cram data into variable names (e.g. `model_2018`, `model_2019`, `model_2020`), consider using a list or data frame instead.
 
-Generally, variable names should be nouns and function names should be verbs. 
+Generally, variable names should be nouns and function names should be verbs.
 Strive for names that are concise and meaningful (this is not easy!).
 
 ```{r, eval = FALSE}
@@ -40,7 +40,7 @@ first_day_of_the_month
 djm1
 ```
 
-Where possible, avoid re-using names of common functions and variables. This 
+Where possible, avoid re-using names of common functions and variables. This
 will cause confusion for the readers of your code.
 
 ```{r, eval = FALSE}
@@ -54,7 +54,7 @@ mean <- function(x) sum(x)
 
 ### Commas
 
-Always put a space after a comma, never before, just like in regular English.  
+Always put a space after a comma, never before, just like in regular English.
 
 ```{r, eval = FALSE}
 # Good
@@ -142,9 +142,9 @@ mean(x, na.rm=TRUE)
 
 There are a few exceptions, which should never be surrounded by spaces:
 
-*   The operators with [high precedence][syntax]: `::`, `:::`, `$`, `@`, `[`, 
+*   The operators with [high precedence][syntax]: `::`, `:::`, `$`, `@`, `[`,
     `[[`, `^`, unary `-`, unary `+`, and `:`.
-  
+
     ```{r, eval = FALSE}
     # Good
     sqrt(x^2 + y^2)
@@ -156,7 +156,7 @@ There are a few exceptions, which should never be surrounded by spaces:
     df $ z
     x <- 1 : 10
     ```
-  
+
 *   Single-sided formulas when the right-hand side is a single identifier:
 
     ```{r, eval = FALSE}
@@ -191,7 +191,7 @@ There are a few exceptions, which should never be surrounded by spaces:
     ```{r, eval = FALSE}
     # Good
     call(!!xyz)
-    
+
     # Bad
     call(!! xyz)
     call( !! xyz)
@@ -204,15 +204,15 @@ There are a few exceptions, which should never be surrounded by spaces:
     # Good
     package?stats
     ?mean
-    
+
     # Bad
     package ? stats
     ? mean
     ```
-    
+
 ### Extra spaces
 
-Adding extra spaces is ok if it improves alignment of `=` or `<-`. 
+Adding extra spaces is ok if it improves alignment of `=` or `<-`.
 
 ```{r, eval = FALSE}
 # Good
@@ -234,10 +234,10 @@ Do not add extra spaces to places where space is not usually allowed.
 
 ### Named arguments {#argument-names}
 
-A function's arguments typically fall into two broad categories: one supplies 
-the __data__ to compute on; the other controls the __details__ of computation. 
-When you call a function, you typically omit the names of data arguments, 
-because they are used so commonly. If you override the default value of an 
+A function's arguments typically fall into two broad categories: one supplies
+the __data__ to compute on; the other controls the __details__ of computation.
+When you call a function, you typically omit the names of data arguments,
+because they are used so commonly. If you override the default value of an
 argument, use the full name:
 
 ```{r, eval = FALSE}
@@ -279,10 +279,10 @@ output <- capture.output(x <- f())
 
 ### Code blocks {#indenting}
 
-Curly braces, `{}`, define the most important hierarchy of R code. To make this 
+Curly braces, `{}`, define the most important hierarchy of R code. To make this
 hierarchy easy to see:
 
-* `{` should be the last character on the line. Related code (e.g., an `if` 
+* `{` should be the last character on the line. Related code (e.g., an `if`
   clause, a function declaration, a trailing comma, ...) must be on the same
   line as the opening brace.
 
@@ -341,14 +341,14 @@ if (y == 0)
 
 * `&` and `|` should never be used inside of an `if` clause because they can
   return vectors. Always use `&&` and `||` instead.
-  
+
 * NB: `ifelse(x, a, b)` is not a drop-in replacement for `if (x) a else b`.
-  `ifelse()` is vectorised (i.e. if `length(x) > 1`, then `a` and `b`  will be 
-  recycled to match) and it is eager (i.e. both `a` and `b` will always be 
-  evaluated). 
-  
+  `ifelse()` is vectorised (i.e. if `length(x) > 1`, then `a` and `b`  will be
+  recycled to match) and it is eager (i.e. both `a` and `b` will always be
+  evaluated).
+
     If you want to rewrite a simple but lengthy `if` block:
-        
+
     ```{r, eval = FALSE}
     if (x > 10) {
       message <- "big"
@@ -356,9 +356,9 @@ if (y == 0)
       message <- "small"
     }
     ```
-    
+
     Just write it all on one line:
-    
+
     ```{r, eval = FALSE}
     message <- if (x > 10) "big" else "small"
     ```
@@ -424,10 +424,10 @@ if (length(x)) {
 * Provide a fall-through error, unless you have previously validated the input.
 
 ```{r, eval = FALSE}
-# Good 
-switch(x, 
+# Good
+switch(x,
   a = ,
-  b = 1, 
+  b = 1,
   c = 2,
   stop("Unknown `x`", call. = FALSE)
 )
@@ -440,14 +440,14 @@ switch(y, 1, 2, 3)
 
 ## Long lines
 
-Strive to limit your code to 80 characters per line. This fits comfortably on a 
-printed page with a reasonably sized font. If you find yourself running out of 
-room, this is a good indication that you should encapsulate some of the work in 
+Strive to limit your code to 80 characters per line. This fits comfortably on a
+printed page with a reasonably sized font. If you find yourself running out of
+room, this is a good indication that you should encapsulate some of the work in
 a separate function.
 
-If a function call is too long to fit on a single line, use one line each for 
-the function name, each argument, and the closing `)`. 
-This makes the code easier to read and to change later. 
+If a function call is too long to fit on a single line, use one line each for
+the function name, each argument, and the closing `)`.
+This makes the code easier to read and to change later.
 
 ```{r, eval = FALSE}
 # Good
@@ -464,8 +464,8 @@ do_something_very_complicated("that", requires, many, arguments,
 ```
 
 As described under [Named arguments](#argument-names), you can omit the argument names
-for very common arguments (i.e. for arguments that are used in almost every 
-invocation of the function). Short unnamed arguments can also go on the same 
+for very common arguments (i.e. for arguments that are used in almost every
+invocation of the function). Short unnamed arguments can also go on the same
 line as the function name, even if the whole function call spans multiple lines.
 
 ```{r, eval = FALSE}
@@ -475,9 +475,9 @@ map(x, f,
 )
 ```
 
-You may also place several arguments on the same line if they are closely 
-related to each other, e.g., strings in calls to `paste()` or `stop()`. When 
-building strings, where possible match one line of code to one line of output. 
+You may also place several arguments on the same line if they are closely
+related to each other, e.g., strings in calls to `paste()` or `stop()`. When
+building strings, where possible match one line of code to one line of output.
 
 ```{r, eval = FALSE}
 # Good
@@ -495,7 +495,7 @@ paste0(
 
 ## Semicolons
 
-Don't put `;` at the end of a line, and don't use `;` to put multiple commands 
+Don't put `;` at the end of a line, and don't use `;` to put multiple commands
 on one line.
 
 ## Assignment
@@ -514,7 +514,7 @@ x = 5
 
 ### Character vectors
 
-Use `"`, not `'`, for quoting text. The only exception is when the text already 
+Use `"`, not `'`, for quoting text. The only exception is when the text already
 contains double quotes and no single quotes.
 
 ```{r, eval=FALSE}
@@ -534,12 +534,12 @@ Prefer `TRUE` and `FALSE` over `T` and `F`.
 
 ## Comments
 
-Each line of a comment should begin with the comment symbol and a single 
+Each line of a comment should begin with the comment symbol and a single
 space: `# `
 
-In data analysis code, use comments to record important findings and analysis 
-decisions. If you need comments to explain what your code is doing, consider 
-rewriting your code to be clearer. If you discover that you have more comments 
+In data analysis code, use comments to record important findings and analysis
+decisions. If you need comments to explain what your code is doing, consider
+rewriting your code to be clearer. If you discover that you have more comments
 than code, consider switching to [R Markdown][rmd].
 
 [syntax]: https://rdrr.io/r/base/Syntax.html

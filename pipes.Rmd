@@ -2,13 +2,13 @@
 
 ## Introduction
 
-Use `%>%` to emphasise a sequence of actions, rather than the object that the actions are being performed on. 
+Use `%>%` to emphasise a sequence of actions, rather than the object that the actions are being performed on.
 
 Avoid using the pipe when:
 
-* You need to manipulate more than one object at a time. Reserve pipes for a 
+* You need to manipulate more than one object at a time. Reserve pipes for a
   sequence of steps applied to one primary object.
- 
+
 * There are meaningful intermediate objects that could be given
   informative names.
 
@@ -33,7 +33,7 @@ arrange(value)
 
 ## Long lines
 
-If the arguments to a function don't all fit on one line, put each argument on 
+If the arguments to a function don't all fit on one line, put each argument on
 its own line and indent:
 
 ```{r, eval = FALSE}
@@ -53,15 +53,15 @@ A one-step pipe can stay on one line, but unless you plan to expand it later on,
 # Good
 iris %>% arrange(Species)
 
-iris %>% 
+iris %>%
   arrange(Species)
 
 arrange(iris, Species)
 ```
 
-Sometimes it's useful to include a short pipe as an argument to a function in a 
-longer pipe. Carefully consider whether the code is more readable with a short 
-inline pipe (which doesn't require a lookup elsewhere) or if it's better to move 
+Sometimes it's useful to include a short pipe as an argument to a function in a
+longer pipe. Carefully consider whether the code is more readable with a short
+inline pipe (which doesn't require a lookup elsewhere) or if it's better to move
 the code outside the pipe and give it an evocative name.
 
 ```{r, eval = FALSE}
@@ -82,12 +82,12 @@ magrittr allows you to omit `()` on functions that don't have arguments. Avoid  
 
 ```{r, eval = FALSE}
 # Good
-x %>% 
+x %>%
   unique() %>%
   sort()
 
 # Bad
-x %>% 
+x %>%
   unique %>%
   sort
 ```
@@ -121,7 +121,7 @@ There are three acceptable forms of assignment:
       arrange(-value) ->
       iris_long
     ```
-    
+
     I think this is the most natural to write, but makes reading a little
     harder: when the name comes first, it can act as a heading to remind
     you of the purpose of the pipe.
@@ -130,13 +130,12 @@ The magrittr package provides the `%<>%` operator as a shortcut for modifying an
 
 ```{r, eval = FALSE}
 # Good
-x <- x %>% 
-  abs() %>% 
+x <- x %>%
+  abs() %>%
   sort()
-  
+
 # Bad
 x %<>%
-  abs() %>% 
+  abs() %>%
   sort()
 ```
-
