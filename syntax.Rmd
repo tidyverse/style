@@ -419,9 +419,9 @@ if (length(x)) {
 ### Switch statements
 
 * Avoid position-based `switch()` statements (i.e. prefer names).
-* Each element should go on its own line.
+* Each element should go on its own line unless all element can fit on one line.
 * Elements that fall through to the following element should have a space after `=`.
-* Provide a fall-through error, unless you have previously validated the input.
+* Provide a fall-through error unless you have previously validated the input.
 
 ```{r, eval = FALSE}
 # Good
@@ -433,8 +433,15 @@ switch(x,
 )
 
 # Bad
-switch(x, a = , b = 1, c = 2)
-switch(x, a =, b = 1, c = 2)
+switch(x,
+  a =,
+  b = 1,
+  c = 2
+)
+switch(x,
+  a = long_function_name1(), b = long_function_name2(),
+  c = long_function_name2()
+)
 switch(y, 1, 2, 3)
 ```
 
