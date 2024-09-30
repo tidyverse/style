@@ -27,7 +27,7 @@ map(xs, function(x) mean((x + 5)^2))
 map(xs, ~ mean((.x + 5)^2))
 ```
 
-* Use informative argument names.
+* As with any function, prefer informative argument names.
 * Only use an anonymous function if it fits on one line.
 * Avoid using `\()` except for anonymous functions.
 * Avoid using `\()` in a pipe.
