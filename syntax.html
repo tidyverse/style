@@ -363,6 +363,7 @@ line as the opening brace.</p></li>
 <li><p>The contents should be indented by two spaces.</p></li>
 <li><p><code>}</code> should be the first character on the line.</p></li>
 </ul>
+<p>It is occassionally useful to have an empty curly braces block, in which case it should be written <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code>.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="va">y</span> <span class="op">&lt;</span> <span class="fl">0</span> <span class="op">&amp;&amp;</span> <span class="va">debug</span><span class="op">)</span> <span class="op">{</span></span>
@@ -393,6 +394,8 @@ line as the opening brace.</p></li>
 <span>  <span class="op">}</span></span>
 <span><span class="op">)</span></span>
 <span></span>
+<span><span class="kw">while</span> <span class="op">(</span><span class="fu">waiting_for_something</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span></span>
+<span></span>
 <span><span class="co"># Bad</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="va">y</span> <span class="op">&lt;</span> <span class="fl">0</span> <span class="op">&amp;&amp;</span> <span class="va">debug</span><span class="op">)</span> <span class="op">{</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"Y is negative"</span><span class="op">)</span></span>
@@ -405,7 +408,12 @@ line as the opening brace.</p></li>
 <span>    <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"x is negative or zero"</span><span class="op">)</span></span>
 <span>    <span class="op">}</span></span>
-<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span> <span class="va">y</span> <span class="op">^</span> <span class="va">x</span> <span class="op">}</span></span></code></pre></div>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span> <span class="va">y</span> <span class="op">^</span> <span class="va">x</span> <span class="op">}</span></span>
+<span></span>
+<span><span class="kw">while</span> <span class="op">(</span><span class="fu">waiting_for_something</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span><span class="kw">while</span> <span class="op">(</span><span class="fu">waiting_for_something</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span></span>
+<span><span class="op">}</span></span></code></pre></div>
 </div>
 <div id="if-statements" class="section level3" number="2.5.2">
 <h3>
