@@ -126,6 +126,9 @@ More recommendations should be organised in a bulleted list:
 #' * [name-repair] documents the details of name repair.
 ```
 
+
+You can link to functions in other packages by using the fully qualified function name, i.e. `pkg::function()`.
+
 If you have a family of related functions, you can use the `@family` tag to
 automatically add appropriate lists and interlinks to the `@seealso` section.
 Family names are plural. In dplyr, the verbs `arrange()`, `filter()`,
@@ -141,11 +144,12 @@ When linking to external resources either include the full url inline with `<>`,
 
 Text that contains valid R code should be marked as such using backticks. This includes:
 
-* Function names, which should be followed by `()`, e.g. `tibble()`.
 * Function arguments, e.g. `na.rm`.
 * Values, e.g. `TRUE`, `FALSE`, `NA`, `NaN`, `...`, `NULL`
 * Literal R code, e.g. `mean(x, na.rm = TRUE)`
 * Class names, e.g. "a tibble will have class `tbl_df` ..."
+
+You can use code syntax for function names, but consider if it would be better to use a cross-link instead.
 
 Do not use code font for package names. If the package name is ambiguous in the
 context, disambiguate with words, e.g. "the foo package". Do not capitalize the function name if it occurs at the start of a sentence.
