@@ -232,7 +232,7 @@ Do not add extra spaces to places where space is not usually allowed.
 
 ## Vertical space
 
-Use vertical whitespace sparingly, and primarilyy to separate your "thoughts" in your code, much like paragraph breaks in prose.
+Use vertical whitespace sparingly, and primarily to separate your "thoughts" in your code, much like paragraph breaks in prose.
 
 * Avoid empty lines at the start or end of functions.
 * Only use a single empty line when needed to separate functions or pipes.
