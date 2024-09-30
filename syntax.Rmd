@@ -338,6 +338,7 @@ if (y == 0)
     }
 } else { y ^ x }
 
+while (waiting_for_something()) { }
 while (waiting_for_something()) {
 
 }
