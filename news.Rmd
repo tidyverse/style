@@ -44,25 +44,25 @@ Many news bullets will be a single sentence. This is typically adequate when des
 * In `stat_bin()`, `binwidth` now also takes functions.
 
 # Better
-* In `stat_bin()`, `binwidth` now also takes functions. The function is 
+* In `stat_bin()`, `binwidth` now also takes functions. The function is
   called with the scaled `x` values, and should return a single number.
   This makes it possible to use classical binwidth computations with ggplot2.
 
 # Best
-* In `stat_bin()`, `binwidth` now also takes functions. The function is 
+* In `stat_bin()`, `binwidth` now also takes functions. The function is
   called with the scaled `x` values, and should return a single number.
-  With a little work, this makes it possible to use classical bin size 
+  With a little work, this makes it possible to use classical bin size
   computations with ggplot2.
-  
+
   ```R
   sturges <- function(x) {
     rng <- range(x)
     bins <- nclass.Sturges(x)
-    
+
     (rng[2] - rng[1]) / bins
   }
   ggplot(diamonds, aes(price)) +
-    geom_histogram(binwidth = sturges) + 
+    geom_histogram(binwidth = sturges) +
     facet_wrap(~cut)
   ```
 ````
@@ -76,7 +76,7 @@ come before the final period.
 
 ```
 # Good
-* `ggsave()` now uses full argument names to avoid partial match warnings 
+* `ggsave()` now uses full argument names to avoid partial match warnings
   (@wch, #2355).
 
 # Bad
@@ -106,23 +106,23 @@ follow.
 *   New family of functions:
 
     ```
-    * Support for ordered factors is improved. Ordered factors throw a warning 
-      when mapped to shape (unordered factors do not), and do not throw warnings 
-      when mapped to size or alpha (unordered factors do). Viridis is used as 
+    * Support for ordered factors is improved. Ordered factors throw a warning
+      when mapped to shape (unordered factors do not), and do not throw warnings
+      when mapped to size or alpha (unordered factors do). Viridis is used as
       default colour and fill scale for ordered factors (@karawoo, #1526).
-    
+
     * `possibly()`, `safely()` and friends no longer capture interrupts: this
       means that you can now terminate a mapper using one of these with
       Escape or Ctrl + C (#314).
     ```
-    
+
 *   New function:
 
     ```
     * New `position_dodge2()` provides enhanced dogding for boxplots...
-    
-    * New `stat_qq_line()` makes it easy to add a simple line to a Q-Q plot. 
-      This line makes it easier to judge the fit of the theoretical distribution 
+
+    * New `stat_qq_line()` makes it easy to add a simple line to a Q-Q plot.
+      This line makes it easier to judge the fit of the theoretical distribution
       (@nicksolomon).
     ```
 
@@ -135,17 +135,17 @@ follow.
 *   Function argument changes behaviour:
 
     ```
-    * In `separate()`, `col = -1` now refers to the far right position. 
-      Previously, and incorrectly, `col = -2` referred to the far-right 
+    * In `separate()`, `col = -1` now refers to the far right position.
+      Previously, and incorrectly, `col = -2` referred to the far-right
       position.
     ```
-    
-*   Function changes behaviour: 
+
+*   Function changes behaviour:
 
     ```
     * `map()` and `modify()` now work with calls and pairlists (#412).
 
-    * `flatten_dfr()` and `flatten_dfc()` now aborts with informative 
+    * `flatten_dfr()` and `flatten_dfc()` now aborts with informative
        message if dplyr is not installed (#454).
 
     * `reduce()` now throws an error if `.x` is empty and `.init` is not
@@ -170,7 +170,7 @@ During development, new bullets should be added to the top of the file, immediat
 
 Prior to release, the NEWS file needs to be thoroughly proofread and groomed.
 
-Each release should have a level 1 heading (`#`) containing the package name 
+Each release should have a level 1 heading (`#`) containing the package name
 and version number. For smaller packages or patch releases this amount of
 organisation may be sufficient. For example, here is the NEWS for modelr 0.1.2:
 
@@ -181,14 +181,14 @@ organisation may be sufficient. For example, here is the NEWS for modelr 0.1.2:
 
 * New `mape()` and `rsae()` model quality statistics (@paulponcet, #33).
 
-* `rsquare()` use more robust calculation 1 - SS_res / SS_tot rather 
+* `rsquare()` use more robust calculation 1 - SS_res / SS_tot rather
   than SS_reg / SS_tot (#37).
 
-* `typical()` gains `ordered` and `integer` methods (@jrnold, #44), 
+* `typical()` gains `ordered` and `integer` methods (@jrnold, #44),
   and `...` argument (@jrnold, #42).
 ```
 
-If there are many bullets, the version heading should be followed by issues 
+If there are many bullets, the version heading should be followed by issues
 grouped into related areas with level 2 headings (`##`). Three commonly
 used sections are shown below:
 
@@ -202,8 +202,8 @@ used sections are shown below:
 ## Minor improvements and fixes
 ```
 
-It is fine to deviate from these headings if another organisation makes sense. 
-Indeed, larger packages will often require a finer break down. For example, 
+It is fine to deviate from these headings if another organisation makes sense.
+Indeed, larger packages will often require a finer break down. For example,
 ggplot2 2.3.0
 included these headings:
 
@@ -227,7 +227,7 @@ included these headings:
 ### Other
 ```
 
-It is not worthwhile to organise bullets into headings during development, as 
+It is not worthwhile to organise bullets into headings during development, as
 it's not typically obvious what the groups will be in advance.
 
 Within a section, bullets should be ordered alphabetically by the first function
@@ -243,7 +243,7 @@ bullet should also be repeated in the appropriate section.
 ```
 ## Breaking changes
 
-* `separate()` now correctly uses -1 to refer to the far right position, 
+* `separate()` now correctly uses -1 to refer to the far right position,
   instead of -2. If you depended on this behaviour, you'll need to condition
   on `packageVersion("tidyr") > "0.7.2"`.
 ```

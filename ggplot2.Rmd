@@ -44,12 +44,12 @@ ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
     x = "Sepal width, in cm",
     y = "Sepal length, in cm",
     title = "Sepal length vs. width of irises"
-  ) 
+  )
 
 # Bad
 ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
   geom_point() +
-  labs(x = "Sepal width, in cm", y = "Sepal length, in cm", title = "Sepal length vs. width of irises") 
+  labs(x = "Sepal width, in cm", y = "Sepal length, in cm", title = "Sepal length vs. width of irises")
 ```
 
 ggplot2 allows you to do data manipulation, such as filtering or slicing, within the `data` argument. Avoid this, and instead do the data manipulation in a pipeline before starting plotting.
