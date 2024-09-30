@@ -290,6 +290,8 @@ hierarchy easy to see:
 
 * `}` should be the first character on the line.
 
+It is occassionally useful to have an empty curly braces block, in which case it should be written `{}`.
+
 ```{r, eval = FALSE}
 # Good
 if (y < 0 && debug) {
@@ -320,6 +322,8 @@ tryCatch(
   }
 )
 
+while (waiting_for_something()) {}
+
 # Bad
 if (y < 0 && debug) {
 message("Y is negative")
@@ -333,6 +337,10 @@ if (y == 0)
   message("x is negative or zero")
     }
 } else { y ^ x }
+
+while (waiting_for_something()) {
+
+}
 ```
 
 ### If statements
