@@ -28,6 +28,7 @@ logical-vectors
 comments
 functions
 naming
+anonymous-functions
 long-lines-1
 return
 comments-1

@@ -96,7 +96,7 @@ documented functions. If multiple public functions share the same documentation,
 they should all immediately follow the documentation block.</p>
 <p>See <a href="documentation.html#documentation">7</a> for more thorough guidance on documenting functions
 in packages.</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Bad</span></span>
 <span><span class="va">help_compute</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># ... Lots of code ...</span></span>
@@ -111,7 +111,7 @@ in packages.</p>
 <span>  <span class="co"># ... even more code ...</span></span>
 <span>  <span class="fu">help_compute</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="co">#' Lots of functions for doing something cool</span></span>
 <span><span class="co">#'</span></span>
@@ -119,7 +119,7 @@ in packages.</p>
 <span><span class="co">#' @name something-cool</span></span>
 <span><span class="cn">NULL</span></span></code></pre></div>
 <pre><code>## NULL</code></pre>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' @describeIn something-cool Get the mean</span></span>
 <span><span class="co">#' @export</span></span>
 <span><span class="va">get_cool_mean</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
