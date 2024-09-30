@@ -28,20 +28,23 @@ There are two options if the function name and definition can't fit on a single 
     }
     ```
 
-*   Double-indent: Place each argument of its own **double** indented line.
+    The trailing `)` and leading `{` go on the same line as the last argument.
+
+*   Single-indent: Place each argument of its own **single** indented line.
 
     ```{r, eval = FALSE}
     long_function_name <- function(
-        a = "a long argument",
-        b = "another argument",
-        c = "another long argument") {
+      a = "a long argument",
+      b = "another argument",
+      c = "another long argument"
+    ) {
       # As usual code is indented by two spaces.
     }
     ```
 
-In both cases the trailing `)` and leading `{` should go on the same line as the last argument.
+    The trailing `)` and leading `{` go on a new line.
 
-Prefer function-indent style to double-indent style when it fits.
+Prefer function-indent style to single-indent style when it fits.
 
 These styles are designed to clearly separate the function definition from its body.
 
