@@ -4,6 +4,18 @@
 
 Use `|>` to emphasise a sequence of actions, rather than the object that the actions are being performed on.
 
+The tidyverse has been designed to work particuarly well with the pipe, but you can use it with any code, particularly in conjunction with the `_` placeholder.
+
+```{r, eval = FALSE}
+strings |>
+  str_replace("a", "b"),
+  str_replace("x", "y")
+
+strings |>
+  gsub("a", "b", x = _) |>
+  gsub("x", "y", x = _)
+```
+
 Avoid using the pipe when:
 
 * You need to manipulate more than one object at a time. Reserve pipes for a
@@ -19,12 +31,12 @@ Avoid using the pipe when:
 ```{r, eval = FALSE}
 # Good
 iris |>
-  summarise(across(where(is.numeric), mean), .by = Species) |>
+  summarize(across(where(is.numeric), mean), .by = Species) |>
   pivot_longer(-Species, names_to = "measure", values_to = "value") |>
   arrange(value)
 
 # Bad
-iris |> summarise(across(where(is.numeric), mean), .by = Species) |>
+iris |> summarize(across(where(is.numeric), mean), .by = Species) |>
 pivot_longer(-Species, names_to = "measure", values_to = "value") |>
 arrange(value)
 ```
@@ -66,7 +78,7 @@ It's ok to write a short pipe on a single line:
 
 ```{r, eval = FALSE}
 # Ok
-iris |> arrange(Species)
+iris |> subset(Species == "virginica") |> _$Sepal.Length
 iris |> summarise(width = Sepal.Width, .by = Species) |> arrange(width)
 ```
 
@@ -75,7 +87,8 @@ But because short pipes often become longer pipes, we recommend that you general
 ```{r}
 # Better
 iris |>
-  arrange(Species)
+  subset(Species == "virginica") |>
+  _$Sepal.Length
 
 iris |>
   summarise(width = Sepal.Width, .by = Species) |>
@@ -90,13 +103,17 @@ the code outside the pipe and give it an evocative name.
 ```{r, eval = FALSE}
 # Good
 x |>
+  semi_join(y |> filter(is_valid))
+
+# Ok
+x |>
   select(a, b, w) |>
-  left_join(y |> select(a, b, v), by = c("a", "b"))
+  left_join(y |> select(a, b, v), join_by(a, b))
 
 # Better
 x_join <- x |> select(a, b, w)
 y_join <- y |> select(a, b, v)
-left_join(x_join, y_join, by = c("a", "b"))
+left_join(x_join, y_join, join_by(a, b))
 ```
 
 ## Assignment
@@ -135,7 +152,7 @@ you of the purpose of the pipe.
 
 ## magrittr
 
-We now recommend you use the base `|>` pipe instead of magrittr's `%>%`.
+We recommend you use the base `|>` pipe instead of magrittr's `%>%`.
 
 ```{r, eval = FALSE}
 # Good
