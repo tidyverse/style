@@ -337,7 +337,7 @@ if (y == 0)
 
 ### If statements
 
-* If used, `else` should be on the same line as `}`.
+* When present, `else` should be on the same line as `}`.
 
 * `&` and `|` should never be used inside of an `if` clause because they can
   return vectors. Always use `&&` and `||` instead.
