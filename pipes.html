@@ -128,7 +128,7 @@ its own line and indent:</p>
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="va">iris</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="va">Species</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">iris</span> <span class="op">%&gt;%</span> </span>
+<span><span class="va">iris</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">Species</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">arrange</span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span><span class="op">)</span></span></code></pre></div>
@@ -154,12 +154,12 @@ the code outside the pipe and give it an evocative name.</p>
 <p>magrittr allows you to omit <code>()</code> on functions that don’t have arguments. Avoid this feature.</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
-<span><span class="va">x</span> <span class="op">%&gt;%</span> </span>
+<span><span class="va">x</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Bad</span></span>
-<span><span class="va">x</span> <span class="op">%&gt;%</span> </span>
+<span><span class="va">x</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="va">unique</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="va">sort</span></span></code></pre></div>
 </div>
@@ -199,13 +199,13 @@ you of the purpose of the pipe.</p>
 <p>The magrittr package provides the <code>%&lt;&gt;%</code> operator as a shortcut for modifying an object in place. Avoid this operator.</p>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
-<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="op">)</span></span>
-<span>  </span>
+<span></span>
 <span><span class="co"># Bad</span></span>
 <span><span class="va">x</span> <span class="op">%&lt;&gt;%</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 
 </div>

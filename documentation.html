@@ -90,7 +90,7 @@ support enabled to keep your documentation close to the code.</p>
 but not end with a full stop (<code>.</code>).</p>
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' Combine values into a vector or list</span></span>
-<span><span class="co">#' </span></span>
+<span><span class="co">#'</span></span>
 <span><span class="co">#' This is a generic function which combines its arguments.</span></span>
 <span><span class="co">#'</span></span></code></pre></div>
 <p>There is no need to use the explicit <code>@title</code> or <code>@description</code> tags, except
@@ -101,12 +101,12 @@ more complex formatting like a bulleted list.</p>
 <span><span class="co">#'</span></span>
 <span><span class="co">#' @description</span></span>
 <span><span class="co">#' The map function transform the input, returning a vector the same length</span></span>
-<span><span class="co">#' as the input. </span></span>
-<span><span class="co">#' </span></span>
+<span><span class="co">#' as the input.</span></span>
+<span><span class="co">#'</span></span>
 <span><span class="co">#' * `map()` returns a list or a data frame</span></span>
-<span><span class="co">#' * `map_lgl()`, `map_int()`, `map_dbl()` and `map_chr()` return </span></span>
-<span><span class="co">#'    vectors of the corresponding type (or die trying); </span></span>
-<span><span class="co">#' * `map_dfr()` and `map_dfc()` return data frames created by row-binding </span></span>
+<span><span class="co">#' * `map_lgl()`, `map_int()`, `map_dbl()` and `map_chr()` return</span></span>
+<span><span class="co">#'    vectors of the corresponding type (or die trying);</span></span>
+<span><span class="co">#' * `map_dfr()` and `map_dfc()` return data frames created by row-binding</span></span>
 <span><span class="co">#'    and column-binding respectively. They require dplyr to be installed.</span></span></code></pre></div>
 </div>
 <div id="indents-and-line-breaks" class="section level2" number="7.3">
@@ -117,8 +117,8 @@ more complex formatting like a bulleted list.</p>
 <code>roxygen</code> tag spans over multiple lines, add another two spaces of extra
 indention.</p>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#' @param key The bare (unquoted) name of the column whose values will be used </span></span>
-<span><span class="co">#'   as column headings. </span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#' @param key The bare (unquoted) name of the column whose values will be used</span></span>
+<span><span class="co">#'   as column headings.</span></span></code></pre></div>
 <p>Alternatively, tags that span over multiple lines (like <code>@description</code>, <code>@examples</code> and <code>@section</code>) can have the corresponding tag on its own line and then subsequent lines don’t need to be indented.</p>
 <div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' @examples</span></span>
@@ -142,8 +142,8 @@ indention.</p>
 <p>For most tags, like <code>@param</code>, <code>@seealso</code> and <code>@return</code>, the text should be a
 sentence, starting with a capital letter and ending with a full stop.</p>
 <div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#' @param key The bare (unquoted) name of the column whose values will be used </span></span>
-<span><span class="co">#'   as column headings. </span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#' @param key The bare (unquoted) name of the column whose values will be used</span></span>
+<span><span class="co">#'   as column headings.</span></span></code></pre></div>
 <p>If some functions share parameters, you can use <code>@inheritParams</code> to avoid
 duplication of content in multiple places.</p>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
@@ -158,7 +158,7 @@ case and put a period at the end of each text element, even if it is only a few
 words. However, avoid capitalization of function names or packages since R is
 case sensitive. Use a colon before enumerations or bulleted lists.</p>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#' @details </span></span>
+<code class="sourceCode R"><span><span class="co">#' @details</span></span>
 <span><span class="co">#' In the following, we present the bullets of the list:</span></span>
 <span><span class="co">#' * Four cats are few animals.</span></span>
 <span><span class="co">#' * forcats is a package.</span></span></code></pre></div>
@@ -177,7 +177,7 @@ external resources.</p>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' @seealso</span></span>
 <span><span class="co">#' * [tibble()] constructs from individual columns.</span></span>
-<span><span class="co">#' * [enframe()] converts a named vector into a two-column tibble (names and </span></span>
+<span><span class="co">#' * [enframe()] converts a named vector into a two-column tibble (names and</span></span>
 <span><span class="co">#'   values).</span></span>
 <span><span class="co">#' * [name-repair] documents the details of name repair.</span></span></code></pre></div>
 <p>If you have a family of related functions, you can use the <code>@family</code> tag to

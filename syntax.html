@@ -475,10 +475,10 @@ evaluated).</p>
 <li>Provide a fall-through error, unless you have previously validated the input.</li>
 </ul>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Good </span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/switch.html">switch</a></span><span class="op">(</span><span class="va">x</span>, </span>
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/switch.html">switch</a></span><span class="op">(</span><span class="va">x</span>,</span>
 <span>  a <span class="op">=</span> ,</span>
-<span>  b <span class="op">=</span> <span class="fl">1</span>, </span>
+<span>  b <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  c <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"Unknown `x`"</span>, call. <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>

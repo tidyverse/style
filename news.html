@@ -107,25 +107,25 @@ use the present tense.</p>
 * In `stat_bin()`, `binwidth` now also takes functions.
 
 # Better
-* In `stat_bin()`, `binwidth` now also takes functions. The function is 
+* In `stat_bin()`, `binwidth` now also takes functions. The function is
   called with the scaled `x` values, and should return a single number.
   This makes it possible to use classical binwidth computations with ggplot2.
 
 # Best
-* In `stat_bin()`, `binwidth` now also takes functions. The function is 
+* In `stat_bin()`, `binwidth` now also takes functions. The function is
   called with the scaled `x` values, and should return a single number.
-  With a little work, this makes it possible to use classical bin size 
+  With a little work, this makes it possible to use classical bin size
   computations with ggplot2.
-  
+
   ```R
   sturges &lt;- function(x) {
     rng &lt;- range(x)
     bins &lt;- nclass.Sturges(x)
-    
+
     (rng[2] - rng[1]) / bins
   }
   ggplot(diamonds, aes(price)) +
-    geom_histogram(binwidth = sturges) + 
+    geom_histogram(binwidth = sturges) +
     facet_wrap(~cut)
   ```</code></pre>
 </div>
@@ -138,7 +138,7 @@ contribution was a PR, and the author is not a package author, include their
 GitHub user name. Both items should be wrapped in parentheses and will generally
 come before the final period.</p>
 <pre><code># Good
-* `ggsave()` now uses full argument names to avoid partial match warnings 
+* `ggsave()` now uses full argument names to avoid partial match warnings
   (@wch, #2355).
 
 # Bad
@@ -167,9 +167,9 @@ follow.</p>
 <ul>
 <li>
 <p>New family of functions:</p>
-<pre><code>* Support for ordered factors is improved. Ordered factors throw a warning 
-  when mapped to shape (unordered factors do not), and do not throw warnings 
-  when mapped to size or alpha (unordered factors do). Viridis is used as 
+<pre><code>* Support for ordered factors is improved. Ordered factors throw a warning
+  when mapped to shape (unordered factors do not), and do not throw warnings
+  when mapped to size or alpha (unordered factors do). Viridis is used as
   default colour and fill scale for ordered factors (@karawoo, #1526).
 
 * `possibly()`, `safely()` and friends no longer capture interrupts: this
@@ -180,8 +180,8 @@ follow.</p>
 <p>New function:</p>
 <pre><code>* New `position_dodge2()` provides enhanced dogding for boxplots...
 
-* New `stat_qq_line()` makes it easy to add a simple line to a Q-Q plot. 
-  This line makes it easier to judge the fit of the theoretical distribution 
+* New `stat_qq_line()` makes it easy to add a simple line to a Q-Q plot.
+  This line makes it easier to judge the fit of the theoretical distribution
   (@nicksolomon).</code></pre>
 </li>
 <li>
@@ -190,15 +190,15 @@ follow.</p>
 </li>
 <li>
 <p>Function argument changes behaviour:</p>
-<pre><code>* In `separate()`, `col = -1` now refers to the far right position. 
-  Previously, and incorrectly, `col = -2` referred to the far-right 
+<pre><code>* In `separate()`, `col = -1` now refers to the far right position.
+  Previously, and incorrectly, `col = -2` referred to the far-right
   position.</code></pre>
 </li>
 <li>
 <p>Function changes behaviour:</p>
 <pre><code>* `map()` and `modify()` now work with calls and pairlists (#412).
 
-* `flatten_dfr()` and `flatten_dfc()` now aborts with informative 
+* `flatten_dfr()` and `flatten_dfc()` now aborts with informative
    message if dplyr is not installed (#454).
 
 * `reduce()` now throws an error if `.x` is empty and `.init` is not
@@ -236,10 +236,10 @@ organisation may be sufficient. For example, here is the NEWS for modelr 0.1.2:<
 
 * New `mape()` and `rsae()` model quality statistics (@paulponcet, #33).
 
-* `rsquare()` use more robust calculation 1 - SS_res / SS_tot rather 
+* `rsquare()` use more robust calculation 1 - SS_res / SS_tot rather
   than SS_reg / SS_tot (#37).
 
-* `typical()` gains `ordered` and `integer` methods (@jrnold, #44), 
+* `typical()` gains `ordered` and `integer` methods (@jrnold, #44),
   and `...` argument (@jrnold, #42).</code></pre>
 <p>If there are many bullets, the version heading should be followed by issues
 grouped into related areas with level 2 headings (<code>##</code>). Three commonly
@@ -287,7 +287,7 @@ a description of the symptoms of the change, and what is needed to fix it. The
 bullet should also be repeated in the appropriate section.</p>
 <pre><code>## Breaking changes
 
-* `separate()` now correctly uses -1 to refer to the far right position, 
+* `separate()` now correctly uses -1 to refer to the far right position,
   instead of -2. If you depended on this behaviour, you'll need to condition
   on `packageVersion("tidyr") &gt; "0.7.2"`.</code></pre>
 </div>
