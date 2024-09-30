@@ -230,6 +230,14 @@ list(
 
 Do not add extra spaces to places where space is not usually allowed.
 
+## Vertical space
+
+Use vertical whitespace sparingly, and primarilyy to separate your "thoughts" in your code, much like paragraph breaks in prose.
+
+* Avoid empty lines at the start or end of functions.
+* Only use a single empty line when needed to separate functions or pipes.
+* It often makes sense to put an empty line before a comment block, to help visually connect the explanation with the code that it applies to.
+
 ## Function calls
 
 ### Named arguments {#argument-names}
