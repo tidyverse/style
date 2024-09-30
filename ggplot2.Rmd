@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Styling suggestions for `+` used to separate ggplot2 layers are very similar to those for `%>%` in pipelines.
+Styling suggestions for `+` used to separate ggplot2 layers are very similar to those for `|>` in pipelines.
 
 
 ## Whitespace
@@ -14,20 +14,20 @@ If you are creating a ggplot off of a dplyr pipeline, there should only be one l
 
 ```{r eval=FALSE}
 # Good
-iris %>%
-  filter(Species == "setosa") %>%
+iris |>
+  filter(Species == "setosa") |>
   ggplot(aes(x = Sepal.Width, y = Sepal.Length)) +
   geom_point()
 
 # Bad
-iris %>%
-  filter(Species == "setosa") %>%
+iris |>
+  filter(Species == "setosa") |>
   ggplot(aes(x = Sepal.Width, y = Sepal.Length)) +
     geom_point()
 
 # Bad
-iris %>%
-  filter(Species == "setosa") %>%
+iris |>
+  filter(Species == "setosa") |>
   ggplot(aes(x = Sepal.Width, y = Sepal.Length)) + geom_point()
 ```
 
@@ -56,8 +56,8 @@ ggplot2 allows you to do data manipulation, such as filtering or slicing, within
 
 ```{r eval=FALSE}
 # Good
-iris %>%
-  filter(Species == "setosa") %>%
+iris |>
+  filter(Species == "setosa") |>
   ggplot(aes(x = Sepal.Width, y = Sepal.Length)) +
   geom_point()
 

@@ -111,15 +111,15 @@ The embracing operator, `{{ }}`, should always have inner spaces to help emphasi
 ```{r, eval = FALSE}
 # Good
 max_by <- function(data, var, by) {
-  data %>%
-    group_by({{ by }}) %>%
+  data |>
+    group_by({{ by }}) |>
     summarise(maximum = max({{ var }}, na.rm = TRUE))
 }
 
 # Bad
 max_by <- function(data, var, by) {
-  data %>%
-    group_by({{by}}) %>%
+  data |>
+    group_by({{by}}) |>
     summarise(maximum = max({{var}}, na.rm = TRUE))
 }
 ```
