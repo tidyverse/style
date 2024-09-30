@@ -16,7 +16,7 @@ permutation()
 
 ## Anonymous functions
 
-If using an anonymous function, prefer the new lambda syntax: `\(x) {}`.
+If using an anonymous or inline function (i.e. a function that hasn't been given a name by assigning it to a variable), prefer the new lambda syntax: `\(x) x + 1`.
 
 ```R
 # Good
