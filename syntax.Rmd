@@ -249,13 +249,7 @@ mean(x = 1:10, , FALSE)
 mean(, TRUE, x = c(1:10, NA))
 ```
 
-### Avoid partial matching
-
-Write the complete argument name --never abbreviate.  This is important when developing stable code (in a package, for example).  Partial matching is suitable only for interactive use. 
-
-Although the R execution tries to save you time by matching a partially-completed name, do not rely on this.  Compared to complete matching, partial matching is less consistent and less readable.
-
-A second problem is the function signature may later gain a new argument which conflicts with your partial match.
+Avoid partial matching, where you supply a unique prefix of a function argument.
 
 ```{r, eval = FALSE}
 # Good
@@ -266,8 +260,6 @@ cut(1:10, breaks = c(0, 4, 11))
 rep(1:2, t = 3)
 cut(1:10, br = c(0, 4, 11))
 ```
-
-IDEs common allow the user to auto-complete arguments, which may save a little time.  For example, RStudio's code completion [uses the tab button](https://support.rstudio.com/hc/en-us/articles/205273297-Code-Completion-in-the-RStudio-IDE)
 
 ### Assignment
 
