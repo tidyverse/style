@@ -304,14 +304,22 @@ argument, use the full name:</p>
 <span><span class="co"># Bad</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, , <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span>, <span class="cn">TRUE</span>, x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>Avoid partial matching.</p>
+<p>Avoid partial matching, where you supply a unique prefix of a function argument.</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, times <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">4</span>, <span class="fl">11</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, t <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, br <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">4</span>, <span class="fl">11</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="assignment" class="section level3" number="2.3.2">
 <h3>
 <span class="header-section-number">2.3.2</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment"><i class="fas fa-link"></i></a>
 </h3>
 <p>Avoid assignment in function calls:</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">complicated_function</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nzchar</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">1</span><span class="op">)</span> <span class="op">{</span></span>
@@ -323,7 +331,7 @@ argument, use the full name:</p>
 <span>  <span class="co"># do something</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>The only exception is in functions that capture side-effects:</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/capture.output.html">capture.output</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">f</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
@@ -344,7 +352,7 @@ line as the opening brace.</p></li>
 <li><p>The contents should be indented by two spaces.</p></li>
 <li><p><code>}</code> should be the first character on the line.</p></li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="va">y</span> <span class="op">&lt;</span> <span class="fl">0</span> <span class="op">&amp;&amp;</span> <span class="va">debug</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"y is negative"</span><span class="op">)</span></span>
@@ -402,14 +410,14 @@ return vectors. Always use <code>&amp;&amp;</code> and <code>||</code> instead.<
 recycled to match) and it is eager (i.e. both <code>a</code> and <code>b</code> will always be
 evaluated).</p>
 <p>If you want to rewrite a simple but lengthy <code>if</code> block:</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">10</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">message</span> <span class="op">&lt;-</span> <span class="st">"big"</span></span>
 <span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
 <span>  <span class="va">message</span> <span class="op">&lt;-</span> <span class="st">"small"</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>Just write it all on one line:</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">message</span> <span class="op">&lt;-</span> <span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">10</span><span class="op">)</span> <span class="st">"big"</span> <span class="kw">else</span> <span class="st">"small"</span></span></code></pre></div>
 </li>
 </ul>
@@ -419,12 +427,12 @@ evaluated).</p>
 <span class="header-section-number">2.4.3</span> Inline statements<a class="anchor" aria-label="anchor" href="#inline-statements"><i class="fas fa-link"></i></a>
 </h3>
 <p>It’s ok to drop the curly braces for very simple statements that fit on one line, as long as they don’t have side-effects.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="kw">if</span> <span class="op">(</span><span class="va">y</span> <span class="op">&lt;</span> <span class="fl">20</span><span class="op">)</span> <span class="st">"Too low"</span> <span class="kw">else</span> <span class="st">"Too high"</span></span></code></pre></div>
 <p>Function calls that affect control flow (like <code><a href="https://rdrr.io/r/base/function.html">return()</a></code>, <code><a href="https://rdrr.io/r/base/stop.html">stop()</a></code> or <code>continue</code>) should always go in their own <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code> block:</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="va">y</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"Y is negative"</span><span class="op">)</span></span>
@@ -453,7 +461,7 @@ evaluated).</p>
 <span class="header-section-number">2.4.4</span> Implicit type coercion<a class="anchor" aria-label="anchor" href="#implicit-type-coercion"><i class="fas fa-link"></i></a>
 </h3>
 <p>Avoid implicit type coercion (e.g. from numeric to logical) in <code>if</code> statements:</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># do something</span></span>
@@ -474,7 +482,7 @@ evaluated).</p>
 <li>Elements that fall through to the following element should have a space after <code>=</code>.</li>
 <li>Provide a fall-through error unless you have previously validated the input.</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/switch.html">switch</a></span><span class="op">(</span><span class="va">x</span>,</span>
 <span>  a <span class="op">=</span> ,</span>
@@ -507,7 +515,7 @@ a separate function.</p>
 <p>If a function call is too long to fit on a single line, use one line each for
 the function name, each argument, and the closing <code>)</code>.
 This makes the code easier to read and to change later.</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="fu">do_something_very_complicated</span><span class="op">(</span></span>
 <span>  something <span class="op">=</span> <span class="st">"that"</span>,</span>
@@ -523,7 +531,7 @@ This makes the code easier to read and to change later.</p>
 for very common arguments (i.e. for arguments that are used in almost every
 invocation of the function). Short unnamed arguments can also go on the same
 line as the function name, even if the whole function call spans multiple lines.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">map</span><span class="op">(</span><span class="va">x</span>, <span class="va">f</span>,</span>
 <span>  extra_argument_a <span class="op">=</span> <span class="fl">10</span>,</span>
 <span>  extra_argument_b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">43</span>, <span class="fl">390</span>, <span class="fl">210209</span><span class="op">)</span></span>
@@ -531,7 +539,7 @@ line as the function name, even if the whole function call spans multiple lines.
 <p>You may also place several arguments on the same line if they are closely
 related to each other, e.g., strings in calls to <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> or <code><a href="https://rdrr.io/r/base/stop.html">stop()</a></code>. When
 building strings, where possible match one line of code to one line of output.</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span></span>
 <span>  <span class="st">"Requirement: "</span>, <span class="va">requires</span>, <span class="st">"\n"</span>,</span>
@@ -556,7 +564,7 @@ on one line.</p>
 <span class="header-section-number">2.7</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>Use <code>&lt;-</code>, not <code>=</code>, for assignment.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
 <span></span>
@@ -573,7 +581,7 @@ on one line.</p>
 </h3>
 <p>Use <code>"</code>, not <code>'</code>, for quoting text. The only exception is when the text already
 contains double quotes and no single quotes.</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="st">"Text"</span></span>
 <span><span class="st">'Text with "quotes"'</span></span>
