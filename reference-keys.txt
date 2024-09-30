@@ -10,6 +10,7 @@ parentheses
 embracing
 infix-operators
 extra-spaces
+vertical-space
 function-calls
 argument-names
 assignment

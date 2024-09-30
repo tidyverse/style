@@ -284,13 +284,24 @@ spaces:</p>
 <p>Do not add extra spaces to places where space is not usually allowed.</p>
 </div>
 </div>
-<div id="function-calls" class="section level2" number="2.3">
+<div id="vertical-space" class="section level2" number="2.3">
 <h2>
-<span class="header-section-number">2.3</span> Function calls<a class="anchor" aria-label="anchor" href="#function-calls"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3</span> Vertical space<a class="anchor" aria-label="anchor" href="#vertical-space"><i class="fas fa-link"></i></a>
 </h2>
-<div id="argument-names" class="section level3" number="2.3.1">
+<p>Use vertical whitespace sparingly, and primarily to separate your “thoughts” in code, much like paragraph breaks in prose.</p>
+<ul>
+<li>Avoid empty lines at the start or end of functions.</li>
+<li>Only use a single empty line when needed to separate functions or pipes.</li>
+<li>It often makes sense to put an empty line before a comment block, to help visually connect the explanation with the code that it applies to.</li>
+</ul>
+</div>
+<div id="function-calls" class="section level2" number="2.4">
+<h2>
+<span class="header-section-number">2.4</span> Function calls<a class="anchor" aria-label="anchor" href="#function-calls"><i class="fas fa-link"></i></a>
+</h2>
+<div id="argument-names" class="section level3" number="2.4.1">
 <h3>
-<span class="header-section-number">2.3.1</span> Named arguments<a class="anchor" aria-label="anchor" href="#argument-names"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.4.1</span> Named arguments<a class="anchor" aria-label="anchor" href="#argument-names"><i class="fas fa-link"></i></a>
 </h3>
 <p>A function’s arguments typically fall into two broad categories: one supplies
 the <strong>data</strong> to compute on; the other controls the <strong>details</strong> of computation.
@@ -314,9 +325,9 @@ argument, use the full name:</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, t <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, br <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">4</span>, <span class="fl">11</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="assignment" class="section level3" number="2.3.2">
+<div id="assignment" class="section level3" number="2.4.2">
 <h3>
-<span class="header-section-number">2.3.2</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.4.2</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment"><i class="fas fa-link"></i></a>
 </h3>
 <p>Avoid assignment in function calls:</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
@@ -335,13 +346,13 @@ argument, use the full name:</p>
 <code class="sourceCode R"><span><span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/capture.output.html">capture.output</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">f</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div id="control-flow" class="section level2" number="2.4">
+<div id="control-flow" class="section level2" number="2.5">
 <h2>
-<span class="header-section-number">2.4</span> Control flow<a class="anchor" aria-label="anchor" href="#control-flow"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5</span> Control flow<a class="anchor" aria-label="anchor" href="#control-flow"><i class="fas fa-link"></i></a>
 </h2>
-<div id="indenting" class="section level3" number="2.4.1">
+<div id="indenting" class="section level3" number="2.5.1">
 <h3>
-<span class="header-section-number">2.4.1</span> Code blocks<a class="anchor" aria-label="anchor" href="#indenting"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.1</span> Code blocks<a class="anchor" aria-label="anchor" href="#indenting"><i class="fas fa-link"></i></a>
 </h3>
 <p>Curly braces, <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code>, define the most important hierarchy of R code. To make this
 hierarchy easy to see:</p>
@@ -396,9 +407,9 @@ line as the opening brace.</p></li>
 <span>    <span class="op">}</span></span>
 <span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span> <span class="va">y</span> <span class="op">^</span> <span class="va">x</span> <span class="op">}</span></span></code></pre></div>
 </div>
-<div id="if-statements" class="section level3" number="2.4.2">
+<div id="if-statements" class="section level3" number="2.5.2">
 <h3>
-<span class="header-section-number">2.4.2</span> If statements<a class="anchor" aria-label="anchor" href="#if-statements"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.2</span> If statements<a class="anchor" aria-label="anchor" href="#if-statements"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li><p>When present, <code>else</code> should be on the same line as <code>}</code>.</p></li>
@@ -422,9 +433,9 @@ evaluated).</p>
 </li>
 </ul>
 </div>
-<div id="inline-statements" class="section level3" number="2.4.3">
+<div id="inline-statements" class="section level3" number="2.5.3">
 <h3>
-<span class="header-section-number">2.4.3</span> Inline statements<a class="anchor" aria-label="anchor" href="#inline-statements"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.3</span> Inline statements<a class="anchor" aria-label="anchor" href="#inline-statements"><i class="fas fa-link"></i></a>
 </h3>
 <p>It’s ok to drop the curly braces for very simple statements that fit on one line, as long as they don’t have side-effects.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
@@ -456,9 +467,9 @@ evaluated).</p>
 <span>  <span class="va">x</span> <span class="op">*</span> <span class="op">-</span><span class="fl">1</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="implicit-type-coercion" class="section level3" number="2.4.4">
+<div id="implicit-type-coercion" class="section level3" number="2.5.4">
 <h3>
-<span class="header-section-number">2.4.4</span> Implicit type coercion<a class="anchor" aria-label="anchor" href="#implicit-type-coercion"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.4</span> Implicit type coercion<a class="anchor" aria-label="anchor" href="#implicit-type-coercion"><i class="fas fa-link"></i></a>
 </h3>
 <p>Avoid implicit type coercion (e.g. from numeric to logical) in <code>if</code> statements:</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
@@ -472,9 +483,9 @@ evaluated).</p>
 <span>  <span class="co"># do something</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="switch-statements" class="section level3" number="2.4.5">
+<div id="switch-statements" class="section level3" number="2.5.5">
 <h3>
-<span class="header-section-number">2.4.5</span> Switch statements<a class="anchor" aria-label="anchor" href="#switch-statements"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.5</span> Switch statements<a class="anchor" aria-label="anchor" href="#switch-statements"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Avoid position-based <code><a href="https://rdrr.io/r/base/switch.html">switch()</a></code> statements (i.e. prefer names).</li>
@@ -504,9 +515,9 @@ evaluated).</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/switch.html">switch</a></span><span class="op">(</span><span class="va">y</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div id="long-lines" class="section level2" number="2.5">
+<div id="long-lines" class="section level2" number="2.6">
 <h2>
-<span class="header-section-number">2.5</span> Long lines<a class="anchor" aria-label="anchor" href="#long-lines"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.6</span> Long lines<a class="anchor" aria-label="anchor" href="#long-lines"><i class="fas fa-link"></i></a>
 </h2>
 <p>Strive to limit your code to 80 characters per line. This fits comfortably on a
 printed page with a reasonably sized font. If you find yourself running out of
@@ -552,16 +563,16 @@ building strings, where possible match one line of code to one line of output.</
 <span>  <span class="st">"\n"</span>, <span class="st">"Result: "</span>,</span>
 <span>  <span class="va">result</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="semicolons" class="section level2" number="2.6">
+<div id="semicolons" class="section level2" number="2.7">
 <h2>
-<span class="header-section-number">2.6</span> Semicolons<a class="anchor" aria-label="anchor" href="#semicolons"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.7</span> Semicolons<a class="anchor" aria-label="anchor" href="#semicolons"><i class="fas fa-link"></i></a>
 </h2>
 <p>Don’t put <code>;</code> at the end of a line, and don’t use <code>;</code> to put multiple commands
 on one line.</p>
 </div>
-<div id="assignment-1" class="section level2" number="2.7">
+<div id="assignment-1" class="section level2" number="2.8">
 <h2>
-<span class="header-section-number">2.7</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.8</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>Use <code>&lt;-</code>, not <code>=</code>, for assignment.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
@@ -571,13 +582,13 @@ on one line.</p>
 <span><span class="co"># Bad</span></span>
 <span><span class="va">x</span> <span class="op">=</span> <span class="fl">5</span></span></code></pre></div>
 </div>
-<div id="data" class="section level2" number="2.8">
+<div id="data" class="section level2" number="2.9">
 <h2>
-<span class="header-section-number">2.8</span> Data<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.9</span> Data<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
 </h2>
-<div id="character-vectors" class="section level3" number="2.8.1">
+<div id="character-vectors" class="section level3" number="2.9.1">
 <h3>
-<span class="header-section-number">2.8.1</span> Character vectors<a class="anchor" aria-label="anchor" href="#character-vectors"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.9.1</span> Character vectors<a class="anchor" aria-label="anchor" href="#character-vectors"><i class="fas fa-link"></i></a>
 </h3>
 <p>Use <code>"</code>, not <code>'</code>, for quoting text. The only exception is when the text already
 contains double quotes and no single quotes.</p>
@@ -591,16 +602,16 @@ contains double quotes and no single quotes.</p>
 <span><span class="st">'Text'</span></span>
 <span><span class="st">'Text with "double" and \'single\' quotes'</span></span></code></pre></div>
 </div>
-<div id="logical-vectors" class="section level3" number="2.8.2">
+<div id="logical-vectors" class="section level3" number="2.9.2">
 <h3>
-<span class="header-section-number">2.8.2</span> Logical vectors<a class="anchor" aria-label="anchor" href="#logical-vectors"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.9.2</span> Logical vectors<a class="anchor" aria-label="anchor" href="#logical-vectors"><i class="fas fa-link"></i></a>
 </h3>
 <p>Prefer <code>TRUE</code> and <code>FALSE</code> over <code>T</code> and <code>F</code>.</p>
 </div>
 </div>
-<div id="comments" class="section level2" number="2.9">
+<div id="comments" class="section level2" number="2.10">
 <h2>
-<span class="header-section-number">2.9</span> Comments<a class="anchor" aria-label="anchor" href="#comments"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.10</span> Comments<a class="anchor" aria-label="anchor" href="#comments"><i class="fas fa-link"></i></a>
 </h2>
 <p>Each line of a comment should begin with the comment symbol and a single
 space: <code>#</code></p>
@@ -628,31 +639,32 @@ than code, consider switching to <a href="https://rmarkdown.rstudio.com/">R Mark
 <li><a class="nav-link" href="#extra-spaces"><span class="header-section-number">2.2.5</span> Extra spaces</a></li>
 </ul>
 </li>
+<li><a class="nav-link" href="#vertical-space"><span class="header-section-number">2.3</span> Vertical space</a></li>
 <li>
-<a class="nav-link" href="#function-calls"><span class="header-section-number">2.3</span> Function calls</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#argument-names"><span class="header-section-number">2.3.1</span> Named arguments</a></li>
-<li><a class="nav-link" href="#assignment"><span class="header-section-number">2.3.2</span> Assignment</a></li>
+<a class="nav-link" href="#function-calls"><span class="header-section-number">2.4</span> Function calls</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#argument-names"><span class="header-section-number">2.4.1</span> Named arguments</a></li>
+<li><a class="nav-link" href="#assignment"><span class="header-section-number">2.4.2</span> Assignment</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#control-flow"><span class="header-section-number">2.4</span> Control flow</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#indenting"><span class="header-section-number">2.4.1</span> Code blocks</a></li>
-<li><a class="nav-link" href="#if-statements"><span class="header-section-number">2.4.2</span> If statements</a></li>
-<li><a class="nav-link" href="#inline-statements"><span class="header-section-number">2.4.3</span> Inline statements</a></li>
-<li><a class="nav-link" href="#implicit-type-coercion"><span class="header-section-number">2.4.4</span> Implicit type coercion</a></li>
-<li><a class="nav-link" href="#switch-statements"><span class="header-section-number">2.4.5</span> Switch statements</a></li>
+<a class="nav-link" href="#control-flow"><span class="header-section-number">2.5</span> Control flow</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#indenting"><span class="header-section-number">2.5.1</span> Code blocks</a></li>
+<li><a class="nav-link" href="#if-statements"><span class="header-section-number">2.5.2</span> If statements</a></li>
+<li><a class="nav-link" href="#inline-statements"><span class="header-section-number">2.5.3</span> Inline statements</a></li>
+<li><a class="nav-link" href="#implicit-type-coercion"><span class="header-section-number">2.5.4</span> Implicit type coercion</a></li>
+<li><a class="nav-link" href="#switch-statements"><span class="header-section-number">2.5.5</span> Switch statements</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#long-lines"><span class="header-section-number">2.5</span> Long lines</a></li>
-<li><a class="nav-link" href="#semicolons"><span class="header-section-number">2.6</span> Semicolons</a></li>
-<li><a class="nav-link" href="#assignment-1"><span class="header-section-number">2.7</span> Assignment</a></li>
+<li><a class="nav-link" href="#long-lines"><span class="header-section-number">2.6</span> Long lines</a></li>
+<li><a class="nav-link" href="#semicolons"><span class="header-section-number">2.7</span> Semicolons</a></li>
+<li><a class="nav-link" href="#assignment-1"><span class="header-section-number">2.8</span> Assignment</a></li>
 <li>
-<a class="nav-link" href="#data"><span class="header-section-number">2.8</span> Data</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#character-vectors"><span class="header-section-number">2.8.1</span> Character vectors</a></li>
-<li><a class="nav-link" href="#logical-vectors"><span class="header-section-number">2.8.2</span> Logical vectors</a></li>
+<a class="nav-link" href="#data"><span class="header-section-number">2.9</span> Data</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#character-vectors"><span class="header-section-number">2.9.1</span> Character vectors</a></li>
+<li><a class="nav-link" href="#logical-vectors"><span class="header-section-number">2.9.2</span> Logical vectors</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#comments"><span class="header-section-number">2.9</span> Comments</a></li>
+<li><a class="nav-link" href="#comments"><span class="header-section-number">2.10</span> Comments</a></li>
 </ul>
 
       <div class="book-extra">
