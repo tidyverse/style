@@ -84,7 +84,7 @@ iris |> summarise(width = Sepal.Width, .by = Species) |> arrange(width)
 
 But because short pipes often become longer pipes, we recommend that you generally stick to one function per line:
 
-```{r}
+```{r, eval = FALSE}
 # Better
 iris |>
   subset(Species == "virginica") |>
