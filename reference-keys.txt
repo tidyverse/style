@@ -37,8 +37,8 @@ introduction
 whitespace
 long-lines-2
 short-pipes
-no-arguments
 assignment-2
+magrittr
 ggplot2
 introduction-1
 whitespace-1
