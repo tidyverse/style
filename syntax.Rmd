@@ -469,44 +469,32 @@ invocation of the function). If this introduces a large disparity between the li
 
 ```{r, eval = FALSE}
 # Good
-map(
+my_function(
   x,
-  f,
+  long_argument_name,
   extra_argument_a = 10,
   extra_argument_b = c(1, 43, 390, 210209)
 )
 
 # Also good
-map(
+my_function(
   x = x,
-  f = f,
+  y = long_argument_name,
   extra_argument_a = 10,
   extra_argument_b = c(1, 43, 390, 210209)
 )
 ```
 
-You may also place multiple unnamed arguments on the same line if they are closely
-related to each other, e.g., strings in calls to `paste()` or arguments to `sprintf()`. When
-building strings, match one line of code to one line of output where possible.
+You may place multiple unnamed arguments on the same line if they are closely
+related to each other. A common example of this is creating strings
+with `paste()`. In such cases, it's often beneficial to match one line of code
+to one line of output.
 
 ```{r, eval = FALSE}
 # Good
 paste0(
   "Requirement: ", requires, "\n",
   "Result: ", result, "\n"
-)
-sprintf(
-  "formatting string %s%s%s%s",
-  a, b, c, d
-)
-
-# Ok
-sprintf(
-  "formatting string %s%s%s%s",
-  a,
-  b,
-  c,
-  d
 )
 
 # Bad
