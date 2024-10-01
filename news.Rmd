@@ -6,7 +6,7 @@ Each user-facing change to a package should be accompanied by a bullet in `NEWS.
 
 The goal of the bullet is to briefly describe the change so users of the packages can understand what's changed. This can be similar to the commit message, but written with a user (not developer) in mind.
 
-New bullets should be added to the top of the file (immediatley under the first heading) and should be a single line (possibly wrapped). Organisation and wrapping will happen later, during the release process (Section \@ref(news-release)).
+New bullets should be added to the top of the file (immediately under the first heading) and should be a single line. Organisation and wrapping will happen later, during the release process (Section \@ref(news-release)).
 
 ```
 # haven (development version)
