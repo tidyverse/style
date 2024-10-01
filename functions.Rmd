@@ -14,6 +14,24 @@ row_adder()
 permutation()
 ```
 
+## Anonymous functions
+
+If using an anonymous or inline function (i.e. a function that hasn't been given a name by assigning it to a variable), prefer the new lambda syntax: `\(x) x + 1`.
+
+```R
+# Good
+map(xs, \(x) mean((x + 5)^2))
+
+# Bad
+map(xs, function(x) mean((x + 5)^2))
+map(xs, ~ mean((.x + 5)^2))
+```
+
+* As with any function, prefer informative argument names.
+* Only use an anonymous function if it fits on one line.
+* Avoid using `\()` except for anonymous functions.
+* Avoid using `\()` in a pipe.
+
 ## Multi-line function defintions
 
 There are two options if the function name and definition can't fit on a single line. In both cases, each argument goes on its own; the difference is how deep you indent it and where you put `)` and `{`:

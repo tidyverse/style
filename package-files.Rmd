@@ -12,8 +12,6 @@ The majority of advice in Chapter \@ref(files) also applies to files in packages
 
 * Deprecated functions should live in a file with `deprec-` prefix.
 
-* Compatibility functions should live in a file with `compat-` prefix.
-
 ## Organisation
 
 In a file that contains multiple functions, public functions and their
