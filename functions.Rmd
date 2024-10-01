@@ -16,21 +16,44 @@ permutation()
 
 ## Anonymous functions
 
-If using an anonymous or inline function (i.e. a function that hasn't been given a name by assigning it to a variable), prefer the new lambda syntax: `\(x) x + 1`.
+Use the new lambda syntax: `\(x) x + 1` when writing short anonymous functions (i.e. when you define a function in an argument without giving it an explicit name).
 
 ```R
 # Good
+map(xs, function(x) mean((x + 5)^2))
 map(xs, \(x) mean((x + 5)^2))
 
 # Bad
-map(xs, function(x) mean((x + 5)^2))
 map(xs, ~ mean((.x + 5)^2))
 ```
 
-* As with any function, prefer informative argument names.
-* Only use an anonymous function if it fits on one line.
-* Avoid using `\()` except for anonymous functions.
-* Avoid using `\()` in a pipe.
+Don't use `\()` for multi-line functions:
+
+```R
+# Good
+map(xs, function(x) {
+  mean((x + 5)^2)
+})
+
+# Bad
+map(xs, \(x) {
+  mean((x + 5)^2)
+})
+```
+
+Or when creating named functions:
+
+```R
+# Good
+cv <- function(x) {
+  sd(x) / mean(x)
+}
+
+# Bad
+cv <- \(x) sd(x) / mean(x)
+```
+
+Avoid using `\()` in a pipe, and remember to use informative argument names.
 
 ## Long lines
 
