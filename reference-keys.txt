@@ -55,7 +55,6 @@ documenting-parameters
 capitalization-and-full-stops
 cross-linking
 r-code
-package-names
 internal-functions
 tests
 organisation-2
