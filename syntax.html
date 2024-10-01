@@ -523,9 +523,9 @@ evaluated).</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/switch.html">switch</a></span><span class="op">(</span><span class="va">y</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div id="long-lines" class="section level2" number="2.6">
+<div id="long-function-calls" class="section level2" number="2.6">
 <h2>
-<span class="header-section-number">2.6</span> Long lines<a class="anchor" aria-label="anchor" href="#long-lines"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.6</span> Long function calls<a class="anchor" aria-label="anchor" href="#long-function-calls"><i class="fas fa-link"></i></a>
 </h2>
 <p>Strive to limit your code to 80 characters per line. This fits comfortably on a
 printed page with a reasonably sized font. If you find yourself running out of
@@ -548,16 +548,27 @@ This makes the code easier to read and to change later.</p>
 <span>                              <span class="op">)</span></span></code></pre></div>
 <p>As described under <a href="syntax.html#argument-names">Named arguments</a>, you can omit the argument names
 for very common arguments (i.e. for arguments that are used in almost every
-invocation of the function). Short unnamed arguments can also go on the same
-line as the function name, even if the whole function call spans multiple lines.</p>
+invocation of the function). If this introduces a large disparity between the line lengths, you may want to supply names anyway:</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">map</span><span class="op">(</span><span class="va">x</span>, <span class="va">f</span>,</span>
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="fu">my_function</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">long_argument_name</span>,</span>
+<span>  extra_argument_a <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  extra_argument_b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">43</span>, <span class="fl">390</span>, <span class="fl">210209</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Also good</span></span>
+<span><span class="fu">my_function</span><span class="op">(</span></span>
+<span>  x <span class="op">=</span> <span class="va">x</span>,</span>
+<span>  y <span class="op">=</span> <span class="va">long_argument_name</span>,</span>
 <span>  extra_argument_a <span class="op">=</span> <span class="fl">10</span>,</span>
 <span>  extra_argument_b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">43</span>, <span class="fl">390</span>, <span class="fl">210209</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>You may also place several arguments on the same line if they are closely
-related to each other, e.g., strings in calls to <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> or <code><a href="https://rdrr.io/r/base/stop.html">stop()</a></code>. When
-building strings, where possible match one line of code to one line of output.</p>
+<p>You may place multiple unnamed arguments on the same line if they are closely
+related to each other. A common example of this is creating strings
+with <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code>. In such cases, it’s often beneficial to match one line of code
+to one line of output.</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span></span>
@@ -663,7 +674,7 @@ than code, consider switching to <a href="https://rmarkdown.rstudio.com/">R Mark
 <li><a class="nav-link" href="#switch-statements"><span class="header-section-number">2.5.5</span> Switch statements</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#long-lines"><span class="header-section-number">2.6</span> Long lines</a></li>
+<li><a class="nav-link" href="#long-function-calls"><span class="header-section-number">2.6</span> Long function calls</a></li>
 <li><a class="nav-link" href="#semicolons"><span class="header-section-number">2.7</span> Semicolons</a></li>
 <li><a class="nav-link" href="#assignment-1"><span class="header-section-number">2.8</span> Assignment</a></li>
 <li>

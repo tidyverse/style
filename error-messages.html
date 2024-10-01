@@ -96,7 +96,7 @@ The problem statement should use sentence case and end with a full stop.</p>
 <ul>
 <li>
 <p>If the cause of the problem is clear (e.g. an incorrect type or size), use “<strong>must</strong>”:</p>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu">nth</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="st">"x"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error:</span></span>
 <span><span class="co">#&gt; ! `n` must be a numeric vector, not a character vector.</span></span>
@@ -108,7 +108,7 @@ The problem statement should use sentence case and end with a full stop.</p>
 </li>
 <li>
 <p>If you cannot state what was expected, use “<strong>can’t</strong>”:</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op">|&gt;</span> <span class="fu">pull</span><span class="op">(</span><span class="va">b</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error:</span></span>
 <span><span class="co">#&gt; ! Can't find column `b` in `.data`.</span></span>
@@ -141,7 +141,7 @@ Use cross bullets (<code>x</code>) to let the user know what the problem is, the
 These are easy to create with <code>cli_abort()</code>: <!--# Include brief example here --></p>
 <!--# Can you reorganise to show cross bullets then info bullets -->
 <p>Try to keep the sentences short and sweet:</p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="fu">vec_slice</span><span class="op">(</span><span class="va">letters</span>, <span class="fl">100</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ! Can't subset elements past the end.</span></span>
@@ -154,7 +154,7 @@ These are easy to create with <code>cli_abort()</code>: <!--# Include brief exam
 <span><span class="co">#&gt; There are 26 elements and you've tried to subset element 100.</span></span></code></pre></div>
 <p>Do your best to reveal the location, name, and/or content of the troublesome component of the input.
 The goal is to make it as easy as possible for the user to find and fix the problem.</p>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="fu">map_int</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">~</span> <span class="st">"x"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error:</span></span>
@@ -167,7 +167,7 @@ The goal is to make it as easy as possible for the user to find and fix the prob
 <span><span class="co">#&gt; ! Each result must be a single integer</span></span></code></pre></div>
 <p>(It is often not easy to identify the exact problem; it may require passing around extra arguments so that error messages generated at a lower-level can know the original source. For frequently used functions, the effort is typically worth it.)</p>
 <p>If the source of the error is unclear, avoid pointing the user in the wrong direction by giving an opinion about the source of the error:</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="fu">pull</span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">b</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error:</span></span>
@@ -193,7 +193,7 @@ The goal is to make it as easy as possible for the user to find and fix the prob
 <span><span class="co">#&gt; Error:</span></span>
 <span><span class="co">#&gt; ! Column `x` must be length 1 or 3, not 2.</span></span></code></pre></div>
 <p>If there are multiple issues, or an inconsistency revealed across several arguments or items, prefer a bulleted list:</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="fu">purrr</span><span class="fu">::</span><span class="fu">reduce2</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="va">`+`</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error:</span></span>
@@ -207,7 +207,7 @@ The goal is to make it as easy as possible for the user to find and fix the prob
 <span><span class="co">#&gt; ! `.x` and `.y` must have compatible lengths: `.x` has length 4 and</span></span>
 <span><span class="co">#&gt; `.y` has length 2</span></span></code></pre></div>
 <p>If the list of issues might be long, make sure to truncate to only show the first few:</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="co">#&gt; Error: NAs found at 1,000,000 locations: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ...</span></span></code></pre></div>
 <p>If you want to correctly pluralise the error message, consider using <code><a href="https://rdrr.io/r/base/gettext.html">ngettext()</a></code>.
@@ -219,7 +219,7 @@ See the notes in <code>?ngettext()</code> for some challenges related to correct
 </h2>
 <p>If the source of the error is clear and common, you may want to provide a hint as to how to fix it.
 The hint should be the last bullet, use an info bullet (<code>i</code>), and end in a question mark.</p>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu">filter</span><span class="op">(</span><span class="va">iris</span>, Species <span class="op">=</span> <span class="st">"setosa"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error:</span></span>
 <span><span class="co">#&gt; ! Filter specifications must be named.</span></span>
@@ -235,7 +235,7 @@ The hint should be the last bullet, use an info bullet (<code>i</code>), and end
 <span><span class="co">#&gt; ! `mapping` must be created by `aes()`.</span></span>
 <span><span class="co">#&gt; ℹ Did you use `%&gt;%` or `|&gt;` instead of `+`?</span></span></code></pre></div>
 <p>Hints are particularly important if the source of the error is far away from the root cause:</p>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Bad</span></span>
 <span><span class="va">mean</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; Error:</span></span>
@@ -264,7 +264,7 @@ Generally, we avoid writing a hint unless the problem is common, and you can eas
 Bullets should be formatted similarly; make sure to capitalise the first word (unless it’s an argument or column name).</p></li>
 <li>
 <p>Prefer the singular in problem statements:</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="fu">map_int</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="op">~</span> <span class="st">"a"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error:</span></span>
@@ -281,7 +281,7 @@ Bullets should be formatted similarly; make sure to capitalise the first word (u
 <p>If you can detect multiple problems, list up to five.
 This allows the user to fix multiple problems in a single pass without being overwhelmed by many errors that may have the same source.</p>
 <!--# Mention cli helper here -->
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># BETTER</span></span>
 <span><span class="fu">map_int</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">~</span> <span class="st">"a"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error:</span></span>
@@ -310,7 +310,7 @@ It inserts newlines automatically depending on the width of the console.</p></li
 <span class="header-section-number">9.6</span> Before and after<a class="anchor" aria-label="anchor" href="#before-and-after"><i class="fas fa-link"></i></a>
 </h2>
 <p>More examples gathered from around the tidyverse.</p>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu">filter</span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span><span class="op">)</span></span>
 <span><span class="co">#&gt; BEFORE:</span></span>
 <span><span class="co">#&gt; ! Argument 2 filter condition does not evaluate to a logical vector.</span></span>
