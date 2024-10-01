@@ -127,7 +127,7 @@ More recommendations should be organised in a bulleted list:
 ```
 
 
-You can link to functions in other packages by using the fully qualified function name, i.e. `pkg::function()`.
+You can link to functions in other packages by using the fully qualified function name, i.e. `[pkg::function()]`.
 
 If you have a family of related functions, you can use the `@family` tag to
 automatically add appropriate lists and interlinks to the `@seealso` section.
@@ -149,7 +149,7 @@ Text that contains valid R code should be marked as such using backticks. This i
 * Literal R code, e.g. `mean(x, na.rm = TRUE)`
 * Class names, e.g. "a tibble will have class `tbl_df` ..."
 
-You can use code syntax for function names, but consider if it would be better to use a cross-link instead.
+You can use code syntax for function names, like `tibble()`, but consider if it would be better to use a cross-link instead, like `[tibble()]`.
 
 Do not use code font for package names. If the package name is ambiguous in the
 context, disambiguate with words, e.g. "the foo package". Do not capitalize the function name if it occurs at the start of a sentence.
