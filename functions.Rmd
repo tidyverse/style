@@ -34,7 +34,7 @@ map(xs, ~ mean((.x + 5)^2))
 
 ## Multi-line function defintions
 
-There are two options if the function name and definition can't fit on a single line. In both cases, each argument goes on its own; the difference is how deep you indent it and where you put `)` and `{`:
+There are two options if the function name and definition can't fit on a single line. In both cases, each argument goes on its own line; the difference is how deep you indent it and where you put `)` and `{`:
 
 *   **Single-indent**: indent the argument name with a single indent (i.e. two spaces).
     The trailing `)` and leading `{` go on a new line.
@@ -50,11 +50,11 @@ There are two options if the function name and definition can't fit on a single 
     }
     ```
 
-*   **Function-indent**: indent the argument name to match the opening `(` of `function`.
+*   **Hanging-indent**: indent the argument name to match the opening `(` of `function`.
     The trailing `)` and leading `{` go on the same line as the last argument.
 
     ```{r, eval = FALSE}
-    # Bad
+    # Good
     long_function_name <- function(a = "a long argument",
                                    b = "another argument",
                                    c = "another long argument") {
