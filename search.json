@@ -1,1 +1,661 @@
-[{"path":"index.html","id":"welcome","chapter":"Welcome","heading":"Welcome","text":"Good coding style like correct punctuation: can manage without , butitsuremakesthingseasiertoread. site describes style used throughout tidyverse. derived Google’s original R Style Guide - \nGoogle’s current guide derived tidyverse style guide.style guides fundamentally opinionated. decisions genuinely make code easier use (especially matching indenting programming structure), many decisions arbitrary. important thing style guide provides consistency, making code easier write need make fewer decisions.Two R packages support style guide:styler allows interactively restyle\nselected text, files, entire projects. includes RStudio add-,\neasiest way re-style existing code.\nstyler allows interactively restyle\nselected text, files, entire projects. includes RStudio add-,\neasiest way re-style existing code.lintr performs automated checks\nconfirm conform style guide.lintr performs automated checks\nconfirm conform style guide.","code":""},{"path":"files.html","id":"files","chapter":"1 Files","heading":"1 Files","text":"","code":""},{"path":"files.html","id":"names","chapter":"1 Files","heading":"1.1 Names","text":"File names meaningful end .R. Avoid using special characters\nfile names - stick numbers, letters, -, _.files run particular order, prefix numbers. \nseems likely ’ll 10 files, left pad zero:later realise ’ve missed steps, ’s tempting use 02a,\n02b, etc. However, think ’s generally better bite bullet \nrename files.Pay attention capitalization, since , collaborators,\nmight using operating system case-insensitive file system (e.g.,\nMicrosoft Windows OS X) can lead problems (case-sensitive)\nrevision control systems. Prefer file names lower case, never\nnames differ capitalization.","code":"# Good\nfit_models.R\nutility_functions.R\n\n# Bad\nfit models.R\nfoo.r\nstuff.r00_download.R\n01_explore.R\n...\n09_model.R\n10_visualize.R"},{"path":"files.html","id":"organisation","chapter":"1 Files","heading":"1.2 Organisation","text":"’s hard describe exactly organise code across multiple files. think best rule thumb can give file concise name still evokes contents, ’ve arrived good organisation. getting point hard.","code":""},{"path":"files.html","id":"internal-structure","chapter":"1 Files","heading":"1.3 Internal structure","text":"Use commented lines - = break file easily readable\nchunks.script uses add-packages, load \nbeginning file. transparent sprinkling library()\ncalls throughout code hidden dependencies loaded \nstartup file, .Rprofile.","code":"\n# Load data ---------------------------\n\n# Plot data ---------------------------"},{"path":"syntax.html","id":"syntax","chapter":"2 Syntax","heading":"2 Syntax","text":"","code":""},{"path":"syntax.html","id":"object-names","chapter":"2 Syntax","heading":"2.1 Object names","text":"“two hard things Computer Science: cache invalidation \nnaming things.”— Phil KarltonVariable function names use lowercase letters, numbers, _.\nUse underscores (_) (called snake case) separate words within name.Base R uses dots function names (contrib.url()) class names\n(data.frame), ’s better reserve dots exclusively S3 object\nsystem. S3, methods given name function.class; also use\n. function class names, end confusing methods like\n.data.frame.data.frame().find attempting cram data variable names (e.g. model_2018, model_2019, model_2020), consider using list data frame instead.Generally, variable names nouns function names verbs.\nStrive names concise meaningful (easy!).possible, avoid re-using names common functions variables. \ncause confusion readers code.","code":"\n# Good\nday_one\nday_1\n\n# Bad\nDayOne\ndayone\n# Good\nday_one\n\n# Bad\nfirst_day_of_the_month\ndjm1\n# Bad\nT <- FALSE\nc <- 10\nmean <- function(x) sum(x)"},{"path":"syntax.html","id":"spacing","chapter":"2 Syntax","heading":"2.2 Spacing","text":"","code":""},{"path":"syntax.html","id":"commas","chapter":"2 Syntax","heading":"2.2.1 Commas","text":"Always put space comma, never , just like regular English.","code":"\n# Good\nx[, 1]\n\n# Bad\nx[,1]\nx[ ,1]\nx[ , 1]"},{"path":"syntax.html","id":"parentheses","chapter":"2 Syntax","heading":"2.2.2 Parentheses","text":"put spaces inside outside parentheses regular function calls.Place space () used , , .Place space () used function arguments:","code":"\n# Good\nmean(x, na.rm = TRUE)\n\n# Bad\nmean (x, na.rm = TRUE)\nmean( x, na.rm = TRUE )\n# Good\nif (debug) {\n  show(x)\n}\n\n# Bad\nif(debug){\n  show(x)\n}\n# Good\nfunction(x) {}\n\n# Bad\nfunction (x) {}\nfunction(x){}"},{"path":"syntax.html","id":"embracing","chapter":"2 Syntax","heading":"2.2.3 Embracing","text":"embracing operator, {{ }}, always inner spaces help emphasise special behaviour:","code":"\n# Good\nmax_by <- function(data, var, by) {\n  data |>\n    group_by({{ by }}) |>\n    summarise(maximum = max({{ var }}, na.rm = TRUE))\n}\n\n# Bad\nmax_by <- function(data, var, by) {\n  data |>\n    group_by({{by}}) |>\n    summarise(maximum = max({{var}}, na.rm = TRUE))\n}"},{"path":"syntax.html","id":"infix-operators","chapter":"2 Syntax","heading":"2.2.4 Infix operators","text":"infix operators (==, +, -, <-, etc.) always surrounded \nspaces:exceptions, never surrounded spaces:operators high precedence: ::, :::, $, @, [,\n[[, ^, unary -, unary +, :.\n\n# Good\nsqrt(x^2 + y^2)\ndf$z\nx <- 1:10\n\n# Bad\nsqrt(x ^ 2 + y ^ 2)\ndf $ z\nx <- 1 : 10The operators high precedence: ::, :::, $, @, [,\n[[, ^, unary -, unary +, :.Single-sided formulas right-hand side single identifier:\n\n# Good\n~foo\ntribble(\n  ~col1, ~col2,\n  \"\",   \"b\"\n)\n\n# Bad\n~ foo\ntribble(\n  ~ col1, ~ col2,\n  \"\", \"b\"\n)\nNote single-sided formulas complex right-hand side need space:\n\n# Good\n~ .x + .y\n\n# Bad\n~.x + .ySingle-sided formulas right-hand side single identifier:Note single-sided formulas complex right-hand side need space:used tidy evaluation !! (bang-bang) !!! (bang-bang-bang)\n(precedence equivalent unary -/+)\n\n# Good\ncall(!!xyz)\n\n# Bad\ncall(!! xyz)\ncall( !! xyz)\ncall(! !xyz)used tidy evaluation !! (bang-bang) !!! (bang-bang-bang)\n(precedence equivalent unary -/+)help operator\n\n# Good\npackage?stats\n?mean\n\n# Bad\npackage ? stats\n? meanThe help operator","code":"\n# Good\nheight <- (feet * 12) + inches\nmean(x, na.rm = TRUE)\n\n# Bad\nheight<-feet*12+inches\nmean(x, na.rm=TRUE)\n# Good\nsqrt(x^2 + y^2)\ndf$z\nx <- 1:10\n\n# Bad\nsqrt(x ^ 2 + y ^ 2)\ndf $ z\nx <- 1 : 10\n# Good\n~foo\ntribble(\n  ~col1, ~col2,\n  \"a\",   \"b\"\n)\n\n# Bad\n~ foo\ntribble(\n  ~ col1, ~ col2,\n  \"a\", \"b\"\n)\n# Good\n~ .x + .y\n\n# Bad\n~.x + .y\n# Good\ncall(!!xyz)\n\n# Bad\ncall(!! xyz)\ncall( !! xyz)\ncall(! !xyz)\n# Good\npackage?stats\n?mean\n\n# Bad\npackage ? stats\n? mean"},{"path":"syntax.html","id":"extra-spaces","chapter":"2 Syntax","heading":"2.2.5 Extra spaces","text":"Adding extra spaces ok improves alignment = <-.add extra spaces places space usually allowed.","code":"\n# Good\nlist(\n  total = a + b + c,\n  mean  = (a + b + c) / n\n)\n\n# Also fine\nlist(\n  total = a + b + c,\n  mean = (a + b + c) / n\n)"},{"path":"syntax.html","id":"vertical-space","chapter":"2 Syntax","heading":"2.3 Vertical space","text":"Use vertical whitespace sparingly, primarily separate “thoughts” code, much like paragraph breaks prose.Avoid empty lines start end functions.use single empty line needed separate functions pipes.often makes sense put empty line comment block, help visually connect explanation code applies .","code":""},{"path":"syntax.html","id":"function-calls","chapter":"2 Syntax","heading":"2.4 Function calls","text":"","code":""},{"path":"syntax.html","id":"argument-names","chapter":"2 Syntax","heading":"2.4.1 Named arguments","text":"function’s arguments typically fall two broad categories: one supplies\ndata compute ; controls details computation.\ncall function, typically omit names data arguments,\nused commonly. override default value \nargument, use full name:Avoid partial matching, supply unique prefix function argument.","code":"\n# Good\nmean(1:10, na.rm = TRUE)\n\n# Bad\nmean(x = 1:10, , FALSE)\nmean(, TRUE, x = c(1:10, NA))\n# Good\nrep(1:2, times = 3)\ncut(1:10, breaks = c(0, 4, 11))\n\n# Bad\nrep(1:2, t = 3)\ncut(1:10, br = c(0, 4, 11))"},{"path":"syntax.html","id":"assignment","chapter":"2 Syntax","heading":"2.4.2 Assignment","text":"Avoid assignment function calls:exception functions capture side-effects:","code":"\n# Good\nx <- complicated_function()\nif (nzchar(x) < 1) {\n  # do something\n}\n\n# Bad\nif (nzchar(x <- complicated_function()) < 1) {\n  # do something\n}\noutput <- capture.output(x <- f())"},{"path":"syntax.html","id":"control-flow","chapter":"2 Syntax","heading":"2.5 Control flow","text":"","code":""},{"path":"syntax.html","id":"indenting","chapter":"2 Syntax","heading":"2.5.1 Code blocks","text":"Curly braces, {}, define important hierarchy R code. make \nhierarchy easy see:{ last character line. Related code (e.g., \nclause, function declaration, trailing comma, …) must \nline opening brace.{ last character line. Related code (e.g., \nclause, function declaration, trailing comma, …) must \nline opening brace.contents indented two spaces.contents indented two spaces.} first character line.} first character line.occassionally useful empty curly braces block, case written {}.","code":"\n# Good\nif (y < 0 && debug) {\n  message(\"y is negative\")\n}\n\nif (y == 0) {\n  if (x > 0) {\n    log(x)\n  } else {\n    message(\"x is negative or zero\")\n  }\n} else {\n  y^x\n}\n\ntest_that(\"call1 returns an ordered factor\", {\n  expect_s3_class(call1(x, y), c(\"factor\", \"ordered\"))\n})\n\ntryCatch(\n  {\n    x <- scan()\n    cat(\"Total: \", sum(x), \"\\n\", sep = \"\")\n  },\n  interrupt = function(e) {\n    message(\"Aborted by user\")\n  }\n)\n\nwhile (waiting_for_something()) {}\n\n# Bad\nif (y < 0 && debug) {\nmessage(\"Y is negative\")\n}\n\nif (y == 0)\n{\n    if (x > 0) {\n      log(x)\n    } else {\n  message(\"x is negative or zero\")\n    }\n} else { y ^ x }\n\nwhile (waiting_for_something()) { }\nwhile (waiting_for_something()) {\n\n}"},{"path":"syntax.html","id":"if-statements","chapter":"2 Syntax","heading":"2.5.2 If statements","text":"present, else line }.present, else line }.& | never used inside clause can\nreturn vectors. Always use && || instead.& | never used inside clause can\nreturn vectors. Always use && || instead.NB: ifelse(x, , b) drop-replacement (x) else b.\nifelse() vectorised (.e. length(x) > 1, b \nrecycled match) eager (.e. b always \nevaluated).\nwant rewrite simple lengthy block:\n\n(x > 10) {\n  message <- \"big\"\n} else {\n  message <- \"small\"\n}\nJust write one line:\n\nmessage <- (x > 10) \"big\" else \"small\"NB: ifelse(x, , b) drop-replacement (x) else b.\nifelse() vectorised (.e. length(x) > 1, b \nrecycled match) eager (.e. b always \nevaluated).want rewrite simple lengthy block:Just write one line:","code":"\nif (x > 10) {\n  message <- \"big\"\n} else {\n  message <- \"small\"\n}\nmessage <- if (x > 10) \"big\" else \"small\""},{"path":"syntax.html","id":"inline-statements","chapter":"2 Syntax","heading":"2.5.3 Inline statements","text":"’s ok drop curly braces simple statements fit one line, long don’t side-effects.Function calls affect control flow (like return(), stop() continue) always go {} block:","code":"\n# Good\ny <- 10\nx <- if (y < 20) \"Too low\" else \"Too high\"\n# Good\nif (y < 0) {\n  stop(\"Y is negative\")\n}\n\nfind_abs <- function(x) {\n  if (x > 0) {\n    return(x)\n  }\n  x * -1\n}\n\n# Bad\nif (y < 0) stop(\"Y is negative\")\n\nif (y < 0)\n  stop(\"Y is negative\")\n\nfind_abs <- function(x) {\n  if (x > 0) return(x)\n  x * -1\n}"},{"path":"syntax.html","id":"implicit-type-coercion","chapter":"2 Syntax","heading":"2.5.4 Implicit type coercion","text":"Avoid implicit type coercion (e.g. numeric logical) statements:","code":"\n# Good\nif (length(x) > 0) {\n  # do something\n}\n\n# Bad\nif (length(x)) {\n  # do something\n}"},{"path":"syntax.html","id":"switch-statements","chapter":"2 Syntax","heading":"2.5.5 Switch statements","text":"Avoid position-based switch() statements (.e. prefer names).element go line unless element can fit one line.Elements fall following element space =.Provide fall-error unless previously validated input.","code":"\n# Good\nswitch(x,\n  a = ,\n  b = 1,\n  c = 2,\n  stop(\"Unknown `x`\", call. = FALSE)\n)\n\n# Bad\nswitch(x,\n  a =,\n  b = 1,\n  c = 2\n)\nswitch(x,\n  a = long_function_name1(), b = long_function_name2(),\n  c = long_function_name2()\n)\nswitch(y, 1, 2, 3)"},{"path":"syntax.html","id":"long-function-calls","chapter":"2 Syntax","heading":"2.6 Long function calls","text":"Strive limit code 80 characters per line. fits comfortably \nprinted page reasonably sized font. find running \nroom, good indication encapsulate work \nseparate function.function call long fit single line, use one line \nfunction name, argument, closing ).\nmakes code easier read change later.described Named arguments, can omit argument names\ncommon arguments (.e. arguments used almost every\ninvocation function). introduces large disparity line lengths, may want supply names anyway:may place multiple unnamed arguments line closely\nrelated . common example creating strings\npaste(). cases, ’s often beneficial match one line code\none line output.","code":"\n# Good\ndo_something_very_complicated(\n  something = \"that\",\n  requires = many,\n  arguments = \"some of which may be long\"\n)\n\n# Bad\ndo_something_very_complicated(\"that\", requires, many, arguments,\n                              \"some of which may be long\"\n                              )\n# Good\nmy_function(\n  x,\n  long_argument_name,\n  extra_argument_a = 10,\n  extra_argument_b = c(1, 43, 390, 210209)\n)\n\n# Also good\nmy_function(\n  x = x,\n  y = long_argument_name,\n  extra_argument_a = 10,\n  extra_argument_b = c(1, 43, 390, 210209)\n)\n# Good\npaste0(\n  \"Requirement: \", requires, \"\\n\",\n  \"Result: \", result, \"\\n\"\n)\n\n# Bad\npaste0(\n  \"Requirement: \", requires,\n  \"\\n\", \"Result: \",\n  result, \"\\n\")"},{"path":"syntax.html","id":"semicolons","chapter":"2 Syntax","heading":"2.7 Semicolons","text":"Don’t put ; end line, don’t use ; put multiple commands\none line.","code":""},{"path":"syntax.html","id":"assignment-1","chapter":"2 Syntax","heading":"2.8 Assignment","text":"Use <-, =, assignment.","code":"\n# Good\nx <- 5\n\n# Bad\nx = 5"},{"path":"syntax.html","id":"data","chapter":"2 Syntax","heading":"2.9 Data","text":"","code":""},{"path":"syntax.html","id":"character-vectors","chapter":"2 Syntax","heading":"2.9.1 Character vectors","text":"Use \", ', quoting text. exception text already\ncontains double quotes single quotes.","code":"\n# Good\n\"Text\"\n'Text with \"quotes\"'\n'<a href=\"http://style.tidyverse.org\">A link<\/a>'\n\n# Bad\n'Text'\n'Text with \"double\" and \\'single\\' quotes'"},{"path":"syntax.html","id":"logical-vectors","chapter":"2 Syntax","heading":"2.9.2 Logical vectors","text":"Prefer TRUE FALSE T F.","code":""},{"path":"syntax.html","id":"comments","chapter":"2 Syntax","heading":"2.10 Comments","text":"line comment begin comment symbol single\nspace: #data analysis code, use comments record important findings analysis\ndecisions. need comments explain code , consider\nrewriting code clearer. discover comments\ncode, consider switching R Markdown.","code":""},{"path":"functions.html","id":"functions","chapter":"3 Functions","heading":"3 Functions","text":"","code":""},{"path":"functions.html","id":"naming","chapter":"3 Functions","heading":"3.1 Naming","text":"well following general advice object names, strive use verbs function names:","code":"\n# Good\nadd_row()\npermute()\n\n# Bad\nrow_adder()\npermutation()"},{"path":"functions.html","id":"anonymous-functions","chapter":"3 Functions","heading":"3.2 Anonymous functions","text":"Use new lambda syntax: \\(x) x + 1 writing short anonymous functions (.e. define function argument without giving explicit name).Don’t use \\() multi-line functions:creating named functions:Avoid using \\() pipe, remember use informative argument names.","code":"\n# Good\nmap(xs, \\(x) mean((x + 5)^2))\nmap(xs, function(x) mean((x + 5)^2))\n\n# Bad\nmap(xs, ~ mean((.x + 5)^2))\n# Good\nmap(xs, function(x) {\n  mean((x + 5)^2)\n})\n\n# Bad\nmap(xs, \\(x) {\n  mean((x + 5)^2)\n})\n# Good\ncv <- function(x) {\n  sd(x) / mean(x)\n}\n\n# Bad\ncv <- \\(x) sd(x) / mean(x)"},{"path":"functions.html","id":"multi-line-function-defintions","chapter":"3 Functions","heading":"3.3 Multi-line function defintions","text":"two options function name definition can’t fit single line. cases, argument goes line; difference deep indent put ) {:Single-indent: indent argument name single indent (.e. two spaces).\ntrailing ) leading { go new line.\n\n# Good\nlong_function_name <- function(\n  = \"long argument\",\n  b = \"another argument\",\n  c = \"another long argument\"\n) {\n  # usual code indented two spaces.\n}Single-indent: indent argument name single indent (.e. two spaces).\ntrailing ) leading { go new line.Hanging-indent: indent argument name match opening ( function.\ntrailing ) leading { go line last argument.\n\n# Good\nlong_function_name <- function(= \"long argument\",\n                               b = \"another argument\",\n                               c = \"another long argument\") {\n  # usual code indented two spaces.\n}Hanging-indent: indent argument name match opening ( function.\ntrailing ) leading { go line last argument.styles designed clearly separate function definition body.function argument can’t fit single line, sign rework argument keep short sweet.","code":"\n# Good\nlong_function_name <- function(\n  a = \"a long argument\",\n  b = \"another argument\",\n  c = \"another long argument\"\n) {\n  # As usual code is indented by two spaces.\n}\n# Good\nlong_function_name <- function(a = \"a long argument\",\n                               b = \"another argument\",\n                               c = \"another long argument\") {\n  # As usual code is indented by two spaces.\n}\n# Bad\nlong_function_name <- function(a = \"a long argument\",\n  b = \"another argument\",\n  c = \"another long argument\") {\n  # Here it's hard to spot where the definition ends and the\n  # code begins, and to see all three function arguments\n}"},{"path":"functions.html","id":"s7","chapter":"3 Functions","heading":"3.4 S7","text":"S7, method definition can long function name replaced method call specifies generic dispatch classes. case recommend single-indent style.method definition long fit one line, use usual rules \nspread method arguments across multiple lines:","code":"\nmethod(from_provider, list(openai_provider, class_any)) <- function(\n  provider,\n  x,\n  ...,\n  error_call = caller_env()\n) {\n  ...\n}\nmethod(\n  from_provider,\n  list(openai_provider, class_any, a_very_long_class_name)\n) <- function(\n  provider,\n  x,\n  ...,\n  error_call = caller_env()\n) {\n  ...\n}"},{"path":"functions.html","id":"return","chapter":"3 Functions","heading":"3.5 return()","text":"use return() early returns. Otherwise, rely R return result\nlast evaluated expression.Return statements always line important effects control flow. See also inline statements.function called primarily side-effects (like printing,\nplotting, saving disk), return first argument invisibly.\nmakes possible use function part pipe. print methods\nusually , like example httr:","code":"\n# Good\nfind_abs <- function(x) {\n  if (x > 0) {\n    return(x)\n  }\n  x * -1\n}\nadd_two <- function(x, y) {\n  x + y\n}\n\n# Bad\nadd_two <- function(x, y) {\n  return(x + y)\n}\n# Good\nfind_abs <- function(x) {\n  if (x > 0) {\n    return(x)\n  }\n  x * -1\n}\n\n# Bad\nfind_abs <- function(x) {\n  if (x > 0) return(x)\n  x * -1\n}\nprint.url <- function(x, ...) {\n  cat(\"Url: \", build_url(x), \"\\n\", sep = \"\")\n  invisible(x)\n}"},{"path":"functions.html","id":"comments-1","chapter":"3 Functions","heading":"3.6 Comments","text":"code, use comments explain “” “” “”. line\ncomment begin comment symbol single space: #.Comments sentence case, end full stop \ncontain least two sentences:","code":"\n# Good\n\n# Objects like data frames are treated as leaves\nx <- map_if(x, is_bare_list, recurse)\n\n\n# Bad\n\n# Recurse only with bare lists\nx <- map_if(x, is_bare_list, recurse)\n# Good\n\n# Objects like data frames are treated as leaves\nx <- map_if(x, is_bare_list, recurse)\n\n# Do not use `is.list()`. Objects like data frames must be treated\n# as leaves.\nx <- map_if(x, is_bare_list, recurse)\n\n\n# Bad\n\n# objects like data frames are treated as leaves\nx <- map_if(x, is_bare_list, recurse)\n\n# Objects like data frames are treated as leaves.\nx <- map_if(x, is_bare_list, recurse)"},{"path":"pipes.html","id":"pipes","chapter":"4 Pipes","heading":"4 Pipes","text":"","code":""},{"path":"pipes.html","id":"introduction","chapter":"4 Pipes","heading":"4.1 Introduction","text":"Use |> emphasise sequence actions, rather object actions performed .tidyverse designed work particuarly well pipe, can use code, particularly conjunction _ placeholder.Avoid using pipe :need manipulate one object time. Reserve pipes \nsequence steps applied one primary object.need manipulate one object time. Reserve pipes \nsequence steps applied one primary object.meaningful intermediate objects given\ninformative names.meaningful intermediate objects given\ninformative names.","code":"strings |>\n  str_replace(\"a\", \"b\"),\n  str_replace(\"x\", \"y\")\n\nstrings |>\n  gsub(\"a\", \"b\", x = _) |>\n  gsub(\"x\", \"y\", x = _)"},{"path":"pipes.html","id":"whitespace","chapter":"4 Pipes","heading":"4.2 Whitespace","text":"|> always space , usually followed new line. first step, line indented two spaces. structure makes easier add new steps (rearrange existing steps) harder overlook step.","code":"\n# Good\niris |>\n  summarize(across(where(is.numeric), mean), .by = Species) |>\n  pivot_longer(-Species, names_to = \"measure\", values_to = \"value\") |>\n  arrange(value)\n\n# Bad\niris |> summarize(across(where(is.numeric), mean), .by = Species) |>\npivot_longer(-Species, names_to = \"measure\", values_to = \"value\") |>\narrange(value)"},{"path":"pipes.html","id":"long-lines","chapter":"4 Pipes","heading":"4.3 Long lines","text":"arguments function don’t fit one line, put argument \nline indent:data analysis, recommend using pipe whenever function needs span multiple lines, even ’s single step.","code":"\n# Good\niris |>\n  summarise(\n    Sepal.Length = mean(Sepal.Length),\n    Sepal.Width = mean(Sepal.Width),\n    .by = Species\n  )\n\n# Bad\niris |>\n  summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), .by = Species)\n# Bad\nsummarise(\n  iris,\n  Sepal.Length = mean(Sepal.Length),\n  Sepal.Width = mean(Sepal.Width),\n  .by = Species\n)"},{"path":"pipes.html","id":"short-pipes","chapter":"4 Pipes","heading":"4.4 Short pipes","text":"’s ok write short pipe single line:short pipes often become longer pipes, recommend generally stick one function per line:Sometimes ’s useful include short pipe argument function \nlonger pipe. Carefully consider whether code readable short\ninline pipe (doesn’t require lookup elsewhere) ’s better move\ncode outside pipe give evocative name.","code":"\n# Ok\niris |> subset(Species == \"virginica\") |> _$Sepal.Length\niris |> summarise(width = Sepal.Width, .by = Species) |> arrange(width)\n# Better\niris |>\n  subset(Species == \"virginica\") |>\n  _$Sepal.Length\n\niris |>\n  summarise(width = Sepal.Width, .by = Species) |>\n  arrange(width)\n# Good\nx |>\n  semi_join(y |> filter(is_valid))\n\n# Ok\nx |>\n  select(a, b, w) |>\n  left_join(y |> select(a, b, v), join_by(a, b))\n\n# Better\nx_join <- x |> select(a, b, w)\ny_join <- y |> select(a, b, v)\nleft_join(x_join, y_join, join_by(a, b))"},{"path":"pipes.html","id":"assignment-2","chapter":"4 Pipes","heading":"4.5 Assignment","text":"three acceptable forms assignment:Variable name assignment separate lines:\n\niris_long <-\n  iris |>\n  gather(measure, value, -Species) |>\n  arrange(-value)Variable name assignment separate lines:Variable name assignment line:\n\niris_long <- iris |>\n  gather(measure, value, -Species) |>\n  arrange(-value)Variable name assignment line:Assignment end pipe ->:\n\niris |>\n  gather(measure, value, -Species) |>\n  arrange(-value) ->\n  iris_longAssignment end pipe ->:think third natural write, makes reading little\nharder: name comes first, can act heading remind\npurpose pipe.","code":"\niris_long <-\n  iris |>\n  gather(measure, value, -Species) |>\n  arrange(-value)\niris_long <- iris |>\n  gather(measure, value, -Species) |>\n  arrange(-value)\niris |>\n  gather(measure, value, -Species) |>\n  arrange(-value) ->\n  iris_long"},{"path":"pipes.html","id":"magrittr","chapter":"4 Pipes","heading":"4.6 magrittr","text":"recommend use base |> pipe instead magrittr’s %>%.R 4.3.0, base pipe provides features magrittr recommend using.","code":"\n# Good\niris |>\n  summarise(width = Sepal.Width, .by = Species) |>\n  arrange(width)\n\n# Bad\niris %>%\n  summarise(width = Sepal.Width, .by = Species) %>%\n  arrange(width)"},{"path":"ggplot2.html","id":"ggplot2","chapter":"5 ggplot2","heading":"5 ggplot2","text":"","code":""},{"path":"ggplot2.html","id":"introduction-1","chapter":"5 ggplot2","heading":"5.1 Introduction","text":"Styling suggestions + used separate ggplot2 layers similar |> pipelines.","code":""},{"path":"ggplot2.html","id":"whitespace-1","chapter":"5 ggplot2","heading":"5.2 Whitespace","text":"+ always space , followed new line. true even plot two layers. first step, line indented two spaces.creating ggplot dplyr pipeline, one level indentation.","code":"\n# Good\niris |>\n  filter(Species == \"setosa\") |>\n  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) +\n  geom_point()\n\n# Bad\niris |>\n  filter(Species == \"setosa\") |>\n  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) +\n    geom_point()\n\n# Bad\niris |>\n  filter(Species == \"setosa\") |>\n  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) + geom_point()"},{"path":"ggplot2.html","id":"long-lines-1","chapter":"5 ggplot2","heading":"5.3 Long lines","text":"arguments ggplot2 layer don’t fit one line, put argument line indent:ggplot2 allows data manipulation, filtering slicing, within data argument. Avoid , instead data manipulation pipeline starting plotting.","code":"\n# Good\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point() +\n  labs(\n    x = \"Sepal width, in cm\",\n    y = \"Sepal length, in cm\",\n    title = \"Sepal length vs. width of irises\"\n  )\n\n# Bad\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point() +\n  labs(x = \"Sepal width, in cm\", y = \"Sepal length, in cm\", title = \"Sepal length vs. width of irises\")\n# Good\niris |>\n  filter(Species == \"setosa\") |>\n  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) +\n  geom_point()\n\n# Bad\nggplot(filter(iris, Species == \"setosa\"), aes(x = Sepal.Width, y = Sepal.Length)) +\n  geom_point()"},{"path":"package-files.html","id":"package-files","chapter":"6 Files","heading":"6 Files","text":"majority advice Chapter 1 also applies files packages. Important differences described .","code":""},{"path":"package-files.html","id":"names-1","chapter":"6 Files","heading":"6.1 Names","text":"file contains single function, give file name \nfunction.file contains single function, give file name \nfunction.file contains multiple related functions, give concise,\nevocative name.file contains multiple related functions, give concise,\nevocative name.Deprecated functions live file deprec- prefix.Deprecated functions live file deprec- prefix.","code":""},{"path":"package-files.html","id":"organisation-1","chapter":"6 Files","heading":"6.2 Organisation","text":"file contains multiple functions, public functions \ndocumentation appear first, private functions appearing \ndocumented functions. multiple public functions share documentation,\nimmediately follow documentation block.See 7 thorough guidance documenting functions\npackages.","code":"\n# Bad\nhelp_compute <- function() {\n  # ... Lots of code ...\n}\n\n#' My public function\n#'\n#' This is where the documentation of my function begins.\n#' ...\n#' @export\ndo_something_cool <- function() {\n  # ... even more code ...\n  help_compute()\n}\n# Good\n#' Lots of functions for doing something cool\n#'\n#' ... Complete documentation ...\n#' @name something-cool\nNULL## NULL\n#' @describeIn something-cool Get the mean\n#' @export\nget_cool_mean <- function(x) {\n  # ...\n}\n\n#' @describeIn something-cool Get the sum\n#' @export\nget_cool_sum <- function(x) {\n  # ...\n}"},{"path":"documentation.html","id":"documentation","chapter":"7 Documentation","heading":"7 Documentation","text":"","code":""},{"path":"documentation.html","id":"introduction-2","chapter":"7 Documentation","heading":"7.1 Introduction","text":"Documentation code essential, even person using code\nfuture-. Use roxygen2 \nmarkdown\nsupport enabled keep documentation close code.","code":""},{"path":"documentation.html","id":"title-and-description","chapter":"7 Documentation","heading":"7.2 Title and description","text":"Use first line function documentation provide concise title describes function, dataset, class. Titles use sentence case\nend full stop (.).need use explicit @title @description tags, except\ncase description multiple paragraphs includes\ncomplex formatting like bulleted list.","code":"\n#' Combine values into a vector or list\n#'\n#' This is a generic function which combines its arguments.\n#'\n#' Apply a function to each element of a vector\n#'\n#' @description\n#' The map function transform the input, returning a vector the same length\n#' as the input.\n#'\n#' * `map()` returns a list or a data frame\n#' * `map_lgl()`, `map_int()`, `map_dbl()` and `map_chr()` return\n#'    vectors of the corresponding type (or die trying);\n#' * `map_dfr()` and `map_dfc()` return data frames created by row-binding\n#'    and column-binding respectively. They require dplyr to be installed."},{"path":"documentation.html","id":"indents-and-line-breaks","chapter":"7 Documentation","heading":"7.3 Indents and line breaks","text":"Always indent one space #'. description corresponding \nroxygen tag spans multiple lines, add another two spaces extra\nindention.Alternatively, tags span multiple lines (like @description, @examples @section) can corresponding tag line subsequent lines don’t need indented.Use line breaks /sections needed:","code":"\n#' @param key The bare (unquoted) name of the column whose values will be used\n#'   as column headings.\n#' @examples\n#' 1 + 1\n#' sin(pi)\n#' @section Tidy data:\n#' When applied to a data frame, row names are silently dropped. To preserve,\n#' convert to an explicit variable with [tibble::rownames_to_column()].\n#'\n#' @section Scoped filtering:\n#' The three [scoped] variants ([filter_all()], [filter_if()] and\n#' [filter_at()]) make it easy to apply a filtering condition to a\n#' selection of variables."},{"path":"documentation.html","id":"documenting-parameters","chapter":"7 Documentation","heading":"7.4 Documenting parameters","text":"tags, like @param, @seealso @return, text \nsentence, starting capital letter ending full stop.functions share parameters, can use @inheritParams avoid\nduplication content multiple places.","code":"\n#' @param key The bare (unquoted) name of the column whose values will be used\n#'   as column headings.\n#' @inheritParams function_to_inherit_from"},{"path":"documentation.html","id":"capitalization-and-full-stops","chapter":"7 Documentation","heading":"7.5 Capitalization and full stops","text":"bullets, enumerations, argument descriptions like, use sentence\ncase put period end text element, even \nwords. However, avoid capitalization function names packages since R \ncase sensitive. Use colon enumerations bulleted lists.","code":"\n#' @details\n#' In the following, we present the bullets of the list:\n#' * Four cats are few animals.\n#' * forcats is a package."},{"path":"documentation.html","id":"cross-linking","chapter":"7 Documentation","heading":"7.6 Cross-linking","text":"Cross-referencing encouraged, within R’s help file system well \nexternal resources.List closely related functions @seealso. single related function can written sentence:recommendations organised bulleted list:can link functions packages using fully qualified function name, .e. [pkg::function()].family related functions, can use @family tag \nautomatically add appropriate lists interlinks @seealso section.\nFamily names plural. dplyr, verbs arrange(), filter(),\nmutate(), slice(), summarize() form family single table verbs.linking external resources either include full url inline <>, surrounding prose link text make extremely clear hyperlink goes. Avoid text like “click ”.","code":"\n#' @seealso [fct_lump()] to automatically convert the rarest (or most common)\n#'   levels to \"other\".\n#' @seealso\n#' * [tibble()] constructs from individual columns.\n#' * [enframe()] converts a named vector into a two-column tibble (names and\n#'   values).\n#' * [name-repair] documents the details of name repair.\n#' @family single table verbs"},{"path":"documentation.html","id":"r-code","chapter":"7 Documentation","heading":"7.7 R code","text":"Text contains valid R code marked using backticks. includes:Function arguments, e.g. na.rm.Values, e.g. TRUE, FALSE, NA, NaN, ..., NULLLiteral R code, e.g. mean(x, na.rm = TRUE)Class names, e.g. “tibble class tbl_df …”can use code syntax function names, like `tibble()`, consider better use cross-link instead, like [tibble()]. refer function multiple times one topic, need link first reference.","code":""},{"path":"documentation.html","id":"package-names","chapter":"7 Documentation","heading":"7.8 Package names","text":"Don’t use code font package names. package name might misinterpreted ordinary word, disambiguate following “package” wrapping package name {} ().package name comes start sentence, treat like proper name don’t capitalize :","code":"# Good\nUse the glue package to flexibly interpolate values into strings.\nUse {glue} to flexibly interpolate values into strings.\n\n# Bad\nUse glue to flexibly interpolate values into strings.\nUse `glue` to flexibly interpolate values into strings.\nUse the {glue} package to flexibly interpolate values into strings.# Good\ndplyr provides a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.\n\n# Bad\nDplyr provides a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges"},{"path":"documentation.html","id":"internal-functions","chapter":"7 Documentation","heading":"7.9 Internal functions","text":"Internal functions documented #' comments per usual.\nUse @noRd tag prevent .Rd files generated.","code":"\n#' Drop last\n#'\n#' Drops the last element from a vector.\n#'\n#' @param x A vector object to be trimmed.\n#'\n#' @noRd"},{"path":"tests.html","id":"tests","chapter":"8 Tests","heading":"8 Tests","text":"","code":""},{"path":"tests.html","id":"organisation-2","chapter":"8 Tests","heading":"8.1 Organisation","text":"organisation test files match organisation R/ files: function lives R/foofy.R, tests live tests/testthat/test-foofy.R.Use usethis::use_test() automatically create file correct name.file name displayed output order get context.","code":""},{"path":"error-messages.html","id":"error-messages","chapter":"9 Error messages","heading":"9 Error messages","text":"error message start general statement problem give concise description went wrong.\nConsistent use punctuation formatting makes errors easier parse.guide assumes ’re using cli::cli_abort().\ntransitioning use function tidyverse :Makes easy generate bulleted lists.Uses glue style interpolation insert data error.Supports wide range inline markup.Provides convenient tools chain errors together.Can control name function shown error.Much advice guide still applies ’re using stop(), much work generate message.","code":""},{"path":"error-messages.html","id":"problem-statement","chapter":"9 Error messages","heading":"9.1 Problem statement","text":"Every error message start general statement problem.\nconcise, informative (hard!).\nproblem statement use sentence case end full stop.cause problem clear (e.g. incorrect type size), use “must”:\n\ndplyr::nth(1:10, \"x\")\n#> Error:\n#> ! `n` must numeric vector, character vector.\n\ndplyr::nth(1:10, 1:2)\n#> Error:\n#> ! `n` must length 1, length 2.\nbest tell user expected (“numeric vector”) actually provided (“character vector”).cause problem clear (e.g. incorrect type size), use “must”:best tell user expected (“numeric vector”) actually provided (“character vector”).state expected, use “can’t”:\n\nmtcars |> pull(b)\n#> Error:\n#> ! find column `b` `.data`.\n\nas_vector(environment())\n#> Error:\n#> ! coerce `.x` vector.\n\npurrr::modify_depth(list(list(x = 1)), 3, ~ . + 1)\n#> Error:\n#> ! find specified `.depth` `.x`.state expected, use “can’t”:","code":"\ndplyr::nth(1:10, \"x\")\n#> Error:\n#> ! `n` must be a numeric vector, not a character vector.\n\ndplyr::nth(1:10, 1:2)\n#> Error:\n#> ! `n` must have length 1, not length 2.\nmtcars |> pull(b)\n#> Error:\n#> ! Can't find column `b` in `.data`.\n\nas_vector(environment())\n#> Error:\n#> ! Can't coerce `.x` to a vector.\n\npurrr::modify_depth(list(list(x = 1)), 3, ~ . + 1)\n#> Error:\n#> ! Can't find specified `.depth` in `.x`."},{"path":"error-messages.html","id":"error-location","chapter":"9 Error messages","heading":"9.2 Error location","text":"Ideally error message mention failing function call.See https://rlang.r-lib.org/reference/topic-error-call.html pass calls error helpers.","code":""},{"path":"error-messages.html","id":"error-details","chapter":"9 Error messages","heading":"9.3 Error details","text":"problem statement, use bulleted list provide information.\nUse cross bullets (x) let user know problem , use info bullets () provide contextual information.\neasy create cli_abort(): Try keep sentences short sweet:best reveal location, name, /content troublesome component input.\ngoal make easy possible user find fix problem.(often easy identify exact problem; may require passing around extra arguments error messages generated lower-level can know original source. frequently used functions, effort typically worth .)source error unclear, avoid pointing user wrong direction giving opinion source error:multiple issues, inconsistency revealed across several arguments items, prefer bulleted list:list issues might long, make sure truncate show first :want correctly pluralise error message, consider using ngettext().\nSee notes ?ngettext() challenges related correct translation languages.","code":"\n# Good\nvec_slice(letters, 100)\n#> ! Can't subset elements past the end.\n#> ℹ Location 100 doesn't exist.\n#> ℹ There are only 26 elements.\n\n# Bad\nvec_slice(letters, 100)\n#> ! Must index an existing element.\n#> There are 26 elements and you've tried to subset element 100.\n# Good\nmap_int(1:5, ~ \"x\")\n#> Error:\n#> ! Each result must be a single integer.\n#> ✖ Result 1 is a character vector.\n\n# Bad\nmap_int(1:5, ~ \"x\")\n#> Error:\n#> ! Each result must be a single integer\n# Good\npull(mtcars, b)\n#> Error:\n#> ! Can't find column `b` in `.data`.\n\ntibble(x = 1:2, y = 1:3, z = 1)\n#> Error:\n#> ! Tibble columns must have compatible sizes.\n#> • Size 2: Existing data.\n#> • Size 3: Column `y`.\n#> ℹ Only values of size one are recycled.\n\n# Bad: implies one argument at fault\npull(mtcars, b)\n#> Error:\n#> ! Column `b` must exist in `.data`.\n\npull(mtcars, b)\n#> Error:\n#> ! `.data` must contain column `b`.\n\ntibble(x = 1:2, y = 1:3, z = 1)\n#> Error:\n#> ! Column `x` must be length 1 or 3, not 2.\n# Good\npurrr::reduce2(1:4, 1:2, `+`)\n#> Error:\n#> ! `.x` and `.y` must have compatible lengths:\n#> ✖ `.x` has length 4\n#> ✖ `.y` has length 2\n\n# Bad: harder to scan\npurrr::reduce2(1:4, 1:2, `+`)\n#> Error:\n#> ! `.x` and `.y` must have compatible lengths: `.x` has length 4 and\n#> `.y` has length 2\n# Good\n#> Error: NAs found at 1,000,000 locations: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ..."},{"path":"error-messages.html","id":"hints","chapter":"9 Error messages","heading":"9.4 Hints","text":"source error clear common, may want provide hint fix .\nhint last bullet, use info bullet (), end question mark.Hints particularly important source error far away root cause:Good hints difficult write want avoid steering users wrong direction.\nGenerally, avoid writing hint unless problem common, can easily find common pattern incorrect usage (e.g. searching StackOverflow).","code":"\ndplyr::filter(iris, Species = \"setosa\")\n#> Error:\n#> ! Filter specifications must be named.\n#> ℹ Did you mean `Species == \"setosa\"`?\n\nggplot2::ggplot(ggplot2::aes())\n#> Error:\n#> ! Can't plot data with class \"uneval\".\n#> ℹ Did you accidentally provide the results of aes() to the `data` argument?\n\nmtcars |> ggplot() |> geom_point()\n#> Error in `validate_mapping()`:\n#> ! `mapping` must be created by `aes()`.\n#> ℹ Did you use `%>%` or `|>` instead of `+`?\n# Bad\nmean[[1]]\n#> Error:\n#> ! object of type 'closure' is not subsettable\n\n# BETTER\nmean[[1]]\n#> Error:\n#> ! Can't subset a function.\n\n# BEST\nmean[[1]]\n#> Error:\n#> ! Can't subset a function.\n#> ℹ Have you forgotten to define a variable named `mean`?"},{"path":"error-messages.html","id":"punctuation","chapter":"9 Error messages","heading":"9.5 Punctuation","text":"Errors written sentence case, end full stop.\nBullets formatted similarly; make sure capitalise first word (unless ’s argument column name).Errors written sentence case, end full stop.\nBullets formatted similarly; make sure capitalise first word (unless ’s argument column name).Prefer singular problem statements:\n\n# Good\nmap_int(1:2, ~ \"\")\n#> Error:\n#> ! result must coercible single integer.\n#> ✖ Result 1 character vector.\n\n# Bad\nmap_int(1:2, ~ \"\")\n#> Error:\n#> ! Results must coercible single integers.\n#> ✖ Result 1 character vector.Prefer singular problem statements:can detect multiple problems, list five.\nallows user fix multiple problems single pass without overwhelmed many errors may source.\n\n\n# BETTER\nmap_int(1:10, ~ \"\")\n#> Error:\n#> ! result must coercible single integer.\n#> ✖ Result 1 character vector\n#> ✖ Result 2 character vector\n#> ✖ Result 3 character vector\n#> ✖ Result 4 character vector\n#> ✖ Result 5 character vector\n#> ... 5 problemsIf can detect multiple problems, list five.\nallows user fix multiple problems single pass without overwhelmed many errors may source.Pick natural connector problem statement error location: may “, ”, “;”, “:” depending context.Pick natural connector problem statement error location: may “, ”, “;”, “:” depending context.Surround names arguments backticks, e.g. `x`.\nUse “column” disambiguate columns arguments: Column `x`.\nAvoid “variable”, ambiguous.\nSurround names arguments backticks, e.g. `x`.\nUse “column” disambiguate columns arguments: Column `x`.\nAvoid “variable”, ambiguous.\nIdeally, component error message less 80 characters wide.\nadd manual line breaks long error messages; look correct console narrower (much wider) expected.\nInstead, use bullets break error shorter logical components.\ncase need longer sentences, let cli perform paragraph wrapping automatically.\ninserts newlines automatically depending width console.Ideally, component error message less 80 characters wide.\nadd manual line breaks long error messages; look correct console narrower (much wider) expected.\nInstead, use bullets break error shorter logical components.\ncase need longer sentences, let cli perform paragraph wrapping automatically.\ninserts newlines automatically depending width console.","code":"\n# Good\nmap_int(1:2, ~ \"a\")\n#> Error:\n#> ! Each result must be coercible to a single integer.\n#> ✖ Result 1 is a character vector.\n\n# Bad\nmap_int(1:2, ~ \"a\")\n#> Error:\n#> ! Results must be coercible to single integers.\n#> ✖ Result 1 is a character vector.\n# BETTER\nmap_int(1:10, ~ \"a\")\n#> Error:\n#> ! Each result must be coercible to a single integer.\n#> ✖ Result 1 is a character vector\n#> ✖ Result 2 is a character vector\n#> ✖ Result 3 is a character vector\n#> ✖ Result 4 is a character vector\n#> ✖ Result 5 is a character vector\n#> ... and 5 more problems"},{"path":"error-messages.html","id":"before-and-after","chapter":"9 Error messages","heading":"9.6 Before and after","text":"examples gathered around tidyverse.","code":"\ndplyr::filter(mtcars, cyl)\n#> BEFORE:\n#> ! Argument 2 filter condition does not evaluate to a logical vector.\n\n#> AFTER:\n#> ! Each argument must be a logical vector.\n#> * Argument 2 (`cyl`) is an integer vector.\n\ntibble::tribble(\"x\", \"y\")\n#> BEFORE: ! Expected at least one column name; e.g. `~name`\n#>  AFTER: ! Must supply at least one column name, e.g. `~name`.\n\nggplot2::ggplot(data = diamonds) + ggplot2::geom_line(ggplot2::aes(x = cut))\n#> BEFORE: ! geom_line requires the following missing aesthetics: y\n#>  AFTER: ! `geom_line()` must have the following aesthetics: `y`.\n\ndplyr::rename(mtcars, cyl = xxx)\n#> BEFORE: ! `xxx` contains unknown variables\n#>  AFTER: ! Can't find column `xxx` in `.data`.\n\ndplyr::arrange(mtcars, xxx)\n#> BEFORE: ! Evaluation error: object 'xxx' not found.\n#>  AFTER: ! Can't find column `xxx` in `.data`."},{"path":"error-messages.html","id":"localisation","chapter":"9 Error messages","heading":"9.7 Localisation","text":"encouraged informative possible, sentence simple make localisation translation possible.\nLocalization Horror Story: Happen Good summary challenges localising error messages.\nmight support localised messages right now make easy possible future.","code":""},{"path":"news.html","id":"news","chapter":"10 News","heading":"10 News","text":"user-facing change package accompanied bullet NEWS.md. Minor changes documentation don’t need documented, ’s worthwhile draw attention sweeping changes new vignettes.","code":""},{"path":"news.html","id":"in-development","chapter":"10 News","heading":"10.1 In-development","text":"goal bullet briefly describe change users packages can understand ’s changed. can similar commit message, written user (developer) mind. ’s worth emphasizing point — reader NEWS entries likely unfamiliar day--day development work internals package. Think carefully concisely clearly summarize ’s changed matters . doesn’t matter (.e. ’s purely internal change), don’t need bullet.New bullets added top file (immediately first heading) single line. Organisation wrapping happen later, release process (Section 10.2).bullet related issue, include issue number. \ncontribution PR, author package author, include \nGitHub user name. items wrapped parentheses generally\ncome final period.","code":"# haven (development version)\n\n* Second update.\n* First update.# Good\n* `ggsave()` now uses full argument names to avoid partial match warnings (@wch, #2355).\n\n# Bad\n* `ggsave()` now uses full argument names to avoid partial match warnings.\n\n* `ggsave()` now uses full argument names to avoid partial match warnings. (@wch, #2355)"},{"path":"news.html","id":"news-release","chapter":"10 News","heading":"10.2 Pre-release","text":"Prior release, NEWS file needs thoroughly proofread, groomed, organised sections.","code":""},{"path":"news.html","id":"general-style","chapter":"10 News","heading":"10.2.1 General style","text":"Strive place name function close beginning bullet\npossible. consistent location makes bullets easier scan, easier\norganise prior release.Lines wrapped 80 characters, bullet end full\nstop.Frame bullets positively (.e. now happens, used happen), \nuse present tense.Many news bullets single sentence. typically adequate describing bug fix minor improvement, may need detail describing new feature. complex features, include longer examples fenced code blocks (```). useful inspiration later write blog post.","code":"# Good\n* `ggsave()` now uses full argument names to avoid partial match warning (#2355).\n\n# Bad\n* Fixed partial argument matches in `ggsave()` (#2355).# Good\n* `ggsave()` now uses full argument names to avoid partial match warnings (#2355).\n\n# Bad\n* `ggsave()` no longer partially matches argument names (#2355).# Good\n* In `stat_bin()`, `binwidth` now also takes functions.\n\n# Better\n* In `stat_bin()`, `binwidth` now also takes functions. The function is\n  called with the scaled `x` values, and should return a single number.\n  This makes it possible to use classical binwidth computations with ggplot2.\n\n# Best\n* In `stat_bin()`, `binwidth` now also takes functions. The function is\n  called with the scaled `x` values, and should return a single number.\n  With a little work, this makes it possible to use classical bin size\n  computations with ggplot2.\n\n  ```R\n  sturges <- function(x) {\n    rng <- range(x)\n    bins <- nclass.Sturges(x)\n\n    (rng[2] - rng[1]) / bins\n  }\n  ggplot(diamonds, aes(price)) +\n    geom_histogram(binwidth = sturges) +\n    facet_wrap(~cut)\n  ```"},{"path":"news.html","id":"code-style","chapter":"10 News","heading":"10.2.2 Code style","text":"Functions, arguments, file names wrapped backticks. Function names include parentheses; omit “argument” “function”","code":"# Good\n* In `stat_bin()`, `binwidth` now also takes functions.\n\n# Bad\n* In the stat_bin function, \"binwidth\" now also takes functions."},{"path":"news.html","id":"headings","chapter":"10 News","heading":"10.2.3 Headings","text":"release level 1 heading (#) containing package name\nversion number. smaller packages patch releases amount \norganisation may sufficient. example, NEWS modelr 0.1.2:many bullets, version heading followed issues\ngrouped related areas level 2 headings (##). Three commonly\nused sections shown :fine deviate headings another organisation makes sense.\nIndeed, larger packages often require finer break . example,\nggplot2 2.3.0\nincluded headings:worthwhile organise bullets headings development, \n’s typically obvious groups advance.Within section, bullets ordered alphabetically first function\nmentioned. function mentioned, place bullet top section.","code":"# modelr 0.1.2\n\n* `data_grid()` no longer fails with modern tidyr (#58).\n\n* New `mape()` and `rsae()` model quality statistics (@paulponcet, #33).\n\n* `rsquare()` use more robust calculation 1 - SS_res / SS_tot rather\n  than SS_reg / SS_tot (#37).\n\n* `typical()` gains `ordered` and `integer` methods (@jrnold, #44),\n  and `...` argument (@jrnold, #42).# package 1.1.0\n\n## Breaking changes\n\n## New features\n\n## Minor improvements and fixes# ggplot 2.3.0\n## Breaking changes\n## New features\n### Tidy evaluation\n### sf\n### Layers: geoms, stats, and position adjustments\n### Scales and guides\n### Margins\n## Extension points\n## Minor bug fixes and improvements\n### Facetting\n### Scales\n### Layers\n### Coords\n### Themes\n### Guides\n### Other"},{"path":"news.html","id":"breaking-changes","chapter":"10 News","heading":"10.2.4 Breaking changes","text":"API breaking changes also appear section top.\nbullet include description symptoms change, \nneeded fix . bullet also repeated appropriate section.","code":"## Breaking changes\n\n* `separate()` now correctly uses -1 to refer to the far right position,\n  instead of -2. If you depended on this behaviour, you'll need to condition\n  on `packageVersion(\"tidyr\") > \"0.7.2\"`."},{"path":"news.html","id":"common-patterns","chapter":"10 News","heading":"10.2.5 Common patterns","text":"following excerpts tidyverse news entries provide helpful templates \nfollow.New family functions:\n* Support ordered factors improved. Ordered factors throw warning\n  mapped shape (unordered factors ), throw warnings\n  mapped size alpha (unordered factors ). Viridis used \n  default colour fill scale ordered factors (@karawoo, #1526).\n\n* `possibly()`, `safely()` friends longer capture interrupts: \n  means can now terminate mapper using one \n  Escape Ctrl + C (#314).New family functions:New function:\n* New `position_dodge2()` provides enhanced dogding boxplots...\n\n* New `stat_qq_line()` makes easy add simple line Q-Q plot.\n  line makes easier judge fit theoretical distribution\n  (@nicksolomon).New function:New argument existing function:\n* `geom_segment()` gains `linejoin` parameter.New argument existing function:Function argument changes behaviour:\n* `separate()`, `col = -1` now refers far right position.\n  Previously, incorrectly, `col = -2` referred far-right\n  position.Function argument changes behaviour:Function changes behaviour:\n* `map()` `modify()` now work calls pairlists (#412).\n\n* `flatten_dfr()` `flatten_dfc()` now aborts informative\n   message dplyr installed (#454).\n\n* `reduce()` now throws error `.x` empty `.init` \n  supplied.Function changes behaviour:","code":"* Support for ordered factors is improved. Ordered factors throw a warning\n  when mapped to shape (unordered factors do not), and do not throw warnings\n  when mapped to size or alpha (unordered factors do). Viridis is used as\n  default colour and fill scale for ordered factors (@karawoo, #1526).\n\n* `possibly()`, `safely()` and friends no longer capture interrupts: this\n  means that you can now terminate a mapper using one of these with\n  Escape or Ctrl + C (#314).* New `position_dodge2()` provides enhanced dogding for boxplots...\n\n* New `stat_qq_line()` makes it easy to add a simple line to a Q-Q plot.\n  This line makes it easier to judge the fit of the theoretical distribution\n  (@nicksolomon).* `geom_segment()` gains a `linejoin` parameter.* In `separate()`, `col = -1` now refers to the far right position.\n  Previously, and incorrectly, `col = -2` referred to the far-right\n  position.* `map()` and `modify()` now work with calls and pairlists (#412).\n\n* `flatten_dfr()` and `flatten_dfc()` now aborts with informative\n   message if dplyr is not installed (#454).\n\n* `reduce()` now throws an error if `.x` is empty and `.init` is not\n  supplied."},{"path":"news.html","id":"blog-post","chapter":"10 News","heading":"10.3 Blog post","text":"major minor releases, latest news turned blog\npost. blog post highlight major user-facing changes, point \nrelease notes details. Generally, focus new features\nmajor improvements, including examples showing new features action.\ndon’t need describe minor improvements bug fixes, motivated\nreader can find release notes.","code":""},{"path":"gitgithub.html","id":"gitgithub","chapter":"11 Git/GitHub","heading":"11 Git/GitHub","text":"","code":""},{"path":"gitgithub.html","id":"commit-messages","chapter":"11 Git/GitHub","heading":"11.1 Commit messages","text":"Follow standard git commit message advice. brief:first line subject, summarise changes commit\n50 characters.\nUse sentence case, period end.first line subject, summarise changes commit\n50 characters.\nUse sentence case, period end.additional details required, add blank line, provide\nexplanation context paragraph format.additional details required, add blank line, provide\nexplanation context paragraph format.commit fixes GitHub issue include Fixes #<issue-number>.\nensure issue automatically closed commit\nmerged main.commit fixes GitHub issue include Fixes #<issue-number>.\nensure issue automatically closed commit\nmerged main.","code":""},{"path":"gitgithub.html","id":"pull-requests","chapter":"11 Git/GitHub","heading":"11.2 Pull requests","text":"title pull request briefly describe changes made. title standalone include related issue number (.e. don’t write Fixes #10).simple changes, can leave description blank ’s need describe obvious looking diff. complex changes, give overview changes. PR fixes issue, make sure include Fixes #<issue-number> description.","code":""}]
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Tidyverse style guide",
+    "section": "",
+    "text": "Welcome\nGood coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread. This site describes the style used throughout the tidyverse. It was derived from Google’s original R Style Guide - but Google’s current guide is derived from the tidyverse style guide.\nAll style guides are fundamentally opinionated. Some decisions genuinely do make code easier to use (especially matching indenting to programming structure), but many decisions are arbitrary. The most important thing about a style guide is that it provides consistency, making code easier to write because you need to make fewer decisions.\nTwo R packages support this style guide:\n\nstyler allows you to interactively restyle selected text, files, or entire projects. It includes an RStudio add-in, the easiest way to re-style existing code.\n\n\n\n\n\n\n\n\n\nlintr performs automated checks to confirm that you conform to the style guide.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "files.html",
+    "href": "files.html",
+    "title": "1  Files",
+    "section": "",
+    "text": "1.1 Names\nFile names should be meaningful and end in .R. Avoid using special characters in file names - stick with numbers, letters, -, and _.\nIf files should be run in a particular order, prefix them with numbers. If it seems likely you’ll have more than 10 files, left pad with zero:\nIf you later realise that you’ve missed some steps, it’s tempting to use 02a, 02b, etc. However, I think it’s generally better to bite the bullet and rename all files.\nPay attention to capitalization, since you, or some of your collaborators, might be using an operating system with a case-insensitive file system (e.g., Microsoft Windows or OS X) which can lead to problems with (case-sensitive) revision control systems. Prefer file names that are all lower case, and never have names that differ only in their capitalization.",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Files</span>"
+    ]
+  },
+  {
+    "objectID": "files.html#names",
+    "href": "files.html#names",
+    "title": "1  Files",
+    "section": "",
+    "text": "# Good\nfit_models.R\nutility_functions.R\n\n# Bad\nfit models.R\nfoo.r\nstuff.r\n\n00_download.R\n01_explore.R\n...\n09_model.R\n10_visualize.R",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Files</span>"
+    ]
+  },
+  {
+    "objectID": "files.html#organisation",
+    "href": "files.html#organisation",
+    "title": "1  Files",
+    "section": "1.2 Organisation",
+    "text": "1.2 Organisation\nIt’s hard to describe exactly how you should organise your code across multiple files. I think the best rule of thumb is that if you can give a file a concise name that still evokes its contents, you’ve arrived at a good organisation. But getting to that point is hard.",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Files</span>"
+    ]
+  },
+  {
+    "objectID": "files.html#internal-structure",
+    "href": "files.html#internal-structure",
+    "title": "1  Files",
+    "section": "1.3 Internal structure",
+    "text": "1.3 Internal structure\nUse commented lines of - and = to break up your file into easily readable chunks.\n\n# Load data ---------------------------\n\n# Plot data ---------------------------\n\nIf your script uses add-on packages, load them all at once at the very beginning of the file. This is more transparent than sprinkling library() calls throughout your code or having hidden dependencies that are loaded in a startup file, such as .Rprofile.",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Files</span>"
+    ]
+  },
+  {
+    "objectID": "syntax.html",
+    "href": "syntax.html",
+    "title": "2  Syntax",
+    "section": "",
+    "text": "2.1 Object names\nVariable and function names should use only lowercase letters, numbers, and _. Use underscores (_) (so called snake case) to separate words within a name.\n# Good\nday_one\nday_1\n\n# Bad\nDayOne\ndayone\nBase R uses dots in function names (contrib.url()) and class names (data.frame), but it’s better to reserve dots exclusively for the S3 object system. In S3, methods are given the name function.class; if you also use . in function and class names, you end up with confusing methods like as.data.frame.data.frame().\nIf you find yourself attempting to cram data into variable names (e.g. model_2018, model_2019, model_2020), consider using a list or data frame instead.\nGenerally, variable names should be nouns and function names should be verbs. Strive for names that are concise and meaningful (this is not easy!).\n# Good\nday_one\n\n# Bad\nfirst_day_of_the_month\ndjm1\nWhere possible, avoid re-using names of common functions and variables. This will cause confusion for the readers of your code.\n# Bad\nT &lt;- FALSE\nc &lt;- 10\nmean &lt;- function(x) sum(x)",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syntax</span>"
+    ]
+  },
+  {
+    "objectID": "syntax.html#object-names",
+    "href": "syntax.html#object-names",
+    "title": "2  Syntax",
+    "section": "",
+    "text": "“There are only two hard things in Computer Science: cache invalidation and naming things.”\n— Phil Karlton",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syntax</span>"
+    ]
+  },
+  {
+    "objectID": "syntax.html#spacing",
+    "href": "syntax.html#spacing",
+    "title": "2  Syntax",
+    "section": "2.2 Spacing",
+    "text": "2.2 Spacing\n\n2.2.1 Commas\nAlways put a space after a comma, never before, just like in regular English.\n\n# Good\nx[, 1]\n\n# Bad\nx[,1]\nx[ ,1]\nx[ , 1]\n\n\n\n2.2.2 Parentheses\nDo not put spaces inside or outside parentheses for regular function calls.\n\n# Good\nmean(x, na.rm = TRUE)\n\n# Bad\nmean (x, na.rm = TRUE)\nmean( x, na.rm = TRUE )\n\nPlace a space before and after () when used with if, for, or while.\n\n# Good\nif (debug) {\n  show(x)\n}\n\n# Bad\nif(debug){\n  show(x)\n}\n\nPlace a space after () used for function arguments:\n\n# Good\nfunction(x) {}\n\n# Bad\nfunction (x) {}\nfunction(x){}\n\n\n\n2.2.3 Embracing\nThe embracing operator, { }, should always have inner spaces to help emphasise its special behaviour:\n\n# Good\nmax_by &lt;- function(data, var, by) {\n  data |&gt;\n    group_by({{ by }}) |&gt;\n    summarise(maximum = max({{ var }}, na.rm = TRUE))\n}\n\n# Bad\nmax_by &lt;- function(data, var, by) {\n  data |&gt;\n    group_by({{by}}) |&gt;\n    summarise(maximum = max({{var}}, na.rm = TRUE))\n}\n\n\n\n2.2.4 Infix operators\nMost infix operators (==, +, -, &lt;-, etc.) should always be surrounded by spaces:\n\n# Good\nheight &lt;- (feet * 12) + inches\nmean(x, na.rm = TRUE)\n\n# Bad\nheight&lt;-feet*12+inches\nmean(x, na.rm=TRUE)\n\nThere are a few exceptions, which should never be surrounded by spaces:\n\nThe operators with high precedence: ::, :::, $, @, [, [[, ^, unary -, unary +, and :.\n\n# Good\nsqrt(x^2 + y^2)\ndf$z\nx &lt;- 1:10\n\n# Bad\nsqrt(x ^ 2 + y ^ 2)\ndf $ z\nx &lt;- 1 : 10\n\nSingle-sided formulas when the right-hand side is a single identifier:\n\n# Good\n~foo\ntribble(\n  ~col1, ~col2,\n  \"a\",   \"b\"\n)\n\n# Bad\n~ foo\ntribble(\n  ~ col1, ~ col2,\n  \"a\", \"b\"\n)\n\nNote that single-sided formulas with a complex right-hand side do need a space:\n\n# Good\n~ .x + .y\n\n# Bad\n~.x + .y\n\nWhen used in tidy evaluation !! (bang-bang) and !!! (bang-bang-bang) (because have precedence equivalent to unary -/+)\n\n# Good\ncall(!!xyz)\n\n# Bad\ncall(!! xyz)\ncall( !! xyz)\ncall(! !xyz)\n\nThe help operator\n\n# Good\npackage?stats\n?mean\n\n# Bad\npackage ? stats\n? mean\n\n\n\n\n2.2.5 Extra spaces\nAdding extra spaces is ok if it improves alignment of = or &lt;-.\n\n# Good\nlist(\n  total = a + b + c,\n  mean  = (a + b + c) / n\n)\n\n# Also fine\nlist(\n  total = a + b + c,\n  mean = (a + b + c) / n\n)\n\nDo not add extra spaces to places where space is not usually allowed.",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syntax</span>"
+    ]
+  },
+  {
+    "objectID": "syntax.html#vertical-space",
+    "href": "syntax.html#vertical-space",
+    "title": "2  Syntax",
+    "section": "2.3 Vertical space",
+    "text": "2.3 Vertical space\nUse vertical whitespace sparingly, and primarily to separate your “thoughts” in code, much like paragraph breaks in prose.\n\nAvoid empty lines at the start or end of functions.\nOnly use a single empty line when needed to separate functions or pipes.\nIt often makes sense to put an empty line before a comment block, to help visually connect the explanation with the code that it applies to.",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syntax</span>"
+    ]
+  },
+  {
+    "objectID": "syntax.html#function-calls",
+    "href": "syntax.html#function-calls",
+    "title": "2  Syntax",
+    "section": "2.4 Function calls",
+    "text": "2.4 Function calls\n\n2.4.1 Named arguments\nA function’s arguments typically fall into two broad categories: one supplies the data to compute on; the other controls the details of computation. When you call a function, you typically omit the names of data arguments, because they are used so commonly. If you override the default value of an argument, use the full name:\n\n# Good\nmean(1:10, na.rm = TRUE)\n\n# Bad\nmean(x = 1:10, , FALSE)\nmean(, TRUE, x = c(1:10, NA))\n\nAvoid partial matching, where you supply a unique prefix of a function argument.\n\n# Good\nrep(1:2, times = 3)\ncut(1:10, breaks = c(0, 4, 11))\n\n# Bad\nrep(1:2, t = 3)\ncut(1:10, br = c(0, 4, 11))\n\n\n\n2.4.2 Assignment\nAvoid assignment in function calls:\n\n# Good\nx &lt;- complicated_function()\nif (nzchar(x) &lt; 1) {\n  # do something\n}\n\n# Bad\nif (nzchar(x &lt;- complicated_function()) &lt; 1) {\n  # do something\n}\n\nThe only exception is in functions that capture side-effects:\n\noutput &lt;- capture.output(x &lt;- f())",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syntax</span>"
+    ]
+  },
+  {
+    "objectID": "syntax.html#control-flow",
+    "href": "syntax.html#control-flow",
+    "title": "2  Syntax",
+    "section": "2.5 Control flow",
+    "text": "2.5 Control flow\n\n2.5.1 Code blocks\nCurly braces, {}, define the most important hierarchy of R code. To make this hierarchy easy to see:\n\n{ should be the last character on the line. Related code (e.g., an if clause, a function declaration, a trailing comma, …) must be on the same line as the opening brace.\nThe contents should be indented by two spaces.\n} should be the first character on the line.\n\nIt is occassionally useful to have an empty curly braces block, in which case it should be written {}.\n\n# Good\nif (y &lt; 0 && debug) {\n  message(\"y is negative\")\n}\n\nif (y == 0) {\n  if (x &gt; 0) {\n    log(x)\n  } else {\n    message(\"x is negative or zero\")\n  }\n} else {\n  y^x\n}\n\ntest_that(\"call1 returns an ordered factor\", {\n  expect_s3_class(call1(x, y), c(\"factor\", \"ordered\"))\n})\n\ntryCatch(\n  {\n    x &lt;- scan()\n    cat(\"Total: \", sum(x), \"\\n\", sep = \"\")\n  },\n  interrupt = function(e) {\n    message(\"Aborted by user\")\n  }\n)\n\nwhile (waiting_for_something()) {}\n\n# Bad\nif (y &lt; 0 && debug) {\nmessage(\"Y is negative\")\n}\n\nif (y == 0)\n{\n    if (x &gt; 0) {\n      log(x)\n    } else {\n  message(\"x is negative or zero\")\n    }\n} else { y ^ x }\n\nwhile (waiting_for_something()) { }\nwhile (waiting_for_something()) {\n\n}\n\n\n\n2.5.2 If statements\n\nWhen present, else should be on the same line as }.\n& and | should never be used inside of an if clause because they can return vectors. Always use && and || instead.\nNB: ifelse(x, a, b) is not a drop-in replacement for if (x) a else b. ifelse() is vectorised (i.e. if length(x) &gt; 1, then a and b will be recycled to match) and it is eager (i.e. both a and b will always be evaluated).\nIf you want to rewrite a simple but lengthy if block:\n::: {.cell}\nif (x &gt; 10) {\n  message &lt;- \"big\"\n} else {\n  message &lt;- \"small\"\n}\n:::\nJust write it all on one line:\n::: {.cell}\nmessage &lt;- if (x &gt; 10) \"big\" else \"small\"\n:::\n\n\n\n2.5.3 Inline statements\nIt’s ok to drop the curly braces for very simple statements that fit on one line, as long as they don’t have side-effects.\n\n# Good\ny &lt;- 10\nx &lt;- if (y &lt; 20) \"Too low\" else \"Too high\"\n\nFunction calls that affect control flow (like return(), stop() or continue) should always go in their own {} block:\n\n# Good\nif (y &lt; 0) {\n  stop(\"Y is negative\")\n}\n\nfind_abs &lt;- function(x) {\n  if (x &gt; 0) {\n    return(x)\n  }\n  x * -1\n}\n\n# Bad\nif (y &lt; 0) stop(\"Y is negative\")\n\nif (y &lt; 0)\n  stop(\"Y is negative\")\n\nfind_abs &lt;- function(x) {\n  if (x &gt; 0) return(x)\n  x * -1\n}\n\n\n\n2.5.4 Implicit type coercion\nAvoid implicit type coercion (e.g. from numeric to logical) in if statements:\n\n# Good\nif (length(x) &gt; 0) {\n  # do something\n}\n\n# Bad\nif (length(x)) {\n  # do something\n}\n\n\n\n2.5.5 Switch statements\n\nAvoid position-based switch() statements (i.e. prefer names).\nEach element should go on its own line unless all element can fit on one line.\nElements that fall through to the following element should have a space after =.\nProvide a fall-through error unless you have previously validated the input.\n\n\n# Good\nswitch(x,\n  a = ,\n  b = 1,\n  c = 2,\n  stop(\"Unknown `x`\", call. = FALSE)\n)\n\n# Bad\nswitch(x,\n  a =,\n  b = 1,\n  c = 2\n)\nswitch(x,\n  a = long_function_name1(), b = long_function_name2(),\n  c = long_function_name2()\n)\nswitch(y, 1, 2, 3)",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syntax</span>"
+    ]
+  },
+  {
+    "objectID": "syntax.html#long-function-calls",
+    "href": "syntax.html#long-function-calls",
+    "title": "2  Syntax",
+    "section": "2.6 Long function calls",
+    "text": "2.6 Long function calls\nStrive to limit your code to 80 characters per line. This fits comfortably on a printed page with a reasonably sized font. If you find yourself running out of room, this is a good indication that you should encapsulate some of the work in a separate function.\nIf a function call is too long to fit on a single line, use one line each for the function name, each argument, and the closing ). This makes the code easier to read and to change later.\n\n# Good\ndo_something_very_complicated(\n  something = \"that\",\n  requires = many,\n  arguments = \"some of which may be long\"\n)\n\n# Bad\ndo_something_very_complicated(\"that\", requires, many, arguments,\n                              \"some of which may be long\"\n                              )\n\nAs described under Named arguments, you can omit the argument names for very common arguments (i.e. for arguments that are used in almost every invocation of the function). If this introduces a large disparity between the line lengths, you may want to supply names anyway:\n\n# Good\nmy_function(\n  x,\n  long_argument_name,\n  extra_argument_a = 10,\n  extra_argument_b = c(1, 43, 390, 210209)\n)\n\n# Also good\nmy_function(\n  x = x,\n  y = long_argument_name,\n  extra_argument_a = 10,\n  extra_argument_b = c(1, 43, 390, 210209)\n)\n\nYou may place multiple unnamed arguments on the same line if they are closely related to each other. A common example of this is creating strings with paste(). In such cases, it’s often beneficial to match one line of code to one line of output.\n\n# Good\npaste0(\n  \"Requirement: \", requires, \"\\n\",\n  \"Result: \", result, \"\\n\"\n)\n\n# Bad\npaste0(\n  \"Requirement: \", requires,\n  \"\\n\", \"Result: \",\n  result, \"\\n\")",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syntax</span>"
+    ]
+  },
+  {
+    "objectID": "syntax.html#semicolons",
+    "href": "syntax.html#semicolons",
+    "title": "2  Syntax",
+    "section": "2.7 Semicolons",
+    "text": "2.7 Semicolons\nDon’t put ; at the end of a line, and don’t use ; to put multiple commands on one line.",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syntax</span>"
+    ]
+  },
+  {
+    "objectID": "syntax.html#assignment-1",
+    "href": "syntax.html#assignment-1",
+    "title": "2  Syntax",
+    "section": "2.8 Assignment",
+    "text": "2.8 Assignment\nUse &lt;-, not =, for assignment.\n\n# Good\nx &lt;- 5\n\n# Bad\nx = 5",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syntax</span>"
+    ]
+  },
+  {
+    "objectID": "syntax.html#data",
+    "href": "syntax.html#data",
+    "title": "2  Syntax",
+    "section": "2.9 Data",
+    "text": "2.9 Data\n\n2.9.1 Character vectors\nUse \", not ', for quoting text. The only exception is when the text already contains double quotes and no single quotes.\n\n# Good\n\"Text\"\n'Text with \"quotes\"'\n'&lt;a href=\"http://style.tidyverse.org\"&gt;A link&lt;/a&gt;'\n\n# Bad\n'Text'\n'Text with \"double\" and \\'single\\' quotes'\n\n\n\n2.9.2 Logical vectors\nPrefer TRUE and FALSE over T and F.",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syntax</span>"
+    ]
+  },
+  {
+    "objectID": "syntax.html#comments",
+    "href": "syntax.html#comments",
+    "title": "2  Syntax",
+    "section": "2.10 Comments",
+    "text": "2.10 Comments\nEach line of a comment should begin with the comment symbol and a single space: #\nIn data analysis code, use comments to record important findings and analysis decisions. If you need comments to explain what your code is doing, consider rewriting your code to be clearer. If you discover that you have more comments than code, consider switching to R Markdown.",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syntax</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html",
+    "href": "functions.html",
+    "title": "3  Functions",
+    "section": "",
+    "text": "3.1 Naming\nAs well as following the general advice for [object names], strive to use verbs for function names:\n# Good\nadd_row()\npermute()\n\n# Bad\nrow_adder()\npermutation()",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Functions</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html#anonymous-functions",
+    "href": "functions.html#anonymous-functions",
+    "title": "3  Functions",
+    "section": "3.2 Anonymous functions",
+    "text": "3.2 Anonymous functions\nUse the new lambda syntax: \\(x) x + 1 when writing short anonymous functions (i.e. when you define a function in an argument without giving it an explicit name).\n# Good\nmap(xs, \\(x) mean((x + 5)^2))\nmap(xs, function(x) mean((x + 5)^2))\n\n# Bad\nmap(xs, ~ mean((.x + 5)^2))\nDon’t use \\() for multi-line functions:\n# Good\nmap(xs, function(x) {\n  mean((x + 5)^2)\n})\n\n# Bad\nmap(xs, \\(x) {\n  mean((x + 5)^2)\n})\nOr when creating named functions:\n# Good\ncv &lt;- function(x) {\n  sd(x) / mean(x)\n}\n\n# Bad\ncv &lt;- \\(x) sd(x) / mean(x)\nAvoid using \\() in a pipe, and remember to use informative argument names.",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Functions</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html#multi-line-function-defintions",
+    "href": "functions.html#multi-line-function-defintions",
+    "title": "3  Functions",
+    "section": "3.3 Multi-line function defintions",
+    "text": "3.3 Multi-line function defintions\nThere are two options if the function name and definition can’t fit on a single line. In both cases, each argument goes on its own line; the difference is how deep you indent it and where you put ) and {:\n\nSingle-indent: indent the argument name with a single indent (i.e. two spaces). The trailing ) and leading { go on a new line.\n\n# Good\nlong_function_name &lt;- function(\n  a = \"a long argument\",\n  b = \"another argument\",\n  c = \"another long argument\"\n) {\n  # As usual code is indented by two spaces.\n}\n\nHanging-indent: indent the argument name to match the opening ( of function. The trailing ) and leading { go on the same line as the last argument.\n\n# Good\nlong_function_name &lt;- function(a = \"a long argument\",\n                               b = \"another argument\",\n                               c = \"another long argument\") {\n  # As usual code is indented by two spaces.\n}\n\n\nThese styles are designed to clearly separate the function definition from its body.\n\n# Bad\nlong_function_name &lt;- function(a = \"a long argument\",\n  b = \"another argument\",\n  c = \"another long argument\") {\n  # Here it's hard to spot where the definition ends and the\n  # code begins, and to see all three function arguments\n}\n\nIf a function argument can’t fit on a single line, this is a sign you should rework the argument to keep it short and sweet.",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Functions</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html#s7",
+    "href": "functions.html#s7",
+    "title": "3  Functions",
+    "section": "3.4 S7",
+    "text": "3.4 S7\nIn S7, the method definition can be long because the function name is replaced by a method call that specifies the generic and dispatch classes. In this case we recommend the single-indent style.\n\nmethod(from_provider, list(openai_provider, class_any)) &lt;- function(\n  provider,\n  x,\n  ...,\n  error_call = caller_env()\n) {\n  ...\n}\n\nIf the method definition is too long to fit on one line, use the usual rules to spread the method arguments across multiple lines:\n\nmethod(\n  from_provider,\n  list(openai_provider, class_any, a_very_long_class_name)\n) &lt;- function(\n  provider,\n  x,\n  ...,\n  error_call = caller_env()\n) {\n  ...\n}",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Functions</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html#return",
+    "href": "functions.html#return",
+    "title": "3  Functions",
+    "section": "3.5 return()",
+    "text": "3.5 return()\nOnly use return() for early returns. Otherwise, rely on R to return the result of the last evaluated expression.\n\n# Good\nfind_abs &lt;- function(x) {\n  if (x &gt; 0) {\n    return(x)\n  }\n  x * -1\n}\nadd_two &lt;- function(x, y) {\n  x + y\n}\n\n# Bad\nadd_two &lt;- function(x, y) {\n  return(x + y)\n}\n\nReturn statements should always be on their own line because they have important effects on the control flow. See also inline statements.\n\n# Good\nfind_abs &lt;- function(x) {\n  if (x &gt; 0) {\n    return(x)\n  }\n  x * -1\n}\n\n# Bad\nfind_abs &lt;- function(x) {\n  if (x &gt; 0) return(x)\n  x * -1\n}\n\nIf your function is called primarily for its side-effects (like printing, plotting, or saving to disk), it should return the first argument invisibly. This makes it possible to use the function as part of a pipe. print methods should usually do this, like this example from httr:\n\nprint.url &lt;- function(x, ...) {\n  cat(\"Url: \", build_url(x), \"\\n\", sep = \"\")\n  invisible(x)\n}",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Functions</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html#comments",
+    "href": "functions.html#comments",
+    "title": "3  Functions",
+    "section": "3.6 Comments",
+    "text": "3.6 Comments\nIn code, use comments to explain the “why” not the “what” or “how”. Each line of a comment should begin with the comment symbol and a single space: #.\n\n# Good\n\n# Objects like data frames are treated as leaves\nx &lt;- map_if(x, is_bare_list, recurse)\n\n\n# Bad\n\n# Recurse only with bare lists\nx &lt;- map_if(x, is_bare_list, recurse)\n\nComments should be in sentence case, and only end with a full stop if they contain at least two sentences:\n\n# Good\n\n# Objects like data frames are treated as leaves\nx &lt;- map_if(x, is_bare_list, recurse)\n\n# Do not use `is.list()`. Objects like data frames must be treated\n# as leaves.\nx &lt;- map_if(x, is_bare_list, recurse)\n\n\n# Bad\n\n# objects like data frames are treated as leaves\nx &lt;- map_if(x, is_bare_list, recurse)\n\n# Objects like data frames are treated as leaves.\nx &lt;- map_if(x, is_bare_list, recurse)",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Functions</span>"
+    ]
+  },
+  {
+    "objectID": "pipes.html",
+    "href": "pipes.html",
+    "title": "4  Pipes",
+    "section": "",
+    "text": "4.1 Introduction\nUse |&gt; to emphasise a sequence of actions, rather than the object that the actions are being performed on.\nThe tidyverse has been designed to work particuarly well with the pipe, but you can use it with any code, particularly in conjunction with the _ placeholder.\nstrings |&gt;\n  str_replace(\"a\", \"b\"),\n  str_replace(\"x\", \"y\")\n\nstrings |&gt;\n  gsub(\"a\", \"b\", x = _) |&gt;\n  gsub(\"x\", \"y\", x = _)\nAvoid using the pipe when:",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Pipes</span>"
+    ]
+  },
+  {
+    "objectID": "pipes.html#introduction",
+    "href": "pipes.html#introduction",
+    "title": "4  Pipes",
+    "section": "",
+    "text": "You need to manipulate more than one object at a time. Reserve pipes for a sequence of steps applied to one primary object.\nThere are meaningful intermediate objects that could be given informative names.",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Pipes</span>"
+    ]
+  },
+  {
+    "objectID": "pipes.html#whitespace",
+    "href": "pipes.html#whitespace",
+    "title": "4  Pipes",
+    "section": "4.2 Whitespace",
+    "text": "4.2 Whitespace\n|&gt; should always have a space before it, and should usually be followed by a new line. After the first step, each line should be indented by two spaces. This structure makes it easier to add new steps (or rearrange existing steps) and harder to overlook a step.\n\n# Good\niris |&gt;\n  summarize(across(where(is.numeric), mean), .by = Species) |&gt;\n  pivot_longer(-Species, names_to = \"measure\", values_to = \"value\") |&gt;\n  arrange(value)\n\n# Bad\niris |&gt; summarize(across(where(is.numeric), mean), .by = Species) |&gt;\npivot_longer(-Species, names_to = \"measure\", values_to = \"value\") |&gt;\narrange(value)",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Pipes</span>"
+    ]
+  },
+  {
+    "objectID": "pipes.html#long-lines",
+    "href": "pipes.html#long-lines",
+    "title": "4  Pipes",
+    "section": "4.3 Long lines",
+    "text": "4.3 Long lines\nIf the arguments to a function don’t all fit on one line, put each argument on its own line and indent:\n\n# Good\niris |&gt;\n  summarise(\n    Sepal.Length = mean(Sepal.Length),\n    Sepal.Width = mean(Sepal.Width),\n    .by = Species\n  )\n\n# Bad\niris |&gt;\n  summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), .by = Species)\n\nFor data analysis, we recommend using the pipe whenever a function needs to span multiple lines, even if it’s only a single step.\n\n# Bad\nsummarise(\n  iris,\n  Sepal.Length = mean(Sepal.Length),\n  Sepal.Width = mean(Sepal.Width),\n  .by = Species\n)",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Pipes</span>"
+    ]
+  },
+  {
+    "objectID": "pipes.html#short-pipes",
+    "href": "pipes.html#short-pipes",
+    "title": "4  Pipes",
+    "section": "4.4 Short pipes",
+    "text": "4.4 Short pipes\nIt’s ok to write a short pipe on a single line:\n\n# Ok\niris |&gt; subset(Species == \"virginica\") |&gt; _$Sepal.Length\niris |&gt; summarise(width = Sepal.Width, .by = Species) |&gt; arrange(width)\n\nBut because short pipes often become longer pipes, we recommend that you generally stick to one function per line:\n\n# Better\niris |&gt;\n  subset(Species == \"virginica\") |&gt;\n  _$Sepal.Length\n\niris |&gt;\n  summarise(width = Sepal.Width, .by = Species) |&gt;\n  arrange(width)\n\nSometimes it’s useful to include a short pipe as an argument to a function in a longer pipe. Carefully consider whether the code is more readable with a short inline pipe (which doesn’t require a lookup elsewhere) or if it’s better to move the code outside the pipe and give it an evocative name.\n\n# Good\nx |&gt;\n  semi_join(y |&gt; filter(is_valid))\n\n# Ok\nx |&gt;\n  select(a, b, w) |&gt;\n  left_join(y |&gt; select(a, b, v), join_by(a, b))\n\n# Better\nx_join &lt;- x |&gt; select(a, b, w)\ny_join &lt;- y |&gt; select(a, b, v)\nleft_join(x_join, y_join, join_by(a, b))",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Pipes</span>"
+    ]
+  },
+  {
+    "objectID": "pipes.html#assignment",
+    "href": "pipes.html#assignment",
+    "title": "4  Pipes",
+    "section": "4.5 Assignment",
+    "text": "4.5 Assignment\nThere are three acceptable forms of assignment:\n\nVariable name and assignment on separate lines:\n\niris_long &lt;-\n  iris |&gt;\n  gather(measure, value, -Species) |&gt;\n  arrange(-value)\n\nVariable name and assignment on the same line:\n\niris_long &lt;- iris |&gt;\n  gather(measure, value, -Species) |&gt;\n  arrange(-value)\n\nAssignment at the end of the pipe with -&gt;:\n\niris |&gt;\n  gather(measure, value, -Species) |&gt;\n  arrange(-value) -&gt;\n  iris_long\n\n\nI think that the third is the most natural to write, but makes reading a little harder: when the name comes first, it can act as a heading to remind you of the purpose of the pipe.",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Pipes</span>"
+    ]
+  },
+  {
+    "objectID": "pipes.html#magrittr",
+    "href": "pipes.html#magrittr",
+    "title": "4  Pipes",
+    "section": "4.6 magrittr",
+    "text": "4.6 magrittr\nWe recommend you use the base |&gt; pipe instead of magrittr’s %&gt;%.\n\n# Good\niris |&gt;\n  summarise(width = Sepal.Width, .by = Species) |&gt;\n  arrange(width)\n\n# Bad\niris %&gt;%\n  summarise(width = Sepal.Width, .by = Species) %&gt;%\n  arrange(width)\n\nAs of R 4.3.0, the base pipe provides all the features from magrittr that we recommend using.",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Pipes</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html",
+    "href": "ggplot2.html",
+    "title": "5  ggplot2",
+    "section": "",
+    "text": "5.1 Introduction\nStyling suggestions for + used to separate ggplot2 layers are very similar to those for |&gt; in pipelines.",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#whitespace",
+    "href": "ggplot2.html#whitespace",
+    "title": "5  ggplot2",
+    "section": "5.2 Whitespace",
+    "text": "5.2 Whitespace\n+ should always have a space before it, and should be followed by a new line. This is true even if your plot has only two layers. After the first step, each line should be indented by two spaces.\nIf you are creating a ggplot off of a dplyr pipeline, there should only be one level of indentation.\n\n# Good\niris |&gt;\n  filter(Species == \"setosa\") |&gt;\n  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) +\n  geom_point()\n\n# Bad\niris |&gt;\n  filter(Species == \"setosa\") |&gt;\n  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) +\n    geom_point()\n\n# Bad\niris |&gt;\n  filter(Species == \"setosa\") |&gt;\n  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) + geom_point()",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#long-lines",
+    "href": "ggplot2.html#long-lines",
+    "title": "5  ggplot2",
+    "section": "5.3 Long lines",
+    "text": "5.3 Long lines\nIf the arguments to a ggplot2 layer don’t all fit on one line, put each argument on its own line and indent:\n\n# Good\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point() +\n  labs(\n    x = \"Sepal width, in cm\",\n    y = \"Sepal length, in cm\",\n    title = \"Sepal length vs. width of irises\"\n  )\n\n# Bad\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point() +\n  labs(x = \"Sepal width, in cm\", y = \"Sepal length, in cm\", title = \"Sepal length vs. width of irises\")\n\nggplot2 allows you to do data manipulation, such as filtering or slicing, within the data argument. Avoid this, and instead do the data manipulation in a pipeline before starting plotting.\n\n# Good\niris |&gt;\n  filter(Species == \"setosa\") |&gt;\n  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) +\n  geom_point()\n\n# Bad\nggplot(filter(iris, Species == \"setosa\"), aes(x = Sepal.Width, y = Sepal.Length)) +\n  geom_point()",
+    "crumbs": [
+      "Analyses",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "package-files.html",
+    "href": "package-files.html",
+    "title": "6  Files",
+    "section": "",
+    "text": "6.1 Names",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Files</span>"
+    ]
+  },
+  {
+    "objectID": "package-files.html#names",
+    "href": "package-files.html#names",
+    "title": "6  Files",
+    "section": "",
+    "text": "If a file contains a single function, give the file the same name as the function.\nIf a file contains multiple related functions, give it a concise, but evocative name.\nDeprecated functions should live in a file with deprec- prefix.",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Files</span>"
+    ]
+  },
+  {
+    "objectID": "package-files.html#organisation",
+    "href": "package-files.html#organisation",
+    "title": "6  Files",
+    "section": "6.2 Organisation",
+    "text": "6.2 Organisation\nIn a file that contains multiple functions, public functions and their documentation should appear first, with private functions appearing after all documented functions. If multiple public functions share the same documentation, they should all immediately follow the documentation block.\nSee Chapter 7 for more thorough guidance on documenting functions in packages.\n\n# Bad\nhelp_compute &lt;- function() {\n  # ... Lots of code ...\n}\n\n#' My public function\n#'\n#' This is where the documentation of my function begins.\n#' ...\n#' @export\ndo_something_cool &lt;- function() {\n  # ... even more code ...\n  help_compute()\n}\n\n\n# Good\n#' Lots of functions for doing something cool\n#'\n#' ... Complete documentation ...\n#' @name something-cool\nNULL\n\n#' @describeIn something-cool Get the mean\n#' @export\nget_cool_mean &lt;- function(x) {\n  # ...\n}\n\n#' @describeIn something-cool Get the sum\n#' @export\nget_cool_sum &lt;- function(x) {\n  # ...\n}",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Files</span>"
+    ]
+  },
+  {
+    "objectID": "documentation.html",
+    "href": "documentation.html",
+    "title": "7  Documentation",
+    "section": "",
+    "text": "7.1 Introduction\nDocumentation of code is essential, even if the only person using your code is future-you. Use roxygen2 with markdown support enabled to keep your documentation close to the code.",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Documentation</span>"
+    ]
+  },
+  {
+    "objectID": "documentation.html#title-and-description",
+    "href": "documentation.html#title-and-description",
+    "title": "7  Documentation",
+    "section": "7.2 Title and description",
+    "text": "7.2 Title and description\nUse the first line of your function documentation to provide a concise title that describes the function, dataset, or class. Titles should use sentence case but not end with a full stop (.).\n\n#' Combine values into a vector or list\n#'\n#' This is a generic function which combines its arguments.\n#'\n\nThere is no need to use the explicit @title or @description tags, except in the case of the description if it is multiple paragraphs or includes more complex formatting like a bulleted list.\n\n#' Apply a function to each element of a vector\n#'\n#' @description\n#' The map function transform the input, returning a vector the same length\n#' as the input.\n#'\n#' * `map()` returns a list or a data frame\n#' * `map_lgl()`, `map_int()`, `map_dbl()` and `map_chr()` return\n#'    vectors of the corresponding type (or die trying);\n#' * `map_dfr()` and `map_dfc()` return data frames created by row-binding\n#'    and column-binding respectively. They require dplyr to be installed.",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Documentation</span>"
+    ]
+  },
+  {
+    "objectID": "documentation.html#indents-and-line-breaks",
+    "href": "documentation.html#indents-and-line-breaks",
+    "title": "7  Documentation",
+    "section": "7.3 Indents and line breaks",
+    "text": "7.3 Indents and line breaks\nAlways indent with one space after #'. If any description corresponding to a roxygen tag spans over multiple lines, add another two spaces of extra indention.\n\n#' @param key The bare (unquoted) name of the column whose values will be used\n#'   as column headings.\n\nAlternatively, tags that span over multiple lines (like @description, @examples and @section) can have the corresponding tag on its own line and then subsequent lines don’t need to be indented.\n\n#' @examples\n#' 1 + 1\n#' sin(pi)\n\nUse line breaks before/after sections where needed:\n\n#' @section Tidy data:\n#' When applied to a data frame, row names are silently dropped. To preserve,\n#' convert to an explicit variable with [tibble::rownames_to_column()].\n#'\n#' @section Scoped filtering:\n#' The three [scoped] variants ([filter_all()], [filter_if()] and\n#' [filter_at()]) make it easy to apply a filtering condition to a\n#' selection of variables.",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Documentation</span>"
+    ]
+  },
+  {
+    "objectID": "documentation.html#documenting-parameters",
+    "href": "documentation.html#documenting-parameters",
+    "title": "7  Documentation",
+    "section": "7.4 Documenting parameters",
+    "text": "7.4 Documenting parameters\nFor most tags, like @param, @seealso and @return, the text should be a sentence, starting with a capital letter and ending with a full stop.\n\n#' @param key The bare (unquoted) name of the column whose values will be used\n#'   as column headings.\n\nIf some functions share parameters, you can use @inheritParams to avoid duplication of content in multiple places.\n\n#' @inheritParams function_to_inherit_from",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Documentation</span>"
+    ]
+  },
+  {
+    "objectID": "documentation.html#capitalization-and-full-stops",
+    "href": "documentation.html#capitalization-and-full-stops",
+    "title": "7  Documentation",
+    "section": "7.5 Capitalization and full stops",
+    "text": "7.5 Capitalization and full stops\nFor all bullets, enumerations, argument descriptions and the like, use sentence case and put a period at the end of each text element, even if it is only a few words. However, avoid capitalization of function names or packages since R is case sensitive. Use a colon before enumerations or bulleted lists.\n\n#' @details\n#' In the following, we present the bullets of the list:\n#' * Four cats are few animals.\n#' * forcats is a package.",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Documentation</span>"
+    ]
+  },
+  {
+    "objectID": "documentation.html#cross-linking",
+    "href": "documentation.html#cross-linking",
+    "title": "7  Documentation",
+    "section": "7.6 Cross-linking",
+    "text": "7.6 Cross-linking\nCross-referencing is encouraged, both within R’s help file system as well as to external resources.\nList closely related functions in @seealso. A single related function can be written as a sentence:\n\n#' @seealso [fct_lump()] to automatically convert the rarest (or most common)\n#'   levels to \"other\".\n\nMore recommendations should be organised in a bulleted list:\n\n#' @seealso\n#' * [tibble()] constructs from individual columns.\n#' * [enframe()] converts a named vector into a two-column tibble (names and\n#'   values).\n#' * [name-repair] documents the details of name repair.\n\nYou can link to functions in other packages by using the fully qualified function name, i.e. [pkg::function()].\nIf you have a family of related functions, you can use the @family tag to automatically add appropriate lists and interlinks to the @seealso section. Family names are plural. In dplyr, the verbs arrange(), filter(), mutate(), slice(), summarize() form the family of single table verbs.\n\n#' @family single table verbs\n\nWhen linking to external resources either include the full url inline with &lt;&gt;, or the surrounding prose and link text should make it extremely clear where the hyperlink goes. Avoid text like “click here”.",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Documentation</span>"
+    ]
+  },
+  {
+    "objectID": "documentation.html#r-code",
+    "href": "documentation.html#r-code",
+    "title": "7  Documentation",
+    "section": "7.7 R code",
+    "text": "7.7 R code\nText that contains valid R code should be marked as such using backticks. This includes:\n\nFunction arguments, e.g. na.rm.\nValues, e.g. TRUE, FALSE, NA, NaN, ..., NULL\nLiteral R code, e.g. mean(x, na.rm = TRUE)\nClass names, e.g. “a tibble will have class tbl_df …”\n\nYou can use code syntax for function names, like `tibble()`, but consider if it would be better to use a cross-link instead, like [tibble()]. If you refer to a function multiple times in one topic, you only need to link the first reference.",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Documentation</span>"
+    ]
+  },
+  {
+    "objectID": "documentation.html#package-names",
+    "href": "documentation.html#package-names",
+    "title": "7  Documentation",
+    "section": "7.8 Package names",
+    "text": "7.8 Package names\nDon’t use code font for package names. If the package name might be misinterpreted as an ordinary word, disambiguate by following it with “package” or by wrapping the package name in {} (but not both).\n# Good\nUse the glue package to flexibly interpolate values into strings.\nUse {glue} to flexibly interpolate values into strings.\n\n# Bad\nUse glue to flexibly interpolate values into strings.\nUse `glue` to flexibly interpolate values into strings.\nUse the {glue} package to flexibly interpolate values into strings.\nIf a package name comes at the start of a sentence, treat it like a proper name and don’t capitalize it:\n# Good\ndplyr provides a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.\n\n# Bad\nDplyr provides a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Documentation</span>"
+    ]
+  },
+  {
+    "objectID": "documentation.html#internal-functions",
+    "href": "documentation.html#internal-functions",
+    "title": "7  Documentation",
+    "section": "7.9 Internal functions",
+    "text": "7.9 Internal functions\nInternal functions should be documented with #' comments as per usual. Use the @noRd tag to prevent .Rd files from being generated.\n\n#' Drop last\n#'\n#' Drops the last element from a vector.\n#'\n#' @param x A vector object to be trimmed.\n#'\n#' @noRd",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Documentation</span>"
+    ]
+  },
+  {
+    "objectID": "tests.html",
+    "href": "tests.html",
+    "title": "8  Tests",
+    "section": "",
+    "text": "8.1 Organisation\nThe organisation of test files should match the organisation of R/ files: if a function lives in R/foofy.R, then its tests should live in tests/testthat/test-foofy.R.\nUse usethis::use_test() to automatically create a file with the correct name.\nThe file name will be displayed in output in order to get context.",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Tests</span>"
+    ]
+  },
+  {
+    "objectID": "errors.html",
+    "href": "errors.html",
+    "title": "9  Error messages",
+    "section": "",
+    "text": "9.1 Problem statement\nEvery error message should start with a general statement of the problem. It should be concise, but informative (This is hard!). The problem statement should use sentence case and end with a full stop.",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Error messages</span>"
+    ]
+  },
+  {
+    "objectID": "errors.html#problem-statement",
+    "href": "errors.html#problem-statement",
+    "title": "9  Error messages",
+    "section": "",
+    "text": "If the cause of the problem is clear (e.g. an incorrect type or size), use “must”:\n\ndplyr::nth(1:10, \"x\")\n#&gt; Error:\n#&gt; ! `n` must be a numeric vector, not a character vector.\n\ndplyr::nth(1:10, 1:2)\n#&gt; Error:\n#&gt; ! `n` must have length 1, not length 2.\n\nDo your best to tell the user both what is expected (“a numeric vector”) and what they actually provided (“a character vector”).\nIf you cannot state what was expected, use “can’t”:\n\nmtcars |&gt; pull(b)\n#&gt; Error:\n#&gt; ! Can't find column `b` in `.data`.\n\nas_vector(environment())\n#&gt; Error:\n#&gt; ! Can't coerce `.x` to a vector.\n\npurrr::modify_depth(list(list(x = 1)), 3, ~ . + 1)\n#&gt; Error:\n#&gt; ! Can't find specified `.depth` in `.x`.",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Error messages</span>"
+    ]
+  },
+  {
+    "objectID": "errors.html#error-location",
+    "href": "errors.html#error-location",
+    "title": "9  Error messages",
+    "section": "9.2 Error location",
+    "text": "9.2 Error location\nIdeally the error message should mention the failing function call.\n\nSee https://rlang.r-lib.org/reference/topic-error-call.html for more about how to pass calls through error helpers.",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Error messages</span>"
+    ]
+  },
+  {
+    "objectID": "errors.html#error-details",
+    "href": "errors.html#error-details",
+    "title": "9  Error messages",
+    "section": "9.3 Error details",
+    "text": "9.3 Error details\nAfter the problem statement, use a bulleted list to provide further information. Use cross bullets (x) to let the user know what the problem is, then use info bullets (i) to provide contextual information. These are easy to create with cli_abort(): \n\nTry to keep the sentences short and sweet:\n\n# Good\nvec_slice(letters, 100)\n#&gt; ! Can't subset elements past the end.\n#&gt; ℹ Location 100 doesn't exist.\n#&gt; ℹ There are only 26 elements.\n\n# Bad\nvec_slice(letters, 100)\n#&gt; ! Must index an existing element.\n#&gt; There are 26 elements and you've tried to subset element 100.\n\nDo your best to reveal the location, name, and/or content of the troublesome component of the input. The goal is to make it as easy as possible for the user to find and fix the problem.\n\n# Good\nmap_int(1:5, ~ \"x\")\n#&gt; Error:\n#&gt; ! Each result must be a single integer.\n#&gt; ✖ Result 1 is a character vector.\n\n# Bad\nmap_int(1:5, ~ \"x\")\n#&gt; Error:\n#&gt; ! Each result must be a single integer\n\n(It is often not easy to identify the exact problem; it may require passing around extra arguments so that error messages generated at a lower-level can know the original source. For frequently used functions, the effort is typically worth it.)\nIf the source of the error is unclear, avoid pointing the user in the wrong direction by giving an opinion about the source of the error:\n\n# Good\npull(mtcars, b)\n#&gt; Error:\n#&gt; ! Can't find column `b` in `.data`.\n\ntibble(x = 1:2, y = 1:3, z = 1)\n#&gt; Error:\n#&gt; ! Tibble columns must have compatible sizes.\n#&gt; • Size 2: Existing data.\n#&gt; • Size 3: Column `y`.\n#&gt; ℹ Only values of size one are recycled.\n\n# Bad: implies one argument at fault\npull(mtcars, b)\n#&gt; Error:\n#&gt; ! Column `b` must exist in `.data`.\n\npull(mtcars, b)\n#&gt; Error:\n#&gt; ! `.data` must contain column `b`.\n\ntibble(x = 1:2, y = 1:3, z = 1)\n#&gt; Error:\n#&gt; ! Column `x` must be length 1 or 3, not 2.\n\nIf there are multiple issues, or an inconsistency revealed across several arguments or items, prefer a bulleted list:\n\n# Good\npurrr::reduce2(1:4, 1:2, `+`)\n#&gt; Error:\n#&gt; ! `.x` and `.y` must have compatible lengths:\n#&gt; ✖ `.x` has length 4\n#&gt; ✖ `.y` has length 2\n\n# Bad: harder to scan\npurrr::reduce2(1:4, 1:2, `+`)\n#&gt; Error:\n#&gt; ! `.x` and `.y` must have compatible lengths: `.x` has length 4 and\n#&gt; `.y` has length 2\n\nIf the list of issues might be long, make sure to truncate to only show the first few:\n\n# Good\n#&gt; Error: NAs found at 1,000,000 locations: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ...\n\nIf you want to correctly pluralise the error message, consider using ngettext(). See the notes in ?ngettext() for some challenges related to correct translation to other languages.",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Error messages</span>"
+    ]
+  },
+  {
+    "objectID": "errors.html#hints",
+    "href": "errors.html#hints",
+    "title": "9  Error messages",
+    "section": "9.4 Hints",
+    "text": "9.4 Hints\nIf the source of the error is clear and common, you may want to provide a hint as to how to fix it. The hint should be the last bullet, use an info bullet (i), and end in a question mark.\n\ndplyr::filter(iris, Species = \"setosa\")\n#&gt; Error:\n#&gt; ! Filter specifications must be named.\n#&gt; ℹ Did you mean `Species == \"setosa\"`?\n\nggplot2::ggplot(ggplot2::aes())\n#&gt; Error:\n#&gt; ! Can't plot data with class \"uneval\".\n#&gt; ℹ Did you accidentally provide the results of aes() to the `data` argument?\n\nmtcars |&gt; ggplot() |&gt; geom_point()\n#&gt; Error in `validate_mapping()`:\n#&gt; ! `mapping` must be created by `aes()`.\n#&gt; ℹ Did you use `%&gt;%` or `|&gt;` instead of `+`?\n\nHints are particularly important if the source of the error is far away from the root cause:\n\n# Bad\nmean[[1]]\n#&gt; Error:\n#&gt; ! object of type 'closure' is not subsettable\n\n# BETTER\nmean[[1]]\n#&gt; Error:\n#&gt; ! Can't subset a function.\n\n# BEST\nmean[[1]]\n#&gt; Error:\n#&gt; ! Can't subset a function.\n#&gt; ℹ Have you forgotten to define a variable named `mean`?\n\nGood hints are difficult to write because you want to avoid steering users in the wrong direction. Generally, we avoid writing a hint unless the problem is common, and you can easily find a common pattern of incorrect usage (e.g. by searching StackOverflow).",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Error messages</span>"
+    ]
+  },
+  {
+    "objectID": "errors.html#punctuation",
+    "href": "errors.html#punctuation",
+    "title": "9  Error messages",
+    "section": "9.5 Punctuation",
+    "text": "9.5 Punctuation\n\n\nErrors should be written in sentence case, and should end in a full stop. Bullets should be formatted similarly; make sure to capitalise the first word (unless it’s an argument or column name).\nPrefer the singular in problem statements:\n\n# Good\nmap_int(1:2, ~ \"a\")\n#&gt; Error:\n#&gt; ! Each result must be coercible to a single integer.\n#&gt; ✖ Result 1 is a character vector.\n\n# Bad\nmap_int(1:2, ~ \"a\")\n#&gt; Error:\n#&gt; ! Results must be coercible to single integers.\n#&gt; ✖ Result 1 is a character vector.\n\nIf you can detect multiple problems, list up to five. This allows the user to fix multiple problems in a single pass without being overwhelmed by many errors that may have the same source.\n\n\n# BETTER\nmap_int(1:10, ~ \"a\")\n#&gt; Error:\n#&gt; ! Each result must be coercible to a single integer.\n#&gt; ✖ Result 1 is a character vector\n#&gt; ✖ Result 2 is a character vector\n#&gt; ✖ Result 3 is a character vector\n#&gt; ✖ Result 4 is a character vector\n#&gt; ✖ Result 5 is a character vector\n#&gt; ... and 5 more problems\n\nPick a natural connector between problem statement and error location: this may be “, not”, “;”, or “:” depending on the context.\nSurround the names of arguments in backticks, e.g. `x`. Use “column” to disambiguate columns and arguments: Column `x`. Avoid “variable”, because it is ambiguous. \nIdeally, each component of the error message should be less than 80 characters wide. Do not add manual line breaks to long error messages; they will not look correct if the console is narrower (or much wider) than expected. Instead, use bullets to break up the error into shorter logical components. In case you do need longer sentences, let cli perform paragraph wrapping automatically. It inserts newlines automatically depending on the width of the console.",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Error messages</span>"
+    ]
+  },
+  {
+    "objectID": "errors.html#before-and-after",
+    "href": "errors.html#before-and-after",
+    "title": "9  Error messages",
+    "section": "9.6 Before and after",
+    "text": "9.6 Before and after\nMore examples gathered from around the tidyverse.\n\ndplyr::filter(mtcars, cyl)\n#&gt; BEFORE:\n#&gt; ! Argument 2 filter condition does not evaluate to a logical vector.\n\n#&gt; AFTER:\n#&gt; ! Each argument must be a logical vector.\n#&gt; * Argument 2 (`cyl`) is an integer vector.\n\ntibble::tribble(\"x\", \"y\")\n#&gt; BEFORE: ! Expected at least one column name; e.g. `~name`\n#&gt;  AFTER: ! Must supply at least one column name, e.g. `~name`.\n\nggplot2::ggplot(data = diamonds) + ggplot2::geom_line(ggplot2::aes(x = cut))\n#&gt; BEFORE: ! geom_line requires the following missing aesthetics: y\n#&gt;  AFTER: ! `geom_line()` must have the following aesthetics: `y`.\n\ndplyr::rename(mtcars, cyl = xxx)\n#&gt; BEFORE: ! `xxx` contains unknown variables\n#&gt;  AFTER: ! Can't find column `xxx` in `.data`.\n\ndplyr::arrange(mtcars, xxx)\n#&gt; BEFORE: ! Evaluation error: object 'xxx' not found.\n#&gt;  AFTER: ! Can't find column `xxx` in `.data`.",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Error messages</span>"
+    ]
+  },
+  {
+    "objectID": "errors.html#localisation",
+    "href": "errors.html#localisation",
+    "title": "9  Error messages",
+    "section": "9.7 Localisation",
+    "text": "9.7 Localisation\nIt is encouraged to be as informative as possible, but each sentence should be very simple to make localisation and translation possible. A Localization Horror Story: It Could Happen To You is a Good summary of the challenges of localising error messages. You might not support localised messages right now but you should make it as easy as possible to do it in the future.",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Error messages</span>"
+    ]
+  },
+  {
+    "objectID": "news.html",
+    "href": "news.html",
+    "title": "10  News",
+    "section": "",
+    "text": "10.1 In-development\nThe goal of the bullet is to briefly describe the change so users of the packages can understand what’s changed. This can be similar to the commit message, but written with a user (not developer) in mind. It’s worth emphasizing this point — the reader of your NEWS entries is likely unfamiliar with the day-to-day development work or internals of your package. Think carefully about how to concisely but clearly summarize what’s changed and why it matters for them. If it doesn’t matter (i.e. it’s a purely internal change), you don’t need a bullet.\nNew bullets should be added to the top of the file (immediately under the first heading) and should be a single line. Organisation and wrapping will happen later, during the release process.\nIf the bullet is related to an issue, include the issue number. If the contribution is a PR, and the author is not a package author, include the GitHub user name. Both items should be wrapped in parentheses and will generally come before the final period.",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>News</span>"
+    ]
+  },
+  {
+    "objectID": "news.html#in-development",
+    "href": "news.html#in-development",
+    "title": "10  News",
+    "section": "",
+    "text": "# haven (development version)\n\n* Second update.\n* First update.\n\n# Good\n* `ggsave()` now uses full argument names to avoid partial match warnings (@wch, #2355).\n\n# Bad\n* `ggsave()` now uses full argument names to avoid partial match warnings.\n\n* `ggsave()` now uses full argument names to avoid partial match warnings. (@wch, #2355)",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>News</span>"
+    ]
+  },
+  {
+    "objectID": "news.html#news-release",
+    "href": "news.html#news-release",
+    "title": "10  News",
+    "section": "10.2 Pre-release",
+    "text": "10.2 Pre-release\nPrior to release, the NEWS file needs to be thoroughly proofread, groomed, and organised into sections.\n\n10.2.1 General style\nStrive to place the name of the function as close to the beginning of the bullet as possible. A consistent location makes the bullets easier to scan, and easier to organise prior to release.\n# Good\n* `ggsave()` now uses full argument names to avoid partial match warning (#2355).\n\n# Bad\n* Fixed partial argument matches in `ggsave()` (#2355).\nLines should be wrapped to 80 characters, and each bullet should end in a full stop.\nFrame bullets positively (i.e. what now happens, not what used to happen), and use the present tense.\n# Good\n* `ggsave()` now uses full argument names to avoid partial match warnings (#2355).\n\n# Bad\n* `ggsave()` no longer partially matches argument names (#2355).\nMany news bullets will be a single sentence. This is typically adequate when describing a bug fix or minor improvement, but you may need more detail when describing a new feature. For more complex features, include longer examples in fenced code blocks (```). These will be useful inspiration when you later write the blog post.\n# Good\n* In `stat_bin()`, `binwidth` now also takes functions.\n\n# Better\n* In `stat_bin()`, `binwidth` now also takes functions. The function is\n  called with the scaled `x` values, and should return a single number.\n  This makes it possible to use classical binwidth computations with ggplot2.\n\n# Best\n* In `stat_bin()`, `binwidth` now also takes functions. The function is\n  called with the scaled `x` values, and should return a single number.\n  With a little work, this makes it possible to use classical bin size\n  computations with ggplot2.\n\n  ```R\n  sturges &lt;- function(x) {\n    rng &lt;- range(x)\n    bins &lt;- nclass.Sturges(x)\n\n    (rng[2] - rng[1]) / bins\n  }\n  ggplot(diamonds, aes(price)) +\n    geom_histogram(binwidth = sturges) +\n    facet_wrap(~cut)\n  ```\n\n\n10.2.2 Code style\nFunctions, arguments, and file names should be wrapped in backticks. Function names should include parentheses; omit “the argument” or “the function”\n# Good\n* In `stat_bin()`, `binwidth` now also takes functions.\n\n# Bad\n* In the stat_bin function, \"binwidth\" now also takes functions.\n\n\n10.2.3 Headings\nEach release should have a level 1 heading (#) containing the package name and version number. For smaller packages or patch releases this amount of organisation may be sufficient. For example, here is the NEWS for modelr 0.1.2:\n# modelr 0.1.2\n\n* `data_grid()` no longer fails with modern tidyr (#58).\n\n* New `mape()` and `rsae()` model quality statistics (@paulponcet, #33).\n\n* `rsquare()` use more robust calculation 1 - SS_res / SS_tot rather\n  than SS_reg / SS_tot (#37).\n\n* `typical()` gains `ordered` and `integer` methods (@jrnold, #44),\n  and `...` argument (@jrnold, #42).\nIf there are many bullets, the version heading should be followed by issues grouped into related areas with level 2 headings (##). Three commonly used sections are shown below:\n# package 1.1.0\n\n## Breaking changes\n\n## New features\n\n## Minor improvements and fixes\nIt is fine to deviate from these headings if another organisation makes sense. Indeed, larger packages will often require a finer break down. For example, ggplot2 2.3.0 included these headings:\n# ggplot 2.3.0\n## Breaking changes\n## New features\n### Tidy evaluation\n### sf\n### Layers: geoms, stats, and position adjustments\n### Scales and guides\n### Margins\n## Extension points\n## Minor bug fixes and improvements\n### Facetting\n### Scales\n### Layers\n### Coords\n### Themes\n### Guides\n### Other\nIt is not worthwhile to organise bullets into headings during development, as it’s not typically obvious what the groups will be in advance.\nWithin a section, bullets should be ordered alphabetically by the first function mentioned. If no function is mentioned, place the bullet at the top of the section.\n\n\n10.2.4 Breaking changes\nAPI breaking changes should also appear in their own section at the top. Each bullet should include a description of the symptoms of the change, and what is needed to fix it. The bullet should also be repeated in the appropriate section.\n## Breaking changes\n\n* `separate()` now correctly uses -1 to refer to the far right position,\n  instead of -2. If you depended on this behaviour, you'll need to condition\n  on `packageVersion(\"tidyr\") &gt; \"0.7.2\"`.\n\n\n10.2.5 Common patterns\nThe following excerpts from tidyverse news entries provide helpful templates to follow.\n\nNew family of functions:\n* Support for ordered factors is improved. Ordered factors throw a warning\n  when mapped to shape (unordered factors do not), and do not throw warnings\n  when mapped to size or alpha (unordered factors do). Viridis is used as\n  default colour and fill scale for ordered factors (@karawoo, #1526).\n\n* `possibly()`, `safely()` and friends no longer capture interrupts: this\n  means that you can now terminate a mapper using one of these with\n  Escape or Ctrl + C (#314).\nNew function:\n* New `position_dodge2()` provides enhanced dogding for boxplots...\n\n* New `stat_qq_line()` makes it easy to add a simple line to a Q-Q plot.\n  This line makes it easier to judge the fit of the theoretical distribution\n  (@nicksolomon).\nNew argument to existing function:\n* `geom_segment()` gains a `linejoin` parameter.\nFunction argument changes behaviour:\n* In `separate()`, `col = -1` now refers to the far right position.\n  Previously, and incorrectly, `col = -2` referred to the far-right\n  position.\nFunction changes behaviour:\n* `map()` and `modify()` now work with calls and pairlists (#412).\n\n* `flatten_dfr()` and `flatten_dfc()` now aborts with informative\n   message if dplyr is not installed (#454).\n\n* `reduce()` now throws an error if `.x` is empty and `.init` is not\n  supplied.",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>News</span>"
+    ]
+  },
+  {
+    "objectID": "news.html#blog-post",
+    "href": "news.html#blog-post",
+    "title": "10  News",
+    "section": "10.3 Blog post",
+    "text": "10.3 Blog post\nFor all major and minor releases, the latest news should be turned into a blog post. The blog post should highlight major user-facing changes, and point to the release notes for more details. Generally, you should focus on new features and major improvements, including examples showing the new features in action. You don’t need to describe minor improvements and bug fixes, as the motivated reader can find these in the release notes.",
+    "crumbs": [
+      "Packages",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>News</span>"
+    ]
+  },
+  {
+    "objectID": "git.html",
+    "href": "git.html",
+    "title": "11  Git/GitHub",
+    "section": "",
+    "text": "11.1 Commit messages\nFollow standard git commit message advice. In brief:",
+    "crumbs": [
+      "Other",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Git/GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "git.html#commit-messages",
+    "href": "git.html#commit-messages",
+    "title": "11  Git/GitHub",
+    "section": "",
+    "text": "The first line is the subject, and should summarise the changes in the commit in under 50 characters. Use sentence case, but no period at the end.\nIf additional details are required, add a blank line, and then provide explanation and context in paragraph format.\nIf the commit fixes a GitHub issue include Fixes #&lt;issue-number&gt;. This will ensure that the issue is automatically closed when the commit is merged into main.",
+    "crumbs": [
+      "Other",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Git/GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "git.html#pull-requests",
+    "href": "git.html#pull-requests",
+    "title": "11  Git/GitHub",
+    "section": "11.2 Pull requests",
+    "text": "11.2 Pull requests\nThe title of a pull request should briefly describe the changes made. The title should be standalone and should not include the related issue number (i.e. don’t write Fixes #10).\nFor very simple changes, you can leave the description blank as there’s no need to describe what will be obvious from looking at the diff. For more complex changes, you should give an overview of the changes. If the PR fixes an issue, make sure to include Fixes #&lt;issue-number&gt; in the description.",
+    "crumbs": [
+      "Other",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Git/GitHub</span>"
+    ]
+  }
+]
