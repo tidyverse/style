@@ -43,7 +43,7 @@ The problem statement should use sentence case and end with a full stop.
 -   If you cannot state what was expected, use "**can't**":
 
     ```{r}
-    mtcars %>% pull(b)
+    mtcars |> pull(b)
     #> Error:
     #> ! Can't find column `b` in `.data`.
 
@@ -182,7 +182,7 @@ ggplot2::ggplot(ggplot2::aes())
 mtcars |> ggplot() |> geom_point()
 #> Error in `validate_mapping()`:
 #> ! `mapping` must be created by `aes()`.
-#> ℹ Did you use %>% instead of +?
+#> ℹ Did you use `%>%` or `|>` instead of `+`?
 ```
 
 Hints are particularly important if the source of the error is far away from the root cause:

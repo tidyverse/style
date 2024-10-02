@@ -14,6 +14,47 @@ row_adder()
 permutation()
 ```
 
+## Anonymous functions
+
+Use the new lambda syntax: `\(x) x + 1` when writing short anonymous functions (i.e. when you define a function in an argument without giving it an explicit name).
+
+```R
+# Good
+map(xs, \(x) mean((x + 5)^2))
+map(xs, function(x) mean((x + 5)^2))
+
+# Bad
+map(xs, ~ mean((.x + 5)^2))
+```
+
+Don't use `\()` for multi-line functions:
+
+```R
+# Good
+map(xs, function(x) {
+  mean((x + 5)^2)
+})
+
+# Bad
+map(xs, \(x) {
+  mean((x + 5)^2)
+})
+```
+
+Or when creating named functions:
+
+```R
+# Good
+cv <- function(x) {
+  sd(x) / mean(x)
+}
+
+# Bad
+cv <- \(x) sd(x) / mean(x)
+```
+
+Avoid using `\()` in a pipe, and remember to use informative argument names.
+
 ## Long lines
 
 There are two options if the function name and definition can't fit on a single line:

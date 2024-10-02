@@ -111,15 +111,15 @@ The embracing operator, `{{ }}`, should always have inner spaces to help emphasi
 ```{r, eval = FALSE}
 # Good
 max_by <- function(data, var, by) {
-  data %>%
-    group_by({{ by }}) %>%
+  data |>
+    group_by({{ by }}) |>
     summarise(maximum = max({{ var }}, na.rm = TRUE))
 }
 
 # Bad
 max_by <- function(data, var, by) {
-  data %>%
-    group_by({{by}}) %>%
+  data |>
+    group_by({{by}}) |>
     summarise(maximum = max({{var}}, na.rm = TRUE))
 }
 ```
@@ -230,6 +230,14 @@ list(
 
 Do not add extra spaces to places where space is not usually allowed.
 
+## Vertical space
+
+Use vertical whitespace sparingly, and primarily to separate your "thoughts" in code, much like paragraph breaks in prose.
+
+* Avoid empty lines at the start or end of functions.
+* Only use a single empty line when needed to separate functions or pipes.
+* It often makes sense to put an empty line before a comment block, to help visually connect the explanation with the code that it applies to.
+
 ## Function calls
 
 ### Named arguments {#argument-names}
@@ -249,7 +257,17 @@ mean(x = 1:10, , FALSE)
 mean(, TRUE, x = c(1:10, NA))
 ```
 
-Avoid partial matching.
+Avoid partial matching, where you supply a unique prefix of a function argument.
+
+```{r, eval = FALSE}
+# Good
+rep(1:2, times = 3)
+cut(1:10, breaks = c(0, 4, 11))
+
+# Bad
+rep(1:2, t = 3)
+cut(1:10, br = c(0, 4, 11))
+```
 
 ### Assignment
 
@@ -290,6 +308,8 @@ hierarchy easy to see:
 
 * `}` should be the first character on the line.
 
+It is occassionally useful to have an empty curly braces block, in which case it should be written `{}`.
+
 ```{r, eval = FALSE}
 # Good
 if (y < 0 && debug) {
@@ -320,6 +340,8 @@ tryCatch(
   }
 )
 
+while (waiting_for_something()) {}
+
 # Bad
 if (y < 0 && debug) {
 message("Y is negative")
@@ -333,6 +355,11 @@ if (y == 0)
   message("x is negative or zero")
     }
 } else { y ^ x }
+
+while (waiting_for_something()) { }
+while (waiting_for_something()) {
+
+}
 ```
 
 ### If statements
@@ -419,9 +446,9 @@ if (length(x)) {
 ### Switch statements
 
 * Avoid position-based `switch()` statements (i.e. prefer names).
-* Each element should go on its own line.
+* Each element should go on its own line unless all element can fit on one line.
 * Elements that fall through to the following element should have a space after `=`.
-* Provide a fall-through error, unless you have previously validated the input.
+* Provide a fall-through error unless you have previously validated the input.
 
 ```{r, eval = FALSE}
 # Good
@@ -433,12 +460,19 @@ switch(x,
 )
 
 # Bad
-switch(x, a = , b = 1, c = 2)
-switch(x, a =, b = 1, c = 2)
+switch(x,
+  a =,
+  b = 1,
+  c = 2
+)
+switch(x,
+  a = long_function_name1(), b = long_function_name2(),
+  c = long_function_name2()
+)
 switch(y, 1, 2, 3)
 ```
 
-## Long lines
+## Long function calls
 
 Strive to limit your code to 80 characters per line. This fits comfortably on a
 printed page with a reasonably sized font. If you find yourself running out of
@@ -465,19 +499,30 @@ do_something_very_complicated("that", requires, many, arguments,
 
 As described under [Named arguments](#argument-names), you can omit the argument names
 for very common arguments (i.e. for arguments that are used in almost every
-invocation of the function). Short unnamed arguments can also go on the same
-line as the function name, even if the whole function call spans multiple lines.
+invocation of the function). If this introduces a large disparity between the line lengths, you may want to supply names anyway:
 
 ```{r, eval = FALSE}
-map(x, f,
+# Good
+my_function(
+  x,
+  long_argument_name,
+  extra_argument_a = 10,
+  extra_argument_b = c(1, 43, 390, 210209)
+)
+
+# Also good
+my_function(
+  x = x,
+  y = long_argument_name,
   extra_argument_a = 10,
   extra_argument_b = c(1, 43, 390, 210209)
 )
 ```
 
-You may also place several arguments on the same line if they are closely
-related to each other, e.g., strings in calls to `paste()` or `stop()`. When
-building strings, where possible match one line of code to one line of output.
+You may place multiple unnamed arguments on the same line if they are closely
+related to each other. A common example of this is creating strings
+with `paste()`. In such cases, it's often beneficial to match one line of code
+to one line of output.
 
 ```{r, eval = FALSE}
 # Good

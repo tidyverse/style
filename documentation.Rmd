@@ -151,8 +151,34 @@ Text that contains valid R code should be marked as such using backticks. This i
 
 You can use code syntax for function names, like `tibble()`, but consider if it would be better to use a cross-link instead, like `[tibble()]`. If you refer to a function multiple times in one topic, you only need to link the first reference.
 
-Do not use code font for package names. If the package name is ambiguous in the
-context, disambiguate with words, e.g. "the foo package". Do not capitalize the function name if it occurs at the start of a sentence.
+You can use code syntax for function names, like `tibble()`, but consider if it would be better to use a cross-link instead, like `[tibble()]`. If you refer to a function multiple times in one topic, you only need to link the first reference.
+
+Do not capitalize the function name if it occurs at the start of a sentence.
+
+## Package names
+
+Don't use code font for package names. If the package name might be misinterpreted as an ordinary word, disambiguate by following it with "package" or by wrapping the package name in `{}` (but not both).
+
+```
+# Good
+Use the glue package to flexibly interpolate values into strings.
+Use {glue} to flexibly interpolate values into strings.
+
+# Bad
+Use glue to flexibly interpolate values into strings.
+Use `glue` to flexibly interpolate values into strings.
+Use the {glue} package to flexibly interpolate values into strings.
+```
+
+If a package name comes at the start of a sentence, treat it like a proper name and don't capitalize it:
+
+```
+# Good
+dplyr provides a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.
+
+# Bad
+Dplyr provides a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges
+```
 
 ## Internal functions
 
