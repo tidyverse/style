@@ -151,10 +151,6 @@ Text that contains valid R code should be marked as such using backticks. This i
 
 You can use code syntax for function names, like `tibble()`, but consider if it would be better to use a cross-link instead, like `[tibble()]`. If you refer to a function multiple times in one topic, you only need to link the first reference.
 
-You can use code syntax for function names, like `tibble()`, but consider if it would be better to use a cross-link instead, like `[tibble()]`. If you refer to a function multiple times in one topic, you only need to link the first reference.
-
-Do not capitalize the function name if it occurs at the start of a sentence.
-
 ## Package names
 
 Don't use code font for package names. If the package name might be misinterpreted as an ordinary word, disambiguate by following it with "package" or by wrapping the package name in `{}` (but not both).
