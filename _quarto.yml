@@ -1,0 +1,26 @@
+project:
+  type: book
+
+book:
+  title: Tidyverse style guide
+  author: The tidyverse team
+  chapters:
+  - index.qmd
+
+  - part: "Analyses"
+    chapters:
+    - files.qmd
+    - syntax.qmd
+    - functions.qmd
+    - pipes.qmd
+    - ggplot2.qmd
+
+  - part: "Packages"
+    chapters:
+    - package-files.qmd
+    - documentation.qmd
+    - tests.qmd
+    - errors.qmd
+    - news.qmd
+
+  - git.qmd

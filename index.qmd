@@ -1,12 +1,3 @@
----
-title: "The tidyverse style guide"
-author: ["Hadley Wickham"]
-site: bookdown::bookdown_site
-output: bookdown::bs4_book
-github-repo: tidyverse/style
-documentclass: book
----
-
 # Welcome {-}
 
 Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread. This site describes the style used throughout the [tidyverse](http://tidyverse.org). It was derived from Google's original R Style Guide - but
