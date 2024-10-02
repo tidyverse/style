@@ -121,34 +121,37 @@
 <span><span class="va">cv</span> <span class="op">&lt;-</span> \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <p>Avoid using <code>\()</code> in a pipe, and remember to use informative argument names.</p>
 </div>
-<div id="long-lines" class="section level2" number="3.3">
+<div id="multi-line-function-defintions" class="section level2" number="3.3">
 <h2>
-<span class="header-section-number">3.3</span> Long lines<a class="anchor" aria-label="anchor" href="#long-lines"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3</span> Multi-line function defintions<a class="anchor" aria-label="anchor" href="#multi-line-function-defintions"><i class="fas fa-link"></i></a>
 </h2>
-<p>There are two options if the function name and definition can’t fit on a single line:</p>
+<p>There are two options if the function name and definition can’t fit on a single line. In both cases, each argument goes on its own line; the difference is how deep you indent it and where you put <code>)</code> and <code>{</code>:</p>
 <ul>
 <li>
-<p>Function-indent: place each argument on its own line, and indent to match the opening <code>(</code> of <code>function</code>:</p>
+<p><strong>Single-indent</strong>: indent the argument name with a single indent (i.e. two spaces).
+The trailing <code>)</code> and leading <code>{</code> go on a new line.</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">long_function_name</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span> <span class="op">=</span> <span class="st">"a long argument"</span>,</span>
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="va">long_function_name</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span></span>
+<span>  <span class="va">a</span> <span class="op">=</span> <span class="st">"a long argument"</span>,</span>
+<span>  <span class="va">b</span> <span class="op">=</span> <span class="st">"another argument"</span>,</span>
+<span>  <span class="va">c</span> <span class="op">=</span> <span class="st">"another long argument"</span></span>
+<span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co"># As usual code is indented by two spaces.</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+</li>
+<li>
+<p><strong>Hanging-indent</strong>: indent the argument name to match the opening <code>(</code> of <code>function</code>.
+The trailing <code>)</code> and leading <code>{</code> go on the same line as the last argument.</p>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="va">long_function_name</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span> <span class="op">=</span> <span class="st">"a long argument"</span>,</span>
 <span>                               <span class="va">b</span> <span class="op">=</span> <span class="st">"another argument"</span>,</span>
 <span>                               <span class="va">c</span> <span class="op">=</span> <span class="st">"another long argument"</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># As usual code is indented by two spaces.</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </li>
-<li>
-<p>Double-indent: Place each argument of its own <strong>double</strong> indented line.</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">long_function_name</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span></span>
-<span>    <span class="va">a</span> <span class="op">=</span> <span class="st">"a long argument"</span>,</span>
-<span>    <span class="va">b</span> <span class="op">=</span> <span class="st">"another argument"</span>,</span>
-<span>    <span class="va">c</span> <span class="op">=</span> <span class="st">"another long argument"</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="co"># As usual code is indented by two spaces.</span></span>
-<span><span class="op">}</span></span></code></pre></div>
-</li>
 </ul>
-<p>In both cases the trailing <code>)</code> and leading <code>{</code> should go on the same line as the last argument.</p>
-<p>Prefer function-indent style to double-indent style when it fits.</p>
 <p>These styles are designed to clearly separate the function definition from its body.</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Bad</span></span>
@@ -160,13 +163,42 @@
 <span><span class="op">}</span></span></code></pre></div>
 <p>If a function argument can’t fit on a single line, this is a sign you should rework the argument to keep it <a href="https://design.tidyverse.org/defaults-short-and-sweet.html">short and sweet</a>.</p>
 </div>
-<div id="return" class="section level2" number="3.4">
+<div id="s7" class="section level2" number="3.4">
 <h2>
-<span class="header-section-number">3.4</span> <code>return()</code><a class="anchor" aria-label="anchor" href="#return"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4</span> S7<a class="anchor" aria-label="anchor" href="#s7"><i class="fas fa-link"></i></a>
+</h2>
+<p>In S7, the method definition can be long because the function name is replaced by a method call that specifies the generic and dispatch classes. In this case we recommend the single-indent style.</p>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">method</span><span class="op">(</span><span class="va">from_provider</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">openai_provider</span>, <span class="va">class_any</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span></span>
+<span>  <span class="va">provider</span>,</span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  <span class="va">error_call</span> <span class="op">=</span> <span class="fu">caller_env</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>If the method definition is too long to fit on one line, use the usual rules to
+spread the method arguments across multiple lines:</p>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">method</span><span class="op">(</span></span>
+<span>  <span class="va">from_provider</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">openai_provider</span>, <span class="va">class_any</span>, <span class="va">a_very_long_class_name</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span></span>
+<span>  <span class="va">provider</span>,</span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  <span class="va">error_call</span> <span class="op">=</span> <span class="fu">caller_env</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+</div>
+<div id="return" class="section level2" number="3.5">
+<h2>
+<span class="header-section-number">3.5</span> <code>return()</code><a class="anchor" aria-label="anchor" href="#return"><i class="fas fa-link"></i></a>
 </h2>
 <p>Only use <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> for early returns. Otherwise, rely on R to return the result
 of the last evaluated expression.</p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="va">find_abs</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
@@ -183,7 +215,7 @@ of the last evaluated expression.</p>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">x</span> <span class="op">+</span> <span class="va">y</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>Return statements should always be on their own line because they have important effects on the control flow. See also <a href="syntax.html#inline-statements">inline statements</a>.</p>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="va">find_abs</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
@@ -201,19 +233,19 @@ of the last evaluated expression.</p>
 plotting, or saving to disk), it should return the first argument invisibly.
 This makes it possible to use the function as part of a pipe. <code>print</code> methods
 should usually do this, like this example from <a href="http://httr.r-lib.org/">httr</a>:</p>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">print.url</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Url: "</span>, <span class="fu">build_url</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="st">"\n"</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="comments-1" class="section level2" number="3.5">
+<div id="comments-1" class="section level2" number="3.6">
 <h2>
-<span class="header-section-number">3.5</span> Comments<a class="anchor" aria-label="anchor" href="#comments-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.6</span> Comments<a class="anchor" aria-label="anchor" href="#comments-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>In code, use comments to explain the “why” not the “what” or “how”. Each line
 of a comment should begin with the comment symbol and a single space: <code>#</code>.</p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span></span>
 <span><span class="co"># Objects like data frames are treated as leaves</span></span>
@@ -226,7 +258,7 @@ of a comment should begin with the comment symbol and a single space: <code>#</c
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">map_if</span><span class="op">(</span><span class="va">x</span>, <span class="va">is_bare_list</span>, <span class="va">recurse</span><span class="op">)</span></span></code></pre></div>
 <p>Comments should be in sentence case, and only end with a full stop if they
 contain at least two sentences:</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span></span>
 <span><span class="co"># Objects like data frames are treated as leaves</span></span>
@@ -256,9 +288,10 @@ contain at least two sentences:</p>
 <li><a class="nav-link" href="#functions"><span class="header-section-number">3</span> Functions</a></li>
 <li><a class="nav-link" href="#naming"><span class="header-section-number">3.1</span> Naming</a></li>
 <li><a class="nav-link" href="#anonymous-functions"><span class="header-section-number">3.2</span> Anonymous functions</a></li>
-<li><a class="nav-link" href="#long-lines"><span class="header-section-number">3.3</span> Long lines</a></li>
-<li><a class="nav-link" href="#return"><span class="header-section-number">3.4</span> return()</a></li>
-<li><a class="nav-link" href="#comments-1"><span class="header-section-number">3.5</span> Comments</a></li>
+<li><a class="nav-link" href="#multi-line-function-defintions"><span class="header-section-number">3.3</span> Multi-line function defintions</a></li>
+<li><a class="nav-link" href="#s7"><span class="header-section-number">3.4</span> S7</a></li>
+<li><a class="nav-link" href="#return"><span class="header-section-number">3.5</span> return()</a></li>
+<li><a class="nav-link" href="#comments-1"><span class="header-section-number">3.6</span> Comments</a></li>
 </ul>
 
       <div class="book-extra">

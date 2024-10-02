@@ -85,7 +85,7 @@
 </h2>
 <p><code>+</code> should always have a space before it, and should be followed by a new line. This is true even if your plot has only two layers. After the first step, each line should be indented by two spaces.</p>
 <p>If you are creating a ggplot off of a dplyr pipeline, there should only be one level of indentation.</p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="va">iris</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Species</span> <span class="op">==</span> <span class="st">"setosa"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -103,12 +103,12 @@
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Species</span> <span class="op">==</span> <span class="st">"setosa"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Sepal.Width</span>, y <span class="op">=</span> <span class="va">Sepal.Length</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="long-lines-2" class="section level2" number="5.3">
+<div id="long-lines-1" class="section level2" number="5.3">
 <h2>
-<span class="header-section-number">5.3</span> Long lines<a class="anchor" aria-label="anchor" href="#long-lines-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.3</span> Long lines<a class="anchor" aria-label="anchor" href="#long-lines-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>If the arguments to a ggplot2 layer don’t all fit on one line, put each argument on its own line and indent:</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Sepal.Width</span>, y <span class="op">=</span> <span class="va">Sepal.Length</span>, color <span class="op">=</span> <span class="va">Species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -123,7 +123,7 @@
 <span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Sepal width, in cm"</span>, y <span class="op">=</span> <span class="st">"Sepal length, in cm"</span>, title <span class="op">=</span> <span class="st">"Sepal length vs. width of irises"</span><span class="op">)</span></span></code></pre></div>
 <p>ggplot2 allows you to do data manipulation, such as filtering or slicing, within the <code>data</code> argument. Avoid this, and instead do the data manipulation in a pipeline before starting plotting.</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="va">iris</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Species</span> <span class="op">==</span> <span class="st">"setosa"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -148,7 +148,7 @@
 <li><a class="nav-link" href="#ggplot2"><span class="header-section-number">5</span> ggplot2</a></li>
 <li><a class="nav-link" href="#introduction-1"><span class="header-section-number">5.1</span> Introduction</a></li>
 <li><a class="nav-link" href="#whitespace-1"><span class="header-section-number">5.2</span> Whitespace</a></li>
-<li><a class="nav-link" href="#long-lines-2"><span class="header-section-number">5.3</span> Long lines</a></li>
+<li><a class="nav-link" href="#long-lines-1"><span class="header-section-number">5.3</span> Long lines</a></li>
 </ul>
 
       <div class="book-extra">
