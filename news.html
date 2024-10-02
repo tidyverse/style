@@ -74,16 +74,36 @@
 <span class="header-section-number">10</span> News<a class="anchor" aria-label="anchor" href="#news"><i class="fas fa-link"></i></a>
 </h1>
 <p>Each user-facing change to a package should be accompanied by a bullet in <code>NEWS.md</code>. Minor changes to documentation don’t need to be documented, but it’s worthwhile to draw attention to sweeping changes and to new vignettes.</p>
-<div id="bullets" class="section level2" number="10.1">
+<div id="in-development" class="section level2" number="10.1">
 <h2>
-<span class="header-section-number">10.1</span> Bullets<a class="anchor" aria-label="anchor" href="#bullets"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.1</span> In-development<a class="anchor" aria-label="anchor" href="#in-development"><i class="fas fa-link"></i></a>
 </h2>
-<p>The goal of the bullet is to briefly describe the change so users of the packages can understand what’s changed. This can be similar to the commit message, but written with a user (not developer) in mind.</p>
-<p>New bullets should be added to the top of the file (under the first heading).
-Organisation of bullets will happen later, during the release process (Section <a href="news.html#news-release">10.2.2</a>).</p>
-<div id="general-style" class="section level3" number="10.1.1">
+<p>The goal of the bullet is to briefly describe the change so users of the packages can understand what’s changed. This can be similar to the commit message, but written with a user (not developer) in mind. It’s worth emphasizing this point — the reader of your NEWS entries is likely unfamiliar with the day-to-day development work or internals of your package. Think carefully about how to concisely but clearly summarize what’s changed and why it matters for them. If it doesn’t matter (i.e. it’s a purely internal change), you don’t need a bullet.</p>
+<p>New bullets should be added to the top of the file (immediately under the first heading) and should be a single line. Organisation and wrapping will happen later, during the release process (Section <a href="news.html#news-release">10.2</a>).</p>
+<pre><code># haven (development version)
+
+* Second update.
+* First update.</code></pre>
+<p>If the bullet is related to an issue, include the issue number. If the
+contribution is a PR, and the author is not a package author, include the
+GitHub user name. Both items should be wrapped in parentheses and will generally
+come before the final period.</p>
+<pre><code># Good
+* `ggsave()` now uses full argument names to avoid partial match warnings (@wch, #2355).
+
+# Bad
+* `ggsave()` now uses full argument names to avoid partial match warnings.
+
+* `ggsave()` now uses full argument names to avoid partial match warnings. (@wch, #2355)</code></pre>
+</div>
+<div id="news-release" class="section level2" number="10.2">
+<h2>
+<span class="header-section-number">10.2</span> Pre-release<a class="anchor" aria-label="anchor" href="#news-release"><i class="fas fa-link"></i></a>
+</h2>
+<p>Prior to release, the NEWS file needs to be thoroughly proofread, groomed, and organised into sections.</p>
+<div id="general-style" class="section level3" number="10.2.1">
 <h3>
-<span class="header-section-number">10.1.1</span> General style<a class="anchor" aria-label="anchor" href="#general-style"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.2.1</span> General style<a class="anchor" aria-label="anchor" href="#general-style"><i class="fas fa-link"></i></a>
 </h3>
 <p>Strive to place the name of the function as close to the beginning of the bullet
 as possible. A consistent location makes the bullets easier to scan, and easier
@@ -129,27 +149,9 @@ use the present tense.</p>
     facet_wrap(~cut)
   ```</code></pre>
 </div>
-<div id="acknowledgement" class="section level3" number="10.1.2">
+<div id="code-style" class="section level3" number="10.2.2">
 <h3>
-<span class="header-section-number">10.1.2</span> Acknowledgement<a class="anchor" aria-label="anchor" href="#acknowledgement"><i class="fas fa-link"></i></a>
-</h3>
-<p>If the bullet is related to an issue, include the issue number. If the
-contribution was a PR, and the author is not a package author, include their
-GitHub user name. Both items should be wrapped in parentheses and will generally
-come before the final period.</p>
-<pre><code># Good
-* `ggsave()` now uses full argument names to avoid partial match warnings
-  (@wch, #2355).
-
-# Bad
-* `ggsave()` now uses full argument names to avoid partial match warnings.
-
-* `ggsave()` now uses full argument names to avoid partial match warnings.
-  (@wch, #2355)</code></pre>
-</div>
-<div id="code-style" class="section level3" number="10.1.3">
-<h3>
-<span class="header-section-number">10.1.3</span> Code style<a class="anchor" aria-label="anchor" href="#code-style"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.2.2</span> Code style<a class="anchor" aria-label="anchor" href="#code-style"><i class="fas fa-link"></i></a>
 </h3>
 <p>Functions, arguments, and file names should be wrapped in backticks. Function names should include parentheses; omit “the argument” or “the function”</p>
 <pre><code># Good
@@ -158,75 +160,10 @@ come before the final period.</p>
 # Bad
 * In the stat_bin function, "binwidth" now also takes functions.</code></pre>
 </div>
-<div id="common-patterns" class="section level3" number="10.1.4">
+<div id="headings" class="section level3" number="10.2.3">
 <h3>
-<span class="header-section-number">10.1.4</span> Common patterns<a class="anchor" aria-label="anchor" href="#common-patterns"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.2.3</span> Headings<a class="anchor" aria-label="anchor" href="#headings"><i class="fas fa-link"></i></a>
 </h3>
-<p>The following excerpts from tidyverse news entries provide helpful templates to
-follow.</p>
-<ul>
-<li>
-<p>New family of functions:</p>
-<pre><code>* Support for ordered factors is improved. Ordered factors throw a warning
-  when mapped to shape (unordered factors do not), and do not throw warnings
-  when mapped to size or alpha (unordered factors do). Viridis is used as
-  default colour and fill scale for ordered factors (@karawoo, #1526).
-
-* `possibly()`, `safely()` and friends no longer capture interrupts: this
-  means that you can now terminate a mapper using one of these with
-  Escape or Ctrl + C (#314).</code></pre>
-</li>
-<li>
-<p>New function:</p>
-<pre><code>* New `position_dodge2()` provides enhanced dogding for boxplots...
-
-* New `stat_qq_line()` makes it easy to add a simple line to a Q-Q plot.
-  This line makes it easier to judge the fit of the theoretical distribution
-  (@nicksolomon).</code></pre>
-</li>
-<li>
-<p>New argument to existing function:</p>
-<pre><code>* `geom_segment()` gains a `linejoin` parameter.</code></pre>
-</li>
-<li>
-<p>Function argument changes behaviour:</p>
-<pre><code>* In `separate()`, `col = -1` now refers to the far right position.
-  Previously, and incorrectly, `col = -2` referred to the far-right
-  position.</code></pre>
-</li>
-<li>
-<p>Function changes behaviour:</p>
-<pre><code>* `map()` and `modify()` now work with calls and pairlists (#412).
-
-* `flatten_dfr()` and `flatten_dfc()` now aborts with informative
-   message if dplyr is not installed (#454).
-
-* `reduce()` now throws an error if `.x` is empty and `.init` is not
-  supplied.</code></pre>
-</li>
-</ul>
-</div>
-</div>
-<div id="organisation-3" class="section level2" number="10.2">
-<h2>
-<span class="header-section-number">10.2</span> Organisation<a class="anchor" aria-label="anchor" href="#organisation-3"><i class="fas fa-link"></i></a>
-</h2>
-<div id="development" class="section level3" number="10.2.1">
-<h3>
-<span class="header-section-number">10.2.1</span> Development<a class="anchor" aria-label="anchor" href="#development"><i class="fas fa-link"></i></a>
-</h3>
-<p>During development, new bullets should be added to the top of the file, immediately under a “development” heading:</p>
-<pre><code># haven (development version)
-
-* Second update.
-
-* First update.</code></pre>
-</div>
-<div id="news-release" class="section level3" number="10.2.2">
-<h3>
-<span class="header-section-number">10.2.2</span> Release<a class="anchor" aria-label="anchor" href="#news-release"><i class="fas fa-link"></i></a>
-</h3>
-<p>Prior to release, the NEWS file needs to be thoroughly proofread and groomed.</p>
 <p>Each release should have a level 1 heading (<code>#</code>) containing the package name
 and version number. For smaller packages or patch releases this amount of
 organisation may be sufficient. For example, here is the NEWS for modelr 0.1.2:</p>
@@ -277,19 +214,66 @@ it’s not typically obvious what the groups will be in advance.</p>
 <p>Within a section, bullets should be ordered alphabetically by the first function
 mentioned. If no function is mentioned, place the bullet at the top of the section.</p>
 </div>
-<div id="breaking-changes" class="section level3" number="10.2.3">
+<div id="breaking-changes" class="section level3" number="10.2.4">
 <h3>
-<span class="header-section-number">10.2.3</span> Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.2.4</span> Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes"><i class="fas fa-link"></i></a>
 </h3>
-<p>If there are API breaking changes (as discovered during revdepchecks) these
-should also appear in their own section at the top. Each bullet should include
-a description of the symptoms of the change, and what is needed to fix it. The
-bullet should also be repeated in the appropriate section.</p>
+<p>API breaking changes should also appear in their own section at the top.
+Each bullet should include a description of the symptoms of the change, and what
+is needed to fix it. The bullet should also be repeated in the appropriate section.</p>
 <pre><code>## Breaking changes
 
 * `separate()` now correctly uses -1 to refer to the far right position,
   instead of -2. If you depended on this behaviour, you'll need to condition
   on `packageVersion("tidyr") &gt; "0.7.2"`.</code></pre>
+</div>
+<div id="common-patterns" class="section level3" number="10.2.5">
+<h3>
+<span class="header-section-number">10.2.5</span> Common patterns<a class="anchor" aria-label="anchor" href="#common-patterns"><i class="fas fa-link"></i></a>
+</h3>
+<p>The following excerpts from tidyverse news entries provide helpful templates to
+follow.</p>
+<ul>
+<li>
+<p>New family of functions:</p>
+<pre><code>* Support for ordered factors is improved. Ordered factors throw a warning
+  when mapped to shape (unordered factors do not), and do not throw warnings
+  when mapped to size or alpha (unordered factors do). Viridis is used as
+  default colour and fill scale for ordered factors (@karawoo, #1526).
+
+* `possibly()`, `safely()` and friends no longer capture interrupts: this
+  means that you can now terminate a mapper using one of these with
+  Escape or Ctrl + C (#314).</code></pre>
+</li>
+<li>
+<p>New function:</p>
+<pre><code>* New `position_dodge2()` provides enhanced dogding for boxplots...
+
+* New `stat_qq_line()` makes it easy to add a simple line to a Q-Q plot.
+  This line makes it easier to judge the fit of the theoretical distribution
+  (@nicksolomon).</code></pre>
+</li>
+<li>
+<p>New argument to existing function:</p>
+<pre><code>* `geom_segment()` gains a `linejoin` parameter.</code></pre>
+</li>
+<li>
+<p>Function argument changes behaviour:</p>
+<pre><code>* In `separate()`, `col = -1` now refers to the far right position.
+  Previously, and incorrectly, `col = -2` referred to the far-right
+  position.</code></pre>
+</li>
+<li>
+<p>Function changes behaviour:</p>
+<pre><code>* `map()` and `modify()` now work with calls and pairlists (#412).
+
+* `flatten_dfr()` and `flatten_dfc()` now aborts with informative
+   message if dplyr is not installed (#454).
+
+* `reduce()` now throws an error if `.x` is empty and `.init` is not
+  supplied.</code></pre>
+</li>
+</ul>
 </div>
 </div>
 <div id="blog-post" class="section level2" number="10.3">
@@ -312,19 +296,14 @@ reader can find these in the release notes.</p>
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#news"><span class="header-section-number">10</span> News</a></li>
+<li><a class="nav-link" href="#in-development"><span class="header-section-number">10.1</span> In-development</a></li>
 <li>
-<a class="nav-link" href="#bullets"><span class="header-section-number">10.1</span> Bullets</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#general-style"><span class="header-section-number">10.1.1</span> General style</a></li>
-<li><a class="nav-link" href="#acknowledgement"><span class="header-section-number">10.1.2</span> Acknowledgement</a></li>
-<li><a class="nav-link" href="#code-style"><span class="header-section-number">10.1.3</span> Code style</a></li>
-<li><a class="nav-link" href="#common-patterns"><span class="header-section-number">10.1.4</span> Common patterns</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#organisation-3"><span class="header-section-number">10.2</span> Organisation</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#development"><span class="header-section-number">10.2.1</span> Development</a></li>
-<li><a class="nav-link" href="#news-release"><span class="header-section-number">10.2.2</span> Release</a></li>
-<li><a class="nav-link" href="#breaking-changes"><span class="header-section-number">10.2.3</span> Breaking changes</a></li>
+<a class="nav-link" href="#news-release"><span class="header-section-number">10.2</span> Pre-release</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#general-style"><span class="header-section-number">10.2.1</span> General style</a></li>
+<li><a class="nav-link" href="#code-style"><span class="header-section-number">10.2.2</span> Code style</a></li>
+<li><a class="nav-link" href="#headings"><span class="header-section-number">10.2.3</span> Headings</a></li>
+<li><a class="nav-link" href="#breaking-changes"><span class="header-section-number">10.2.4</span> Breaking changes</a></li>
+<li><a class="nav-link" href="#common-patterns"><span class="header-section-number">10.2.5</span> Common patterns</a></li>
 </ul>
 </li>
 <li><a class="nav-link" href="#blog-post"><span class="header-section-number">10.3</span> Blog post</a></li>
