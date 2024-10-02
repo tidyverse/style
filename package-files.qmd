@@ -1,6 +1,6 @@
 # Files {#package-files}
 
-The majority of advice in Chapter \@ref(files) also applies to files in packages. Important differences are described below.
+The majority of advice in @sec-files also applies to files in packages. Important differences are described below.
 
 ## Names
 
@@ -19,7 +19,7 @@ documentation should appear first, with private functions appearing after all
 documented functions. If multiple public functions share the same documentation,
 they should all immediately follow the documentation block.
 
-See \@ref(documentation) for more thorough guidance on documenting functions
+See @sec-documentation for more thorough guidance on documenting functions
 in packages.
 
 ```{r}
