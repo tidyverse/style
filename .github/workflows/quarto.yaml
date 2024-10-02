@@ -2,13 +2,12 @@ on:
   push:
     branches: [main, master]
   pull_request:
-    branches: [main, master]
   workflow_dispatch:
 
-name: bookdown
+name: quarto.yml
 
 jobs:
-  build:
+  quarto:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -21,19 +20,11 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
 
-      - uses: r-lib/actions/setup-pandoc@v2
+      - name: Install Quarto
+        uses: quarto-dev/quarto-actions/install-quarto@v1
 
-      - name: Cache bookdown results
-        uses: actions/cache@v2
-        with:
-          path: _bookdown_files
-          key: bookdown-${{ hashFiles('**/*Rmd') }}
-          restore-keys: bookdown-
-
-      - name: Build site
-        run: |
-          bookdown::render_book('index.Rmd', 'bookdown::bs4_book', quiet = TRUE)
-        shell: Rscript {0}
+      - name: Render book
+        run: quarto render
 
       - name: Deploy to GitHub pages 🚀
         if: github.event_name != 'pull_request'
