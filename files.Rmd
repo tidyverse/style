@@ -43,7 +43,8 @@ It's hard to describe exactly how you should organise your code across multiple 
 Use commented lines of `-` and `=` to break up your file into easily readable
 chunks.
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Load data ---------------------------
 
 # Plot data ---------------------------

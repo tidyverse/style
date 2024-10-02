@@ -10,7 +10,8 @@
 Variable and function names should use only lowercase letters, numbers, and `_`.
 Use underscores (`_`) (so called snake case) to separate words within a name.
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Good
 day_one
 day_1
@@ -31,7 +32,8 @@ If you find yourself attempting to cram data into variable names (e.g. `model_20
 Generally, variable names should be nouns and function names should be verbs.
 Strive for names that are concise and meaningful (this is not easy!).
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Good
 day_one
 
@@ -43,7 +45,8 @@ djm1
 Where possible, avoid re-using names of common functions and variables. This
 will cause confusion for the readers of your code.
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Bad
 T <- FALSE
 c <- 10
@@ -56,7 +59,8 @@ mean <- function(x) sum(x)
 
 Always put a space after a comma, never before, just like in regular English.
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Good
 x[, 1]
 
@@ -70,7 +74,8 @@ x[ , 1]
 
 Do not put spaces inside or outside parentheses for regular function calls.
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Good
 mean(x, na.rm = TRUE)
 
@@ -81,7 +86,8 @@ mean( x, na.rm = TRUE )
 
 Place a space before and after `()` when used with  `if`, `for`, or `while`.
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Good
 if (debug) {
   show(x)
@@ -95,7 +101,8 @@ if(debug){
 
 Place a space after `()` used for function arguments:
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Good
 function(x) {}
 
@@ -108,7 +115,8 @@ function(x){}
 
 The embracing operator, `{{ }}`, should always have inner spaces to help emphasise its special behaviour:
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Good
 max_by <- function(data, var, by) {
   data |>
@@ -130,7 +138,8 @@ max_by <- function(data, var, by) {
 Most infix operators (`==`, `+`, `-`, `<-`, etc.) should always be surrounded by
 spaces:
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Good
 height <- (feet * 12) + inches
 mean(x, na.rm = TRUE)
@@ -145,7 +154,8 @@ There are a few exceptions, which should never be surrounded by spaces:
 *   The operators with [high precedence][syntax]: `::`, `:::`, `$`, `@`, `[`,
     `[[`, `^`, unary `-`, unary `+`, and `:`.
 
-    ```{r, eval = FALSE}
+    ```{r}
+    #| eval = FALSE
     # Good
     sqrt(x^2 + y^2)
     df$z
@@ -159,7 +169,8 @@ There are a few exceptions, which should never be surrounded by spaces:
 
 *   Single-sided formulas when the right-hand side is a single identifier:
 
-    ```{r, eval = FALSE}
+    ```{r}
+    #| eval = FALSE
     # Good
     ~foo
     tribble(
@@ -177,7 +188,8 @@ There are a few exceptions, which should never be surrounded by spaces:
 
     Note that single-sided formulas with a complex right-hand side do need a space:
 
-    ```{r, eval = FALSE}
+    ```{r}
+    #| eval = FALSE
     # Good
     ~ .x + .y
 
@@ -188,7 +200,8 @@ There are a few exceptions, which should never be surrounded by spaces:
 *   When used in tidy evaluation `!!` (bang-bang) and `!!!` (bang-bang-bang)
     (because have precedence equivalent to unary `-`/`+`)
 
-    ```{r, eval = FALSE}
+    ```{r}
+    #| eval = FALSE
     # Good
     call(!!xyz)
 
@@ -200,7 +213,8 @@ There are a few exceptions, which should never be surrounded by spaces:
 
 *   The help operator
 
-    ```{r, eval = FALSE}
+    ```{r}
+    #| eval = FALSE
     # Good
     package?stats
     ?mean
@@ -214,7 +228,8 @@ There are a few exceptions, which should never be surrounded by spaces:
 
 Adding extra spaces is ok if it improves alignment of `=` or `<-`.
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Good
 list(
   total = a + b + c,
@@ -248,7 +263,8 @@ When you call a function, you typically omit the names of data arguments,
 because they are used so commonly. If you override the default value of an
 argument, use the full name:
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Good
 mean(1:10, na.rm = TRUE)
 
@@ -259,7 +275,8 @@ mean(, TRUE, x = c(1:10, NA))
 
 Avoid partial matching, where you supply a unique prefix of a function argument.
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Good
 rep(1:2, times = 3)
 cut(1:10, breaks = c(0, 4, 11))
@@ -273,7 +290,8 @@ cut(1:10, br = c(0, 4, 11))
 
 Avoid assignment in function calls:
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Good
 x <- complicated_function()
 if (nzchar(x) < 1) {
@@ -288,7 +306,8 @@ if (nzchar(x <- complicated_function()) < 1) {
 
 The only exception is in functions that capture side-effects:
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 output <- capture.output(x <- f())
 ```
 
@@ -310,7 +329,8 @@ hierarchy easy to see:
 
 It is occassionally useful to have an empty curly braces block, in which case it should be written `{}`.
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Good
 if (y < 0 && debug) {
   message("y is negative")
@@ -376,7 +396,8 @@ while (waiting_for_something()) {
 
     If you want to rewrite a simple but lengthy `if` block:
 
-    ```{r, eval = FALSE}
+    ```{r}
+    #| eval = FALSE
     if (x > 10) {
       message <- "big"
     } else {
@@ -386,7 +407,8 @@ while (waiting_for_something()) {
 
     Just write it all on one line:
 
-    ```{r, eval = FALSE}
+    ```{r}
+    #| eval = FALSE
     message <- if (x > 10) "big" else "small"
     ```
 
@@ -431,7 +453,8 @@ find_abs <- function(x) {
 
 Avoid implicit type coercion (e.g. from numeric to logical) in `if` statements:
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Good
 if (length(x) > 0) {
   # do something
@@ -450,7 +473,8 @@ if (length(x)) {
 * Elements that fall through to the following element should have a space after `=`.
 * Provide a fall-through error unless you have previously validated the input.
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Good
 switch(x,
   a = ,
@@ -483,7 +507,8 @@ If a function call is too long to fit on a single line, use one line each for
 the function name, each argument, and the closing `)`.
 This makes the code easier to read and to change later.
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Good
 do_something_very_complicated(
   something = "that",
@@ -501,7 +526,8 @@ As described under [Named arguments](#argument-names), you can omit the argument
 for very common arguments (i.e. for arguments that are used in almost every
 invocation of the function). If this introduces a large disparity between the line lengths, you may want to supply names anyway:
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Good
 my_function(
   x,
@@ -524,7 +550,8 @@ related to each other. A common example of this is creating strings
 with `paste()`. In such cases, it's often beneficial to match one line of code
 to one line of output.
 
-```{r, eval = FALSE}
+```{r}
+#| eval = FALSE
 # Good
 paste0(
   "Requirement: ", requires, "\n",
@@ -562,7 +589,8 @@ x = 5
 Use `"`, not `'`, for quoting text. The only exception is when the text already
 contains double quotes and no single quotes.
 
-```{r, eval=FALSE}
+```{r}
+#| eval = FALSE
 # Good
 "Text"
 'Text with "quotes"'

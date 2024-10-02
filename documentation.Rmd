@@ -7,7 +7,8 @@ is future-you. Use [roxygen2](https://github.com/klutometis/roxygen) with
 [markdown](https://github.com/klutometis/roxygen/blob/master/vignettes/markdown.Rmd)
 support enabled to keep your documentation close to the code.
 
-```{r, include=FALSE}
+```{r}
+#| include = FALSE
 knitr::opts_chunk$set(eval = FALSE)
 ```
 
