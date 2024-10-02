@@ -35,9 +35,10 @@ book:
 
 format:
   html:
-    code-link: true
     include-in-header: "plausible.html"
     callout-appearance: simple
+    theme:
+      - styles.scss
 
 knitr:
   opts_chunk:
