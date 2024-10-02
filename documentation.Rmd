@@ -149,7 +149,7 @@ Text that contains valid R code should be marked as such using backticks. This i
 * Literal R code, e.g. `mean(x, na.rm = TRUE)`
 * Class names, e.g. "a tibble will have class `tbl_df` ..."
 
-You can use code syntax for function names, like `tibble()`, but consider if it would be better to use a cross-link instead, like `[tibble()]`. If you refer to a function multiple times in one topic, you only need to link the first reference.
+You can use code syntax for function names, like `` `tibble()` ``, but consider if it would be better to use a cross-link instead, like `[tibble()]`. If you refer to a function multiple times in one topic, you only need to link the first reference.
 
 ## Package names
 
