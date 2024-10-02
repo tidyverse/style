@@ -20,8 +20,8 @@ Use the new lambda syntax: `\(x) x + 1` when writing short anonymous functions (
 
 ```R
 # Good
-map(xs, function(x) mean((x + 5)^2))
 map(xs, \(x) mean((x + 5)^2))
+map(xs, function(x) mean((x + 5)^2))
 
 # Bad
 map(xs, ~ mean((.x + 5)^2))
