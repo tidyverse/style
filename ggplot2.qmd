@@ -12,7 +12,7 @@ Styling suggestions for `+` used to separate ggplot2 layers are very similar to 
 
 If you are creating a ggplot off of a dplyr pipeline, there should only be one level of indentation.
 
-```{r eval=FALSE}
+```{r}
 # Good
 iris |>
   filter(Species == "setosa") |>
@@ -36,7 +36,7 @@ iris |>
 
 If the arguments to a ggplot2 layer don't all fit on one line, put each argument on its own line and indent:
 
-```{r, eval = FALSE}
+```{r}
 # Good
 ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
   geom_point() +
@@ -54,7 +54,7 @@ ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
 
 ggplot2 allows you to do data manipulation, such as filtering or slicing, within the `data` argument. Avoid this, and instead do the data manipulation in a pipeline before starting plotting.
 
-```{r eval=FALSE}
+```{r}
 # Good
 iris |>
   filter(Species == "setosa") |>
