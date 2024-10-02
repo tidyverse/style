@@ -88,7 +88,7 @@ support enabled to keep your documentation close to the code.</p>
 </h2>
 <p>Use the first line of your function documentation to provide a concise title that describes the function, dataset, or class. Titles should use sentence case
 but not end with a full stop (<code>.</code>).</p>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' Combine values into a vector or list</span></span>
 <span><span class="co">#'</span></span>
 <span><span class="co">#' This is a generic function which combines its arguments.</span></span>
@@ -96,7 +96,7 @@ but not end with a full stop (<code>.</code>).</p>
 <p>There is no need to use the explicit <code>@title</code> or <code>@description</code> tags, except
 in the case of the description if it is multiple paragraphs or includes
 more complex formatting like a bulleted list.</p>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' Apply a function to each element of a vector</span></span>
 <span><span class="co">#'</span></span>
 <span><span class="co">#' @description</span></span>
@@ -116,16 +116,16 @@ more complex formatting like a bulleted list.</p>
 <p>Always indent with one space after <code>#'</code>. If any description corresponding to a
 <code>roxygen</code> tag spans over multiple lines, add another two spaces of extra
 indention.</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' @param key The bare (unquoted) name of the column whose values will be used</span></span>
 <span><span class="co">#'   as column headings.</span></span></code></pre></div>
 <p>Alternatively, tags that span over multiple lines (like <code>@description</code>, <code>@examples</code> and <code>@section</code>) can have the corresponding tag on its own line and then subsequent lines don’t need to be indented.</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' @examples</span></span>
 <span><span class="co">#' 1 + 1</span></span>
 <span><span class="co">#' sin(pi)</span></span></code></pre></div>
 <p>Use line breaks before/after sections where needed:</p>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' @section Tidy data:</span></span>
 <span><span class="co">#' When applied to a data frame, row names are silently dropped. To preserve,</span></span>
 <span><span class="co">#' convert to an explicit variable with [tibble::rownames_to_column()].</span></span>
@@ -141,12 +141,12 @@ indention.</p>
 </h2>
 <p>For most tags, like <code>@param</code>, <code>@seealso</code> and <code>@return</code>, the text should be a
 sentence, starting with a capital letter and ending with a full stop.</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' @param key The bare (unquoted) name of the column whose values will be used</span></span>
 <span><span class="co">#'   as column headings.</span></span></code></pre></div>
 <p>If some functions share parameters, you can use <code>@inheritParams</code> to avoid
 duplication of content in multiple places.</p>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' @inheritParams function_to_inherit_from</span></span></code></pre></div>
 </div>
 <div id="capitalization-and-full-stops" class="section level2" number="7.5">
@@ -157,7 +157,7 @@ duplication of content in multiple places.</p>
 case and put a period at the end of each text element, even if it is only a few
 words. However, avoid capitalization of function names or packages since R is
 case sensitive. Use a colon before enumerations or bulleted lists.</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' @details</span></span>
 <span><span class="co">#' In the following, we present the bullets of the list:</span></span>
 <span><span class="co">#' * Four cats are few animals.</span></span>
@@ -170,11 +170,11 @@ case sensitive. Use a colon before enumerations or bulleted lists.</p>
 <p>Cross-referencing is encouraged, both within R’s help file system as well as to
 external resources.</p>
 <p>List closely related functions in <code>@seealso</code>. A single related function can be written as a sentence:</p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' @seealso [fct_lump()] to automatically convert the rarest (or most common)</span></span>
 <span><span class="co">#'   levels to "other".</span></span></code></pre></div>
 <p>More recommendations should be organised in a bulleted list:</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' @seealso</span></span>
 <span><span class="co">#' * [tibble()] constructs from individual columns.</span></span>
 <span><span class="co">#' * [enframe()] converts a named vector into a two-column tibble (names and</span></span>
@@ -184,7 +184,7 @@ external resources.</p>
 automatically add appropriate lists and interlinks to the <code>@seealso</code> section.
 Family names are plural. In dplyr, the verbs <code>arrange()</code>, <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code>,
 <code>mutate()</code>, <code>slice()</code>, <code>summarize()</code> form the family of single table verbs.</p>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' @family single table verbs</span></span></code></pre></div>
 <p>When linking to external resources either include the full url inline with <code>&lt;&gt;</code>, or the surrounding prose and link text should make it extremely clear where the hyperlink goes. Avoid text like <a href="https://www.smashingmagazine.com/2012/06/links-should-never-say-click-here/">“click here”</a>.</p>
 </div>
@@ -202,16 +202,35 @@ Family names are plural. In dplyr, the verbs <code>arrange()</code>, <code><a hr
 </li>
 <li>Class names, e.g. “a tibble will have class <code>tbl_df</code> …”</li>
 </ul>
-<p>Do not use code font for package names. If the package name is ambiguous in the
-context, disambiguate with words, e.g. “the foo package”. Do not capitalize the function name if it occurs at the start of a sentence.</p>
+<p>Do not capitalize the function name if it occurs at the start of a sentence.</p>
 </div>
-<div id="internal-functions" class="section level2" number="7.8">
+<div id="package-names" class="section level2" number="7.8">
 <h2>
-<span class="header-section-number">7.8</span> Internal functions<a class="anchor" aria-label="anchor" href="#internal-functions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.8</span> Package names<a class="anchor" aria-label="anchor" href="#package-names"><i class="fas fa-link"></i></a>
+</h2>
+<p>Don’t use code font for package names. If the package name might be misinterpreted as an ordinary word, disambiguate by following it with “package” or by wrapping the package name in <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code> (but not both).</p>
+<pre><code># Good
+Use the glue package to flexibly interpolate values into strings.
+Use {glue} to flexibly interpolate values into strings.
+
+# Bad
+Use glue to flexibly interpolate values into strings.
+Use `glue` to flexibly interpolate values into strings.
+Use the {glue} package to flexibly interpolate values into strings.</code></pre>
+<p>If a package name comes at the start of a sentence, treat it like a proper name and don’t capitalize it:</p>
+<pre><code># Good
+dplyr provides a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.
+
+# Bad
+Dplyr provides a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges</code></pre>
+</div>
+<div id="internal-functions" class="section level2" number="7.9">
+<h2>
+<span class="header-section-number">7.9</span> Internal functions<a class="anchor" aria-label="anchor" href="#internal-functions"><i class="fas fa-link"></i></a>
 </h2>
 <p>Internal functions should be documented with <code>#'</code> comments as per usual.
 Use the <code>@noRd</code> tag to prevent <code>.Rd</code> files from being generated.</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' Drop last</span></span>
 <span><span class="co">#'</span></span>
 <span><span class="co">#' Drops the last element from a vector.</span></span>
@@ -236,7 +255,8 @@ Use the <code>@noRd</code> tag to prevent <code>.Rd</code> files from being gene
 <li><a class="nav-link" href="#capitalization-and-full-stops"><span class="header-section-number">7.5</span> Capitalization and full stops</a></li>
 <li><a class="nav-link" href="#cross-linking"><span class="header-section-number">7.6</span> Cross-linking</a></li>
 <li><a class="nav-link" href="#r-code"><span class="header-section-number">7.7</span> R code</a></li>
-<li><a class="nav-link" href="#internal-functions"><span class="header-section-number">7.8</span> Internal functions</a></li>
+<li><a class="nav-link" href="#package-names"><span class="header-section-number">7.8</span> Package names</a></li>
+<li><a class="nav-link" href="#internal-functions"><span class="header-section-number">7.9</span> Internal functions</a></li>
 </ul>
 
       <div class="book-extra">

@@ -24,9 +24,9 @@
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<meta name="description" content="3.1 Naming As well as following the general advice for object names, strive to use verbs for function names: # Good add_row() permute() # Bad row_adder() permutation()  3.2 Anonymous functions If...">
-<meta property="og:description" content="3.1 Naming As well as following the general advice for object names, strive to use verbs for function names: # Good add_row() permute() # Bad row_adder() permutation()  3.2 Anonymous functions If...">
-<meta name="twitter:description" content="3.1 Naming As well as following the general advice for object names, strive to use verbs for function names: # Good add_row() permute() # Bad row_adder() permutation()  3.2 Anonymous functions If...">
+<meta name="description" content="3.1 Naming As well as following the general advice for object names, strive to use verbs for function names: # Good add_row() permute() # Bad row_adder() permutation()  3.2 Anonymous functions Use...">
+<meta property="og:description" content="3.1 Naming As well as following the general advice for object names, strive to use verbs for function names: # Good add_row() permute() # Bad row_adder() permutation()  3.2 Anonymous functions Use...">
+<meta name="twitter:description" content="3.1 Naming As well as following the general advice for object names, strive to use verbs for function names: # Good add_row() permute() # Bad row_adder() permutation()  3.2 Anonymous functions Use...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -91,20 +91,35 @@
 <h2>
 <span class="header-section-number">3.2</span> Anonymous functions<a class="anchor" aria-label="anchor" href="#anonymous-functions"><i class="fas fa-link"></i></a>
 </h2>
-<p>If using an anonymous or inline function (i.e. a function that hasn’t been given a name by assigning it to a variable), prefer the new lambda syntax: <code>\(x) x + 1</code>.</p>
+<p>Use the new lambda syntax: <code>\(x) x + 1</code> when writing short anonymous functions (i.e. when you define a function in an argument without giving it an explicit name).</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="fu">map</span><span class="op">(</span><span class="va">xs</span>, \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">x</span> <span class="op">+</span> <span class="fl">5</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">map</span><span class="op">(</span><span class="va">xs</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">x</span> <span class="op">+</span> <span class="fl">5</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Bad</span></span>
-<span><span class="fu">map</span><span class="op">(</span><span class="va">xs</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">x</span> <span class="op">+</span> <span class="fl">5</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">map</span><span class="op">(</span><span class="va">xs</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">.x</span> <span class="op">+</span> <span class="fl">5</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<ul>
-<li>As with any function, prefer informative argument names.</li>
-<li>Only use an anonymous function if it fits on one line.</li>
-<li>Avoid using <code>\()</code> except for anonymous functions.</li>
-<li>Avoid using <code>\()</code> in a pipe.</li>
-</ul>
+<p>Don’t use <code>\()</code> for multi-line functions:</p>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="fu">map</span><span class="op">(</span><span class="va">xs</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">x</span> <span class="op">+</span> <span class="fl">5</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="fu">map</span><span class="op">(</span><span class="va">xs</span>, \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">x</span> <span class="op">+</span> <span class="fl">5</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
+<p>Or when creating named functions:</p>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span><span class="va">cv</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span><span class="va">cv</span> <span class="op">&lt;-</span> \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
+<p>Avoid using <code>\()</code> in a pipe, and remember to use informative argument names.</p>
 </div>
 <div id="long-lines" class="section level2" number="3.3">
 <h2>
@@ -114,7 +129,7 @@
 <ul>
 <li>
 <p>Function-indent: place each argument on its own line, and indent to match the opening <code>(</code> of <code>function</code>:</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">long_function_name</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span> <span class="op">=</span> <span class="st">"a long argument"</span>,</span>
 <span>                               <span class="va">b</span> <span class="op">=</span> <span class="st">"another argument"</span>,</span>
 <span>                               <span class="va">c</span> <span class="op">=</span> <span class="st">"another long argument"</span><span class="op">)</span> <span class="op">{</span></span>
@@ -123,7 +138,7 @@
 </li>
 <li>
 <p>Double-indent: Place each argument of its own <strong>double</strong> indented line.</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">long_function_name</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span></span>
 <span>    <span class="va">a</span> <span class="op">=</span> <span class="st">"a long argument"</span>,</span>
 <span>    <span class="va">b</span> <span class="op">=</span> <span class="st">"another argument"</span>,</span>
@@ -135,7 +150,7 @@
 <p>In both cases the trailing <code>)</code> and leading <code>{</code> should go on the same line as the last argument.</p>
 <p>Prefer function-indent style to double-indent style when it fits.</p>
 <p>These styles are designed to clearly separate the function definition from its body.</p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Bad</span></span>
 <span><span class="va">long_function_name</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span> <span class="op">=</span> <span class="st">"a long argument"</span>,</span>
 <span>  <span class="va">b</span> <span class="op">=</span> <span class="st">"another argument"</span>,</span>
@@ -151,7 +166,7 @@
 </h2>
 <p>Only use <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> for early returns. Otherwise, rely on R to return the result
 of the last evaluated expression.</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="va">find_abs</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
@@ -168,7 +183,7 @@ of the last evaluated expression.</p>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">x</span> <span class="op">+</span> <span class="va">y</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>Return statements should always be on their own line because they have important effects on the control flow. See also <a href="syntax.html#inline-statements">inline statements</a>.</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="va">find_abs</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
@@ -186,7 +201,7 @@ of the last evaluated expression.</p>
 plotting, or saving to disk), it should return the first argument invisibly.
 This makes it possible to use the function as part of a pipe. <code>print</code> methods
 should usually do this, like this example from <a href="http://httr.r-lib.org/">httr</a>:</p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">print.url</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Url: "</span>, <span class="fu">build_url</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="st">"\n"</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
@@ -198,7 +213,7 @@ should usually do this, like this example from <a href="http://httr.r-lib.org/">
 </h2>
 <p>In code, use comments to explain the “why” not the “what” or “how”. Each line
 of a comment should begin with the comment symbol and a single space: <code>#</code>.</p>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span></span>
 <span><span class="co"># Objects like data frames are treated as leaves</span></span>
@@ -211,7 +226,7 @@ of a comment should begin with the comment symbol and a single space: <code>#</c
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">map_if</span><span class="op">(</span><span class="va">x</span>, <span class="va">is_bare_list</span>, <span class="va">recurse</span><span class="op">)</span></span></code></pre></div>
 <p>Comments should be in sentence case, and only end with a full stop if they
 contain at least two sentences:</p>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span></span>
 <span><span class="co"># Objects like data frames are treated as leaves</span></span>
