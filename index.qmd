@@ -12,8 +12,9 @@ Two R packages support this style guide:
     the easiest way to re-style existing code.
 
     ```{r}
-    #| echo = FALSE,
-    #| fig.align = "center"
+    #| eval: true
+    #| echo: false
+    #| fig.align: center
     knitr::include_graphics("styler-addin.png", dpi = 220)
     ```
 

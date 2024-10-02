@@ -38,3 +38,7 @@ format:
     code-link: true
     include-in-header: "plausible.html"
     callout-appearance: simple
+
+knitr:
+  opts_chunk:
+    eval: false

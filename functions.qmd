@@ -5,7 +5,6 @@
 As well as following the general advice for [object names], strive to use verbs for function names:
 
 ```{r}
-#| eval = FALSE
 # Good
 add_row()
 permute()
@@ -64,7 +63,6 @@ There are two options if the function name and definition can't fit on a single 
     The trailing `)` and leading `{` go on a new line.
 
     ```{r}
-    #| eval = FALSE
     # Good
     long_function_name <- function(
       a = "a long argument",
@@ -79,7 +77,6 @@ There are two options if the function name and definition can't fit on a single 
     The trailing `)` and leading `{` go on the same line as the last argument.
 
     ```{r}
-    #| eval = FALSE
     # Good
     long_function_name <- function(a = "a long argument",
                                    b = "another argument",
@@ -91,7 +88,6 @@ There are two options if the function name and definition can't fit on a single 
 These styles are designed to clearly separate the function definition from its body.
 
 ```{r}
-#| eval = FALSE
 # Bad
 long_function_name <- function(a = "a long argument",
   b = "another argument",
@@ -108,7 +104,6 @@ If a function argument can't fit on a single line, this is a sign you should rew
 In S7, the method definition can be long because the function name is replaced by a method call that specifies the generic and dispatch classes. In this case we recommend the single-indent style.
 
 ```{r}
-#| eval = FALSE
 method(from_provider, list(openai_provider, class_any)) <- function(
   provider,
   x,
@@ -123,7 +118,6 @@ If the method definition is too long to fit on one line, use the usual rules to
 spread the method arguments across multiple lines:
 
 ```{r}
-#| eval = FALSE
 method(
   from_provider,
   list(openai_provider, class_any, a_very_long_class_name)
@@ -143,7 +137,6 @@ Only use `return()` for early returns. Otherwise, rely on R to return the result
 of the last evaluated expression.
 
 ```{r}
-#| eval = FALSE
 # Good
 find_abs <- function(x) {
   if (x > 0) {
@@ -164,7 +157,6 @@ add_two <- function(x, y) {
 Return statements should always be on their own line because they have important effects on the control flow. See also [inline statements](#inline-statements).
 
 ```{r}
-#| eval = FALSE
 # Good
 find_abs <- function(x) {
   if (x > 0) {
@@ -186,7 +178,6 @@ This makes it possible to use the function as part of a pipe. `print` methods
 should usually do this, like this example from [httr](http://httr.r-lib.org/):
 
 ```{r}
-#| eval = FALSE
 print.url <- function(x, ...) {
   cat("Url: ", build_url(x), "\n", sep = "")
   invisible(x)
@@ -199,7 +190,6 @@ In code, use comments to explain the "why" not the "what" or "how". Each line
 of a comment should begin with the comment symbol and a single space: `# `.
 
 ```{r}
-#| eval = FALSE
 # Good
 
 # Objects like data frames are treated as leaves
@@ -216,7 +206,6 @@ Comments should be in sentence case, and only end with a full stop if they
 contain at least two sentences:
 
 ```{r}
-#| eval = FALSE
 # Good
 
 # Objects like data frames are treated as leaves

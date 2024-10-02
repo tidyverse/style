@@ -1,10 +1,5 @@
 # Error messages
 
-```{r}
-#| include = FALSE
-knitr::opts_chunk$set(eval = FALSE)
-```
-
 An error message should start with a general statement of the problem then give a concise description of what went wrong.
 Consistent use of punctuation and formatting makes errors easier to parse.
 

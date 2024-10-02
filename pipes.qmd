@@ -7,7 +7,6 @@ Use `|>` to emphasise a sequence of actions, rather than the object that the act
 The tidyverse has been designed to work particuarly well with the pipe, but you can use it with any code, particularly in conjunction with the `_` placeholder.
 
 ```{r}
-#| eval = FALSE
 strings |>
   str_replace("a", "b"),
   str_replace("x", "y")
@@ -30,7 +29,6 @@ Avoid using the pipe when:
 `|>` should always have a space before it, and should usually be followed by a new line. After the first step, each line should be indented by two spaces. This structure makes it easier to add new steps (or rearrange existing steps) and harder to overlook a step.
 
 ```{r}
-#| eval = FALSE
 # Good
 iris |>
   summarize(across(where(is.numeric), mean), .by = Species) |>
@@ -49,7 +47,6 @@ If the arguments to a function don't all fit on one line, put each argument on
 its own line and indent:
 
 ```{r}
-#| eval = FALSE
 # Good
 iris |>
   summarise(
@@ -66,7 +63,6 @@ iris |>
 For data analysis, we recommend using the pipe whenever a function needs to span multiple lines, even if it's only a single step.
 
 ```{r}
-#| eval = FALSE
 # Bad
 summarise(
   iris,
@@ -81,7 +77,6 @@ summarise(
 It's ok to write a short pipe on a single line:
 
 ```{r}
-#| eval = FALSE
 # Ok
 iris |> subset(Species == "virginica") |> _$Sepal.Length
 iris |> summarise(width = Sepal.Width, .by = Species) |> arrange(width)
@@ -90,7 +85,6 @@ iris |> summarise(width = Sepal.Width, .by = Species) |> arrange(width)
 But because short pipes often become longer pipes, we recommend that you generally stick to one function per line:
 
 ```{r}
-#| eval = FALSE
 # Better
 iris |>
   subset(Species == "virginica") |>
@@ -107,7 +101,6 @@ inline pipe (which doesn't require a lookup elsewhere) or if it's better to move
 the code outside the pipe and give it an evocative name.
 
 ```{r}
-#| eval = FALSE
 # Good
 x |>
   semi_join(y |> filter(is_valid))
@@ -130,7 +123,6 @@ There are three acceptable forms of assignment:
 *   Variable name and assignment on separate lines:
 
     ```{r}
-    #| eval = FALSE
     iris_long <-
       iris |>
       gather(measure, value, -Species) |>
@@ -140,7 +132,6 @@ There are three acceptable forms of assignment:
 *   Variable name and assignment on the same line:
 
     ```{r}
-    #| eval = FALSE
     iris_long <- iris |>
       gather(measure, value, -Species) |>
       arrange(-value)
@@ -149,7 +140,6 @@ There are three acceptable forms of assignment:
 *   Assignment at the end of the pipe with `->`:
 
     ```{r}
-    #| eval = FALSE
     iris |>
       gather(measure, value, -Species) |>
       arrange(-value) ->
@@ -165,7 +155,6 @@ you of the purpose of the pipe.
 We recommend you use the base `|>` pipe instead of magrittr's `%>%`.
 
 ```{r}
-#| eval = FALSE
 # Good
 iris |>
   summarise(width = Sepal.Width, .by = Species) |>

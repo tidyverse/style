@@ -44,7 +44,6 @@ Use commented lines of `-` and `=` to break up your file into easily readable
 chunks.
 
 ```{r}
-#| eval = FALSE
 # Load data ---------------------------
 
 # Plot data ---------------------------
