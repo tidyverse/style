@@ -55,34 +55,35 @@ cv <- \(x) sd(x) / mean(x)
 
 Avoid using `\()` in a pipe, and remember to use informative argument names.
 
-## Long lines
+## Multi-line function defintions
 
-There are two options if the function name and definition can't fit on a single line:
+There are two options if the function name and definition can't fit on a single line. In both cases, each argument goes on its own line; the difference is how deep you indent it and where you put `)` and `{`:
 
-*   Function-indent: place each argument on its own line, and indent to match the opening `(` of `function`:
+*   **Single-indent**: indent the argument name with a single indent (i.e. two spaces).
+    The trailing `)` and leading `{` go on a new line.
 
     ```{r, eval = FALSE}
+    # Good
+    long_function_name <- function(
+      a = "a long argument",
+      b = "another argument",
+      c = "another long argument"
+    ) {
+      # As usual code is indented by two spaces.
+    }
+    ```
+
+*   **Hanging-indent**: indent the argument name to match the opening `(` of `function`.
+    The trailing `)` and leading `{` go on the same line as the last argument.
+
+    ```{r, eval = FALSE}
+    # Good
     long_function_name <- function(a = "a long argument",
                                    b = "another argument",
                                    c = "another long argument") {
       # As usual code is indented by two spaces.
     }
     ```
-
-*   Double-indent: Place each argument of its own **double** indented line.
-
-    ```{r, eval = FALSE}
-    long_function_name <- function(
-        a = "a long argument",
-        b = "another argument",
-        c = "another long argument") {
-      # As usual code is indented by two spaces.
-    }
-    ```
-
-In both cases the trailing `)` and leading `{` should go on the same line as the last argument.
-
-Prefer function-indent style to double-indent style when it fits.
 
 These styles are designed to clearly separate the function definition from its body.
 
@@ -97,6 +98,38 @@ long_function_name <- function(a = "a long argument",
 ```
 
 If a function argument can't fit on a single line, this is a sign you should rework the argument to keep it [short and sweet](https://design.tidyverse.org/defaults-short-and-sweet.html).
+
+## S7
+
+In S7, the method definition can be long because the function name is replaced by a method call that specifies the generic and dispatch classes. In this case we recommend the single-indent style.
+
+```{r, eval = FALSE}
+method(from_provider, list(openai_provider, class_any)) <- function(
+  provider,
+  x,
+  ...,
+  error_call = caller_env()
+) {
+  ...
+}
+```
+
+If the method definition is too long to fit on one line, use the usual rules to
+spread the method arguments across multiple lines:
+
+```{r, eval = FALSE}
+method(
+  from_provider,
+  list(openai_provider, class_any, a_very_long_class_name)
+) <- function(
+  provider,
+  x,
+  ...,
+  error_call = caller_env()
+) {
+  ...
+}
+```
 
 ## `return()`
 
