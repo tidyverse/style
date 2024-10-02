@@ -2,12 +2,37 @@
 
 Each user-facing change to a package should be accompanied by a bullet in `NEWS.md`. Minor changes to documentation don't need to be documented, but it's worthwhile to draw attention to sweeping changes and to new vignettes.
 
-## Bullets
+## In-development
 
-The goal of the bullet is to briefly describe the change so users of the packages can understand what's changed. This can be similar to the commit message, but written with a user (not developer) in mind.
+The goal of the bullet is to briefly describe the change so users of the packages can understand what's changed. This can be similar to the commit message, but written with a user (not developer) in mind. It's worth emphasizing this point --- the reader of your NEWS entries is likely unfamiliar with the day-to-day development work or internals of your package. Think carefully about how to concisely but clearly summarize what's changed and why it matters for them. If it doesn't matter (i.e. it's a purely internal change), you don't need a bullet.
 
-New bullets should be added to the top of the file (under the first heading).
-Organisation of bullets will happen later, during the release process (Section \@ref(news-release)).
+New bullets should be added to the top of the file (immediately under the first heading) and should be a single line. Organisation and wrapping will happen later, during the release process (Section \@ref(news-release)).
+
+```
+# haven (development version)
+
+* Second update.
+* First update.
+```
+
+If the bullet is related to an issue, include the issue number. If the
+contribution is a PR, and the author is not a package author, include the
+GitHub user name. Both items should be wrapped in parentheses and will generally
+come before the final period.
+
+```
+# Good
+* `ggsave()` now uses full argument names to avoid partial match warnings (@wch, #2355).
+
+# Bad
+* `ggsave()` now uses full argument names to avoid partial match warnings.
+
+* `ggsave()` now uses full argument names to avoid partial match warnings. (@wch, #2355)
+```
+
+## Pre-release {#news-release}
+
+Prior to release, the NEWS file needs to be thoroughly proofread, groomed, and organised into sections.
 
 ### General style
 
@@ -67,25 +92,6 @@ Many news bullets will be a single sentence. This is typically adequate when des
   ```
 ````
 
-### Acknowledgement
-
-If the bullet is related to an issue, include the issue number. If the
-contribution was a PR, and the author is not a package author, include their
-GitHub user name. Both items should be wrapped in parentheses and will generally
-come before the final period.
-
-```
-# Good
-* `ggsave()` now uses full argument names to avoid partial match warnings
-  (@wch, #2355).
-
-# Bad
-* `ggsave()` now uses full argument names to avoid partial match warnings.
-
-* `ggsave()` now uses full argument names to avoid partial match warnings.
-  (@wch, #2355)
-```
-
 ### Code style
 
 Functions, arguments, and file names should be wrapped in backticks. Function names should include parentheses; omit "the argument" or "the function"
@@ -98,77 +104,7 @@ Functions, arguments, and file names should be wrapped in backticks. Function na
 * In the stat_bin function, "binwidth" now also takes functions.
 ```
 
-### Common patterns
-
-The following excerpts from tidyverse news entries provide helpful templates to
-follow.
-
-*   New family of functions:
-
-    ```
-    * Support for ordered factors is improved. Ordered factors throw a warning
-      when mapped to shape (unordered factors do not), and do not throw warnings
-      when mapped to size or alpha (unordered factors do). Viridis is used as
-      default colour and fill scale for ordered factors (@karawoo, #1526).
-
-    * `possibly()`, `safely()` and friends no longer capture interrupts: this
-      means that you can now terminate a mapper using one of these with
-      Escape or Ctrl + C (#314).
-    ```
-
-*   New function:
-
-    ```
-    * New `position_dodge2()` provides enhanced dogding for boxplots...
-
-    * New `stat_qq_line()` makes it easy to add a simple line to a Q-Q plot.
-      This line makes it easier to judge the fit of the theoretical distribution
-      (@nicksolomon).
-    ```
-
-*   New argument to existing function:
-
-    ```
-    * `geom_segment()` gains a `linejoin` parameter.
-    ```
-
-*   Function argument changes behaviour:
-
-    ```
-    * In `separate()`, `col = -1` now refers to the far right position.
-      Previously, and incorrectly, `col = -2` referred to the far-right
-      position.
-    ```
-
-*   Function changes behaviour:
-
-    ```
-    * `map()` and `modify()` now work with calls and pairlists (#412).
-
-    * `flatten_dfr()` and `flatten_dfc()` now aborts with informative
-       message if dplyr is not installed (#454).
-
-    * `reduce()` now throws an error if `.x` is empty and `.init` is not
-      supplied.
-    ```
-
-## Organisation
-
-### Development
-
-During development, new bullets should be added to the top of the file, immediately under a "development" heading:
-
-```
-# haven (development version)
-
-* Second update.
-
-* First update.
-```
-
-### Release {#news-release}
-
-Prior to release, the NEWS file needs to be thoroughly proofread and groomed.
+### Headings
 
 Each release should have a level 1 heading (`#`) containing the package name
 and version number. For smaller packages or patch releases this amount of
@@ -235,10 +171,9 @@ mentioned. If no function is mentioned, place the bullet at the top of the secti
 
 ### Breaking changes
 
-If there are API breaking changes (as discovered during revdepchecks) these
-should also appear in their own section at the top. Each bullet should include
-a description of the symptoms of the change, and what is needed to fix it. The
-bullet should also be repeated in the appropriate section.
+API breaking changes should also appear in their own section at the top.
+Each bullet should include a description of the symptoms of the change, and what
+is needed to fix it. The bullet should also be repeated in the appropriate section.
 
 ```
 ## Breaking changes
@@ -247,6 +182,60 @@ bullet should also be repeated in the appropriate section.
   instead of -2. If you depended on this behaviour, you'll need to condition
   on `packageVersion("tidyr") > "0.7.2"`.
 ```
+
+### Common patterns
+
+The following excerpts from tidyverse news entries provide helpful templates to
+follow.
+
+*   New family of functions:
+
+    ```
+    * Support for ordered factors is improved. Ordered factors throw a warning
+      when mapped to shape (unordered factors do not), and do not throw warnings
+      when mapped to size or alpha (unordered factors do). Viridis is used as
+      default colour and fill scale for ordered factors (@karawoo, #1526).
+
+    * `possibly()`, `safely()` and friends no longer capture interrupts: this
+      means that you can now terminate a mapper using one of these with
+      Escape or Ctrl + C (#314).
+    ```
+
+*   New function:
+
+    ```
+    * New `position_dodge2()` provides enhanced dogding for boxplots...
+
+    * New `stat_qq_line()` makes it easy to add a simple line to a Q-Q plot.
+      This line makes it easier to judge the fit of the theoretical distribution
+      (@nicksolomon).
+    ```
+
+*   New argument to existing function:
+
+    ```
+    * `geom_segment()` gains a `linejoin` parameter.
+    ```
+
+*   Function argument changes behaviour:
+
+    ```
+    * In `separate()`, `col = -1` now refers to the far right position.
+      Previously, and incorrectly, `col = -2` referred to the far-right
+      position.
+    ```
+
+*   Function changes behaviour:
+
+    ```
+    * `map()` and `modify()` now work with calls and pairlists (#412).
+
+    * `flatten_dfr()` and `flatten_dfc()` now aborts with informative
+       message if dplyr is not installed (#454).
+
+    * `reduce()` now throws an error if `.x` is empty and `.init` is not
+      supplied.
+    ```
 
 ## Blog post
 
