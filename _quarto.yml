@@ -4,10 +4,16 @@ project:
 book:
   title: Tidyverse style guide
   author: The tidyverse team
+
+  site-url: https://style.tidyverse.org
+  repo-url: https://github.com/tidyverse/style/
+  repo-branch: main
+  repo-actions: [edit, issue]
+
   chapters:
   - index.qmd
 
-  - part: "Analyses"
+  - part: Analyses
     chapters:
     - files.qmd
     - syntax.qmd
@@ -15,7 +21,7 @@ book:
     - pipes.qmd
     - ggplot2.qmd
 
-  - part: "Packages"
+  - part: Packages
     chapters:
     - package-files.qmd
     - documentation.qmd
@@ -23,4 +29,12 @@ book:
     - errors.qmd
     - news.qmd
 
-  - git.qmd
+  - part: Other
+    chapters:
+    - git.qmd
+
+format:
+  html:
+    code-link: true
+    include-in-header: "plausible.html"
+    callout-appearance: simple
