@@ -14,7 +14,7 @@ Two R packages support this style guide:
     ```{r}
     #| eval: true
     #| echo: false
-    #| fig.align: center
+    #| fig-align: center
     knitr::include_graphics("styler-addin.png", dpi = 220)
     ```
 
