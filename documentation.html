@@ -180,6 +180,7 @@ external resources.</p>
 <span><span class="co">#' * [enframe()] converts a named vector into a two-column tibble (names and</span></span>
 <span><span class="co">#'   values).</span></span>
 <span><span class="co">#' * [name-repair] documents the details of name repair.</span></span></code></pre></div>
+<p>You can link to functions in other packages by using the fully qualified function name, i.e. <code>[pkg::function()]</code>.</p>
 <p>If you have a family of related functions, you can use the <code>@family</code> tag to
 automatically add appropriate lists and interlinks to the <code>@seealso</code> section.
 Family names are plural. In dplyr, the verbs <code>arrange()</code>, <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code>,
@@ -194,7 +195,6 @@ Family names are plural. In dplyr, the verbs <code>arrange()</code>, <code><a hr
 </h2>
 <p>Text that contains valid R code should be marked as such using backticks. This includes:</p>
 <ul>
-<li>Function names, which should be followed by <code>()</code>, e.g. <code>tibble()</code>.</li>
 <li>Function arguments, e.g. <code>na.rm</code>.</li>
 <li>Values, e.g. <code>TRUE</code>, <code>FALSE</code>, <code>NA</code>, <code>NaN</code>, <code>...</code>, <code>NULL</code>
 </li>
@@ -202,7 +202,7 @@ Family names are plural. In dplyr, the verbs <code>arrange()</code>, <code><a hr
 </li>
 <li>Class names, e.g. “a tibble will have class <code>tbl_df</code> …”</li>
 </ul>
-<p>Do not capitalize the function name if it occurs at the start of a sentence.</p>
+<p>You can use code syntax for function names, like <code>`tibble()`</code>, but consider if it would be better to use a cross-link instead, like <code>[tibble()]</code>. If you refer to a function multiple times in one topic, you only need to link the first reference.</p>
 </div>
 <div id="package-names" class="section level2" number="7.8">
 <h2>
