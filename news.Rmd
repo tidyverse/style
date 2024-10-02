@@ -4,7 +4,7 @@ Each user-facing change to a package should be accompanied by a bullet in `NEWS.
 
 ## In-development
 
-The goal of the bullet is to briefly describe the change so users of the packages can understand what's changed. This can be similar to the commit message, but written with a user (not developer) in mind.
+The goal of the bullet is to briefly describe the change so users of the packages can understand what's changed. This can be similar to the commit message, but written with a user (not developer) in mind. It's worth emphasizing this point -- the reader of your NEWS entries is likely unfamiliar with the day-to-day development work or internals of your package. Think carefully about how to concisely but clearly summarize what's changed and why it matters for them.
 
 New bullets should be added to the top of the file (immediately under the first heading) and should be a single line. Organisation and wrapping will happen later, during the release process (Section \@ref(news-release)).
 
