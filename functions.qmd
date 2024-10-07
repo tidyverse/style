@@ -55,7 +55,7 @@ cv <- \(x) sd(x) / mean(x)
 
 Avoid using `\()` in a pipe, and remember to use informative argument names.
 
-## Multi-line function defintions
+## Multi-line function definitions
 
 There are two options if the function name and definition can't fit on a single line. In both cases, each argument goes on its own line; the difference is how deep you indent it and where you put `)` and `{`:
 
