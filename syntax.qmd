@@ -374,21 +374,21 @@ while (waiting_for_something()) {
   recycled to match) and it is eager (i.e. both `a` and `b` will always be
   evaluated).
 
-    If you want to rewrite a simple but lengthy `if` block:
+  If you want to rewrite a simple but lengthy `if` block:
 
-    ```{r}
-    if (x > 10) {
-      message <- "big"
-    } else {
-      message <- "small"
-    }
-    ```
+  ```{r}
+  if (x > 10) {
+    message <- "big"
+  } else {
+    message <- "small"
+  }
+  ```
 
-    Just write it all on one line:
+  Just write it all on one line:
 
-    ```{r}
-    message <- if (x > 10) "big" else "small"
-    ```
+  ```{r}
+  message <- if (x > 10) "big" else "small"
+  ```
 
 ### Inline statements {#inline-statements}
 
