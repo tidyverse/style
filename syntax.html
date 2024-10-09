@@ -633,17 +633,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><code>&amp;</code> and <code>|</code> should never be used inside of an <code>if</code> clause because they can return vectors. Always use <code>&amp;&amp;</code> and <code>||</code> instead.</p></li>
 <li><p>NB: <code>ifelse(x, a, b)</code> is not a drop-in replacement for <code>if (x) a else b</code>. <code>ifelse()</code> is vectorised (i.e.&nbsp;if <code>length(x) &gt; 1</code>, then <code>a</code> and <code>b</code> will be recycled to match) and it is eager (i.e.&nbsp;both <code>a</code> and <code>b</code> will always be evaluated).</p>
 <p>If you want to rewrite a simple but lengthy <code>if</code> block:</p>
-<p>::: {.cell}</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">10</span>) {</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  message <span class="ot">&lt;-</span> <span class="st">"big"</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  message <span class="ot">&lt;-</span> <span class="st">"small"</span></span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>:::</p>
+</div>
 <p>Just write it all on one line:</p>
-<p>::: {.cell}</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>message <span class="ot">&lt;-</span> <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">10</span>) <span class="st">"big"</span> <span class="cf">else</span> <span class="st">"small"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>:::</p></li>
+</div></li>
 </ul>
 </section>
 <section id="inline-statements" class="level3" data-number="2.5.3">
