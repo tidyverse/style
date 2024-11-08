@@ -38,7 +38,8 @@ If the arguments to a ggplot2 layer don't all fit on one line, put each argument
 
 ```{r}
 # Good
-ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
+iris |>
+  ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
   geom_point() +
   labs(
     x = "Sepal width, in cm",
@@ -47,7 +48,7 @@ ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
   )
 
 # Bad
-ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
+iris |> ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
   geom_point() +
   labs(x = "Sepal width, in cm", y = "Sepal length, in cm", title = "Sepal length vs. width of irises")
 ```

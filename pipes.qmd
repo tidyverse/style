@@ -4,11 +4,11 @@
 
 Use `|>` to emphasise a sequence of actions, rather than the object that the actions are being performed on.
 
-The tidyverse has been designed to work particuarly well with the pipe, but you can use it with any code, particularly in conjunction with the `_` placeholder.
+The tidyverse has been designed to work particularly well with the pipe, but you can use it with any code, particularly in conjunction with the `_` placeholder.
 
 ```{r}
 strings |>
-  str_replace("a", "b"),
+  str_replace("a", "b") |>
   str_replace("x", "y")
 
 strings |>
@@ -32,12 +32,12 @@ Avoid using the pipe when:
 # Good
 iris |>
   summarize(across(where(is.numeric), mean), .by = Species) |>
-  pivot_longer(-Species, names_to = "measure", values_to = "value") |>
+  pivot_longer(!Species, names_to = "measure", values_to = "value") |>
   arrange(value)
 
 # Bad
 iris |> summarize(across(where(is.numeric), mean), .by = Species) |>
-pivot_longer(-Species, names_to = "measure", values_to = "value") |>
+pivot_longer(!Species, names_to = "measure", values_to = "value") |>
 arrange(value)
 ```
 
