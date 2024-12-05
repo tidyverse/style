@@ -65,8 +65,8 @@
     ]
   },
   {
-    "objectID": "syntax.html#object-names",
-    "href": "syntax.html#object-names",
+    "objectID": "syntax.html#sec-objectnames",
+    "href": "syntax.html#sec-objectnames",
     "title": "2  Syntax",
     "section": "",
     "text": "“There are only two hard things in Computer Science: cache invalidation and naming things.”\n— Phil Karlton",
@@ -80,7 +80,7 @@
     "href": "syntax.html#spacing",
     "title": "2  Syntax",
     "section": "2.2 Spacing",
-    "text": "2.2 Spacing\n\n2.2.1 Commas\nAlways put a space after a comma, never before, just like in regular English.\n\n# Good\nx[, 1]\n\n# Bad\nx[,1]\nx[ ,1]\nx[ , 1]\n\n\n\n2.2.2 Parentheses\nDo not put spaces inside or outside parentheses for regular function calls.\n\n# Good\nmean(x, na.rm = TRUE)\n\n# Bad\nmean (x, na.rm = TRUE)\nmean( x, na.rm = TRUE )\n\nPlace a space before and after () when used with if, for, or while.\n\n# Good\nif (debug) {\n  show(x)\n}\n\n# Bad\nif(debug){\n  show(x)\n}\n\nPlace a space after () used for function arguments:\n\n# Good\nfunction(x) {}\n\n# Bad\nfunction (x) {}\nfunction(x){}\n\n\n\n2.2.3 Embracing\nThe embracing operator, { }, should always have inner spaces to help emphasise its special behaviour:\n\n# Good\nmax_by &lt;- function(data, var, by) {\n  data |&gt;\n    group_by({{ by }}) |&gt;\n    summarise(maximum = max({{ var }}, na.rm = TRUE))\n}\n\n# Bad\nmax_by &lt;- function(data, var, by) {\n  data |&gt;\n    group_by({{by}}) |&gt;\n    summarise(maximum = max({{var}}, na.rm = TRUE))\n}\n\n\n\n2.2.4 Infix operators\nMost infix operators (==, +, -, &lt;-, etc.) should always be surrounded by spaces:\n\n# Good\nheight &lt;- (feet * 12) + inches\nmean(x, na.rm = TRUE)\n\n# Bad\nheight&lt;-feet*12+inches\nmean(x, na.rm=TRUE)\n\nThere are a few exceptions, which should never be surrounded by spaces:\n\nThe operators with high precedence: ::, :::, $, @, [, [[, ^, unary -, unary +, and :.\n\n# Good\nsqrt(x^2 + y^2)\ndf$z\nx &lt;- 1:10\n\n# Bad\nsqrt(x ^ 2 + y ^ 2)\ndf $ z\nx &lt;- 1 : 10\n\nSingle-sided formulas when the right-hand side is a single identifier:\n\n# Good\n~foo\ntribble(\n  ~col1, ~col2,\n  \"a\",   \"b\"\n)\n\n# Bad\n~ foo\ntribble(\n  ~ col1, ~ col2,\n  \"a\", \"b\"\n)\n\nNote that single-sided formulas with a complex right-hand side do need a space:\n\n# Good\n~ .x + .y\n\n# Bad\n~.x + .y\n\nWhen used in tidy evaluation !! (bang-bang) and !!! (bang-bang-bang) (because have precedence equivalent to unary -/+)\n\n# Good\ncall(!!xyz)\n\n# Bad\ncall(!! xyz)\ncall( !! xyz)\ncall(! !xyz)\n\nThe help operator\n\n# Good\npackage?stats\n?mean\n\n# Bad\npackage ? stats\n? mean\n\n\n\n\n2.2.5 Extra spaces\nAdding extra spaces is ok if it improves alignment of = or &lt;-.\n\n# Good\nlist(\n  total = a + b + c,\n  mean  = (a + b + c) / n\n)\n\n# Also fine\nlist(\n  total = a + b + c,\n  mean = (a + b + c) / n\n)\n\nDo not add extra spaces to places where space is not usually allowed.",
+    "text": "2.2 Spacing\n\n2.2.1 Commas\nAlways put a space after a comma, never before, just like in regular English.\n\n# Good\nx[, 1]\n\n# Bad\nx[,1]\nx[ ,1]\nx[ , 1]\n\n\n\n2.2.2 Parentheses\nDo not put spaces inside or outside parentheses for regular function calls.\n\n# Good\nmean(x, na.rm = TRUE)\n\n# Bad\nmean (x, na.rm = TRUE)\nmean( x, na.rm = TRUE )\n\nPlace a space before and after () when used with if, for, or while.\n\n# Good\nif (debug) {\n  show(x)\n}\n\n# Bad\nif(debug){\n  show(x)\n}\n\nPlace a space after () used for function arguments:\n\n# Good\nfunction(x) {}\n\n# Bad\nfunction (x) {}\nfunction(x){}\n\n\n\n2.2.3 Embracing\nThe embracing operator, { }, should always have inner spaces to help emphasise its special behaviour:\n\n# Good\nmax_by &lt;- function(data, var, by) {\n  data |&gt;\n    group_by({{ by }}) |&gt;\n    summarise(maximum = max({{ var }}, na.rm = TRUE))\n}\n\n# Bad\nmax_by &lt;- function(data, var, by) {\n  data |&gt;\n    group_by({{by}}) |&gt;\n    summarise(maximum = max({{var}}, na.rm = TRUE))\n}\n\n\n\n2.2.4 Infix operators\nMost infix operators (==, +, -, &lt;-, etc.) should always be surrounded by spaces:\n\n# Good\nheight &lt;- (feet * 12) + inches\nmean(x, na.rm = TRUE)\n\n# Bad\nheight&lt;-feet*12+inches\nmean(x, na.rm=TRUE)\n\nThere are a few exceptions, which should never be surrounded by spaces:\n\nThe operators with high precedence: ::, :::, $, @, [, [[, ^, unary -, unary +, and :.\n\n# Good\nsqrt(x^2 + y^2)\ndf$z\nx &lt;- 1:10\n\n# Bad\nsqrt(x ^ 2 + y ^ 2)\ndf $ z\nx &lt;- 1 : 10\n\nSingle-sided formulas when the right-hand side is a single identifier.\n\n# Good\n~foo\ntribble(\n  ~col1, ~col2,\n  \"a\",   \"b\"\n)\n\n# Bad\n~ foo\ntribble(\n  ~ col1, ~ col2,\n  \"a\", \"b\"\n)\n\nNote that single-sided formulas with a complex right-hand side do need a space.\n\n# Good\n~ .x + .y\n\n# Bad\n~.x + .y\n\nWhen used in tidy evaluation !! (bang-bang) and !!! (bang-bang-bang) (because they have precedence equivalent to unary -/+).\n\n# Good\ncall(!!xyz)\n\n# Bad\ncall(!! xyz)\ncall( !! xyz)\ncall(! !xyz)\n\nThe help operator.\n\n# Good\npackage?stats\n?mean\n\n# Bad\npackage ? stats\n? mean\n\n\n\n\n2.2.5 Extra spaces\nAdding extra spaces is ok if it improves alignment of = or &lt;-.\n\n# Good\nlist(\n  total = a + b + c,\n  mean  = (a + b + c) / n\n)\n\n# Also fine\nlist(\n  total = a + b + c,\n  mean = (a + b + c) / n\n)\n\nDo not add extra spaces to places where space is not usually allowed.",
     "crumbs": [
       "Analyses",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syntax</span>"
@@ -179,7 +179,7 @@
     "href": "functions.html",
     "title": "3  Functions",
     "section": "",
-    "text": "3.1 Naming\nAs well as following the general advice for [object names], strive to use verbs for function names:\n# Good\nadd_row()\npermute()\n\n# Bad\nrow_adder()\npermutation()",
+    "text": "3.1 Naming\nAs well as following the general advice for object names in Section 2.1, strive to use verbs for function names:\n# Good\nadd_row()\npermute()\n\n# Bad\nrow_adder()\npermutation()",
     "crumbs": [
       "Analyses",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Functions</span>"
@@ -245,7 +245,7 @@
     "href": "pipes.html",
     "title": "4  Pipes",
     "section": "",
-    "text": "4.1 Introduction\nUse |&gt; to emphasise a sequence of actions, rather than the object that the actions are being performed on.\nThe tidyverse has been designed to work particuarly well with the pipe, but you can use it with any code, particularly in conjunction with the _ placeholder.\nstrings |&gt;\n  str_replace(\"a\", \"b\"),\n  str_replace(\"x\", \"y\")\n\nstrings |&gt;\n  gsub(\"a\", \"b\", x = _) |&gt;\n  gsub(\"x\", \"y\", x = _)\nAvoid using the pipe when:",
+    "text": "4.1 Introduction\nUse |&gt; to emphasise a sequence of actions, rather than the object that the actions are being performed on.\nThe tidyverse has been designed to work particularly well with the pipe, but you can use it with any code, particularly in conjunction with the _ placeholder.\nstrings |&gt;\n  str_replace(\"a\", \"b\") |&gt;\n  str_replace(\"x\", \"y\")\n\nstrings |&gt;\n  gsub(\"a\", \"b\", x = _) |&gt;\n  gsub(\"x\", \"y\", x = _)\nAvoid using the pipe when:",
     "crumbs": [
       "Analyses",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Pipes</span>"
@@ -267,7 +267,7 @@
     "href": "pipes.html#whitespace",
     "title": "4  Pipes",
     "section": "4.2 Whitespace",
-    "text": "4.2 Whitespace\n|&gt; should always have a space before it, and should usually be followed by a new line. After the first step, each line should be indented by two spaces. This structure makes it easier to add new steps (or rearrange existing steps) and harder to overlook a step.\n\n# Good\niris |&gt;\n  summarize(across(where(is.numeric), mean), .by = Species) |&gt;\n  pivot_longer(-Species, names_to = \"measure\", values_to = \"value\") |&gt;\n  arrange(value)\n\n# Bad\niris |&gt; summarize(across(where(is.numeric), mean), .by = Species) |&gt;\npivot_longer(-Species, names_to = \"measure\", values_to = \"value\") |&gt;\narrange(value)",
+    "text": "4.2 Whitespace\n|&gt; should always have a space before it, and should usually be followed by a new line. After the first step, each line should be indented by two spaces. This structure makes it easier to add new steps (or rearrange existing steps) and harder to overlook a step.\n\n# Good\niris |&gt;\n  summarize(across(where(is.numeric), mean), .by = Species) |&gt;\n  pivot_longer(!Species, names_to = \"measure\", values_to = \"value\") |&gt;\n  arrange(value)\n\n# Bad\niris |&gt; summarize(across(where(is.numeric), mean), .by = Species) |&gt;\npivot_longer(!Species, names_to = \"measure\", values_to = \"value\") |&gt;\narrange(value)",
     "crumbs": [
       "Analyses",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Pipes</span>"
@@ -344,7 +344,7 @@
     "href": "ggplot2.html#long-lines",
     "title": "5  ggplot2",
     "section": "5.3 Long lines",
-    "text": "5.3 Long lines\nIf the arguments to a ggplot2 layer don’t all fit on one line, put each argument on its own line and indent:\n\n# Good\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point() +\n  labs(\n    x = \"Sepal width, in cm\",\n    y = \"Sepal length, in cm\",\n    title = \"Sepal length vs. width of irises\"\n  )\n\n# Bad\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point() +\n  labs(x = \"Sepal width, in cm\", y = \"Sepal length, in cm\", title = \"Sepal length vs. width of irises\")\n\nggplot2 allows you to do data manipulation, such as filtering or slicing, within the data argument. Avoid this, and instead do the data manipulation in a pipeline before starting plotting.\n\n# Good\niris |&gt;\n  filter(Species == \"setosa\") |&gt;\n  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) +\n  geom_point()\n\n# Bad\nggplot(filter(iris, Species == \"setosa\"), aes(x = Sepal.Width, y = Sepal.Length)) +\n  geom_point()",
+    "text": "5.3 Long lines\nIf the arguments to a ggplot2 layer don’t all fit on one line, put each argument on its own line and indent:\n\n# Good\niris |&gt;\n  ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point() +\n  labs(\n    x = \"Sepal width, in cm\",\n    y = \"Sepal length, in cm\",\n    title = \"Sepal length vs. width of irises\"\n  )\n\n# Bad\niris |&gt;\n  ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point() +\n  labs(x = \"Sepal width, in cm\", y = \"Sepal length, in cm\", title = \"Sepal length vs. width of irises\")\n\nggplot2 allows you to do data manipulation, such as filtering or slicing, within the data argument. Avoid this, and instead do the data manipulation in a pipeline before starting plotting.\n\n# Good\niris |&gt;\n  filter(Species == \"setosa\") |&gt;\n  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) +\n  geom_point()\n\n# Bad\nggplot(filter(iris, Species == \"setosa\"), aes(x = Sepal.Width, y = Sepal.Length)) +\n  geom_point()",
     "crumbs": [
       "Analyses",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>ggplot2</span>"
@@ -355,7 +355,7 @@
     "href": "package-files.html",
     "title": "6  Files",
     "section": "",
-    "text": "6.1 Names",
+    "text": "6.1 Names\nThe majority of advice in Chapter 1 also applies to files in packages. Important differences are described below.",
     "crumbs": [
       "Packages",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Files</span>"
@@ -498,7 +498,7 @@
     "href": "errors.html",
     "title": "9  Error messages",
     "section": "",
-    "text": "9.1 Problem statement\nEvery error message should start with a general statement of the problem. It should be concise, but informative (This is hard!). The problem statement should use sentence case and end with a full stop.",
+    "text": "9.1 Problem statement\nAn error message should start with a general statement of the problem then give a concise description of what went wrong. Consistent use of punctuation and formatting makes errors easier to parse.\nThis guide assumes that you’re using cli::cli_abort(). We are transitioning to use this function in the tidyverse because it:\nMuch of the advice in this guide still applies if you’re using stop(), but it will be be much more work to generate the message.\nEvery error message should start with a general statement of the problem. It should be concise, but informative (This is hard!). The problem statement should use sentence case and end with a full stop.",
     "crumbs": [
       "Packages",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Error messages</span>"
@@ -586,7 +586,7 @@
     "href": "news.html",
     "title": "10  News",
     "section": "",
-    "text": "10.1 In-development\nThe goal of the bullet is to briefly describe the change so users of the packages can understand what’s changed. This can be similar to the commit message, but written with a user (not developer) in mind. It’s worth emphasizing this point — the reader of your NEWS entries is likely unfamiliar with the day-to-day development work or internals of your package. Think carefully about how to concisely but clearly summarize what’s changed and why it matters for them. If it doesn’t matter (i.e. it’s a purely internal change), you don’t need a bullet.\nNew bullets should be added to the top of the file (immediately under the first heading) and should be a single line. Organisation and wrapping will happen later, during the release process.\nIf the bullet is related to an issue, include the issue number. If the contribution is a PR, and the author is not a package author, include the GitHub user name. Both items should be wrapped in parentheses and will generally come before the final period.",
+    "text": "10.1 In-development\nEach user-facing change to a package should be accompanied by a bullet in NEWS.md. Minor changes to documentation don’t need to be documented, but it’s worthwhile to draw attention to sweeping changes and to new vignettes.\nThe goal of the bullet is to briefly describe the change so users of the packages can understand what’s changed. This can be similar to the commit message, but written with a user (not developer) in mind. It’s worth emphasizing this point — the reader of your NEWS entries is likely unfamiliar with the day-to-day development work or internals of your package. Think carefully about how to concisely but clearly summarize what’s changed and why it matters for them. If it doesn’t matter (i.e. it’s a purely internal change), you don’t need a bullet.\nNew bullets should be added to the top of the file (immediately under the first heading) and should be a single line. Organisation and wrapping will happen later, during the release process.\nIf the bullet is related to an issue, include the issue number. If the contribution is a PR, and the author is not a package author, include the GitHub user name. Both items should be wrapped in parentheses and will generally come before the final period.",
     "crumbs": [
       "Packages",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>News</span>"
