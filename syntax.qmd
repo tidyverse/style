@@ -1,6 +1,6 @@
 # Syntax
 
-## Object names
+## Object names {#sec-objectnames}
 
 > "There are only two hard things in Computer Science: cache invalidation and
 > naming things."
@@ -157,7 +157,7 @@ There are a few exceptions, which should never be surrounded by spaces:
     x <- 1 : 10
     ```
 
-*   Single-sided formulas when the right-hand side is a single identifier:
+*   Single-sided formulas when the right-hand side is a single identifier.
 
     ```{r}
     # Good
@@ -175,7 +175,7 @@ There are a few exceptions, which should never be surrounded by spaces:
     )
     ```
 
-    Note that single-sided formulas with a complex right-hand side do need a space:
+    Note that single-sided formulas with a complex right-hand side do need a space.
 
     ```{r}
     # Good
@@ -186,7 +186,7 @@ There are a few exceptions, which should never be surrounded by spaces:
     ```
 
 *   When used in tidy evaluation `!!` (bang-bang) and `!!!` (bang-bang-bang)
-    (because have precedence equivalent to unary `-`/`+`)
+    (because they have precedence equivalent to unary `-`/`+`).
 
     ```{r}
     # Good
@@ -198,7 +198,7 @@ There are a few exceptions, which should never be surrounded by spaces:
     call(! !xyz)
     ```
 
-*   The help operator
+*   The help operator.
 
     ```{r}
     # Good
