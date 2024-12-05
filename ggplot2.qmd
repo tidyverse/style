@@ -48,7 +48,8 @@ iris |>
   )
 
 # Bad
-iris |> ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
+iris |>
+  ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
   geom_point() +
   labs(x = "Sepal width, in cm", y = "Sepal length, in cm", title = "Sepal length vs. width of irises")
 ```
