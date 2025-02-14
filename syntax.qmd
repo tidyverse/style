@@ -297,7 +297,7 @@ output <- capture.output(x <- f())
 
 ### Code blocks {#indenting}
 
-Curly braces, `{}`, define the most important hierarchy of R code. To make this
+Braced expressions, `{}`, define the most important hierarchy of R code. To make this
 hierarchy easy to see:
 
 * `{` should be the last character on the line. Related code (e.g., an `if`
@@ -308,7 +308,7 @@ hierarchy easy to see:
 
 * `}` should be the first character on the line.
 
-It is occassionally useful to have an empty curly braces block, in which case it should be written `{}`.
+It is occassionally useful to have empty braced expressions, in which case it should be written `{}`.
 
 ```{r}
 # Good
@@ -364,6 +364,45 @@ while (waiting_for_something()) {
 
 ### If statements
 
+* A single line if statement must never contain braced expressions. You can use
+  single line if statements for very simple statements that don't have
+  side-effects and don't modify the control flow.
+
+  ```{r}
+  # Good
+  message <- if (x > 10) "big" else "small"
+
+  # Bad
+  message <- if (x > 10) { "big" } else { "small" }
+  ```
+
+* A multiline if statement must contain braced expressions.
+
+  ```{r}
+  # Good
+  if (x > 10) {
+    x * 2
+  }
+
+  if (x > 10) {
+    x * 2
+  } else {
+    x * 3
+  }
+
+  # Bad
+  if (x > 10)
+    x * 2
+
+  # In particular, the outer braces are required for this to even parse.
+  {
+    if (x > 10)
+      x * 2
+    else
+      x * 3
+  }
+  ```
+
 * When present, `else` should be on the same line as `}`.
 
 * `&` and `|` should never be used inside of an `if` clause because they can
@@ -374,31 +413,7 @@ while (waiting_for_something()) {
   recycled to match) and it is eager (i.e. both `a` and `b` will always be
   evaluated).
 
-  If you want to rewrite a simple but lengthy `if` block:
-
-  ```{r}
-  if (x > 10) {
-    message <- "big"
-  } else {
-    message <- "small"
-  }
-  ```
-
-  Just write it all on one line:
-
-  ```{r}
-  message <- if (x > 10) "big" else "small"
-  ```
-
-### Inline statements {#inline-statements}
-
-It's ok to drop the curly braces for very simple statements that fit on one line, as long as they don't have side-effects.
-
-```{r}
-# Good
-y <- 10
-x <- if (y < 20) "Too low" else "Too high"
-```
+### Control flow modifiers {#control-flow-modifiers}
 
 Function calls that affect control flow (like `return()`, `stop()` or `continue`) should always go in their own `{}` block:
 
@@ -417,9 +432,6 @@ find_abs <- function(x) {
 
 # Bad
 if (y < 0) stop("Y is negative")
-
-if (y < 0)
-  stop("Y is negative")
 
 find_abs <- function(x) {
   if (x > 0) return(x)

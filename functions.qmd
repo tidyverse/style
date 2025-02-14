@@ -154,7 +154,7 @@ add_two <- function(x, y) {
 }
 ```
 
-Return statements should always be on their own line because they have important effects on the control flow. See also [inline statements](#inline-statements).
+Return statements should always be on their own line because they have important effects on the control flow. See also [control flow modifiers](#control-flow-modifiers).
 
 ```{r}
 # Good
