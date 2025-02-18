@@ -360,7 +360,7 @@ paste0(
 
 ## Braced expressions {#braced-expressions}
 
-Braced expressions, `{}`, define the most important hierarchy of R code, allowing you to group multiple R expressions together into a single expression. The most common places to use braced expressions are in function definitions, control flow, and function calls (such as `tryCatch()` or `test_that()` blocks).
+Braced expressions, `{}`, define the most important hierarchy of R code, allowing you to group multiple R expressions together into a single expression. The most common places to use braced expressions are in function definitions, control flow, and in certain function calls (e.g. `tryCatch()` and `test_that()`).
 
 To make this hierarchy easy to see:
 
