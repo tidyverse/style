@@ -510,6 +510,20 @@ R defines three types of looping constructs: `for`, `while`, and `repeat` loops.
 
 * When present, `else` should be on the same line as `}`.
 
+* Avoid implicit type coercion (e.g. from numeric to logical) in the condition of an if statement:
+
+  ```{r}
+  # Good
+  if (length(x) > 0) {
+    # do something
+  }
+
+  # Bad
+  if (length(x)) {
+    # do something
+  }
+  ```
+
 ::: {.callout-note}
 `&` and `|` should never be used inside of an `if` clause because they can return vectors. Always use `&&` and `||` instead.
 :::
@@ -551,22 +565,6 @@ find_abs <- function(x) {
 
 for (x in xs) {
   if (is_done(x)) break
-}
-```
-
-### Implicit type coercion
-
-Avoid implicit type coercion (e.g. from numeric to logical) in `if` statements:
-
-```{r}
-# Good
-if (length(x) > 0) {
-  # do something
-}
-
-# Bad
-if (length(x)) {
-  # do something
 }
 ```
 
