@@ -599,8 +599,20 @@ switch(y, 1, 2, 3)
 
 ## Semicolons
 
-Don't put `;` at the end of a line, and don't use `;` to put multiple commands
-on one line.
+Semicolons are never recommended.
+In particular, don't put `;` at the end of a line, and don't use `;` to put multiple commands on one line.
+
+```{r}
+# Good
+my_helper()
+my_other_helper()
+
+# Bad
+my_helper();
+my_other_helper();
+
+{ my_helper(); my_other_helper() }
+```
 
 ## Assignment
 
