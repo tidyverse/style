@@ -455,17 +455,6 @@ R defines three types of looping constructs: `for`, `while`, and `repeat` loops.
 
 * It is occasionally useful to use a `while` loop with an empty braced expression body to wait. As mentioned in [Braced expressions](#braced-expressions), there should be no space within the `{}`.
 
-  ```{r}
-  # Good
-  while (waiting_for_something()) {}
-
-  # Bad
-  while (waiting_for_something()) { }
-  while (waiting_for_something()) {
-
-  }
-  ```
-
 ### If statements
 
 * A single line if statement must never contain braced expressions. You can use
@@ -478,6 +467,10 @@ R defines three types of looping constructs: `for`, `while`, and `repeat` loops.
 
   # Bad
   message <- if (x > 10) { "big" } else { "small" }
+
+  if (x > 0) message <- "big" else message <- "small"
+
+  if (x > 0) return(x)
   ```
 
 * A multiline if statement must contain braced expressions.
