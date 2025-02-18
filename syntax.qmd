@@ -292,6 +292,72 @@ The only exception is in functions that capture side-effects:
 output <- capture.output(x <- f())
 ```
 
+### Long function calls
+
+Strive to limit your code to 80 characters per line. This fits comfortably on a
+printed page with a reasonably sized font. If you find yourself running out of
+room, this is a good indication that you should encapsulate some of the work in
+a separate function.
+
+If a function call is too long to fit on a single line, use one line each for
+the function name, each argument, and the closing `)`.
+This makes the code easier to read and to change later.
+
+```{r}
+# Good
+do_something_very_complicated(
+  something = "that",
+  requires = many,
+  arguments = "some of which may be long"
+)
+
+# Bad
+do_something_very_complicated("that", requires, many, arguments,
+                              "some of which may be long"
+                              )
+```
+
+As described under [Named arguments](#argument-names), you can omit the argument names
+for very common arguments (i.e. for arguments that are used in almost every
+invocation of the function). If this introduces a large disparity between the line lengths, you may want to supply names anyway:
+
+```{r}
+# Good
+my_function(
+  x,
+  long_argument_name,
+  extra_argument_a = 10,
+  extra_argument_b = c(1, 43, 390, 210209)
+)
+
+# Also good
+my_function(
+  x = x,
+  y = long_argument_name,
+  extra_argument_a = 10,
+  extra_argument_b = c(1, 43, 390, 210209)
+)
+```
+
+You may place multiple unnamed arguments on the same line if they are closely
+related to each other. A common example of this is creating strings
+with `paste()`. In such cases, it's often beneficial to match one line of code
+to one line of output.
+
+```{r}
+# Good
+paste0(
+  "Requirement: ", requires, "\n",
+  "Result: ", result, "\n"
+)
+
+# Bad
+paste0(
+  "Requirement: ", requires,
+  "\n", "Result: ",
+  result, "\n")
+```
+
 ## Braced expressions {#braced-expressions}
 
 Braced expressions, `{}`, define the most important hierarchy of R code, allowing you to group multiple R expressions together into a single expression. The most common places to use braced expressions are in function definitions, control flow, and function calls (such as `tryCatch()` or `test_that()` blocks).
@@ -531,72 +597,6 @@ switch(x,
   c = long_function_name2()
 )
 switch(y, 1, 2, 3)
-```
-
-## Long function calls
-
-Strive to limit your code to 80 characters per line. This fits comfortably on a
-printed page with a reasonably sized font. If you find yourself running out of
-room, this is a good indication that you should encapsulate some of the work in
-a separate function.
-
-If a function call is too long to fit on a single line, use one line each for
-the function name, each argument, and the closing `)`.
-This makes the code easier to read and to change later.
-
-```{r}
-# Good
-do_something_very_complicated(
-  something = "that",
-  requires = many,
-  arguments = "some of which may be long"
-)
-
-# Bad
-do_something_very_complicated("that", requires, many, arguments,
-                              "some of which may be long"
-                              )
-```
-
-As described under [Named arguments](#argument-names), you can omit the argument names
-for very common arguments (i.e. for arguments that are used in almost every
-invocation of the function). If this introduces a large disparity between the line lengths, you may want to supply names anyway:
-
-```{r}
-# Good
-my_function(
-  x,
-  long_argument_name,
-  extra_argument_a = 10,
-  extra_argument_b = c(1, 43, 390, 210209)
-)
-
-# Also good
-my_function(
-  x = x,
-  y = long_argument_name,
-  extra_argument_a = 10,
-  extra_argument_b = c(1, 43, 390, 210209)
-)
-```
-
-You may place multiple unnamed arguments on the same line if they are closely
-related to each other. A common example of this is creating strings
-with `paste()`. In such cases, it's often beneficial to match one line of code
-to one line of output.
-
-```{r}
-# Good
-paste0(
-  "Requirement: ", requires, "\n",
-  "Result: ", result, "\n"
-)
-
-# Bad
-paste0(
-  "Requirement: ", requires,
-  "\n", "Result: ",
-  result, "\n")
 ```
 
 ## Semicolons
