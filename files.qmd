@@ -59,7 +59,7 @@ have names that differ only in their capitalization. Use `.R` as the extension o
 `02b`, etc. However, I think it's generally better to bite the bullet and
 rename all files.
 
-4.  Don't [tempt fate](https://phdcomics.com/comics.php?f=1531) by using "final" or similar words in file names. Instead either rely on Git to track changes over time, opr failing that put the date, formatted as year-month-day, in the file name.
+4.  Don't [tempt fate](https://phdcomics.com/comics.php?f=1531) by using "final" or similar words in file names. Instead either rely on Git to track changes over time, or failing that put the date, formatted as year-month-day, in the file name.
 
     ```
     # good
