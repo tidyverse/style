@@ -14,7 +14,7 @@
     "href": "files.html",
     "title": "1  Files",
     "section": "",
-    "text": "1.1 Names\nFile names should be meaningful and end in .R. Avoid using special characters in file names - stick with numbers, letters, -, and _.\nIf files should be run in a particular order, prefix them with numbers. If it seems likely you’ll have more than 10 files, left pad with zero:\nIf you later realise that you’ve missed some steps, it’s tempting to use 02a, 02b, etc. However, I think it’s generally better to bite the bullet and rename all files.\nPay attention to capitalization, since you, or some of your collaborators, might be using an operating system with a case-insensitive file system (e.g., Microsoft Windows or OS X) which can lead to problems with (case-sensitive) revision control systems. Prefer file names that are all lower case, and never have names that differ only in their capitalization.",
+    "text": "1.1 Names",
     "crumbs": [
       "Analyses",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Files</span>"
@@ -25,7 +25,7 @@
     "href": "files.html#names",
     "title": "1  Files",
     "section": "",
-    "text": "# Good\nfit_models.R\nutility_functions.R\n\n# Bad\nfit models.R\nfoo.r\nstuff.r\n\n00_download.R\n01_explore.R\n...\n09_model.R\n10_visualize.R",
+    "text": "File names should be machine readable: avoid spaces, symbols, and special characters. Prefer file names that are all lower case, and never have names that differ only in their capitalization. Delimit words with - or _. Use .R as the extension of R files.\n# Good\nfit_models.R\nutility_functions.R\nexploratory-data-analysis.R\n\n# Bad\nfit models.R\nfoo.r\nExploratoryDataAnaylsis.r\nFile names should be human readable: use file names to describe what’s in the file.\n# good\nreport-draft-notes.txt\n\n# bad\ntemp.r\nUse the same structure for closely related files:\n# good\nfig-eda.png\nfig-model-3.png\n\n# bad\nfigure eda.PNG\nfig model three.png\nFile names should play well with default ordering. If your file names contain dates, use yyyy-mm-dd (ISO8601) format so they sort in chronological order. If your file names include numbers, make sure to pad them with the appropriate number of zeros so that (e.g.) 11 doesn’t get sorted before 2. If files should be used in a specific order, put the number at the start, not the end.\n# good\n01-load-data.R\n02-exploratory-analysis.R\n03-model-approach-1.R\n04-model-approach-2.R\n2025-01-01-report.Rmd\n2025-02-01.report.Rmd\n\n# bad\nalternative model.R\ncode for exploratory analysis.r\nfeb 01 report.Rmd\njan 01 report.Rmd\nmodel_first_try.R\nrun-first.r\nIf you later realise that you’ve missed some steps, it’s tempting to use 02a, 02b, etc. However, I think it’s generally better to bite the bullet and rename all files.\nDon’t tempt fate by using “final” or similar words in file names. Instead either rely on Git to track changes over time, or failing that, put the date in the file name.\n# good\nreport-2022-03-20.qmd\nreport-2022-04-02.qmd\n\n# bad\nfinalreport.qmd\nFinalReport-2.qmd",
     "crumbs": [
       "Analyses",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Files</span>"
