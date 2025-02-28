@@ -2,37 +2,78 @@
 
 ## Names
 
-File names should be meaningful and end in `.R`. Avoid using special characters
-in file names - stick with numbers, letters, `-`, and `_`.
+1.  File names should be **machine readable**: avoid spaces, symbols, and special characters. Prefer file names that are all lower case, and never
+have names that differ only in their capitalization. Delimit words with `-` or `_`. Use `.R` as the extension of R files.
 
-
+    ```
     # Good
     fit_models.R
     utility_functions.R
+    exploratory-data-analysis.R
 
     # Bad
     fit models.R
     foo.r
-    stuff.r
+    ExploratoryDataAnaylsis.r
+    ```
 
-If files should be run in a particular order, prefix them with numbers. If it
-seems likely you'll have more than 10 files, left pad with zero:
+2.  File names should be **human readable**: use file names to describe what's in the file.
 
-    00_download.R
-    01_explore.R
-    ...
-    09_model.R
-    10_visualize.R
+    ```
+    # good
+    report-draft-notes.txt
 
-If you later realise that you've missed some steps, it's tempting to use `02a`,
+    # bad
+    temp.r
+    ```
+
+    Use the same structure for closely related files:
+
+    ```
+    # good
+    fig-eda.png
+    fig-model-3.png
+
+    # bad
+    figure eda.PNG
+    fig model three.png
+    ```
+
+3.  File names should play well with default ordering. If your file names contain dates, use yyyy-mm-dd (ISO8601) format so they sort in chronological order. If your file names include numbers, make sure to pad them with the appropriate number of zeros so that (e.g.) 11 doesn't get sorted before 2. If files should be used in a specific order, put the number at the start, not the end.
+
+    ```
+    # good
+    01-load-data.R
+    02-exploratory-analysis.R
+    03-model-approach-1.R
+    04-model-approach-2.R
+    2025-01-01-report.Rmd
+    2025-02-01.report.Rmd
+
+    # bad
+    alternative model.R
+    code for exploratory analysis.r
+    feb 01 report.Rmd
+    jan 01 report.Rmd
+    model_first_try.R
+    run-first.r
+    ```
+
+    If you later realise that you've missed some steps, it's tempting to use `02a`,
 `02b`, etc. However, I think it's generally better to bite the bullet and
 rename all files.
 
-Pay attention to capitalization, since you, or some of your collaborators,
-might be using an operating system with a case-insensitive file system (e.g.,
-Microsoft Windows or OS X) which can lead to problems with (case-sensitive)
-revision control systems. Prefer file names that are all lower case, and never
-have names that differ only in their capitalization.
+4.  Don't [tempt fate](https://phdcomics.com/comics.php?f=1531) by using "final" or similar words in file names. Instead either rely on Git to track changes over time, or failing that, put the date in the file name.
+
+    ```
+    # good
+    report-2022-03-20.qmd
+    report-2022-04-02.qmd
+
+    # bad
+    finalreport.qmd
+    FinalReport-2.qmd
+    ```
 
 ## Organisation
 
