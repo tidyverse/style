@@ -3,7 +3,7 @@
 ## Names
 
 1.  File names should be **machine readable**: avoid spaces, symbols, and special characters. Prefer file names that are all lower case, and never
-have names that differ only in their capitalization. Use `.R` as the extension of R files.
+have names that differ only in their capitalization. Delimit words with `-` or `_`. Use `.R` as the extension of R files.
 
     ```
     # Good
@@ -31,15 +31,15 @@ have names that differ only in their capitalization. Use `.R` as the extension o
 
     ```
     # good
-    figure-01.png
-    figure-02.png
+    fig-eda.png
+    fig-model-3.png
 
     # bad
-    figure 1.png
-    fig 02.png
+    figure eda.PNG
+    fig model three.png
     ```
 
-3.  File names should play well with default ordering: start file names with numbers so that alphabetical sorting puts them in the order they get used.
+3.  File names should play well with default ordering. If your file names contain dates, use yyyy-mm-dd (ISO8601) format so they sort in chronological order. If your file names include numbers, make sure to pad them with the appropriate number of zeros so that (e.g.) 11 doesn't get sorted before 2. If files should be used in a specific order, put the number at the start, not the end.
 
     ```
     # good
@@ -47,10 +47,14 @@ have names that differ only in their capitalization. Use `.R` as the extension o
     02-exploratory-analysis.R
     03-model-approach-1.R
     04-model-approach-2.R
+    2025-01-01-report.Rmd
+    2025-02-01.report.Rmd
 
     # bad
     alternative model.R
     code for exploratory analysis.r
+    feb 01 report.Rmd
+    jan 01 report.Rmd
     model_first_try.R
     run-first.r
     ```
@@ -59,7 +63,7 @@ have names that differ only in their capitalization. Use `.R` as the extension o
 `02b`, etc. However, I think it's generally better to bite the bullet and
 rename all files.
 
-4.  Don't [tempt fate](https://phdcomics.com/comics.php?f=1531) by using "final" or similar words in file names. Instead either rely on Git to track changes over time, or failing that put the date, formatted as year-month-day, in the file name.
+4.  Don't [tempt fate](https://phdcomics.com/comics.php?f=1531) by using "final" or similar words in file names. Instead either rely on Git to track changes over time, or failing that, put the date in the file name.
 
     ```
     # good
