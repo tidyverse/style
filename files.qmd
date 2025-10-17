@@ -14,7 +14,7 @@ have names that differ only in their capitalization. Delimit words with `-` or `
     # Bad
     fit models.R
     foo.r
-    ExploratoryDataAnaylsis.r
+    ExploratoryDataAnalysis.r
     ```
 
 2.  File names should be **human readable**: use file names to describe what's in the file.
