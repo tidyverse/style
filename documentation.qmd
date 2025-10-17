@@ -41,7 +41,7 @@ more complex formatting like a bulleted list.
 
 Always indent with one space after `#'`. If any description corresponding to a
 `roxygen` tag spans over multiple lines, add another two spaces of extra
-indention.
+indentation.
 
 ```{r}
 #' @param key The bare (unquoted) name of the column whose values will be used
