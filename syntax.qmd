@@ -79,7 +79,7 @@ mean (x, na.rm = TRUE)
 mean( x, na.rm = TRUE )
 ```
 
-Place a space before and after `()` when used with  `if`, `for`, or `while`.
+Place a space before and after `()` when used with `if`, `for`, or `while`.
 
 ```{r}
 # Good
