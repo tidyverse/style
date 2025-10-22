@@ -16,7 +16,7 @@ permutation()
 
 ## Anonymous functions
 
-Use the new lambda syntax: `\(x) x + 1` when writing short anonymous functions (i.e. when you define a function in an argument without giving it an explicit name).
+Use the lambda syntax: `\(x) x + 1` when writing short anonymous functions (i.e. when you define a function in an argument without giving it an explicit name).
 
 ```R
 # Good
