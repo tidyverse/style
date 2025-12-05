@@ -160,10 +160,18 @@ iris |>
   summarise(width = Sepal.Width, .by = Species) |>
   arrange(width)
 
+iris |>
+  _$Sepal.Width |>
+  append(pi, values = _)
+
 # Bad
 iris %>%
   summarise(width = Sepal.Width, .by = Species) %>%
   arrange(width)
+
+iris %>%
+  .$Sepal.Width %>%
+  append(pi, .)
 ```
 
 As of R 4.3.0, the base pipe provides all the features from magrittr that we recommend using.
